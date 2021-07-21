@@ -1,4 +1,5 @@
 
+  doNew = FALSE
 
   library(tidyverse)
   library(fs)
@@ -33,73 +34,140 @@
   
 #-------Rasters--------
   
-  rasters <- tibble(path = dir_ls(path("..","..","Data","Raster","DEM"), regexp = "\\.tif$")) %>%
-    dplyr::mutate(name = gsub(".tif","",basename(path))
-                  , ras = map(path,raster)
+  types <- tribble(
+    ~lookfor, ~short,
+    "AW3D30", "AW3D_30",
+    "SA_Sample_AW3D", "AW3D_2",
+    "bak2_bp","Bakara",
+    "TOPO.NASA", "SRTM",
+    "WorldDEM_DTM", "WorldDEMFull",
+    "WorldDEM_LIT", "WorldDEMLite"
+  )
+  
+  rasters <- tibble(path = dir_ls(path("..","..","Data","Raster","DEM")
+                                  , regexp = "\\.tif$"
+                                  , recurse = TRUE
+                                  )
+                    ) %>%
+    dplyr::mutate(lookfor = str_extract(path,paste0(types$lookfor,collapse = "|"))) %>%
+    dplyr::left_join(types) %>%
+    dplyr::mutate(ras = map(path,raster)
+                  , ras = map(ras,reclassify,rcl = cbind(-Inf, 0, NA), right=FALSE)
                   )
   
-  extent <- st_read(dir_ls("shp",regexp = "Bakara_smaller.shp$")) %>%
-    st_transform(crs = 7854)
-
-  # base raster
-  r <- raster(extent
-              , resolution = 10
-              , crs = CRS("+init=epsg:7854")
-              )
+  
+  # Minimum extent of data across all rasters
+  naPoly <- terra::as.polygons(terra::rast(rasters$ras[rasters$short == "AW3D_2"][[1]]) >= 0) %>%
+    sf::st_as_sf()
+  
+  naPolyRas <- raster(resolution = 10
+                      , ext = extent(naPoly)
+                      , crs = crs(naPoly)
+                      )
   
   samples <- rasters %>%
-    dplyr::mutate(crop = map(ras
-                            , projectRaster
-                            , to = r
-                            )
-                  )
+    dplyr::mutate(gda94 = future_map(ras
+                                     , projectRaster
+                                     , crs =CRS("+init=epsg:28354")
+                                     )
+                  , mask = future_map(gda94
+                                      , mask
+                                      , mask = as_Spatial(naPoly)
+                                      )
+                  , crop = future_map(mask
+                                      , crop
+                                      , y = as_Spatial(naPoly)
+                                      )
+                  , repr = future_map(mask
+                                     , projectRaster
+                                     , to = naPolyRas
+                                     )
+                  ) %>%
+    tidyr::pivot_longer(cols = c(crop,repr), names_to = "type", values_to = "r")
   
 #------Terrain-------
   
   # Definitions
-  windowXS <- 5
-  windowXL <- 9
-  flatnessThresh <- 0.5
+  windowXS <- 3
+  windowXL <- 33
+  flatnessThresh <- 1
   
   # Focal window (for geomorph)
   focalWindow <- matrix(1, nrow = windowXL, ncol = windowXL)
   
+  terrOptions <- c("slope", "aspect", "TPI", "TRI", "roughness", "flowdir")
+  
   terr <- samples %>%
-    dplyr::mutate(terr = future_map(crop,terrain,opt = terrOptions,unit = "degrees")
-                  , sixClass = future_map(crop, landfClass, n.classes = "six", scale = windowXS)
-                  , tenClass = future_map(crop, landfClass, n.classes = "ten", sn = windowXS, ln = windowXL)
-                  , geomorph = future_map(crop, geomorph_ras)
+    dplyr::mutate(cellSize = map_dbl(r,function(x) res(x)[1]*res(x)[2])
+                  , outFile = path("out",paste0(short,"_",type,".tif"))
+                  , terr = future_map(r,terrain,opt = terrOptions,unit = "degrees")
+                  , sixClass = future_map2(r, outFile, landfClass, doNew = doNew, n.classes = "six", scale = windowXS)
+                  , tenClass = future_map2(r, outFile, landfClass, doNew = doNew, n.classes = "ten", sn = windowXS, ln = windowXL)
+                  , geomorph = future_map2(r, outFile, geomorph_ras, doNew = doNew)
+                  , rasName = gsub(".tif","",basename(outFile))
                   )
   
   
 #------Analysis--------
   
-  pts <- st_sample(extent,9999)
+  pts <- st_sample(naPoly,9999)
   
-  res <- terr %>%
-    dplyr::mutate(res = map(terr,raster::extract,y = as_Spatial(pts))) %>%
-    dplyr::select(negate(is.list),res) %>%
-    dplyr::mutate(res = map(res,~as_tibble(.) %>%
+  cont <- terr %>%
+    dplyr::mutate(rasVal = map(terr,raster::extract,y = as_Spatial(pts))) %>%
+    dplyr::select(negate(is.list),rasVal) %>%
+    dplyr::mutate(rasVal = map(rasVal,~as_tibble(.) %>%
                               dplyr::bind_cols(st_coordinates(pts) %>%
                                                  as_tibble() %>%
                                                  dplyr::mutate(id = row_number())
                                                )
                             )
-                  ) %>%    tidyr::unnest(cols = c(res)) %>%
+                  ) %>% 
+    tidyr::unnest(cols = c(rasVal)) %>%
     tidyr::pivot_longer(any_of(tolower(terrOptions))) %>%
-    dplyr::filter(!is.na(value)
-                  , value < quantile(value, probs = 0.999, na.rm = TRUE)
-                  , value > quantile(value, probs = 0.001, na.rm = TRUE)
-                  )
+    dplyr::filter(!is.na(value))
     
+  categ <- terr %>%
+    tidyr::pivot_longer(cols = c(sixClass,tenClass,geomorph)) %>%
+    dplyr::mutate(rasVal = future_map(value,raster::extract,y = as_Spatial(pts))) %>%
+    dplyr::select(negate(is.list),rasVal) %>%
+    dplyr::mutate(rasVal = map(rasVal,~as_tibble(.) %>%
+                              dplyr::bind_cols(st_coordinates(pts) %>%
+                                                 as_tibble() %>%
+                                                 dplyr::mutate(id = row_number())
+                                               )
+                            )
+                  ) %>% 
+    tidyr::unnest(cols = c(rasVal)) %>%
+    dplyr::left_join(geomorph.def, by = c("value" = "num_lf"))
+  
   
 #----vis------
   
-  ggplot(res,aes(value,colour = type)) +
-    geom_density(size = 1) +
-    facet_wrap(~name, scales = "free")
+  ggplot(cont %>%
+           dplyr::mutate(short = fct_reorder(short,cellSize,mean)) %>%
+           # dplyr::group_by(short,name) %>%
+           # dplyr::filter(value < quantile(value, probs = 0.99)
+           #               , value > quantile(value, probs = 0.01)
+           #               ) %>%
+           # dplyr::ungroup() %>%
+           {.}
+         ,aes(value,short,fill = cellSize, height = ..density..)
+         ) +
+    geom_density_ridges(scale = 1, stat = "density") +
+    facet_grid(type~name, scales = "free") +
+    scale_fill_viridis_c() +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+    
   
-  
-  
+  ggplot(categ %>% dplyr::mutate(short = fct_reorder(short,cellSize,mean))
+         , aes(short,fill = cellSize)
+         ) +
+    geom_histogram(stat = "count"
+                   , position = "dodge2"
+                   ) +
+    coord_flip() +
+    facet_grid(name+type~name_en, scales = "free") +
+    scale_fill_viridis_c() +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
   
   
