@@ -1,5 +1,6 @@
 
-  doNew = FALSE
+
+#--------Setup---------
 
   library(tidyverse)
   library(fs)
@@ -7,31 +8,11 @@
   library(sf)
   library(ggridges)
   library(furrr)
+  library(gridExtra)
+
+  library(envGeomorph)
   
-  commonFiles <- path("..","template","toCommon")
-  
-  if(file.exists(commonFiles)){
-    
-    files <- dir_ls(commonFiles)
-    newFiles <- files %>% gsub(commonFiles,path("common"),.)
-    dir_create("common")
-    walk2(files,newFiles,file_copy,overwrite=TRUE)
-    
-  }
-  
-  source("common/functions.R") # these are generic functions (e.g. vec_to_sentence)
-  
-  
-  
-  # Cores to use for any parallel processing
-  useCores <- if(parallel::detectCores() > 14) 14 else parallel::detectCores()-1
-  
-  # Plan for any furrr functions
-  plan(multiprocess
-       , workers = useCores
-       )
-  
-  
+
 #-------Rasters--------
   
   types <- tribble(
@@ -66,22 +47,22 @@
                       )
   
   samples <- rasters %>%
-    dplyr::mutate(gda94 = future_map(ras
-                                     , projectRaster
-                                     , crs =CRS("+init=epsg:28354")
-                                     )
-                  , mask = future_map(gda94
-                                      , mask
-                                      , mask = as_Spatial(naPoly)
-                                      )
-                  , crop = future_map(mask
-                                      , crop
-                                      , y = as_Spatial(naPoly)
-                                      )
-                  , repr = future_map(mask
-                                     , projectRaster
-                                     , to = naPolyRas
-                                     )
+    dplyr::mutate(gda94 = map(ras
+                              , raster::projectRaster
+                              , crs =CRS("+init=epsg:28354")
+                              )
+                  , mask = map(gda94
+                               , raster::mask
+                               , mask = as_Spatial(naPoly)
+                               )
+                  , crop = map(mask
+                               , raster::crop
+                               , y = as_Spatial(naPoly)
+                               )
+                  , repr = map(mask
+                               , raster::projectRaster
+                               , to = naPolyRas
+                               )
                   ) %>%
     tidyr::pivot_longer(cols = c(crop,repr), names_to = "type", values_to = "r")
   
@@ -90,22 +71,45 @@
   # Definitions
   windowXS <- 3
   windowXL <- 33
-  flatnessThresh <- 1
-  
-  # Focal window (for geomorph)
-  focalWindow <- matrix(1, nrow = windowXL, ncol = windowXL)
   
   terrOptions <- c("slope", "aspect", "TPI", "TRI", "roughness", "flowdir")
   
   terr <- samples %>%
     dplyr::mutate(cellSize = map_dbl(r,function(x) res(x)[1]*res(x)[2])
                   , outFile = path("out",paste0(short,"_",type,".tif"))
-                  , terr = future_map(r,terrain,opt = terrOptions,unit = "degrees")
-                  , sixClass = future_map2(r, outFile, landfClass, doNew = doNew, n.classes = "six", scale = windowXS)
-                  , tenClass = future_map2(r, outFile, landfClass, doNew = doNew, n.classes = "ten", sn = windowXS, ln = windowXL)
-                  , geomorph = future_map2(r, outFile, geomorph_ras, doNew = doNew)
-                  , rasName = gsub(".tif","",basename(outFile))
+                  , terr = map(r,terrain,opt = terrOptions,unit = "degrees")
+                  , sixClass = map2(r, outFile, land_class, n.classes = "six", sn = windowXS, doNew = FALSE)
+                  , tenClass = map2(r, outFile, land_class, n.classes = "ten", sn = windowXS, ln = windowXL, doNew = FALSE)
+                  , geomorph = map2(r, outFile, geomorph_ras)
                   )
+  
+  make_levelplot <- function(objName,ras,rasName = NULL) {
+    
+    l <- levelplot(ras
+                   , main = rasName
+                   , colorkey = FALSE
+                   )
+    
+    assign(objName,l,envir = globalenv())
+    
+  }
+  
+  pwalk(list(paste0("p",str_pad(1:nrow(terr),2,pad = "0"))
+             , terr$tenClass
+             , paste0(terr$short,"_",terr$type)
+             )
+        , make_levelplot
+        )
+  
+  p00 <- levelplot(terr$geomorph[[2]]
+                   , main = "legend"
+                   )
+  
+  library(cowplot)
+  
+  plot_grid(plotlist = mget(ls(pattern = "leg|p\\d{2}")))
+  
+  
   
   
 #------Analysis--------
@@ -159,7 +163,8 @@
     theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
     
   
-  ggplot(categ %>% dplyr::mutate(short = fct_reorder(short,cellSize,mean))
+  ggplot(categ %>%
+           dplyr::mutate(short = fct_reorder(short,cellSize,mean))
          , aes(short,fill = cellSize)
          ) +
     geom_histogram(stat = "count"
