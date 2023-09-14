@@ -1,0 +1,185 @@
+
+# Methods
+
+The following `r length(unique(samples$short))` DEMs were available over the `r settings$area` sample area:
+
+* `r paste0(unique(samples$short), collapse = "\n* ")`
+
+For each DEM, the following workflow was applied:
+
+* mask to the minimum available overlap between all DEMs
+* reproject into GDA 2020
+* aggregate or disaggregate to roughly 10 m from original resolution
+* reprojected into the same `r terra::res(samples$ras[[1]])[1]` m raster
+
+Each of the reprojected DEMs were then processed by the `Qfit` function in the `MultiscaleDTM` package `r envReport::cite_package("MultiscaleDTM")` using two values for the `v` argument (window size): `r windows$window %>% envFunc::vec_to_sentence()` cells. The `Qfit` function generates several continuous and one categorical variable for a digital terrain model:
+
+* `r paste0(as.character(formals(MultiscaleDTM::Qfit)$metrics)[-1], collapse = "\n* ")``
+
+A [shiny app](https://ailich.shinyapps.io/Terrain_Attributes_Explorer_App/) is available to investigate the meaning of each of these variables.
+
+To visualise and quantify differences between sample DEMs, the area of overlap between each sample DEM had `r settings$n_sample`
+
+# Raw DEMs
+
+```{r dem, fig.cap = "Sample area DEMs"}
+
+  dems <- samples$ras %>%
+    terra::rast() %>%
+    setNames(samples$short)
+
+  if(settings$area == "Bakara") {
+    
+    bbox <- sf::st_bbox(c(xmin = 139.981142
+                        , ymin = -34.565524
+                        , xmax = 139.955216
+                        , ymax = -34.58927
+                        )
+                      , crs = 4326
+                      ) %>%
+    sf::st_as_sfc() %>%
+    sf::st_transform(crs = sf::st_crs(samples$ras[[1]]))
+    
+  } else {
+    
+    bbox <- sf::st_bbox(samples$ras[[1]])
+    
+  }
+  
+  tm_shape(dems
+           , bbox = bbox
+           ) +
+    tm_raster(n = 10
+              , style = "quantile"
+              ) +
+    tm_facets()
+
+```
+
+$\\$
+
+# Continuous metrics
+
+```{r childPrep}
+
+  if(settings$area == "Bakara") {
+    
+    bbox <- sf::st_bbox(c(xmin = 139.981142
+                          , ymin = -34.565524
+                          , xmax = 139.955216
+                          , ymax = -34.58927
+                          )
+                        , crs = 4326
+                        ) %>%
+      sf::st_as_sfc() %>%
+      sf::st_transform(crs = sf::st_crs(samples$ras[[1]])) %>%
+      sf::st_bbox()
+    
+  } else if(settings$area == "Woakwine"){
+    
+    bbox <- sf::st_bbox(c(xmin = 140.029951
+                          , ymin = -37.390504
+                          , xmax = 140.044338
+                          , ymax = -37.383261
+                          )
+                        , crs = 4326
+                        ) %>%
+      sf::st_as_sfc() %>%
+      sf::st_transform(crs = sf::st_crs(samples$ras[[1]])) %>%
+      sf::st_bbox()
+    
+    
+  } else {
+    
+    bbox <- sf::st_bbox(samples$ras[[1]])
+    
+  }
+
+```
+
+```{r child_rmd}
+
+  child <- NULL
+
+  # this loops through child.Rmd, generating the results for each report card
+
+  for (i in cont$name) {
+    
+    childID <- i
+    
+    child <- c(child, knit_expand(fs::path(here::here()
+                                           , "child"
+                                           , "child.Rmd"
+                                           )
+                                  )
+               )
+    
+  }
+
+```
+
+`r paste(knit(text = child), collapse = '\n')`
+
+# Categorical
+
+Table \@ref(tab:categTab) shows the proportion of each DEM classifed to each landform element (also see Figure \@ref(fig:categCount).
+
+Figure \@ref(fig:categ) shows a landscape classification for each reprojected sample area and window size.
+
+```{r categTab}
+
+  categ %>%
+    dplyr::select(-n, -name
+                  , res_metres = original_res
+                  ) %>%
+    tidyr::pivot_wider(names_from = value, values_from = prop) %>%
+    kableExtra::kable(caption = "Proportion of each sample area (and window size) classified to each landform element"
+                      , format.args = list(digits = 2)
+                      ) %>%
+    kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+
+
+```
+
+<br>
+
+```{r categ, fig.height = 10, fig.cap = "Categorical representation of the sample area based on the repr DEM"}
+
+  a <- terr %>%
+    dplyr::mutate(feat = purrr::map(terr
+                                    , ~terra::subset(., subset = tail(names(.), 1))
+                                    )
+                  , name = paste0(short, "_", window, "x", window)
+                  )
+  
+  feat <- a$feat %>%
+    terra::rast() %>%
+    setNames(a$name)
+  
+  ggplot() +
+    tidyterra::geom_spatraster(data = feat) +
+    facet_wrap(~lyr
+               , ncol = 2
+               ) +
+    tidyterra::scale_fill_hypso_d(palette = "dem_screen") +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+```
+
+```{r categCount, fig.cap = "Proportion of categorised sample area in each of several classification classes"}
+
+  ggplot(categ
+         , aes(value, prop, fill = short)
+         ) +
+    geom_col(position = "dodge") +
+    facet_grid(~ window) +
+    coord_flip() +
+    scale_fill_viridis_d() +
+    guides(fill = guide_legend(reverse = TRUE))
+
+```
+
+
+
+
+

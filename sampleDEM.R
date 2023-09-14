@@ -1,178 +1,292 @@
 
-
-#--------Setup---------
+  # Setup---------
 
   library(tidyverse)
   library(fs)
-  library(raster)
+  library(terra)
   library(sf)
   library(ggridges)
   library(furrr)
   library(gridExtra)
+  library(tmap)
 
-  library(envGeomorph)
+  library(envRaster)
   
-
-#-------Rasters--------
+  library(knitr)
+  library(rmarkdown)
+  
+  options(scipen = 999)
+  
+  # Need settings - see 'runs' in 'run.R'
+  
+  #-------Rasters--------
   
   types <- tribble(
-    ~lookfor, ~short,
-    "AW3D30", "AW3D_30",
-    "SA_Sample_AW3D", "AW3D_2",
-    "bak2_bp","Bakara",
-    "TOPO.NASA", "SRTM",
-    "WorldDEM_DTM", "WorldDEMFull",
-    "WorldDEM_LIT", "WorldDEMLite"
-  )
-  
-  rasters <- tibble(path = dir_ls(path("..","..","Data","Raster","DEM")
-                                  , regexp = "\\.tif$"
-                                  , recurse = TRUE
-                                  )
-                    ) %>%
-    dplyr::mutate(lookfor = str_extract(path,paste0(types$lookfor,collapse = "|"))) %>%
-    dplyr::left_join(types) %>%
-    dplyr::mutate(ras = map(path,raster)
-                  , ras = map(ras,reclassify,rcl = cbind(-Inf, 0, NA), right=FALSE)
+    ~lookfor, ~short, ~original_cm,
+    "AW3D_30", "AW3D", 2860,
+    #"SA_Sample", "AW3D", 264,
+    "bak2_bp", "Bak", 1060,
+    "TOPO.NASA", "SRTM", 3170,
+    "Copernicus", "Cop", 2860,
+    "WorldDEM_DTM", "wDEM Full", 1200,
+    "15Oct2007_22May2008", "Lidar", 210,
+    #"22May_24Aug2018", "SECLidar2018",
+    "S37410E140063_LT_DTM", "AW3D", 463,
+    "WorldDEM_LIT_03", "wDEM Lite", 1140,
+    "WorldDEM_LIT_04", "wDEM Lite", 858
+  ) %>%
+    dplyr::mutate(short = paste0(short
+                                 , " "
+                                 , stringr::str_pad(original_cm
+                                                    , 4
+                                                    , pad = "0"
+                                                    )
+                                 )
+                  , ref_flag = grepl(settings$reference, short)
                   )
+  
+  rasters <- tibble(path = fs::dir_ls(fs::path("D:"
+                                               , "env"
+                                               , "data"
+                                               , "raster"
+                                               , "other"
+                                               , "dem"
+                                               , settings$area
+                                               )
+                                      , regexp = "\\.tif$"
+                                      , recurse = TRUE
+                                      )
+                    ) %>%
+    dplyr::mutate(lookfor = str_extract(path
+                                        , paste0(types$lookfor
+                                                 , collapse = "|"
+                                                 )
+                                        )
+                  ) %>%
+    dplyr::left_join(types) %>%
+    dplyr::filter(!is.na(short)
+                  , !grepl("SA54", path)
+                  ) %>%
+    dplyr::mutate(ras = purrr::map(path, terra::rast)
+                  , short = fct_reorder(short
+                                      , original_cm
+                                      )
+                  , short = fct_relevel(short, types$short[types$ref_flag])
+                  ) %>%
+    dplyr::arrange(short)
+  
+  reference <- grep(settings$reference, rasters$short, value = TRUE)
   
   
   # Minimum extent of data across all rasters
-  naPoly <- terra::as.polygons(terra::rast(rasters$ras[rasters$short == "AW3D_2"][[1]]) >= 0) %>%
+  naPolyRas <- rasters %>%
+    dplyr::filter(grepl(settings$smallest, short)) %>%
+    dplyr::pull(ras) %>%
+    `[[`(1) %>%
+    terra::classify(rcl = matrix(c(-Inf, 0, NA
+                                   , 0, Inf, 1
+                                   )
+                                , nrow = 2
+                                , byrow = TRUE
+                                )
+                    ) %>%
+    terra::project(y = paste0("epsg:", 7850)
+                   , res = settings$target_res
+                   )
+  
+  naPoly <- naPolyRas %>%
+    terra::as.polygons() %>%
     sf::st_as_sf()
   
-  naPolyRas <- raster(resolution = 10
-                      , ext = extent(naPoly)
-                      , crs = crs(naPoly)
-                      )
   
-  samples <- rasters %>%
-    dplyr::mutate(gda94 = map(ras
-                              , raster::projectRaster
-                              , crs =CRS("+init=epsg:28354")
-                              )
-                  , mask = map(gda94
-                               , raster::mask
-                               , mask = as_Spatial(naPoly)
-                               )
-                  , crop = map(mask
-                               , raster::crop
-                               , y = as_Spatial(naPoly)
-                               )
-                  , repr = map(mask
-                               , raster::projectRaster
-                               , to = naPolyRas
-                               )
-                  ) %>%
-    tidyr::pivot_longer(cols = c(crop,repr), names_to = "type", values_to = "r")
+  # sample points---------
   
-#------Terrain-------
+  pts <- sf::st_sample(naPoly %>% sf::st_as_sf()
+                       , settings$sample_n
+                       )
   
-  # Definitions
-  windowXS <- 3
-  windowXL <- 33
   
-  terrOptions <- c("slope", "aspect", "TPI", "TRI", "roughness", "flowdir")
+  # aligned rasters--------
   
-  terr <- samples %>%
-    dplyr::mutate(cellSize = map_dbl(r,function(x) res(x)[1]*res(x)[2])
-                  , outFile = path("out",paste0(short,"_",type,".tif"))
-                  , terr = map(r,terrain,opt = terrOptions,unit = "degrees")
-                  , sixClass = map2(r, outFile, land_class, n.classes = "six", sn = windowXS, doNew = FALSE)
-                  , tenClass = map2(r, outFile, land_class, n.classes = "ten", sn = windowXS, ln = windowXL, doNew = FALSE)
-                  , geomorph = map2(r, outFile, geomorph_ras)
-                  )
-  
-  make_levelplot <- function(objName,ras,rasName = NULL) {
+  no_function <- function(obj, ...) {
     
-    l <- levelplot(ras
-                   , main = rasName
-                   , colorkey = FALSE
-                   )
-    
-    assign(objName,l,envir = globalenv())
+    return(obj)
     
   }
   
-  pwalk(list(paste0("p",str_pad(1:nrow(terr),2,pad = "0"))
-             , terr$tenClass
-             , paste0(terr$short,"_",terr$type)
-             )
-        , make_levelplot
-        )
+  samples <- rasters %>%
+    dplyr::filter(purrr::map_lgl(ras
+                                 , envRaster::test_intersection
+                                 , naPoly
+                                 )
+                  ) %>%
+    dplyr::mutate(ras = purrr::map(ras
+                                    , function(x) terra::crop(x
+                                                              , y = naPoly %>%
+                                                                sf::st_transform(crs = sf::st_crs(x))
+                                                              )
+                                    )
+                  , ras = purrr::map(ras
+                                      , terra::project
+                                      , y = paste0("epsg:", 7850)
+                                      )
+                  , ras = purrr::map(ras
+                                      , terra::classify
+                                      , rcl = cbind(-Inf, 0, NA)
+                                      )
+                  , original_res = purrr::map_dbl(ras, function(x) terra::res(x)[1])
+                  , old_to_new = settings$target_res / original_res
+                  , method = dplyr::case_when(old_to_new > 3 ~ "aggregate"
+                                              , old_to_new < 0.5 ~ "disagg"
+                                              , TRUE ~ "no_function"
+                                              )
+                  , fact = dplyr::case_when(method == "aggregate" ~ round(old_to_new, 0)
+                                            , method == "disagg" ~ 3
+                                            , method == "no_function" ~ Inf
+                                            )
+                  , ras = purrr::pmap(list(ras
+                                            , method
+                                            , fact
+                                            )
+                                       , function(a, b, c) {
+                                         
+                                         get(b)(a, c)
+                                         
+                                       }
+                                       )
+                  , ras = purrr::map(ras
+                                      , terra::project
+                                      , y = naPolyRas
+                                      , method = "bilinear"
+                                      )
+                  , ras = purrr::map(ras
+                                     , terra::mask
+                                     , mask = naPolyRas
+                                     )
+                  ) %>%
+    dplyr::arrange(short)
   
-  p00 <- levelplot(terr$geomorph[[2]]
-                   , main = "legend"
-                   )
   
-  library(cowplot)
+  #------Terrain-------
   
-  plot_grid(plotlist = mget(ls(pattern = "leg|p\\d{2}")))
+  windows <- tibble::tibble(window = c(3, 9))
+  
+  terr <- samples %>%
+    dplyr::cross_join(windows) %>%
+    dplyr::mutate(terr = purrr::map2(ras
+                                     , window
+                                     , MultiscaleDTM::Qfit
+                                     , na.rm = TRUE
+                                     , include_scale = TRUE
+                                     )
+                  )
   
   
+  # values --------
+  
+  vals <- terr %>%
+    dplyr::mutate(rasVal = purrr::map(terr
+                                      , raster::extract
+                                      , y = terra::vect(pts)
+                                      )
+                  ) %>%
+    dplyr::mutate(rasVal = purrr::map(rasVal
+                                      , ~as_tibble(.) %>%
+                                        dplyr::bind_cols(st_coordinates(pts) %>%
+                                                           as_tibble()
+                                                         )
+                                      )
+                  ) %>%
+    dplyr::select(!where(is.list), rasVal) %>%
+    tidyr::unnest(cols = c(rasVal))
   
   
 #------Analysis--------
   
-  pts <- st_sample(naPoly,9999)
+  terr_cat <- "features"
+  terr_cont <- grep(terr_cat
+                    , as.character(formals(MultiscaleDTM::Qfit)$metrics)[-1]
+                    , value = TRUE
+                    , invert = TRUE
+                    )
   
-  cont <- terr %>%
-    dplyr::mutate(rasVal = map(terr,raster::extract,y = as_Spatial(pts))) %>%
-    dplyr::select(negate(is.list),rasVal) %>%
-    dplyr::mutate(rasVal = map(rasVal,~as_tibble(.) %>%
-                              dplyr::bind_cols(st_coordinates(pts) %>%
-                                                 as_tibble() %>%
-                                                 dplyr::mutate(id = row_number())
-                                               )
-                            )
-                  ) %>% 
-    tidyr::unnest(cols = c(rasVal)) %>%
-    tidyr::pivot_longer(any_of(tolower(terrOptions))) %>%
-    dplyr::filter(!is.na(value))
     
-  categ <- terr %>%
-    tidyr::pivot_longer(cols = c(sixClass,tenClass,geomorph)) %>%
-    dplyr::mutate(rasVal = future_map(value,raster::extract,y = as_Spatial(pts))) %>%
-    dplyr::select(negate(is.list),rasVal) %>%
-    dplyr::mutate(rasVal = map(rasVal,~as_tibble(.) %>%
-                              dplyr::bind_cols(st_coordinates(pts) %>%
-                                                 as_tibble() %>%
-                                                 dplyr::mutate(id = row_number())
-                                               )
-                            )
-                  ) %>% 
-    tidyr::unnest(cols = c(rasVal)) %>%
-    dplyr::left_join(geomorph.def, by = c("value" = "num_lf"))
+  # continuous-------
   
-  
-#----vis------
-  
-  ggplot(cont %>%
-           dplyr::mutate(short = fct_reorder(short,cellSize,mean)) %>%
-           # dplyr::group_by(short,name) %>%
-           # dplyr::filter(value < quantile(value, probs = 0.99)
-           #               , value > quantile(value, probs = 0.01)
-           #               ) %>%
-           # dplyr::ungroup() %>%
-           {.}
-         ,aes(value,short,fill = cellSize, height = ..density..)
-         ) +
-    geom_density_ridges(scale = 1, stat = "density") +
-    facet_grid(type~name, scales = "free") +
-    scale_fill_viridis_c() +
-    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  cont <- vals %>%
+    dplyr::select(any_of(names(samples))
+                  , ID
+                  , matches(terr_cont)
+                  ) %>%
+    tidyr::pivot_longer(matches(terr_cont)) %>%
+    dplyr::filter(!is.na(value)) %>%
+    dplyr::add_count(ID, name = "count") %>%
+    dplyr::filter(count == max(count)) %>%
+    tidyr::separate_wider_delim(name
+                                , delim = "_"
+                                , names = c("name", "window")
+                                ) %>%
+    tidyr::nest(data = -c(name)) %>%
+    dplyr::mutate(plot = purrr::map2(data
+                                     , name
+                                    , cont_plot
+                                    , prob = 0.00
+                                    )
+                  , diff_plot = purrr::map2(data
+                                            , name
+                                            , cont_plot
+                                            , prob = 0.00
+                                            , diff = TRUE
+                                            )
+                  )
+                        
     
+  # categorical-------
   
-  ggplot(categ %>%
-           dplyr::mutate(short = fct_reorder(short,cellSize,mean))
-         , aes(short,fill = cellSize)
-         ) +
-    geom_histogram(stat = "count"
-                   , position = "dodge2"
-                   ) +
-    coord_flip() +
-    facet_grid(name+type~name_en, scales = "free") +
-    scale_fill_viridis_c() +
-    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  categ <- vals %>%
+    dplyr::select(any_of(names(samples))
+                  , ID
+                  , matches(terr_cat)
+                  ) %>%
+    tidyr::pivot_longer(matches(terr_cat)) %>%
+    dplyr::filter(!is.na(value)) %>%
+    dplyr::add_count(ID, name = "count") %>%
+    dplyr::filter(count == max(count)) %>%
+    tidyr::separate_wider_delim(name
+                                , delim = "_"
+                                , names = c("name", "window")
+                                ) %>%
+    dplyr::count(short, original_res, name, window, value) %>%
+    dplyr::group_by(short, original_res, name, window) %>%
+    dplyr::mutate(values = sum(n)
+                  , prop = n / values
+                  ) %>%
+    dplyr::ungroup() %>%
+    dplyr::arrange(short, original_res, name, window, value)
+    
+  categ_compare_ref <- vals %>%
+    dplyr::select(any_of(names(samples))
+                  , ID
+                  , matches(terr_cat)
+                  ) %>%
+    tidyr::pivot_longer(matches(terr_cat)) %>%
+    dplyr::filter(!is.na(value)) %>%
+    tidyr::separate_wider_delim(name
+                                , delim = "_"
+                                , names = c("name", "window")
+                                ) %>%
+    dplyr::group_by(ID, window) %>%
+    dplyr::mutate(has_ref = length(short[short == settings$reference]) > 0) %>%
+    dplyr::filter(has_ref) %>%
+    dplyr::mutate(reference = value[short == settings$reference]) %>%
+    dplyr::ungroup() %>%
+    #dplyr::filter(short != settings$reference) %>%
+    dplyr::count(short, original_res, name, window, value, reference) %>%
+    dplyr::group_by(short, original_res, name, window, reference) %>%
+    dplyr::mutate(references = sum(n)
+                  , prop = n / references
+                  ) %>%
+    dplyr::ungroup() %>%
+    dplyr::arrange(short, original_res, name, window, reference, value)
   
   

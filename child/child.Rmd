@@ -1,0 +1,136 @@
+
+```{r thisOne{{childID}}}
+
+  tempID <- "{{childID}}"
+
+```
+
+## `r tempID`
+
+Table \@ref(fig:contFig{{childID}}) shows boxplots for each decile, allowing a comparison of values within each DEM across different ranges of `r tempID`. Deciles are based on the values in the reference DEM: `r reference`.
+
+Figure \@ref(fig:plot{{childID}}) shows the a distribution of values for each sample DEM and window size.
+
+Figure \@ref(fig:diffPlot{{childID}}) shows the distribution of differences between the reference DEM and the other DEMs (and window size).
+
+### Rasters for `r tempID`
+
+```{r raw{{childID}}, fig.height = 10, fig.cap = paste0(tempID, " raster for each sample DEM and window size")}
+
+  dems <- terr %>%
+    dplyr::mutate("{tempID}" := purrr::map(terr
+                                           , tidyterra::select
+                                           , matches(tempID)
+                                           )
+                  , "{tempID}" := purrr::map(!!rlang::ensym(tempID)
+                                             , terra::crop
+                                             , bbox
+                                             )
+                  )
+  
+  tm_shape(terra::rast(dems[tempID][[1]]) %>%
+                      setNames(paste0(dems$short, " ", dems$window))
+                    , bbox = bbox
+                    ) +
+    tm_raster(n = 10
+              , style = "quantile"
+              ) +
+    tm_facets(ncol = 2)
+  
+```
+
+<br>
+
+```{r contFig{{childID}}, fig.height = 10, fig.cap = "Boxplots within deciles for each sample DEM and window size"}
+
+  cont %>%
+    dplyr::filter(name == tempID) %>%
+    dplyr::select(!contains("plot")) %>%
+    tidyr::unnest(cols = c(data)) %>%
+    dplyr::group_by(ID) %>%
+    dplyr::filter(!is.na(value)) %>%
+    dplyr::ungroup() %>%
+    dplyr::select(name, short, window, value, ID) %>%
+    tidyr::pivot_wider(names_from = short, values_from = value) %>%
+    dplyr::mutate(cut_class = cut(!!rlang::ensym(reference)
+                                  , breaks = quantile(!!rlang::ensym(reference)
+                                                      , probs = seq(0, 1, 0.1)
+                                                      , na.rm = TRUE
+                                                      )
+                                  , include.lowest = TRUE
+                                  )
+                  ) %>%
+    tidyr::pivot_longer(tidyselect::any_of(rasters$short)
+                        , names_to = "short"
+                        ) %>%
+    dplyr::mutate(short = factor(short, levels = levels(rasters$short))) %>%
+    ggplot(aes(value, cut_class, fill = cut_class)) +
+      geom_boxplot() +
+      facet_grid(short ~ window
+                 , scales = "free_y"
+                 ) +
+      scale_fill_viridis_d() +
+      scale_colour_viridis_d() +
+      labs(title = tempID
+           , y = paste0(reference, " deciles")
+           , fill = "deciles"
+           ) +
+      guides(fill = guide_legend(reverse = TRUE))
+
+  # ggplot(temp, aes(x = short
+  #                  , xend = short
+  #                  , y = q50
+  #                  )
+  #        ) +
+  #   geom_segment(aes(y = q01
+  #                    , yend = q99
+  #                    )
+  #                , size = 1
+  #                , alpha = 0.5
+  #                ) +
+  #   geom_segment(aes(y = q10
+  #                    , yend = q90
+  #                    )
+  #                , size = 2
+  #                , alpha = 0.5
+  #                ) +
+  #   geom_segment(aes(y = q25
+  #                    , yend = q75
+  #                    )
+  #                , size = 3
+  #                , alpha = 0.5
+  #                ) +
+  #   geom_point(colour = "blue") +
+  #   coord_flip() +
+  #   facet_grid(window ~ .) +
+  #   labs(title = tempID
+  #        , x = "value"
+  #        , y = "Sample DEM"
+  #        )
+
+```
+
+<br>
+
+### Distribution of values for `r tempID`
+
+```{r plot{{childID}}, fig.cap = paste0(tempID, " results for the each DEM covering the sample area. Two window sizes were used to generate results")}
+
+  cont %>%
+    dplyr::filter(name == tempID) %>%
+    dplyr::pull(plot) %>%
+    `[[`(1)
+
+```
+
+
+### Difference to `r settings$reference` for `r tempID`
+
+```{r diffPlot{{childID}}, fig.cap = paste0(tempID, " difference between the best available (reference) DEM and each individual DEM for the ", settings$area, " sample area. Two window sizes were used to generate results")}
+
+  cont %>%
+    dplyr::filter(name == tempID) %>%
+    dplyr::pull(diff_plot) %>%
+    `[[`(1)
+
+```

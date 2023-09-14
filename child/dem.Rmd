@@ -1,0 +1,39 @@
+
+```{r thisOne{{tempID}}}
+
+  tempID <- samples %>%
+    dplyr::filter(shortID == "{{tempID}}") %>%
+    dplyr::pull(short) %>%
+    unique()
+
+```
+
+### `r tempID`
+
+Figure \@ref(fig:plot{{tempID}}) shows the original `r tempID` DEM (crop) alongside that same DEM projected into a `r samples$res[samples$type == "repr"][1]` m resolution raster covering the same extent (repr).
+
+```{r plot{{tempID}}, fig.height = 3, fig.cap = paste0(tempID, " results for the sample area as raw (crop) and reprojected into the same 5 m resolution DEM (repr). Two window sizes were used to generate results")}
+
+  ggplot_rast <- function(raster) {
+    
+    ggplot() +
+      tidyterra::geom_spatraster(data = raster
+                                 , maxcell = terra::ncell(raster)
+                                 ) +
+      labs(title = names(raster))
+    
+  }
+
+  samples %>%
+    dplyr::filter(short == tempID) %>%
+    dplyr::mutate(r = purrr::map2(r
+                                  , type
+                                  , ~ setNames(.x, .y)
+                                  )
+                  ) %>%
+    dplyr::pull(r) %>%
+    purrr::map(ggplot_rast) %>%
+    patchwork::wrap_plots()
+
+```
+
