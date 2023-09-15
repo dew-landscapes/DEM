@@ -9,13 +9,8 @@
     if(diff) {
     
       data <- data %>%
-        dplyr::group_by(ID, window) %>%
-        dplyr::mutate(has_ref = length(short[grepl(settings$reference, short)]) > 0) %>%
-        dplyr::filter(has_ref) %>%
-        dplyr::mutate(reference = value[short == grep(settings$reference, short, value = TRUE)]) %>%
-        dplyr::ungroup() %>%
-        dplyr::filter(!grepl(settings$reference, short)) %>%
-        dplyr::mutate(value = reference - value)
+        dplyr::mutate(value = diff) %>%
+        dplyr::filter(!as.logical(ref_flag))
       
       }
   
@@ -25,7 +20,7 @@
                            )
            , aes(value
                  , forcats::fct_rev(short)
-                 , fill = as.factor(round(original_res, 1))
+                 , fill = as.factor(round(original_cm, 1))
                  , height = after_stat(density)
                  )
            ) +
@@ -42,8 +37,9 @@
                                                 , "% percentiles excluded"
                                                 )
                           )
-           , fill = "Original resolution (m)"
+           , fill = "Original resolution (cm)"
            , y = "Sample DEM"
            )
   
   }
+  

@@ -1,0 +1,20 @@
+# Methods
+
+The following `r length(unique(samples$short))` DEMs were available over the `r settings$area` sample area:
+
+* `r paste0(unique(samples$short), collapse = "\n* ")`
+
+For each DEM, the following workflow was applied:
+
+* mask to the minimum available overlap between all DEMs
+* reproject into GDA 2020
+* aggregate or disaggregate to roughly 10 m from original resolution
+* reprojected into the same `r terra::res(samples$ras[[1]])[1]` m raster
+
+Each of the reprojected DEMs were then processed by the `Qfit` function in the `MultiscaleDTM` package `r envReport::cite_package("MultiscaleDTM")` using two values for the `v` argument (window size): `r windows$window %>% envFunc::vec_to_sentence()` cells. The `Qfit` function generates several continuous and one categorical variable for a digital terrain model:
+
+* `r paste0(as.character(formals(MultiscaleDTM::Qfit)$metrics)[-1], collapse = "\n* ")``
+
+A [shiny app](https://ailich.shinyapps.io/Terrain_Attributes_Explorer_App/) is available to investigate the meaning of each of these variables.
+
+To visualise and quantify differences between sample DEMs, the area of overlap between each sample DEM had `r settings$n_sample`

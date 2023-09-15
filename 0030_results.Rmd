@@ -1,0 +1,23 @@
+
+```{r area_rmd}
+
+  area_rmd <- NULL
+
+  # this loops through area_rmd.Rmd, generating the results for each report card
+
+  for (i in unique(luraster$area)) {
+    
+    areaID <- i
+    
+    area_rmd <- c(area_rmd, knit_expand(fs::path(here::here()
+                                           , "child"
+                                           , "area.Rmd"
+                                           )
+                                  )
+               )
+    
+  }
+
+```
+
+`r paste(knit(text = area_rmd), collapse = '\n')`

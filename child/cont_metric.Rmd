@@ -1,0 +1,145 @@
+
+```{r thisOne{{cont_metricID}}{{areaID}}}
+
+  cont_metricID <- "{{cont_metricID}}"
+
+```
+
+## `r cont_metricID`
+
+Figure \@ref(fig:raw{{cont_metricID}}{{areaID}}) shows rasters for `r cont_metricID` and each window size in the `r areaID` sample area.
+
+Table \@ref(fig:contFig{{cont_metricID}}{{areaID}}) shows boxplots for each decile of `cont_metricID`, allowing a comparison of values within each DEM across different ranges of `r cont_metricID`. Deciles are based on the values in the reference DEM: `r rasters$short[rasters$area == areaID & rasters$ref_flag == 1]`.
+
+Figure \@ref(fig:plot{{cont_metricID}}{{areaID}}) shows the a distribution of values for each sample DEM and window size.
+
+Figure \@ref(fig:diffPlot{{cont_metricID}}{{areaID}}) shows the distribution of differences between the reference DEM and the other DEMs (and window size).
+
+```{r raw{{cont_metricID}}{{areaID}}, fig.height = 10, fig.cap = paste0(cont_metricID, " raster for each sample DEM and window size")}
+
+  dems <- terr %>%
+    dplyr::filter(area == areaID) %>%
+    dplyr::mutate("{cont_metricID}" := purrr::map(terr
+                                                  , tidyterra::select
+                                                  , matches(cont_metricID)
+                                                  )
+                  , "{cont_metricID}" := purrr::map2(!!rlang::ensym(cont_metricID)
+                                                     , bbox
+                                                     , terra::crop
+                                                     )
+                  )
+  
+  tm_shape(terra::rast(dems[cont_metricID][[1]]) %>%
+             setNames(paste0(dems$short, " ", dems$window))
+           ) +
+    tm_raster(n = 10
+              , style = "quantile"
+              ) +
+    tm_facets(ncol = 2) +
+    tm_layout(legend.outside = TRUE
+              , legend.outside.position = "right"
+              , legend.position = c(0.25, 0.25)
+              )
+  
+```
+
+<br>
+
+```{r contFig{{cont_metricID}}{{areaID}}, fig.height = 10, fig.cap = "Boxplots within deciles for each sample DEM and window size"}
+
+  reference <- rasters %>%
+    dplyr::filter(area == areaID) %>%
+    dplyr::pull(short) %>%
+    `[[`(1) %>%
+    as.character()
+
+  cont_area %>%
+    dplyr::filter(metric == cont_metricID) %>%
+    dplyr::select(!contains("plot")) %>%
+    tidyr::unnest(cols = c(data)) %>%
+    dplyr::group_by(ID) %>%
+    dplyr::filter(!is.na(value)) %>%
+    dplyr::ungroup() %>%
+    dplyr::select(area, metric, short, window, value, ID) %>%
+    tidyr::pivot_wider(names_from = short
+                       , values_from = value
+                       ) %>%
+    dplyr::mutate(cut_class = cut(!!rlang::ensym(reference)
+                                  , breaks = quantile(!!rlang::ensym(reference)
+                                                      , probs = seq(0, 1, 0.1)
+                                                      , na.rm = TRUE
+                                                      )
+                                  , include.lowest = TRUE
+                                  )
+                  ) %>%
+    tidyr::pivot_longer(tidyselect::any_of(as.character(rasters$short))
+                        , names_to = "short"
+                        ) %>%
+    dplyr::mutate(short = factor(short, levels = levels(rasters$short))) %>%
+    ggplot(aes(value, cut_class, fill = cut_class)) +
+      geom_boxplot() +
+      facet_grid(short ~ window
+                 , scales = "free_y"
+                 ) +
+      scale_fill_viridis_d() +
+      labs(title = cont_metricID
+           , y = paste0(reference, " deciles")
+           , fill = "deciles"
+           ) +
+      guides(fill = guide_legend(reverse = TRUE)) +
+      theme(strip.text.y = element_text(angle = 0))
+
+  # ggplot(temp, aes(x = short
+  #                  , xend = short
+  #                  , y = q50
+  #                  )
+  #        ) +
+  #   geom_segment(aes(y = q01
+  #                    , yend = q99
+  #                    )
+  #                , size = 1
+  #                , alpha = 0.5
+  #                ) +
+  #   geom_segment(aes(y = q10
+  #                    , yend = q90
+  #                    )
+  #                , size = 2
+  #                , alpha = 0.5
+  #                ) +
+  #   geom_segment(aes(y = q25
+  #                    , yend = q75
+  #                    )
+  #                , size = 3
+  #                , alpha = 0.5
+  #                ) +
+  #   geom_point(colour = "blue") +
+  #   coord_flip() +
+  #   facet_grid(window ~ .) +
+  #   labs(title = cont_metricID
+  #        , x = "value"
+  #        , y = "Sample DEM"
+  #        )
+
+```
+
+<br>
+
+```{r plot{{cont_metricID}}{{areaID}}, fig.cap = paste0(cont_metricID, " results for the each DEM covering the sample area. Two window sizes were used to generate results")}
+
+  cont_area %>%
+    dplyr::filter(metric == cont_metricID) %>%
+    dplyr::pull(plot) %>%
+    `[[`(1)
+
+```
+
+<br>
+
+```{r diffPlot{{cont_metricID}}{{areaID}}, fig.cap = paste0(cont_metricID, " difference between the best available (reference) DEM and each individual DEM for the ", settings$area, " sample area. Two window sizes were used to generate results")}
+
+  cont_area %>%
+    dplyr::filter(metric == cont_metricID) %>%
+    dplyr::pull(diff_plot) %>%
+    `[[`(1)
+
+```

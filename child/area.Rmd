@@ -1,0 +1,110 @@
+
+```{r thisOne{{areaID}}}
+
+  areaID <- "{{areaID}}"
+
+```
+
+`r areaID`
+
+## Continuous
+
+```{r dataCont{{areaID}}}
+
+  cont_area <- cont %>%
+    dplyr::filter(area == areaID)
+
+```
+
+```{r cont_metric_rmd{{areaID}}}
+
+  cont_metric_rmd <- NULL
+
+  # this loops through cont_metric.Rmd, generating the results for each report card
+
+  for (i in unique(cont_area$metric)) {
+    
+    cont_metricID <- i
+    
+    cont_metric_rmd <- c(cont_metric_rmd
+                     , knit_expand(fs::path(here::here()
+                                            , "child"
+                                            , "cont_metric.Rmd"
+                                            )
+                                   )
+                     )
+    
+  }
+
+```
+
+`r paste(knit(text = cont_metric_rmd), collapse = '\n')`
+
+## Categorical
+
+Table \@ref(tab:categTab{{areaID}}) shows the proportion of each DEM classifed to each landform element (also see Figure \@ref(fig:categCount).
+
+Figure \@ref(fig:categ{{areaID}}) shows a landscape classification for each reprojected sample area and window size.
+
+```{r categTab{{areaID}}}
+
+  categ_area <- categ %>%
+    dplyr::filter(area == areaID)
+
+  categ_area %>%
+    dplyr::select(short
+                  , window
+                  , value
+                  , prop
+                  ) %>%
+    tidyr::pivot_wider(names_from = value, values_from = prop) %>%
+    kableExtra::kable(caption = paste0("Proportion of "
+                                       , areaID
+                                       , " sample area (and each window size) classified to each landform element"
+                                       )
+                      , format.args = list(digits = 2)
+                      ) %>%
+    kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+
+
+```
+
+<br>
+
+```{r categ{{areaID}}, fig.height = 10, fig.cap = paste0("Categorical representation of the ", areaID, " sample")}
+
+  a <- terr %>%
+    dplyr::filter(area == areaID) %>%
+    dplyr::mutate(feat = purrr::map(terr
+                                    , ~terra::subset(., subset = tail(names(.), 1))
+                                    )
+                  , name = paste0(short, "_", window, "x", window)
+                  )
+  
+  feat <- a$feat %>%
+    terra::rast() %>%
+    setNames(a$name)
+  
+  ggplot() +
+    tidyterra::geom_spatraster(data = feat) +
+    facet_wrap(~lyr
+               , ncol = 2
+               ) +
+    tidyterra::scale_fill_hypso_d(palette = "dem_screen") +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+```
+
+```{r categCount{{areaID}}, fig.cap = paste0("Proportion of categorised ", areaID, " sample area in each of several classification classes")}
+
+  ggplot(categ_area %>%
+           dplyr::filter(area == areaID)
+         , aes(value, prop, fill = short)
+         ) +
+    geom_col(position = "dodge") +
+    facet_grid(~ window) +
+    coord_flip() +
+    scale_fill_viridis_d() +
+    guides(fill = guide_legend(reverse = TRUE))
+
+```
