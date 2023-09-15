@@ -92,24 +92,310 @@
 <li>Woakwine. An area to the south of the Coorong in the southeast of South Australia. This area rises gently from a lake, to subtle hills through which a trench runs.</li>
 </ul>
 <p>Both area have a mix of native vegetation and agricultural land.</p>
-<p>Table <a href="#tab:DEMs"><strong>??</strong></a> lists the available DEMs, include the ‘short’ name used throughout the document.</p>
-<pre><code>## # A tibble: 13 x 7
-##    area     file                                            `short name`         reference original resolution ~1 source licence
-##    &lt;chr&gt;    &lt;chr&gt;                                           &lt;fct&gt;                &lt;lgl&gt;                      &lt;dbl&gt; &lt;lgl&gt;  &lt;lgl&gt;  
-##  1 Bakara   BakaraCP_DEM_2009_10m_MGA54                     Ortho 997            TRUE                         997 NA     NA     
-##  2 Woakwine SouthEastLiDAR_15Oct2007_22May2008_DEM_2m_MGA54 Lidar 201            TRUE                         201 NA     NA     
-##  3 Woakwine S37365E140006_S37410E140063_LT_DTM              AW3D 442             FALSE                        442 NA     NA     
-##  4 Woakwine WorldDEM_LIT_03_S37_41_E140_01_DEM              COP-DEM LIT 819      FALSE                        819 NA     NA     
-##  5 Woakwine WorldDEM_DTM_04_S37_41_E140_01_DEM              COP-DEM DTM 1092     FALSE                       1092 NA     NA     
-##  6 Woakwine WorldDEM_LIT_04_S37_41_E140_01_DEM              COP-DEM LIT 1092     FALSE                       1092 NA     NA     
-##  7 Bakara   WorldDEM_DTM_04_S34_59_E139_92_DEM              COP-DEM old DTM 1128 FALSE                       1128 NA     NA     
-##  8 Bakara   WorldDEM_LIT_04_S34_60_E139_90_DEM              COP-DEM old LIT 1134 FALSE                       1134 NA     NA     
-##  9 Bakara   SA_ALOS_AW3D30v4_DSM_30m                        AW3D 2692            FALSE                       2692 NA     NA     
-## 10 Bakara   SA_Copernicus_GLO30v2022_1_DSM_30m              COP-DEM DSM 2692     FALSE                       2692 NA     NA     
-## 11 Woakwine SA_ALOS_AW3D30v4_DSM_30m                        AW3D 2728            FALSE                       2728 NA     NA     
-## 12 Woakwine SA_Copernicus_GLO30v2022_1_DSM_30m              COP-DEM 2731         FALSE                       2731 NA     NA     
-## 13 Bakara   NASA_DEM_30M                                    SRTM 2993            FALSE                       2993 NA     NA     
-## # i abbreviated name: 1: `original resolution (cm)`</code></pre>
+<p>Table <a href="methods.html#tab:DEMs">3.1</a> lists the available DEMs, include the ‘short’ name used throughout the document.</p>
+<div class="inline-table"><table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:DEMs">Table 3.1: </span>Sample DEMs
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+area
+</th>
+<th style="text-align:left;">
+file
+</th>
+<th style="text-align:left;">
+short name
+</th>
+<th style="text-align:left;">
+reference
+</th>
+<th style="text-align:right;">
+original resolution (cm)
+</th>
+<th style="text-align:left;">
+source
+</th>
+<th style="text-align:left;">
+licence
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Bakara
+</td>
+<td style="text-align:left;">
+BakaraCP_DEM_2009_10m_MGA54
+</td>
+<td style="text-align:left;">
+Ortho 997
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+997
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bakara
+</td>
+<td style="text-align:left;">
+WorldDEM_DTM_04_S34_59_E139_92_DEM
+</td>
+<td style="text-align:left;">
+COP-DEM old DTM 1128
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1128
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bakara
+</td>
+<td style="text-align:left;">
+WorldDEM_LIT_04_S34_60_E139_90_DEM
+</td>
+<td style="text-align:left;">
+COP-DEM old LIT 1134
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1134
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bakara
+</td>
+<td style="text-align:left;">
+SA_ALOS_AW3D30v4_DSM_30m
+</td>
+<td style="text-align:left;">
+AW3D 2692
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2692
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bakara
+</td>
+<td style="text-align:left;">
+SA_Copernicus_GLO30v2022_1_DSM_30m
+</td>
+<td style="text-align:left;">
+COP-DEM DSM 2692
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2692
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bakara
+</td>
+<td style="text-align:left;">
+NASA_DEM_30M
+</td>
+<td style="text-align:left;">
+SRTM 2993
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2993
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Woakwine
+</td>
+<td style="text-align:left;">
+SouthEastLiDAR_15Oct2007_22May2008_DEM_2m_MGA54
+</td>
+<td style="text-align:left;">
+Lidar 201
+</td>
+<td style="text-align:left;">
+TRUE
+</td>
+<td style="text-align:right;">
+201
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Woakwine
+</td>
+<td style="text-align:left;">
+S37365E140006_S37410E140063_LT_DTM
+</td>
+<td style="text-align:left;">
+AW3D 442
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+442
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Woakwine
+</td>
+<td style="text-align:left;">
+WorldDEM_LIT_03_S37_41_E140_01_DEM
+</td>
+<td style="text-align:left;">
+COP-DEM LIT 819
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+819
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Woakwine
+</td>
+<td style="text-align:left;">
+WorldDEM_DTM_04_S37_41_E140_01_DEM
+</td>
+<td style="text-align:left;">
+COP-DEM DTM 1092
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1092
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Woakwine
+</td>
+<td style="text-align:left;">
+WorldDEM_LIT_04_S37_41_E140_01_DEM
+</td>
+<td style="text-align:left;">
+COP-DEM LIT 1092
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+1092
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Woakwine
+</td>
+<td style="text-align:left;">
+SA_ALOS_AW3D30v4_DSM_30m
+</td>
+<td style="text-align:left;">
+AW3D 2728
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2728
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Woakwine
+</td>
+<td style="text-align:left;">
+SA_Copernicus_GLO30v2022_1_DSM_30m
+</td>
+<td style="text-align:left;">
+COP-DEM 2731
+</td>
+<td style="text-align:left;">
+FALSE
+</td>
+<td style="text-align:right;">
+2731
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+</tbody>
+</table></div>
 </div>
 <div id="processing" class="section level2" number="3.2">
 <h2>
@@ -117,12 +403,13 @@
 </h2>
 <p>For each DEM, the following workflow was applied:</p>
 <ul>
-<li>mask to the minimum available overlap between all DEMs (in each area)</li>
-<li>reproject into GDA 2020</li>
-<li>aggregate or disaggregate to roughly 10 m from original resolution</li>
+<li>reprojected into GDA 2020</li>
+<li>masked to the minimum available overlap between all DEMs (in each area)</li>
+<li>aggregated or disaggregated to roughly 10 m from original resolution</li>
 <li>reprojected into the same 10 m raster</li>
+<li>processed by the <code>Qfit</code> function in the <code>MultiscaleDTM</code> package <span class="citation">(<a href="woakwine.html#ref-R-MultiscaleDTM">A. Ilich et al. 2023</a>; <a href="woakwine.html#ref-MultiscaleDTM2023">A. R. Ilich et al. 2023</a>, <a href="woakwine.html#ref-MultiscaleDTM2021">2021</a>)</span> using two values for the <code>v</code> argument (window size): 3 and 5 cells</li>
 </ul>
-<p>Each of the reprojected DEMs were then processed by the <code>Qfit</code> function in the <code>MultiscaleDTM</code> package <span class="citation">(<a href="woakwine.html#ref-R-MultiscaleDTM">A. Ilich et al. 2023</a>; <a href="woakwine.html#ref-MultiscaleDTM2023">A. R. Ilich et al. 2023</a>, <a href="woakwine.html#ref-MultiscaleDTM2021">2021</a>)</span> using two values for the <code>v</code> argument (window size): 3 and 5 cells. The <code>Qfit</code> function generates several continuous and one categorical variable for a digital terrain model:</p>
+<p>The <code>Qfit</code> function generates several continuous and one categorical variable for a digital terrain model:</p>
 <ul>
 <li>elev</li>
 <li>qslope</li>
@@ -168,7 +455,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>DEM comparison</strong>" was written by Nigel Willoughby, Department for Environment and Water. It was last built on Friday, 15 September, 2023. 14:20.</p>
+    <p>"<strong>DEM comparison</strong>" was written by Nigel Willoughby, Department for Environment and Water. It was last built on Friday, 15 September, 2023. 14:36.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

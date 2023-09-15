@@ -18,6 +18,7 @@ Table \@ref(tab:DEMs) lists the available DEMs, include the 'short' name used th
                   , source = NA
                   , licence = NA
                   ) %>%
+    dplyr::arrange(area, short) %>%
     dplyr::select(area
                   , file = name
                   , `short name` = short
@@ -25,7 +26,11 @@ Table \@ref(tab:DEMs) lists the available DEMs, include the 'short' name used th
                   , `original resolution (cm)` = original_cm
                   , source
                   , licence
-                  )
+                  ) %>%
+    kableExtra::kable(caption = paste0("Sample DEMs")
+                      , format.args = list(digits = 2)
+                      ) %>%
+    kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
 
 
 ```
@@ -35,12 +40,13 @@ Table \@ref(tab:DEMs) lists the available DEMs, include the 'short' name used th
 
 For each DEM, the following workflow was applied:
 
-* mask to the minimum available overlap between all DEMs (in each area)
-* reproject into GDA 2020
-* aggregate or disaggregate to roughly 10 m from original resolution
+* reprojected into GDA 2020
+* masked to the minimum available overlap between all DEMs (in each area)
+* aggregated or disaggregated to roughly 10 m from original resolution
 * reprojected into the same `r terra::res(samples$ras[[1]])[1]` m raster
+* processed by the `Qfit` function in the `MultiscaleDTM` package `r envReport::cite_package("MultiscaleDTM")` using two values for the `v` argument (window size): `r windows$window %>% envFunc::vec_to_sentence()` cells
 
-Each of the reprojected DEMs were then processed by the `Qfit` function in the `MultiscaleDTM` package `r envReport::cite_package("MultiscaleDTM")` using two values for the `v` argument (window size): `r windows$window %>% envFunc::vec_to_sentence()` cells. The `Qfit` function generates several continuous and one categorical variable for a digital terrain model:
+The `Qfit` function generates several continuous and one categorical variable for a digital terrain model:
 
 * `r paste0(as.character(formals(MultiscaleDTM::Qfit)$metrics)[-1], collapse = "\n* ")``
 

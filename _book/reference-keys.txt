@@ -1,3 +1,4 @@
+tab:DEMs
 fig:rawelevBakara
 fig:contFigelevBakara
 fig:plotelevBakara
