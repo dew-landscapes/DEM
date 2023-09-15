@@ -1,12 +1,41 @@
 # Methods
 
-The following `r length(unique(samples$short))` DEMs were available over the `r settings$area` sample area:
+## DEMs
 
-* `r paste0(unique(samples$short), collapse = "\n* ")`
+DEMs were obtained for two small sample areas in South Australia:
+
+* Bakara. An area in the Murray Mallee with jumbled dunes, east-west dunes and flat areas
+* Woakwine. An area to the south of the Coorong in the southeast of South Australia. This area rises gently from a lake, to subtle hills through which a trench runs.
+
+Both area have a mix of native vegetation and agricultural land.
+
+Table \@ref(tab:DEMs) lists the available DEMs, include the 'short' name used throughout the document.
+
+```{r DEMs}
+
+  rasters %>%
+    dplyr::mutate(reference = as.logical(ref_flag)
+                  , source = NA
+                  , licence = NA
+                  ) %>%
+    dplyr::select(area
+                  , file = name
+                  , `short name` = short
+                  , reference
+                  , `original resolution (cm)` = original_cm
+                  , source
+                  , licence
+                  )
+
+
+```
+
+
+## Processing
 
 For each DEM, the following workflow was applied:
 
-* mask to the minimum available overlap between all DEMs
+* mask to the minimum available overlap between all DEMs (in each area)
 * reproject into GDA 2020
 * aggregate or disaggregate to roughly 10 m from original resolution
 * reprojected into the same `r terra::res(samples$ras[[1]])[1]` m raster
@@ -17,4 +46,5 @@ Each of the reprojected DEMs were then processed by the `Qfit` function in the `
 
 A [shiny app](https://ailich.shinyapps.io/Terrain_Attributes_Explorer_App/) is available to investigate the meaning of each of these variables.
 
-To visualise and quantify differences between sample DEMs, the area of overlap between each sample DEM had `r settings$n_sample`
+Each of the `Qfit` metrics was sampled `r settings$sample_n` times. The samples were used to generate a range of visualisations and summary statistics.
+

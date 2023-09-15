@@ -1,5 +1,5 @@
 
-  if(!exists(categ)) source("sampleDEM.R")
+  if(!exists("categ")) source("sampleDEM.R")
     
   # Clean up previous knits
   
@@ -11,3 +11,4 @@
                                  , format(Sys.Date(), "%Y-%m-%d")
                                  )
                           )
+  

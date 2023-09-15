@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>4 Bakara | DEM comparison</title>
+<meta name="author" content="Nigel Willoughby">
+<meta name="author" content="Department for Environment and Water">
+<meta name="description" content="4.1 Continuous  4.1.1 elev Figure 4.1 shows rasters for elev and each window size in the Bakara sample area. Table 4.2 shows boxplots for each decile of rcont_metricID`, allowing a comparison of...">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="4 Bakara | DEM comparison">
+<meta property="og:type" content="book">
+<meta property="og:description" content="4.1 Continuous  4.1.1 elev Figure 4.1 shows rasters for elev and each window size in the Bakara sample area. Table 4.2 shows boxplots for each decile of rcont_metricID`, allowing a comparison of...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="4 Bakara | DEM comparison">
+<meta name="twitter:description" content="4.1 Continuous  4.1.1 elev Figure 4.1 shows rasters for elev and each window size in the Bakara sample area. Table 4.2 shows boxplots for each decile of rcont_metricID`, allowing a comparison of...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">DEM comparison</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Aim</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">2</span> Intro</a></li>
+<li><a class="" href="methods.html"><span class="header-section-number">3</span> Methods</a></li>
+<li><a class="active" href="bakara.html"><span class="header-section-number">4</span> Bakara</a></li>
+<li><a class="" href="woakwine.html"><span class="header-section-number">5</span> Woakwine</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/acanthiza/DEM">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="bakara" class="section level1" number="4">
+<h1>
+<span class="header-section-number">4</span> Bakara<a class="anchor" aria-label="anchor" href="#bakara"><i class="fas fa-link"></i></a>
+</h1>
+<div id="continuous" class="section level2" number="4.1">
+<h2>
+<span class="header-section-number">4.1</span> Continuous<a class="anchor" aria-label="anchor" href="#continuous"><i class="fas fa-link"></i></a>
+</h2>
+<div id="elev" class="section level3" number="4.1.1">
+<h3>
+<span class="header-section-number">4.1.1</span> elev<a class="anchor" aria-label="anchor" href="#elev"><i class="fas fa-link"></i></a>
+</h3>
+<p>Figure <a href="bakara.html#fig:rawelevBakara">4.1</a> shows rasters for elev and each window size in the Bakara sample area.</p>
+<p>Table <a href="bakara.html#fig:contFigelevBakara">4.2</a> shows boxplots for each decile of <code>r</code>cont_metricID`, allowing a comparison of values within each DEM across different ranges of elev. Deciles are based on the values in the reference DEM: Ortho 997.</p>
+<p>Figure <a href="bakara.html#fig:plotelevBakara">4.3</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="bakara.html#fig:diffPlotelevBakara">4.4</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure">
+<span style="display:block;" id="fig:rawelevBakara"></span>
+<img src="_main_files/figure-html/rawelevBakara-1.png" alt="elev raster for each sample DEM and window size" width="672"><p class="caption">
+Figure 4.1: elev raster for each sample DEM and window size
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:contFigelevBakara"></span>
+<img src="_main_files/figure-html/contFigelevBakara-1.png" alt="Boxplots within deciles for each sample DEM and window size" width="672"><p class="caption">
+Figure 4.2: Boxplots within deciles for each sample DEM and window size
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:plotelevBakara"></span>
+<img src="_main_files/figure-html/plotelevBakara-1.png" alt="elev results for the each DEM covering the sample area. Two window sizes were used to generate results" width="672"><p class="caption">
+Figure 4.3: elev results for the each DEM covering the sample area. Two window sizes were used to generate results
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotelevBakara"></span>
+<img src="_main_files/figure-html/diffPlotelevBakara-1.png" alt="elev difference between the best available (reference) DEM and each individual DEM for the  sample area. Two window sizes were used to generate results" width="672"><p class="caption">
+Figure 4.4: elev difference between the best available (reference) DEM and each individual DEM for the sample area. Two window sizes were used to generate results
+</p>
+</div>
+</div>
+<div id="qslope" class="section level3" number="4.1.2">
+<h3>
+<span class="header-section-number">4.1.2</span> qslope<a class="anchor" aria-label="anchor" href="#qslope"><i class="fas fa-link"></i></a>
+</h3>
+<p>Figure <a href="bakara.html#fig:rawqslopeBakara">4.5</a> shows rasters for qslope and each window size in the Bakara sample area.</p>
+<p>Table <a href="bakara.html#fig:contFigqslopeBakara">4.6</a> shows boxplots for each decile of <code>r</code>cont_metricID`, allowing a comparison of values within each DEM across different ranges of qslope. Deciles are based on the values in the reference DEM: Ortho 997.</p>
+<p>Figure <a href="bakara.html#fig:plotqslopeBakara">4.7</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="bakara.html#fig:diffPlotqslopeBakara">4.8</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure">
+<span style="display:block;" id="fig:rawqslopeBakara"></span>
+<img src="_main_files/figure-html/rawqslopeBakara-1.png" alt="qslope raster for each sample DEM and window size" width="672"><p class="caption">
+Figure 4.5: qslope raster for each sample DEM and window size
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:contFigqslopeBakara"></span>
+<img src="_main_files/figure-html/contFigqslopeBakara-1.png" alt="Boxplots within deciles for each sample DEM and window size" width="672"><p class="caption">
+Figure 4.6: Boxplots within deciles for each sample DEM and window size
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:plotqslopeBakara"></span>
+<img src="_main_files/figure-html/plotqslopeBakara-1.png" alt="qslope results for the each DEM covering the sample area. Two window sizes were used to generate results" width="672"><p class="caption">
+Figure 4.7: qslope results for the each DEM covering the sample area. Two window sizes were used to generate results
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotqslopeBakara"></span>
+<img src="_main_files/figure-html/diffPlotqslopeBakara-1.png" alt="qslope difference between the best available (reference) DEM and each individual DEM for the  sample area. Two window sizes were used to generate results" width="672"><p class="caption">
+Figure 4.8: qslope difference between the best available (reference) DEM and each individual DEM for the sample area. Two window sizes were used to generate results
+</p>
+</div>
+</div>
+<div id="qaspect" class="section level3" number="4.1.3">
+<h3>
+<span class="header-section-number">4.1.3</span> qaspect<a class="anchor" aria-label="anchor" href="#qaspect"><i class="fas fa-link"></i></a>
+</h3>
+<p>Figure <a href="bakara.html#fig:rawqaspectBakara">4.9</a> shows rasters for qaspect and each window size in the Bakara sample area.</p>
+<p>Table <a href="bakara.html#fig:contFigqaspectBakara">4.10</a> shows boxplots for each decile of <code>r</code>cont_metricID`, allowing a comparison of values within each DEM across different ranges of qaspect. Deciles are based on the values in the reference DEM: Ortho 997.</p>
+<p>Figure <a href="bakara.html#fig:plotqaspectBakara">4.11</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="bakara.html#fig:diffPlotqaspectBakara">4.12</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure">
+<span style="display:block;" id="fig:rawqaspectBakara"></span>
+<img src="_main_files/figure-html/rawqaspectBakara-1.png" alt="qaspect raster for each sample DEM and window size" width="672"><p class="caption">
+Figure 4.9: qaspect raster for each sample DEM and window size
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:contFigqaspectBakara"></span>
+<img src="_main_files/figure-html/contFigqaspectBakara-1.png" alt="Boxplots within deciles for each sample DEM and window size" width="672"><p class="caption">
+Figure 4.10: Boxplots within deciles for each sample DEM and window size
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:plotqaspectBakara"></span>
+<img src="_main_files/figure-html/plotqaspectBakara-1.png" alt="qaspect results for the each DEM covering the sample area. Two window sizes were used to generate results" width="672"><p class="caption">
+Figure 4.11: qaspect results for the each DEM covering the sample area. Two window sizes were used to generate results
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotqaspectBakara"></span>
+<img src="_main_files/figure-html/diffPlotqaspectBakara-1.png" alt="qaspect difference between the best available (reference) DEM and each individual DEM for the  sample area. Two window sizes were used to generate results" width="672"><p class="caption">
+Figure 4.12: qaspect difference between the best available (reference) DEM and each individual DEM for the sample area. Two window sizes were used to generate results
+</p>
+</div>
+</div>
+<div id="qeastness" class="section level3" number="4.1.4">
+<h3>
+<span class="header-section-number">4.1.4</span> qeastness<a class="anchor" aria-label="anchor" href="#qeastness"><i class="fas fa-link"></i></a>
+</h3>
+<p>Figure <a href="bakara.html#fig:rawqeastnessBakara">4.13</a> shows rasters for qeastness and each window size in the Bakara sample area.</p>
+<p>Table <a href="bakara.html#fig:contFigqeastnessBakara">4.14</a> shows boxplots for each decile of <code>r</code>cont_metricID`, allowing a comparison of values within each DEM across different ranges of qeastness. Deciles are based on the values in the reference DEM: Ortho 997.</p>
+<p>Figure <a href="bakara.html#fig:plotqeastnessBakara">4.15</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="bakara.html#fig:diffPlotqeastnessBakara">4.16</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure">
+<span style="display:block;" id="fig:rawqeastnessBakara"></span>
+<img src="_main_files/figure-html/rawqeastnessBakara-1.png" alt="qeastness raster for each sample DEM and window size" width="672"><p class="caption">
+Figure 4.13: qeastness raster for each sample DEM and window size
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:contFigqeastnessBakara"></span>
+<img src="_main_files/figure-html/contFigqeastnessBakara-1.png" alt="Boxplots within deciles for each sample DEM and window size" width="672"><p class="caption">
+Figure 4.14: Boxplots within deciles for each sample DEM and window size
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:plotqeastnessBakara"></span>
+<img src="_main_files/figure-html/plotqeastnessBakara-1.png" alt="qeastness results for the each DEM covering the sample area. Two window sizes were used to generate results" width="672"><p class="caption">
+Figure 4.15: qeastness results for the each DEM covering the sample area. Two window sizes were used to generate results
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotqeastnessBakara"></span>
+<img src="_main_files/figure-html/diffPlotqeastnessBakara-1.png" alt="qeastness difference between the best available (reference) DEM and each individual DEM for the  sample area. Two window sizes were used to generate results" width="672"><p class="caption">
+Figure 4.16: qeastness difference between the best available (reference) DEM and each individual DEM for the sample area. Two window sizes were used to generate results
+</p>
+</div>
+</div>
+<div id="qnorthness" class="section level3" number="4.1.5">
+<h3>
+<span class="header-section-number">4.1.5</span> qnorthness<a class="anchor" aria-label="anchor" href="#qnorthness"><i class="fas fa-link"></i></a>
+</h3>
+<p>Figure <a href="bakara.html#fig:rawqnorthnessBakara">4.17</a> shows rasters for qnorthness and each window size in the Bakara sample area.</p>
+<p>Table <a href="bakara.html#fig:contFigqnorthnessBakara">4.18</a> shows boxplots for each decile of <code>r</code>cont_metricID`, allowing a comparison of values within each DEM across different ranges of qnorthness. Deciles are based on the values in the reference DEM: Ortho 997.</p>
+<p>Figure <a href="bakara.html#fig:plotqnorthnessBakara">4.19</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="bakara.html#fig:diffPlotqnorthnessBakara">4.20</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure">
+<span style="display:block;" id="fig:rawqnorthnessBakara"></span>
+<img src="_main_files/figure-html/rawqnorthnessBakara-1.png" alt="qnorthness raster for each sample DEM and window size" width="672"><p class="caption">
+Figure 4.17: qnorthness raster for each sample DEM and window size
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:contFigqnorthnessBakara"></span>
+<img src="_main_files/figure-html/contFigqnorthnessBakara-1.png" alt="Boxplots within deciles for each sample DEM and window size" width="672"><p class="caption">
+Figure 4.18: Boxplots within deciles for each sample DEM and window size
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:plotqnorthnessBakara"></span>
+<img src="_main_files/figure-html/plotqnorthnessBakara-1.png" alt="qnorthness results for the each DEM covering the sample area. Two window sizes were used to generate results" width="672"><p class="caption">
+Figure 4.19: qnorthness results for the each DEM covering the sample area. Two window sizes were used to generate results
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotqnorthnessBakara"></span>
+<img src="_main_files/figure-html/diffPlotqnorthnessBakara-1.png" alt="qnorthness difference between the best available (reference) DEM and each individual DEM for the  sample area. Two window sizes were used to generate results" width="672"><p class="caption">
+Figure 4.20: qnorthness difference between the best available (reference) DEM and each individual DEM for the sample area. Two window sizes were used to generate results
+</p>
+</div>
+</div>
+<div id="profc" class="section level3" number="4.1.6">
+<h3>
+<span class="header-section-number">4.1.6</span> profc<a class="anchor" aria-label="anchor" href="#profc"><i class="fas fa-link"></i></a>
+</h3>
+<p>Figure <a href="bakara.html#fig:rawprofcBakara">4.21</a> shows rasters for profc and each window size in the Bakara sample area.</p>
+<p>Table <a href="bakara.html#fig:contFigprofcBakara">4.22</a> shows boxplots for each decile of <code>r</code>cont_metricID`, allowing a comparison of values within each DEM across different ranges of profc. Deciles are based on the values in the reference DEM: Ortho 997.</p>
+<p>Figure <a href="bakara.html#fig:plotprofcBakara">4.23</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="bakara.html#fig:diffPlotprofcBakara">4.24</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure">
+<span style="display:block;" id="fig:rawprofcBakara"></span>
+<img src="_main_files/figure-html/rawprofcBakara-1.png" alt="profc raster for each sample DEM and window size" width="672"><p class="caption">
+Figure 4.21: profc raster for each sample DEM and window size
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:contFigprofcBakara"></span>
+<img src="_main_files/figure-html/contFigprofcBakara-1.png" alt="Boxplots within deciles for each sample DEM and window size" width="672"><p class="caption">
+Figure 4.22: Boxplots within deciles for each sample DEM and window size
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:plotprofcBakara"></span>
+<img src="_main_files/figure-html/plotprofcBakara-1.png" alt="profc results for the each DEM covering the sample area. Two window sizes were used to generate results" width="672"><p class="caption">
+Figure 4.23: profc results for the each DEM covering the sample area. Two window sizes were used to generate results
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotprofcBakara"></span>
+<img src="_main_files/figure-html/diffPlotprofcBakara-1.png" alt="profc difference between the best available (reference) DEM and each individual DEM for the  sample area. Two window sizes were used to generate results" width="672"><p class="caption">
+Figure 4.24: profc difference between the best available (reference) DEM and each individual DEM for the sample area. Two window sizes were used to generate results
+</p>
+</div>
+</div>
+<div id="planc" class="section level3" number="4.1.7">
+<h3>
+<span class="header-section-number">4.1.7</span> planc<a class="anchor" aria-label="anchor" href="#planc"><i class="fas fa-link"></i></a>
+</h3>
+<p>Figure <a href="bakara.html#fig:rawplancBakara">4.25</a> shows rasters for planc and each window size in the Bakara sample area.</p>
+<p>Table <a href="bakara.html#fig:contFigplancBakara">4.26</a> shows boxplots for each decile of <code>r</code>cont_metricID`, allowing a comparison of values within each DEM across different ranges of planc. Deciles are based on the values in the reference DEM: Ortho 997.</p>
+<p>Figure <a href="bakara.html#fig:plotplancBakara">4.27</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="bakara.html#fig:diffPlotplancBakara">4.28</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure">
+<span style="display:block;" id="fig:rawplancBakara"></span>
+<img src="_main_files/figure-html/rawplancBakara-1.png" alt="planc raster for each sample DEM and window size" width="672"><p class="caption">
+Figure 4.25: planc raster for each sample DEM and window size
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:contFigplancBakara"></span>
+<img src="_main_files/figure-html/contFigplancBakara-1.png" alt="Boxplots within deciles for each sample DEM and window size" width="672"><p class="caption">
+Figure 4.26: Boxplots within deciles for each sample DEM and window size
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:plotplancBakara"></span>
+<img src="_main_files/figure-html/plotplancBakara-1.png" alt="planc results for the each DEM covering the sample area. Two window sizes were used to generate results" width="672"><p class="caption">
+Figure 4.27: planc results for the each DEM covering the sample area. Two window sizes were used to generate results
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotplancBakara"></span>
+<img src="_main_files/figure-html/diffPlotplancBakara-1.png" alt="planc difference between the best available (reference) DEM and each individual DEM for the  sample area. Two window sizes were used to generate results" width="672"><p class="caption">
+Figure 4.28: planc difference between the best available (reference) DEM and each individual DEM for the sample area. Two window sizes were used to generate results
+</p>
+</div>
+</div>
+<div id="twistc" class="section level3" number="4.1.8">
+<h3>
+<span class="header-section-number">4.1.8</span> twistc<a class="anchor" aria-label="anchor" href="#twistc"><i class="fas fa-link"></i></a>
+</h3>
+<p>Figure <a href="bakara.html#fig:rawtwistcBakara">4.29</a> shows rasters for twistc and each window size in the Bakara sample area.</p>
+<p>Table <a href="bakara.html#fig:contFigtwistcBakara">4.30</a> shows boxplots for each decile of <code>r</code>cont_metricID`, allowing a comparison of values within each DEM across different ranges of twistc. Deciles are based on the values in the reference DEM: Ortho 997.</p>
+<p>Figure <a href="bakara.html#fig:plottwistcBakara">4.31</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="bakara.html#fig:diffPlottwistcBakara">4.32</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure">
+<span style="display:block;" id="fig:rawtwistcBakara"></span>
+<img src="_main_files/figure-html/rawtwistcBakara-1.png" alt="twistc raster for each sample DEM and window size" width="672"><p class="caption">
+Figure 4.29: twistc raster for each sample DEM and window size
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:contFigtwistcBakara"></span>
+<img src="_main_files/figure-html/contFigtwistcBakara-1.png" alt="Boxplots within deciles for each sample DEM and window size" width="672"><p class="caption">
+Figure 4.30: Boxplots within deciles for each sample DEM and window size
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:plottwistcBakara"></span>
+<img src="_main_files/figure-html/plottwistcBakara-1.png" alt="twistc results for the each DEM covering the sample area. Two window sizes were used to generate results" width="672"><p class="caption">
+Figure 4.31: twistc results for the each DEM covering the sample area. Two window sizes were used to generate results
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:diffPlottwistcBakara"></span>
+<img src="_main_files/figure-html/diffPlottwistcBakara-1.png" alt="twistc difference between the best available (reference) DEM and each individual DEM for the  sample area. Two window sizes were used to generate results" width="672"><p class="caption">
+Figure 4.32: twistc difference between the best available (reference) DEM and each individual DEM for the sample area. Two window sizes were used to generate results
+</p>
+</div>
+</div>
+<div id="meanc" class="section level3" number="4.1.9">
+<h3>
+<span class="header-section-number">4.1.9</span> meanc<a class="anchor" aria-label="anchor" href="#meanc"><i class="fas fa-link"></i></a>
+</h3>
+<p>Figure <a href="bakara.html#fig:rawmeancBakara">4.33</a> shows rasters for meanc and each window size in the Bakara sample area.</p>
+<p>Table <a href="bakara.html#fig:contFigmeancBakara">4.34</a> shows boxplots for each decile of <code>r</code>cont_metricID`, allowing a comparison of values within each DEM across different ranges of meanc. Deciles are based on the values in the reference DEM: Ortho 997.</p>
+<p>Figure <a href="bakara.html#fig:plotmeancBakara">4.35</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="bakara.html#fig:diffPlotmeancBakara">4.36</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure">
+<span style="display:block;" id="fig:rawmeancBakara"></span>
+<img src="_main_files/figure-html/rawmeancBakara-1.png" alt="meanc raster for each sample DEM and window size" width="672"><p class="caption">
+Figure 4.33: meanc raster for each sample DEM and window size
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:contFigmeancBakara"></span>
+<img src="_main_files/figure-html/contFigmeancBakara-1.png" alt="Boxplots within deciles for each sample DEM and window size" width="672"><p class="caption">
+Figure 4.34: Boxplots within deciles for each sample DEM and window size
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:plotmeancBakara"></span>
+<img src="_main_files/figure-html/plotmeancBakara-1.png" alt="meanc results for the each DEM covering the sample area. Two window sizes were used to generate results" width="672"><p class="caption">
+Figure 4.35: meanc results for the each DEM covering the sample area. Two window sizes were used to generate results
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotmeancBakara"></span>
+<img src="_main_files/figure-html/diffPlotmeancBakara-1.png" alt="meanc difference between the best available (reference) DEM and each individual DEM for the  sample area. Two window sizes were used to generate results" width="672"><p class="caption">
+Figure 4.36: meanc difference between the best available (reference) DEM and each individual DEM for the sample area. Two window sizes were used to generate results
+</p>
+</div>
+</div>
+<div id="maxc" class="section level3" number="4.1.10">
+<h3>
+<span class="header-section-number">4.1.10</span> maxc<a class="anchor" aria-label="anchor" href="#maxc"><i class="fas fa-link"></i></a>
+</h3>
+<p>Figure <a href="bakara.html#fig:rawmaxcBakara">4.37</a> shows rasters for maxc and each window size in the Bakara sample area.</p>
+<p>Table <a href="bakara.html#fig:contFigmaxcBakara">4.38</a> shows boxplots for each decile of <code>r</code>cont_metricID`, allowing a comparison of values within each DEM across different ranges of maxc. Deciles are based on the values in the reference DEM: Ortho 997.</p>
+<p>Figure <a href="bakara.html#fig:plotmaxcBakara">4.39</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="bakara.html#fig:diffPlotmaxcBakara">4.40</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure">
+<span style="display:block;" id="fig:rawmaxcBakara"></span>
+<img src="_main_files/figure-html/rawmaxcBakara-1.png" alt="maxc raster for each sample DEM and window size" width="672"><p class="caption">
+Figure 4.37: maxc raster for each sample DEM and window size
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:contFigmaxcBakara"></span>
+<img src="_main_files/figure-html/contFigmaxcBakara-1.png" alt="Boxplots within deciles for each sample DEM and window size" width="672"><p class="caption">
+Figure 4.38: Boxplots within deciles for each sample DEM and window size
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:plotmaxcBakara"></span>
+<img src="_main_files/figure-html/plotmaxcBakara-1.png" alt="maxc results for the each DEM covering the sample area. Two window sizes were used to generate results" width="672"><p class="caption">
+Figure 4.39: maxc results for the each DEM covering the sample area. Two window sizes were used to generate results
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotmaxcBakara"></span>
+<img src="_main_files/figure-html/diffPlotmaxcBakara-1.png" alt="maxc difference between the best available (reference) DEM and each individual DEM for the  sample area. Two window sizes were used to generate results" width="672"><p class="caption">
+Figure 4.40: maxc difference between the best available (reference) DEM and each individual DEM for the sample area. Two window sizes were used to generate results
+</p>
+</div>
+</div>
+<div id="minc" class="section level3" number="4.1.11">
+<h3>
+<span class="header-section-number">4.1.11</span> minc<a class="anchor" aria-label="anchor" href="#minc"><i class="fas fa-link"></i></a>
+</h3>
+<p>Figure <a href="bakara.html#fig:rawmincBakara">4.41</a> shows rasters for minc and each window size in the Bakara sample area.</p>
+<p>Table <a href="bakara.html#fig:contFigmincBakara">4.42</a> shows boxplots for each decile of <code>r</code>cont_metricID`, allowing a comparison of values within each DEM across different ranges of minc. Deciles are based on the values in the reference DEM: Ortho 997.</p>
+<p>Figure <a href="bakara.html#fig:plotmincBakara">4.43</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="bakara.html#fig:diffPlotmincBakara">4.44</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure">
+<span style="display:block;" id="fig:rawmincBakara"></span>
+<img src="_main_files/figure-html/rawmincBakara-1.png" alt="minc raster for each sample DEM and window size" width="672"><p class="caption">
+Figure 4.41: minc raster for each sample DEM and window size
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:contFigmincBakara"></span>
+<img src="_main_files/figure-html/contFigmincBakara-1.png" alt="Boxplots within deciles for each sample DEM and window size" width="672"><p class="caption">
+Figure 4.42: Boxplots within deciles for each sample DEM and window size
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:plotmincBakara"></span>
+<img src="_main_files/figure-html/plotmincBakara-1.png" alt="minc results for the each DEM covering the sample area. Two window sizes were used to generate results" width="672"><p class="caption">
+Figure 4.43: minc results for the each DEM covering the sample area. Two window sizes were used to generate results
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotmincBakara"></span>
+<img src="_main_files/figure-html/diffPlotmincBakara-1.png" alt="minc difference between the best available (reference) DEM and each individual DEM for the  sample area. Two window sizes were used to generate results" width="672"><p class="caption">
+Figure 4.44: minc difference between the best available (reference) DEM and each individual DEM for the sample area. Two window sizes were used to generate results
+</p>
+</div>
+</div>
+</div>
+<div id="categorical" class="section level2" number="4.2">
+<h2>
+<span class="header-section-number">4.2</span> Categorical<a class="anchor" aria-label="anchor" href="#categorical"><i class="fas fa-link"></i></a>
+</h2>
+<p>Table <a href="bakara.html#tab:categTabBakara">4.1</a> shows the proportion of each DEM classifed to each landform element (also see Figure <a href="#fig:categCount"><strong>??</strong></a>.</p>
+<p>Figure <a href="bakara.html#fig:categBakara">4.45</a> shows a landscape classification for each reprojected sample area and window size.</p>
+<div class="inline-table"><table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:categTabBakara">Table 4.1: </span>Proportion of Bakara sample area (and each window size) classified to each landform element
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+short
+</th>
+<th style="text-align:left;">
+window
+</th>
+<th style="text-align:right;">
+Planar_Flat
+</th>
+<th style="text-align:right;">
+Planar_Slope
+</th>
+<th style="text-align:right;">
+Pit
+</th>
+<th style="text-align:right;">
+Channel
+</th>
+<th style="text-align:right;">
+Pass
+</th>
+<th style="text-align:right;">
+Ridge
+</th>
+<th style="text-align:right;">
+Peak
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Ortho 997
+</td>
+<td style="text-align:left;">
+3x3
+</td>
+<td style="text-align:right;">
+0.04434
+</td>
+<td style="text-align:right;">
+0.111
+</td>
+<td style="text-align:right;">
+0.038
+</td>
+<td style="text-align:right;">
+0.33
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+0.32
+</td>
+<td style="text-align:right;">
+0.034
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ortho 997
+</td>
+<td style="text-align:left;">
+5x5
+</td>
+<td style="text-align:right;">
+0.05178
+</td>
+<td style="text-align:right;">
+0.117
+</td>
+<td style="text-align:right;">
+0.039
+</td>
+<td style="text-align:right;">
+0.33
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+0.32
+</td>
+<td style="text-align:right;">
+0.030
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+COP-DEM old DTM 1128
+</td>
+<td style="text-align:left;">
+3x3
+</td>
+<td style="text-align:right;">
+0.01831
+</td>
+<td style="text-align:right;">
+0.112
+</td>
+<td style="text-align:right;">
+0.057
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+<td style="text-align:right;">
+0.050
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+COP-DEM old DTM 1128
+</td>
+<td style="text-align:left;">
+5x5
+</td>
+<td style="text-align:right;">
+0.02722
+</td>
+<td style="text-align:right;">
+0.122
+</td>
+<td style="text-align:right;">
+0.053
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+<td style="text-align:right;">
+0.046
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+COP-DEM old LIT 1134
+</td>
+<td style="text-align:left;">
+3x3
+</td>
+<td style="text-align:right;">
+0.05128
+</td>
+<td style="text-align:right;">
+0.075
+</td>
+<td style="text-align:right;">
+0.056
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+<td style="text-align:right;">
+0.19
+</td>
+<td style="text-align:right;">
+0.28
+</td>
+<td style="text-align:right;">
+0.055
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+COP-DEM old LIT 1134
+</td>
+<td style="text-align:left;">
+5x5
+</td>
+<td style="text-align:right;">
+0.05950
+</td>
+<td style="text-align:right;">
+0.088
+</td>
+<td style="text-align:right;">
+0.055
+</td>
+<td style="text-align:right;">
+0.29
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+<td style="text-align:right;">
+0.28
+</td>
+<td style="text-align:right;">
+0.050
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AW3D 2692
+</td>
+<td style="text-align:left;">
+3x3
+</td>
+<td style="text-align:right;">
+0.04445
+</td>
+<td style="text-align:right;">
+0.044
+</td>
+<td style="text-align:right;">
+0.052
+</td>
+<td style="text-align:right;">
+0.33
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+0.33
+</td>
+<td style="text-align:right;">
+0.053
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AW3D 2692
+</td>
+<td style="text-align:left;">
+5x5
+</td>
+<td style="text-align:right;">
+0.02871
+</td>
+<td style="text-align:right;">
+0.111
+</td>
+<td style="text-align:right;">
+0.035
+</td>
+<td style="text-align:right;">
+0.31
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+<td style="text-align:right;">
+0.31
+</td>
+<td style="text-align:right;">
+0.035
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+COP-DEM DSM 2692
+</td>
+<td style="text-align:left;">
+3x3
+</td>
+<td style="text-align:right;">
+0.00077
+</td>
+<td style="text-align:right;">
+0.040
+</td>
+<td style="text-align:right;">
+0.077
+</td>
+<td style="text-align:right;">
+0.31
+</td>
+<td style="text-align:right;">
+0.19
+</td>
+<td style="text-align:right;">
+0.32
+</td>
+<td style="text-align:right;">
+0.070
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+COP-DEM DSM 2692
+</td>
+<td style="text-align:left;">
+5x5
+</td>
+<td style="text-align:right;">
+0.01034
+</td>
+<td style="text-align:right;">
+0.132
+</td>
+<td style="text-align:right;">
+0.044
+</td>
+<td style="text-align:right;">
+0.31
+</td>
+<td style="text-align:right;">
+0.17
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+<td style="text-align:right;">
+0.035
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SRTM 2993
+</td>
+<td style="text-align:left;">
+3x3
+</td>
+<td style="text-align:right;">
+0.01996
+</td>
+<td style="text-align:right;">
+0.027
+</td>
+<td style="text-align:right;">
+0.125
+</td>
+<td style="text-align:right;">
+0.22
+</td>
+<td style="text-align:right;">
+0.26
+</td>
+<td style="text-align:right;">
+0.22
+</td>
+<td style="text-align:right;">
+0.123
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SRTM 2993
+</td>
+<td style="text-align:left;">
+5x5
+</td>
+<td style="text-align:right;">
+0.15407
+</td>
+<td style="text-align:right;">
+0.076
+</td>
+<td style="text-align:right;">
+0.049
+</td>
+<td style="text-align:right;">
+0.26
+</td>
+<td style="text-align:right;">
+0.13
+</td>
+<td style="text-align:right;">
+0.28
+</td>
+<td style="text-align:right;">
+0.053
+</td>
+</tr>
+</tbody>
+</table></div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:categBakara"></span>
+<img src="_main_files/figure-html/categBakara-1.png" alt="Categorical representation of the Bakara sample" width="672"><p class="caption">
+Figure 4.45: Categorical representation of the Bakara sample
+</p>
+</div>
+<div class="figure">
+<span style="display:block;" id="fig:categCountBakara"></span>
+<img src="_main_files/figure-html/categCountBakara-1.png" alt="Proportion of categorised Bakara sample area in each of several classification classes" width="672"><p class="caption">
+Figure 4.46: Proportion of categorised Bakara sample area in each of several classification classes
+</p>
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="methods.html"><span class="header-section-number">3</span> Methods</a></div>
+<div class="next"><a href="woakwine.html"><span class="header-section-number">5</span> Woakwine</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#bakara"><span class="header-section-number">4</span> Bakara</a></li>
+<li>
+<a class="nav-link" href="#continuous"><span class="header-section-number">4.1</span> Continuous</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#elev"><span class="header-section-number">4.1.1</span> elev</a></li>
+<li><a class="nav-link" href="#qslope"><span class="header-section-number">4.1.2</span> qslope</a></li>
+<li><a class="nav-link" href="#qaspect"><span class="header-section-number">4.1.3</span> qaspect</a></li>
+<li><a class="nav-link" href="#qeastness"><span class="header-section-number">4.1.4</span> qeastness</a></li>
+<li><a class="nav-link" href="#qnorthness"><span class="header-section-number">4.1.5</span> qnorthness</a></li>
+<li><a class="nav-link" href="#profc"><span class="header-section-number">4.1.6</span> profc</a></li>
+<li><a class="nav-link" href="#planc"><span class="header-section-number">4.1.7</span> planc</a></li>
+<li><a class="nav-link" href="#twistc"><span class="header-section-number">4.1.8</span> twistc</a></li>
+<li><a class="nav-link" href="#meanc"><span class="header-section-number">4.1.9</span> meanc</a></li>
+<li><a class="nav-link" href="#maxc"><span class="header-section-number">4.1.10</span> maxc</a></li>
+<li><a class="nav-link" href="#minc"><span class="header-section-number">4.1.11</span> minc</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#categorical"><span class="header-section-number">4.2</span> Categorical</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/acanthiza/DEM/blob/master/0030_results.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/acanthiza/DEM/edit/master/0030_results.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>DEM comparison</strong>" was written by Nigel Willoughby, Department for Environment and Water. It was last built on Friday, 15 September, 2023. 14:20.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>
