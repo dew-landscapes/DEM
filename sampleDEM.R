@@ -1,19 +1,52 @@
 
-  # Setup---------
-
-  library(tidyverse)
-  library(fs)
-  library(terra)
-  library(sf)
-  library(ggridges)
-  library(furrr)
-  library(gridExtra)
-  library(tmap)
-
-  library(envRaster)
+  # packages -----
+  packages <- 
+    sort(
+      unique(
+        c("base"
+        
+          # reports
+          , "knitr"
+          , "rmarkdown"
+          , "bookdown"
+          
+          # tidyverse
+          , "dplyr"
+          , "tidyr"
+          , "purrr"
+          , "ggplot2"
+          , "tibble"
+          , "readr"
+          , "forcats"
+          , "stringr"
+          , "lubridate"
+          
+          # misc
+          , "fs"
+          , "ggridges"
+          
+          # gis
+          , "terra"
+          , "sf"
+          , "tmap"
+          )
+        
+        # env
+        , "envRaster"
+        )
+      )
   
-  library(knitr)
-  library(rmarkdown)
+  new_packages <- packages[!(packages %in% installed.packages()[,"Package"])]
+    
+  if(length(new_packages)) install.packages(new_packages)
+  
+  purrr::walk(packages
+              , library
+              , character.only = TRUE
+              )
+  
+  
+  # functions------
   
   purrr::walk(fs::dir_ls("function")
               , source
@@ -31,20 +64,59 @@
   ras_dir <- fs::path("D:", "env", "data", "raster", "other", "dem")
   
   luraster <- tibble::tribble(
-    ~area, ~name, ~short, ~ref_flag, ~smallest,
-    "Bakara", "BakaraCP_DEM_2009_10m_MGA54", "Ortho", 1, 0,
-    "Bakara", "NASA_DEM_30M", "SRTM", 0, 0,
-    "Bakara", "SA_ALOS_AW3D30v4_DSM_30m", "AW3D", 0, 0,
-    "Bakara", "SA_Copernicus_GLO30v2022_1_DSM_30m", "COP-DEM DSM", 0, 0,
-    "Bakara", "WorldDEM_DTM_04_S34_59_E139_92_DEM", "COP-DEM old DTM", 0, 1,
-    "Bakara", "WorldDEM_LIT_04_S34_60_E139_90_DEM", "COP-DEM old LIT", 0, 0,
-    "Woakwine", "SA_ALOS_AW3D30v4_DSM_30m", "AW3D", 0, 0,
-    "Woakwine", "SA_Copernicus_GLO30v2022_1_DSM_30m", "COP-DEM", 0, 0,
-    "Woakwine", "SouthEastLiDAR_15Oct2007_22May2008_DEM_2m_MGA54", "Lidar", 1, 1,
-    "Woakwine", "WorldDEM_LIT_03_S37_41_E140_01_DEM", "COP-DEM LIT", 0, 0,
-    "Woakwine", "WorldDEM_LIT_04_S37_41_E140_01_DEM", "COP-DEM LIT", 0, 0,
-    "Woakwine", "WorldDEM_DTM_04_S37_41_E140_01_DEM", "COP-DEM DTM", 0, 0,
-    "Woakwine", "S37365E140006_S37410E140063_LT_DTM", "AW3D", 0, 0
+    ~area, ~name, ~short, ~year, ~ref_flag, ~smallest, ~source, ~licence, ~paper,
+    
+    "Bakara", "BakaraCP_DEM_2009_10m_MGA54", "Ortho", 2009, 1, 0
+    , "https://www.environment.sa.gov.au/topics/science/mapland/aerial-photography"
+    , NA, NA,
+    
+    "Bakara", "NASA_DEM_30M", "SRTM", 2000, 0, 0
+    , "https://www.earthdata.nasa.gov/sensors/srtm#:~:text=The%20Shuttle%20Radar%20Topography%20Mission,global%20dataset%20of%20land%20elevations."
+    , NA, "https://www2.jpl.nasa.gov/srtm/SRTM_paper.pdf",
+    
+    "Bakara", "SA_ALOS_AW3D30v4_DSM_30m", "AW3D", 2011, 0, 0
+    , "https://www.aw3d.jp/en/products/standard/"
+    , NA, "https://www.aw3d.jp/wp/wp-content/themes/AW3DEnglish/technology/doc/pdf/technology_02.pdf",
+    
+    "Bakara", "SA_Copernicus_GLO30v2022_1_DSM_30m", "WldDEM 30", 2015, 0, 0
+    , "https://www.intelligence-airbusds.com/imagery/reference-layers/worlddem/worlddem-thematic-layers-and-derivatives/"
+    , NA, "https://spacedata.copernicus.eu/documents/20123/121239/GEO1988-CopernicusDEM-RP-001_ValidationReport_I3.0.pdf/c80c5e85-9aea-356d-c877-80d8b5e028bb?t=1668162072523",
+    
+    "Bakara", "WorldDEM_DTM_04_S34_59_E139_92_DEM", "WldDEM DTM", 2015, 0, 1
+    , "https://www.intelligence-airbusds.com/imagery/reference-layers/worlddem/worlddem-thematic-layers-and-derivatives/"
+    , NA, "https://spacedata.copernicus.eu/documents/20123/121239/GEO1988-CopernicusDEM-RP-001_ValidationReport_I3.0.pdf/c80c5e85-9aea-356d-c877-80d8b5e028bb?t=1668162072523",
+    
+    "Bakara", "WorldDEM_LIT_04_S34_60_E139_90_DEM", "WldDEM LIT", 2015, 0, 0
+    , "https://www.intelligence-airbusds.com/imagery/reference-layers/worlddem/worlddem-thematic-layers-and-derivatives/"
+    , NA, "https://spacedata.copernicus.eu/documents/20123/121239/GEO1988-CopernicusDEM-RP-001_ValidationReport_I3.0.pdf/c80c5e85-9aea-356d-c877-80d8b5e028bb?t=1668162072523",
+    
+    "Woakwine", "SA_ALOS_AW3D30v4_DSM_30m", "AW3D", 2011, 0, 0
+    , "https://www.aw3d.jp/en/products/standard/"
+    , NA, "https://www.aw3d.jp/wp/wp-content/themes/AW3DEnglish/technology/doc/pdf/technology_02.pdf",
+    
+    "Woakwine", "SA_Copernicus_GLO30v2022_1_DSM_30m", "WldDEM 30", 2015, 0, 0
+    , "https://www.intelligence-airbusds.com/imagery/reference-layers/worlddem/worlddem-thematic-layers-and-derivatives/"
+    , NA, "https://spacedata.copernicus.eu/documents/20123/121239/GEO1988-CopernicusDEM-RP-001_ValidationReport_I3.0.pdf/c80c5e85-9aea-356d-c877-80d8b5e028bb?t=1668162072523",
+    
+    "Woakwine", "SouthEastLiDAR_15Oct2007_22May2008_DEM_2m_MGA54", "Lidar", 2008, 1, 1
+    , "https://data.sa.gov.au/data/dataset/elvis-digital-elevation-model-imagery-catalog"
+    , NA, NA,
+    
+    "Woakwine", "WorldDEM_LIT_03_S37_41_E140_01_DEM", "WldDEM LIT", 2015, 0, 0
+    , "https://www.intelligence-airbusds.com/imagery/reference-layers/worlddem/worlddem-thematic-layers-and-derivatives/"
+    , NA, "https://spacedata.copernicus.eu/documents/20123/121239/GEO1988-CopernicusDEM-RP-001_ValidationReport_I3.0.pdf/c80c5e85-9aea-356d-c877-80d8b5e028bb?t=1668162072523",
+    
+    "Woakwine", "WorldDEM_LIT_04_S37_41_E140_01_DEM", "WldDEM LIT", 2015, 0, 0
+    , "https://www.intelligence-airbusds.com/imagery/reference-layers/worlddem/worlddem-thematic-layers-and-derivatives/"
+    , NA, "https://spacedata.copernicus.eu/documents/20123/121239/GEO1988-CopernicusDEM-RP-001_ValidationReport_I3.0.pdf/c80c5e85-9aea-356d-c877-80d8b5e028bb?t=1668162072523",
+    
+    "Woakwine", "WorldDEM_DTM_04_S37_41_E140_01_DEM", "WldDEM DTM", 2015, 0, 0
+    , "https://www.intelligence-airbusds.com/imagery/reference-layers/worlddem/worlddem-thematic-layers-and-derivatives/"
+    , NA, "https://spacedata.copernicus.eu/documents/20123/121239/GEO1988-CopernicusDEM-RP-001_ValidationReport_I3.0.pdf/c80c5e85-9aea-356d-c877-80d8b5e028bb?t=1668162072523",
+    
+    "Woakwine", "S37365E140006_S37410E140063_LT_DTM", "AW3D", 2011, 0, 0
+    , "https://www.aw3d.jp/en/products/standard/"
+    , NA, "https://www.aw3d.jp/wp/wp-content/themes/AW3DEnglish/technology/doc/pdf/technology_02.pdf"
     )
   
   rasters <- fs::dir_ls(ras_dir
@@ -56,7 +128,9 @@
                   , name = gsub("\\.tif", "", basename(path))
                   , ras = purrr::map(path, terra::rast)
                   ) %>%
-    dplyr::left_join(luraster) %>%
+    dplyr::left_join(luraster %>%
+                       dplyr::select(area, name, short, ref_flag, smallest)
+                     ) %>%
     dplyr::filter(!is.na(short)) %>%
     dplyr::mutate(ras2020 = purrr::map(ras
                                        , terra::project

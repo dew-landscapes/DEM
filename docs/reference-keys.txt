@@ -1,4 +1,5 @@
 tab:DEMs
+tab:packages
 fig:rawelevBakara
 fig:contFigelevBakara
 fig:plotelevBakara
@@ -98,6 +99,7 @@ intro
 methods
 dems
 processing
+workflow
 bakara
 continuous
 elev

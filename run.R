@@ -5,7 +5,7 @@
   
   fs::file_delete(fs::dir_ls(regexp = "_book|_main"))
   
-  bookdown::render_book()
+  bookdown::render_book(output_dir = "docs")
   
   envFunc::git_commit_env(paste0("Successful render of report: "
                                  , format(Sys.Date(), "%Y-%m-%d")
