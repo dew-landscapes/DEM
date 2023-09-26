@@ -114,7 +114,7 @@
     , "https://www.intelligence-airbusds.com/imagery/reference-layers/worlddem/worlddem-thematic-layers-and-derivatives/"
     , NA, "https://spacedata.copernicus.eu/documents/20123/121239/GEO1988-CopernicusDEM-RP-001_ValidationReport_I3.0.pdf/c80c5e85-9aea-356d-c877-80d8b5e028bb?t=1668162072523",
     
-    "Woakwine", "S37365E140006_S37410E140063_LT_DTM", "AW3D", 2011, 0, 0
+    "Woakwine", "S37365E140006_S37410E140063_LT_DTM", "AW3D", 2023, 0, 0
     , "https://www.aw3d.jp/en/products/standard/"
     , NA, "https://www.aw3d.jp/wp/wp-content/themes/AW3DEnglish/technology/doc/pdf/technology_02.pdf",
     
@@ -142,6 +142,7 @@
     tibble::enframe(name = NULL, value = "path") %>%
     dplyr::mutate(area = basename(dirname(path))
                   , name = gsub("\\.tif", "", basename(path))
+                  , file_date = fs::file_info(path)
                   , ras = purrr::map(path, terra::rast)
                   ) %>%
     dplyr::left_join(luraster %>%
