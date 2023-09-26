@@ -25,7 +25,7 @@
                  )
            ) +
       geom_density_ridges(scale = 1, stat = "density", trim = TRUE) +
-      facet_grid( ~ window
+      facet_wrap( ~ window
                   , scales = "free"
                   ) +
       scale_fill_viridis_d() +

@@ -35,7 +35,7 @@ Figure \@ref(fig:diffPlot{{cont_metricID}}{{areaID}}) shows the distribution of 
     tm_raster(n = 10
               , style = "quantile"
               ) +
-    tm_facets(ncol = 2) +
+    tm_facets() +
     tm_layout(legend.outside = TRUE
               , legend.outside.position = "right"
               , legend.position = c(0.25, 0.25)

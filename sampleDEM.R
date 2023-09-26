@@ -125,9 +125,15 @@
     
     "Woakwine", "WorldDEMNeo_DTM_030_S37_41_E140_00_DEM", "WldNEO DTM", 2023, 0, 0
     , "https://www.intelligence-airbusds.com/imagery/reference-layers/worlddem/"
-    , NA, "https://www.intelligence-airbusds.com/automne/api/docs/v1.0/document/download/ZG9jdXRoZXF1ZS1kb2N1bWVudC02ODQwNw==/ZG9jdXRoZXF1ZS1maWxlLTY4NDA0/worlddem-neo-technical-description-092021.pdf"
+    , NA, "https://www.intelligence-airbusds.com/automne/api/docs/v1.0/document/download/ZG9jdXRoZXF1ZS1kb2N1bWVudC02ODQwNw==/ZG9jdXRoZXF1ZS1maWxlLTY4NDA0/worlddem-neo-technical-description-092021.pdf",
     
-    )
+    
+    "Woakwine", "S37365E140006_S37410E140063_LT_DSM", "AW3D filt", 2023, 0, 0
+    , "https://www.aw3d.jp/en/products/standard/"
+    , NA, "https://www.aw3d.jp/wp/wp-content/themes/AW3DEnglish/technology/doc/pdf/technology_02.pdf"
+    
+    ) %>%
+    dplyr::filter(!(area == "Woakwine" & year %in% c(2011, 2015)))
   
   rasters <- fs::dir_ls(ras_dir
                         , regexp = "\\.tif$"
@@ -270,7 +276,7 @@
   
   #------Terrain-------
   
-  windows <- tibble::tibble(window = c(3, 5))
+  windows <- tibble::tibble(window = c(3))
   
   terr <- samples %>%
     dplyr::cross_join(windows) %>%
