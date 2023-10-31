@@ -130,7 +130,15 @@
     
     "Woakwine", "S37365E140006_S37410E140063_LT_DSM", "AW3D filt", 2023, 0, 0
     , "https://www.aw3d.jp/en/products/standard/"
-    , NA, "https://www.aw3d.jp/wp/wp-content/themes/AW3DEnglish/technology/doc/pdf/technology_02.pdf"
+    , NA, "https://www.aw3d.jp/wp/wp-content/themes/AW3DEnglish/technology/doc/pdf/technology_02.pdf",
+    
+    "Woakwine", "S37377E140027_S37398E140051_LT_DTM", "AW3D en", 2023, 0, 0
+    , ""
+    , NA, "",
+    
+    "Woakwine", "S37377E140027_S37399E140051_LT_DTM", "AW3D en", 2023, 0, 0
+    , ""
+    , NA, ""
     
     ) %>%
     dplyr::filter(!(area == "Woakwine" & year %in% c(2011, 2015)))
