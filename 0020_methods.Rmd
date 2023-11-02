@@ -50,15 +50,16 @@ For each DEM, the following processing was applied:
 * masked to the minimum available overlap between all DEMs (in each area)
 * aggregated or disaggregated to roughly 10 m from original resolution
 * reprojected into the same `r terra::res(samples$ras[[1]])[1]` m raster
-* processed by the `Qfit` function in the `MultiscaleDTM` package `r envReport::cite_package("MultiscaleDTM")` using two values for the `v` argument (window size): `r windows$window %>% envFunc::vec_to_sentence()` cells
-
+* generation of derived rasters via:
+    + `Qfit` function in the `MultiscaleDTM` package `r envReport::cite_package("MultiscaleDTM")` using `v` argument (window size): `r windows$window %>% envFunc::vec_to_sentence()` cells
+    + `land_class` function in the`envRaster` package `r envReport::cite_package("envRaster")` using `r windows$window %>% envFunc::vec_to_sentence()` cells for the small window and `r windows$window * 3` cells for the large window as input to the 10 class landscape classification
+* sample of the derived rasters `r settings$sample_n` times to generate a range of visualisations and summary statistics.
+    
 The `Qfit` function generates several continuous and one categorical variable for a digital terrain model:
 
 * `r paste0(as.character(formals(MultiscaleDTM::Qfit)$metrics)[-1], collapse = "\n* ")``
 
-A [shiny app](https://ailich.shinyapps.io/Terrain_Attributes_Explorer_App/) is available to investigate the meaning of each of these variables.
-
-Each of the `Qfit` metrics was sampled `r settings$sample_n` times. The samples were used to generate a range of visualisations and summary statistics.
+A [shiny app](https://ailich.shinyapps.io/Terrain_Attributes_Explorer_App/) is available to investigate the meaning of each of these variables.f
 
 ## Workflow
 

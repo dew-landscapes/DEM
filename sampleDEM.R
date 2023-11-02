@@ -337,7 +337,7 @@
   
 #------Analysis--------
   
-  terr_cont <- grep(terr_cat
+  terr_cont <- grep("feature"
                     , as.character(formals(MultiscaleDTM::Qfit)$metrics)[-1]
                     , value = TRUE
                     , invert = TRUE

@@ -336,7 +336,15 @@ FALSE
 <li>masked to the minimum available overlap between all DEMs (in each area)</li>
 <li>aggregated or disaggregated to roughly 10 m from original resolution</li>
 <li>reprojected into the same 10 m raster</li>
-<li>processed by the <code>Qfit</code> function in the <code>MultiscaleDTM</code> package <span class="citation">(<a href="woakwine.html#ref-R-MultiscaleDTM">A. Ilich et al. 2023</a>; <a href="woakwine.html#ref-MultiscaleDTM2023">A. R. Ilich et al. 2023</a>, <a href="woakwine.html#ref-MultiscaleDTM2021">2021</a>)</span> using two values for the <code>v</code> argument (window size): 3 cells</li>
+<li>generation of derived rasters via:
+<ul>
+<li>
+<code>Qfit</code> function in the <code>MultiscaleDTM</code> package <span class="citation">(<a href="woakwine.html#ref-R-MultiscaleDTM">A. Ilich et al. 2023</a>; <a href="woakwine.html#ref-MultiscaleDTM2023">A. R. Ilich et al. 2023</a>, <a href="woakwine.html#ref-MultiscaleDTM2021">2021</a>)</span> using <code>v</code> argument (window size): 3 cells</li>
+<li>
+<code>land_class</code> function in the<code>envRaster</code> package <span class="citation">(<a href="woakwine.html#ref-R-envRaster">Willoughby 2023</a>)</span> using 3 cells for the small window and 9 cells for the large window as input to the 10 class landscape classification</li>
+</ul>
+</li>
+<li>sample of the derived rasters 9999 times to generate a range of visualisations and summary statistics.</li>
 </ul>
 <p>The <code>Qfit</code> function generates several continuous and one categorical variable for a digital terrain model:</p>
 <ul>
@@ -353,8 +361,7 @@ FALSE
 <li>minc</li>
 <li>features`</li>
 </ul>
-<p>A <a href="https://ailich.shinyapps.io/Terrain_Attributes_Explorer_App/">shiny app</a> is available to investigate the meaning of each of these variables.</p>
-<p>Each of the <code>Qfit</code> metrics was sampled 9999 times. The samples were used to generate a range of visualisations and summary statistics.</p>
+<p>A <a href="https://ailich.shinyapps.io/Terrain_Attributes_Explorer_App/">shiny app</a> is available to investigate the meaning of each of these variables.f</p>
 </div>
 <div id="workflow" class="section level2" number="3.3">
 <h2>
@@ -449,7 +456,7 @@ envRaster
 2023-11-02
 </td>
 <td style="text-align:left;">
-Github (<a href="mailto:acanthiza/envRaster@577435b3c3cf8bedaced251430ff8520ddbdbc7d" class="email">acanthiza/envRaster@577435b3c3cf8bedaced251430ff8520ddbdbc7d</a>)
+Github (<a href="mailto:acanthiza/envRaster@ca0ae97bcc3abe907db5a6d091bd4ae2e27d77e6" class="email">acanthiza/envRaster@ca0ae97bcc3abe907db5a6d091bd4ae2e27d77e6</a>)
 </td>
 </tr>
 <tr>
@@ -738,7 +745,7 @@ CRAN (R 4.3.1)
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>DEM comparison</strong>" was written by Nigel Willoughby, Department for Environment and Water. It was last built on Thursday, 02 November, 2023. 14:59.</p>
+    <p>"<strong>DEM comparison</strong>" was written by Nigel Willoughby, Department for Environment and Water. It was last built on Thursday, 02 November, 2023. 15:31.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
