@@ -53,7 +53,6 @@ Figure \@ref(fig:categ{{areaID}}) shows a landscape classification for each repr
 
   categ_area %>%
     dplyr::select(short
-                  , window
                   , value
                   , prop
                   ) %>%
@@ -81,9 +80,9 @@ Figure \@ref(fig:categ{{areaID}}) shows a landscape classification for each repr
                   , name = paste0(short, "_", window, "x", window)
                   )
   
-  feat <- a$feat %>%
+  feat <- a$classes %>%
     terra::rast() %>%
-    setNames(a$name)
+    setNames(a$short)
   
   ggplot() +
     tidyterra::geom_spatraster(data = feat) +
@@ -102,7 +101,7 @@ Figure \@ref(fig:categ{{areaID}}) shows a landscape classification for each repr
          , aes(value, prop, fill = short)
          ) +
     geom_col(position = "dodge") +
-    facet_grid(~ window) +
+    #facet_grid(~ window) +
     coord_flip() +
     scale_fill_viridis_d() +
     guides(fill = guide_legend(reverse = TRUE))

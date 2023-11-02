@@ -124,7 +124,7 @@ Figure \@ref(fig:diffPlot{{cont_metricID}}{{areaID}}) shows the distribution of 
 
 <br>
 
-```{r plot{{cont_metricID}}{{areaID}}, fig.cap = paste0(cont_metricID, " results for the each DEM covering the sample area. Two window sizes were used to generate results")}
+```{r plot{{cont_metricID}}{{areaID}}, fig.cap = paste0(cont_metricID, " results for the each DEM covering the sample area")}
 
   cont_area %>%
     dplyr::filter(metric == cont_metricID) %>%
@@ -135,7 +135,7 @@ Figure \@ref(fig:diffPlot{{cont_metricID}}{{areaID}}) shows the distribution of 
 
 <br>
 
-```{r diffPlot{{cont_metricID}}{{areaID}}, fig.cap = paste0(cont_metricID, " difference between the best available (reference) DEM and each individual DEM for the ", settings$area, " sample area. Two window sizes were used to generate results")}
+```{r diffPlot{{cont_metricID}}{{areaID}}, fig.cap = paste0(cont_metricID, " difference between the best available (reference) DEM and each individual DEM for the ", settings$area, " sample area")}
 
   cont_area %>%
     dplyr::filter(metric == cont_metricID) %>%

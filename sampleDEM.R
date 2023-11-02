@@ -98,7 +98,7 @@
     , "https://www.intelligence-airbusds.com/imagery/reference-layers/worlddem/worlddem-thematic-layers-and-derivatives/"
     , NA, "https://spacedata.copernicus.eu/documents/20123/121239/GEO1988-CopernicusDEM-RP-001_ValidationReport_I3.0.pdf/c80c5e85-9aea-356d-c877-80d8b5e028bb?t=1668162072523",
     
-    "Woakwine", "SouthEastLiDAR_15Oct2007_22May2008_DEM_2m_MGA54", "Lidar", 2008, 1, 1
+    "Woakwine", "SouthEastLiDAR_15Oct2007_22May2008_DEM_2m_MGA54", "Lidar", 2008, 1, 0
     , "https://data.sa.gov.au/data/dataset/elvis-digital-elevation-model-imagery-catalog"
     , NA, NA,
     
@@ -132,7 +132,7 @@
     , "https://www.aw3d.jp/en/products/standard/"
     , NA, "https://www.aw3d.jp/wp/wp-content/themes/AW3DEnglish/technology/doc/pdf/technology_02.pdf",
     
-    "Woakwine", "S37377E140027_S37398E140051_LT_DTM", "AW3D en", 2023, 0, 0
+    "Woakwine", "S37377E140027_S37398E140051_LT_DTM", "AW3D en", 2023, 0, 1
     , ""
     , NA, "",
     
@@ -297,11 +297,35 @@
                                      )
                   )
   
+  terr <- terr %>%
+    dplyr::mutate(classes = purrr::map2(ras2020
+                                          , window
+                                          , ~ land_class(ras = .x
+                                                         , sn = .y
+                                                         , n.classes = "ten"
+                                                         , ln = 11
+                                                         )
+                                          )
+                  , classes = purrr::map2(classes, short
+                                          , setNames
+                                          )
+                  )
+  
   
   # values --------
   
-  vals <- terr %>%
+  vals_cont <- terr %>%
     dplyr::mutate(rasVal = purrr::map2(terr
+                                       , ID
+                                       , terra::extract
+                                       , xy = TRUE
+                                       )
+                  ) %>%
+    dplyr::select(!where(is.list), ID, rasVal) %>%
+    tidyr::unnest(cols = c(ID, rasVal))
+  
+  vals_cat <- terr %>%
+    dplyr::mutate(rasVal = purrr::map2(classes
                                        , ID
                                        , terra::extract
                                        , xy = TRUE
@@ -313,22 +337,24 @@
   
 #------Analysis--------
   
-  terr_cat <- "features"
   terr_cont <- grep(terr_cat
                     , as.character(formals(MultiscaleDTM::Qfit)$metrics)[-1]
                     , value = TRUE
                     , invert = TRUE
                     )
   
+  terr_cat <- levels(terr$classes[[1]])[[1]]$category
+  
     
   # continuous-------
   
-  cont <- vals %>%
+  cont <- vals_cont %>%
     dplyr::select(ID
                   , x
                   , y
                   , any_of(names(samples))
                   , matches(terr_cont)
+                  , -matches("features")
                   ) %>%
     tidyr::pivot_longer(matches(terr_cont)
                         , names_to = "metric"
@@ -364,64 +390,58 @@
     
   # categorical-------
   
-  categ <- vals %>%
+  categ <- vals_cat %>%
     dplyr::select(area
                   , ID
                   , x
                   , y
-                  , any_of(names(samples))
-                  , matches(terr_cat)
+                  , original_cm
+                  , any_of(unique(samples$short))
                   ) %>%
-    tidyr::pivot_longer(matches(terr_cat)
-                        , names_to = "metric"
+    tidyr::pivot_longer(tidyselect::any_of(samples$short)
+                        , names_to = "short"
                         ) %>%
     dplyr::filter(!is.na(value)) %>%
     dplyr::add_count(area, ID, name = "count") %>%
     dplyr::group_by(area, ID) %>%
     dplyr::filter(count == max(count)) %>%
     dplyr::ungroup() %>%
-    tidyr::separate_wider_delim(metric
-                                , delim = "_"
-                                , names = c("metric", "window")
-                                ) %>%
-    dplyr::count(area, short, original_cm, metric, window, value) %>%
-    dplyr::group_by(area, short, original_cm, metric, window) %>%
+    dplyr::count(area, short, original_cm, value) %>%
+    dplyr::group_by(area, short, original_cm) %>%
     dplyr::mutate(values = sum(n)
                   , prop = n / values
                   ) %>%
     dplyr::ungroup() %>%
-    dplyr::arrange(area, short, original_cm, metric, window)
+    dplyr::arrange(area, short, original_cm)
     
-  categ_compare_ref <- vals %>%
-    dplyr::select(ID
+  categ_compare_ref <- vals_cat %>%
+    dplyr::select(area
+                  , ID
+                  , ref_flag
                   , x
                   , y
-                  , any_of(names(samples))
-                  , matches(terr_cat)
+                  , original_cm
+                  , any_of(unique(samples$short))
                   ) %>%
-    tidyr::pivot_longer(matches(terr_cat)
-                        , names_to = "metric"
+    tidyr::pivot_longer(tidyselect::any_of(samples$short)
+                        , names_to = "short"
                         ) %>%
     dplyr::filter(!is.na(value)) %>%
     dplyr::add_count(area, ID, name = "count") %>%
     dplyr::group_by(area, ID) %>%
     dplyr::filter(count == max(count)) %>%
     dplyr::ungroup() %>%
-    tidyr::separate_wider_delim(metric
-                                , delim = "_"
-                                , names = c("metric", "window")
-                                ) %>%
-    dplyr::group_by(area, ID, window) %>%
+    dplyr::group_by(area, ID) %>%
     dplyr::mutate(has_ref = sum(as.logical(ref_flag)) > 0) %>%
     dplyr::filter(has_ref) %>%
     dplyr::mutate(reference = value[ref_flag == 1]) %>%
     dplyr::ungroup() %>%
-    dplyr::count(area, short, original_cm, metric, window, reference, value) %>%
-    dplyr::group_by(area, short, original_cm, metric, window, reference) %>%
+    dplyr::count(area, short, original_cm, reference, value) %>%
+    dplyr::group_by(area, short, original_cm, reference) %>%
     dplyr::mutate(references = sum(n)
                   , prop = n / references
                   ) %>%
     dplyr::ungroup() %>%
-    dplyr::arrange(area, short, original_cm, metric, window, reference)
+    dplyr::arrange(area, short, original_cm, reference)
   
   
