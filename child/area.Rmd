@@ -42,7 +42,7 @@
 
 ## Categorical
 
-Table \@ref(tab:categTab{{areaID}}) shows the proportion of each DEM classifed to each landform element (also see Figure \@ref(fig:categCount).
+Table \@ref(tab:categTab{{areaID}}) shows the proportion of each DEM classifed to each landform element (also see Figure \@ref(fig:categCount{{areaID}}).
 
 Figure \@ref(fig:categ{{areaID}}) shows a landscape classification for each reprojected sample area and window size.
 

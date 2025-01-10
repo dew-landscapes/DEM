@@ -8,7 +8,7 @@
 <meta name="author" content="Nigel Willoughby">
 <meta name="author" content="Department for Environment and Water">
 <meta name="description" content="4.1 Continuous  4.1.1 elev Figure 4.1 shows rasters for elev and each window size in the Bakara sample area. Table 4.2 shows boxplots for each decile of elev, allowing a comparison of values...">
-<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta name="generator" content="bookdown 0.41 with bs4_book()">
 <meta property="og:title" content="4 Bakara | DEM comparison">
 <meta property="og:type" content="book">
 <meta property="og:description" content="4.1 Continuous  4.1.1 elev Figure 4.1 shows rasters for elev and each window size in the Bakara sample area. Table 4.2 shows boxplots for each decile of elev, allowing a comparison of values...">
@@ -17,7 +17,7 @@
 <meta name="twitter:description" content="4.1 Continuous  4.1.1 elev Figure 4.1 shows rasters for elev and each window size in the Bakara sample area. Table 4.2 shows boxplots for each decile of elev, allowing a comparison of values...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
@@ -487,11 +487,11 @@ Figure 4.44: minc difference between the best available (reference) DEM and each
 <h2>
 <span class="header-section-number">4.2</span> Categorical<a class="anchor" aria-label="anchor" href="#categorical"><i class="fas fa-link"></i></a>
 </h2>
-<p>Table <a href="bakara.html#tab:categTabBakara">4.1</a> shows the proportion of each DEM classifed to each landform element (also see Figure <a href="#fig:categCount"><strong>??</strong></a>.</p>
+<p>Table <a href="bakara.html#tab:categTabBakara">4.1</a> shows the proportion of each DEM classifed to each landform element (also see Figure <a href="bakara.html#fig:categCountBakara">4.46</a>.</p>
 <p>Figure <a href="bakara.html#fig:categBakara">4.45</a> shows a landscape classification for each reprojected sample area and window size.</p>
-<div class="inline-table"><table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<div class="inline-table"><table class="table table-striped table-hover table-condensed table-responsive" style="color: black; margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:categTabBakara">Table 4.1: </span>Proportion of Bakara sample area (and each window size) classified to each landform element
+<span id="tab:categTabBakara">Table 4.1: </span><span id="tab:categTabBakara">Table 4.2: </span>Proportion of Bakara sample area (and each window size) classified to each landform element
 </caption>
 <thead><tr>
 <th style="text-align:left;">
@@ -522,7 +522,7 @@ midslopes ridges
 mountain tops
 </th>
 <th style="text-align:right;">
-upland drainage
+local ridges
 </th>
 </tr></thead>
 <tbody>
@@ -531,28 +531,28 @@ upland drainage
 AW3D 2692
 </td>
 <td style="text-align:right;">
-0.0053
+0.0194
 </td>
 <td style="text-align:right;">
-0.00622
+0.01404
 </td>
 <td style="text-align:right;">
-0.0474
+0.075
 </td>
 <td style="text-align:right;">
-0.85
+0.76
 </td>
 <td style="text-align:right;">
-0.03050
+0.0058
 </td>
 <td style="text-align:right;">
-0.0501
+0.087
 </td>
 <td style="text-align:right;">
-0.00411
+0.0182
 </td>
 <td style="text-align:right;">
-0.0036
+0.0185
 </td>
 <td style="text-align:right;">
 </td>
@@ -562,28 +562,28 @@ AW3D 2692
 Ortho 997
 </td>
 <td style="text-align:right;">
-0.0034
+0.0126
 </td>
 <td style="text-align:right;">
-0.00056
+0.00421
 </td>
 <td style="text-align:right;">
-0.0258
+0.079
 </td>
 <td style="text-align:right;">
-0.91
+0.79
 </td>
 <td style="text-align:right;">
-0.02479
+0.0072
 </td>
 <td style="text-align:right;">
-0.0317
+0.085
 </td>
 <td style="text-align:right;">
-0.00068
+0.0049
 </td>
 <td style="text-align:right;">
-0.0046
+0.0180
 </td>
 <td style="text-align:right;">
 </td>
@@ -593,29 +593,29 @@ Ortho 997
 SRTM 2993
 </td>
 <td style="text-align:right;">
+0.0037
 </td>
 <td style="text-align:right;">
-0.00079
+0.00094
 </td>
 <td style="text-align:right;">
-0.0051
+0.029
 </td>
 <td style="text-align:right;">
-0.99
-</td>
-<td style="text-align:right;">
-0.00023
-</td>
-<td style="text-align:right;">
-0.0053
-</td>
-<td style="text-align:right;">
-0.00056
+0.92
 </td>
 <td style="text-align:right;">
 </td>
 <td style="text-align:right;">
-0.00011
+0.043
+</td>
+<td style="text-align:right;">
+0.0016
+</td>
+<td style="text-align:right;">
+0.0037
+</td>
+<td style="text-align:right;">
 </td>
 </tr>
 <tr>
@@ -623,30 +623,31 @@ SRTM 2993
 WldDEM 30 2692
 </td>
 <td style="text-align:right;">
-0.0036
+0.0161
 </td>
 <td style="text-align:right;">
-0.00575
+0.01684
 </td>
 <td style="text-align:right;">
-0.0437
+0.088
 </td>
 <td style="text-align:right;">
-0.86
+0.75
 </td>
 <td style="text-align:right;">
-0.02975
+0.0054
 </td>
 <td style="text-align:right;">
-0.0460
+0.083
 </td>
 <td style="text-align:right;">
-0.00406
+0.0145
 </td>
 <td style="text-align:right;">
-0.0033
+0.0203
 </td>
 <td style="text-align:right;">
+0.00023
 </td>
 </tr>
 <tr>
@@ -654,28 +655,28 @@ WldDEM 30 2692
 WldDEM DTM 1128
 </td>
 <td style="text-align:right;">
-0.0028
+0.0112
 </td>
 <td style="text-align:right;">
-0.00056
+0.00842
 </td>
 <td style="text-align:right;">
-0.0240
+0.076
 </td>
 <td style="text-align:right;">
-0.94
+0.81
 </td>
 <td style="text-align:right;">
-0.00541
+0.0012
 </td>
 <td style="text-align:right;">
-0.0230
+0.071
 </td>
 <td style="text-align:right;">
-0.00023
+0.0080
 </td>
 <td style="text-align:right;">
-0.0024
+0.0129
 </td>
 <td style="text-align:right;">
 </td>
@@ -685,28 +686,28 @@ WldDEM DTM 1128
 WldDEM LIT 1134
 </td>
 <td style="text-align:right;">
-0.0041
+0.0122
 </td>
 <td style="text-align:right;">
-0.00270
+0.01263
 </td>
 <td style="text-align:right;">
-0.0326
+0.079
 </td>
 <td style="text-align:right;">
-0.91
+0.79
 </td>
 <td style="text-align:right;">
-0.01431
+0.0044
 </td>
 <td style="text-align:right;">
-0.0337
+0.072
 </td>
 <td style="text-align:right;">
-0.00282
+0.0119
 </td>
 <td style="text-align:right;">
-0.0047
+0.0157
 </td>
 <td style="text-align:right;">
 </td>
@@ -768,7 +769,7 @@ Figure 4.46: Proportion of categorised Bakara sample area in each of several cla
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>DEM comparison</strong>" was written by Nigel Willoughby, Department for Environment and Water. It was last built on Thursday, 02 November, 2023. 15:31.</p>
+    <p>"<strong>DEM comparison</strong>" was written by Nigel Willoughby, Department for Environment and Water. It was last built on Friday, 10 January, 2025. 12:22.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

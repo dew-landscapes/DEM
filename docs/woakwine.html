@@ -8,7 +8,7 @@
 <meta name="author" content="Nigel Willoughby">
 <meta name="author" content="Department for Environment and Water">
 <meta name="description" content="5.1 Continuous  5.1.1 elev Figure 5.1 shows rasters for elev and each window size in the Woakwine sample area. Table 5.2 shows boxplots for each decile of elev, allowing a comparison of values...">
-<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta name="generator" content="bookdown 0.41 with bs4_book()">
 <meta property="og:title" content="5 Woakwine | DEM comparison">
 <meta property="og:type" content="book">
 <meta property="og:description" content="5.1 Continuous  5.1.1 elev Figure 5.1 shows rasters for elev and each window size in the Woakwine sample area. Table 5.2 shows boxplots for each decile of elev, allowing a comparison of values...">
@@ -17,7 +17,7 @@
 <meta name="twitter:description" content="5.1 Continuous  5.1.1 elev Figure 5.1 shows rasters for elev and each window size in the Woakwine sample area. Table 5.2 shows boxplots for each decile of elev, allowing a comparison of values...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
@@ -487,11 +487,11 @@ Figure 5.44: minc difference between the best available (reference) DEM and each
 <h2>
 <span class="header-section-number">5.2</span> Categorical<a class="anchor" aria-label="anchor" href="#categorical-1"><i class="fas fa-link"></i></a>
 </h2>
-<p>Table <a href="woakwine.html#tab:categTabWoakwine">5.1</a> shows the proportion of each DEM classifed to each landform element (also see Figure <a href="#fig:categCount"><strong>??</strong></a>.</p>
+<p>Table <a href="woakwine.html#tab:categTabWoakwine">5.1</a> shows the proportion of each DEM classifed to each landform element (also see Figure <a href="woakwine.html#fig:categCountWoakwine">5.46</a>.</p>
 <p>Figure <a href="woakwine.html#fig:categWoakwine">5.45</a> shows a landscape classification for each reprojected sample area and window size.</p>
-<div class="inline-table"><table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<div class="inline-table"><table class="table table-striped table-hover table-condensed table-responsive" style="color: black; margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:categTabWoakwine">Table 5.1: </span>Proportion of Woakwine sample area (and each window size) classified to each landform element
+<span id="tab:categTabWoakwine">Table 5.1: </span><span id="tab:categTabWoakwine">Table 5.2: </span>Proportion of Woakwine sample area (and each window size) classified to each landform element
 </caption>
 <thead><tr>
 <th style="text-align:left;">
@@ -502,9 +502,6 @@ canyon
 </th>
 <th style="text-align:right;">
 midslope drainage
-</th>
-<th style="text-align:right;">
-upland drainage
 </th>
 <th style="text-align:right;">
 u-shaped valley
@@ -524,9 +521,6 @@ midslopes ridges
 <th style="text-align:right;">
 mountain tops
 </th>
-<th style="text-align:right;">
-local ridges
-</th>
 </tr></thead>
 <tbody>
 <tr>
@@ -534,33 +528,28 @@ local ridges
 AW3D 442
 </td>
 <td style="text-align:right;">
-0.0131
+0.0048
 </td>
 <td style="text-align:right;">
-0.0077
+0.0153
 </td>
 <td style="text-align:right;">
-0.00012
+0.042
 </td>
 <td style="text-align:right;">
-0.035
+0.62
 </td>
 <td style="text-align:right;">
-0.58
+0.24
 </td>
 <td style="text-align:right;">
-0.31
+0.054
 </td>
 <td style="text-align:right;">
-0.039
+0.0108
 </td>
 <td style="text-align:right;">
-0.0059
-</td>
-<td style="text-align:right;">
-0.0067
-</td>
-<td style="text-align:right;">
+0.011
 </td>
 </tr>
 <tr>
@@ -568,32 +557,28 @@ AW3D 442
 AW3D en 449
 </td>
 <td style="text-align:right;">
-0.0132
-</td>
-<td style="text-align:right;">
 0.0077
 </td>
 <td style="text-align:right;">
+0.0157
 </td>
 <td style="text-align:right;">
-0.031
+0.035
 </td>
 <td style="text-align:right;">
-0.53
+0.60
 </td>
 <td style="text-align:right;">
-0.36
+0.26
 </td>
 <td style="text-align:right;">
-0.040
+0.055
 </td>
 <td style="text-align:right;">
-0.0093
+0.0092
 </td>
 <td style="text-align:right;">
-0.0085
-</td>
-<td style="text-align:right;">
+0.014
 </td>
 </tr>
 <tr>
@@ -601,32 +586,28 @@ AW3D en 449
 AW3D en 898
 </td>
 <td style="text-align:right;">
-0.0115
+0.0063
 </td>
 <td style="text-align:right;">
-0.0076
+0.0163
 </td>
 <td style="text-align:right;">
+0.039
 </td>
 <td style="text-align:right;">
-0.033
+0.60
 </td>
 <td style="text-align:right;">
-0.54
+0.26
 </td>
 <td style="text-align:right;">
-0.35
+0.056
 </td>
 <td style="text-align:right;">
-0.040
+0.0112
 </td>
 <td style="text-align:right;">
-0.0086
-</td>
-<td style="text-align:right;">
-0.0074
-</td>
-<td style="text-align:right;">
+0.014
 </td>
 </tr>
 <tr>
@@ -634,32 +615,28 @@ AW3D en 898
 AW3D filt 442
 </td>
 <td style="text-align:right;">
-0.0054
-</td>
-<td style="text-align:right;">
-0.0051
-</td>
-<td style="text-align:right;">
-</td>
-<td style="text-align:right;">
-0.021
-</td>
-<td style="text-align:right;">
-0.58
-</td>
-<td style="text-align:right;">
-0.35
-</td>
-<td style="text-align:right;">
-0.029
-</td>
-<td style="text-align:right;">
 0.0039
 </td>
 <td style="text-align:right;">
-0.0052
+0.0081
 </td>
 <td style="text-align:right;">
+0.036
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+<td style="text-align:right;">
+0.27
+</td>
+<td style="text-align:right;">
+0.057
+</td>
+<td style="text-align:right;">
+0.0078
+</td>
+<td style="text-align:right;">
+0.013
 </td>
 </tr>
 <tr>
@@ -667,32 +644,28 @@ AW3D filt 442
 Lidar 201
 </td>
 <td style="text-align:right;">
-0.0062
+0.0051
 </td>
 <td style="text-align:right;">
-0.0084
+0.0117
 </td>
 <td style="text-align:right;">
+0.037
 </td>
 <td style="text-align:right;">
-0.023
+0.59
 </td>
 <td style="text-align:right;">
-0.52
+0.27
 </td>
 <td style="text-align:right;">
-0.38
+0.057
 </td>
 <td style="text-align:right;">
-0.045
+0.0114
 </td>
 <td style="text-align:right;">
-0.0065
-</td>
-<td style="text-align:right;">
-0.0092
-</td>
-<td style="text-align:right;">
+0.015
 </td>
 </tr>
 <tr>
@@ -700,34 +673,28 @@ Lidar 201
 WldNEO DTM 409
 </td>
 <td style="text-align:right;">
-0.0111
+0.0069
 </td>
 <td style="text-align:right;">
-0.0071
-</td>
-<td style="text-align:right;">
-0.00012
+0.0144
 </td>
 <td style="text-align:right;">
 0.035
 </td>
 <td style="text-align:right;">
-0.59
+0.67
 </td>
 <td style="text-align:right;">
-0.30
+0.21
 </td>
 <td style="text-align:right;">
-0.042
+0.048
 </td>
 <td style="text-align:right;">
-0.0111
+0.0126
 </td>
 <td style="text-align:right;">
-0.0102
-</td>
-<td style="text-align:right;">
-0.00012
+0.012
 </td>
 </tr>
 <tr>
@@ -735,32 +702,28 @@ WldNEO DTM 409
 WldNEO DTM 819
 </td>
 <td style="text-align:right;">
-0.0090
+0.0069
 </td>
 <td style="text-align:right;">
-0.0054
+0.0105
 </td>
 <td style="text-align:right;">
+0.034
 </td>
 <td style="text-align:right;">
-0.037
+0.68
 </td>
 <td style="text-align:right;">
-0.60
+0.20
 </td>
 <td style="text-align:right;">
-0.29
+0.048
 </td>
 <td style="text-align:right;">
-0.041
+0.0099
 </td>
 <td style="text-align:right;">
-0.0079
-</td>
-<td style="text-align:right;">
-0.0082
-</td>
-<td style="text-align:right;">
+0.011
 </td>
 </tr>
 </tbody>
@@ -781,13 +744,13 @@ Figure 5.46: Proportion of categorised Woakwine sample area in each of several c
 
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-R-rmarkdown" class="csl-entry">
-Allaire, JJ, Yihui Xie, Christophe Dervieux, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, et al. 2023. <em>Rmarkdown: Dynamic Documents for r</em>. <a href="https://CRAN.R-project.org/package=rmarkdown">https://CRAN.R-project.org/package=rmarkdown</a>.
+Allaire, JJ, Yihui Xie, Christophe Dervieux, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, et al. 2024. <em>Rmarkdown: Dynamic Documents for r</em>. <a href="https://github.com/rstudio/rmarkdown">https://github.com/rstudio/rmarkdown</a>.
 </div>
 <div id="ref-R-fs" class="csl-entry">
-Hester, Jim, Hadley Wickham, and Gábor Csárdi. 2023. <em>Fs: Cross-Platform File System Operations Based on Libuv</em>. <a href="https://CRAN.R-project.org/package=fs">https://CRAN.R-project.org/package=fs</a>.
+Hester, Jim, Hadley Wickham, and Gábor Csárdi. 2024. <em>Fs: Cross-Platform File System Operations Based on Libuv</em>. <a href="https://fs.r-lib.org">https://fs.r-lib.org</a>.
 </div>
 <div id="ref-R-terra" class="csl-entry">
-Hijmans, Robert J. 2023. <em>Terra: Spatial Data Analysis</em>. <a href="https://rspatial.org/">https://rspatial.org/</a>.
+Hijmans, Robert J. 2024. <em>Terra: Spatial Data Analysis</em>. <a href="https://rspatial.org/">https://rspatial.org/</a>.
 </div>
 <div id="ref-MultiscaleDTM2021" class="csl-entry">
 Ilich, Alexander R., Benjamin Misiuk, Vincent Lecours, and Steven A. Murawski. 2021. <span>“MultiscaleDTM.”</span> <a href="https://doi.org/10.5281/zenodo.5548338">https://doi.org/10.5281/zenodo.5548338</a>.
@@ -796,55 +759,55 @@ Ilich, Alexander R., Benjamin Misiuk, Vincent Lecours, and Steven A. Murawski. 2
 ———. 2023. <span>“MultiscaleDTM: An Open-Source r Package for Multiscale Geomorphometric Analysis.”</span> <em>Transactions in GIS</em> 27 (4). <a href="https://doi.org/10.1111/tgis.13067">https://doi.org/10.1111/tgis.13067</a>.
 </div>
 <div id="ref-R-MultiscaleDTM" class="csl-entry">
-Ilich, Alexander, Vincent Lecours, Benjamin Misiuk, and Steven Murawski. 2023. <em>MultiscaleDTM: Multi-Scale Geomorphometric Terrain Attributes</em>. <a href="https://CRAN.R-project.org/package=MultiscaleDTM">https://CRAN.R-project.org/package=MultiscaleDTM</a>.
+Ilich, Alexander, Vincent Lecours, Benjamin Misiuk, and Steven Murawski. 2024. <em>MultiscaleDTM: Multi-Scale Geomorphometric Terrain Attributes</em>. <a href="https://ailich.github.io/MultiscaleDTM/">https://ailich.github.io/MultiscaleDTM/</a>.
 </div>
 <div id="ref-R-tibble" class="csl-entry">
-Müller, Kirill, and Hadley Wickham. 2023. <em>Tibble: Simple Data Frames</em>. <a href="https://CRAN.R-project.org/package=tibble">https://CRAN.R-project.org/package=tibble</a>.
+Müller, Kirill, and Hadley Wickham. 2023. <em>Tibble: Simple Data Frames</em>. <a href="https://tibble.tidyverse.org/">https://tibble.tidyverse.org/</a>.
 </div>
 <div id="ref-R-sf" class="csl-entry">
-Pebesma, Edzer. 2023. <em>Sf: Simple Features for r</em>. <a href="https://CRAN.R-project.org/package=sf">https://CRAN.R-project.org/package=sf</a>.
+Pebesma, Edzer. 2024. <em>Sf: Simple Features for r</em>. <a href="https://r-spatial.github.io/sf/">https://r-spatial.github.io/sf/</a>.
 </div>
 <div id="ref-R-base" class="csl-entry">
-R Core Team. 2023. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+R Core Team. 2024. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
 </div>
 <div id="ref-R-lubridate" class="csl-entry">
-Spinu, Vitalie, Garrett Grolemund, and Hadley Wickham. 2023. <em>Lubridate: Make Dealing with Dates a Little Easier</em>. <a href="https://CRAN.R-project.org/package=lubridate">https://CRAN.R-project.org/package=lubridate</a>.
+Spinu, Vitalie, Garrett Grolemund, and Hadley Wickham. 2023. <em>Lubridate: Make Dealing with Dates a Little Easier</em>. <a href="https://lubridate.tidyverse.org">https://lubridate.tidyverse.org</a>.
 </div>
 <div id="ref-R-tmap" class="csl-entry">
-Tennekes, Martijn. 2022. <em>Tmap: Thematic Maps</em>. <a href="https://github.com/r-tmap/tmap">https://github.com/r-tmap/tmap</a>.
-</div>
-<div id="ref-R-stringr" class="csl-entry">
-Wickham, Hadley. 2022. <em>Stringr: Simple, Consistent Wrappers for Common String Operations</em>. <a href="https://CRAN.R-project.org/package=stringr">https://CRAN.R-project.org/package=stringr</a>.
+Tennekes, Martijn. 2023. <em>Tmap: Thematic Maps</em>. <a href="https://r-tmap.github.io/tmap/">https://r-tmap.github.io/tmap/</a>.
 </div>
 <div id="ref-R-forcats" class="csl-entry">
-———. 2023. <em>Forcats: Tools for Working with Categorical Variables (Factors)</em>. <a href="https://CRAN.R-project.org/package=forcats">https://CRAN.R-project.org/package=forcats</a>.
+Wickham, Hadley. 2023a. <em>Forcats: Tools for Working with Categorical Variables (Factors)</em>. <a href="https://forcats.tidyverse.org/">https://forcats.tidyverse.org/</a>.
+</div>
+<div id="ref-R-stringr" class="csl-entry">
+———. 2023b. <em>Stringr: Simple, Consistent Wrappers for Common String Operations</em>. <a href="https://stringr.tidyverse.org">https://stringr.tidyverse.org</a>.
 </div>
 <div id="ref-R-ggplot2" class="csl-entry">
-Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, and Dewey Dunnington. 2023. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>. <a href="https://CRAN.R-project.org/package=ggplot2">https://CRAN.R-project.org/package=ggplot2</a>.
+Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, Dewey Dunnington, and Teun van den Brand. 2024. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
 </div>
 <div id="ref-R-dplyr" class="csl-entry">
-Wickham, Hadley, Romain François, Lionel Henry, Kirill Müller, and Davis Vaughan. 2023. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://CRAN.R-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a>.
+Wickham, Hadley, Romain François, Lionel Henry, Kirill Müller, and Davis Vaughan. 2023. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://dplyr.tidyverse.org">https://dplyr.tidyverse.org</a>.
 </div>
 <div id="ref-R-purrr" class="csl-entry">
-Wickham, Hadley, and Lionel Henry. 2023. <em>Purrr: Functional Programming Tools</em>. <a href="https://CRAN.R-project.org/package=purrr">https://CRAN.R-project.org/package=purrr</a>.
+Wickham, Hadley, and Lionel Henry. 2023. <em>Purrr: Functional Programming Tools</em>. <a href="https://purrr.tidyverse.org/">https://purrr.tidyverse.org/</a>.
 </div>
 <div id="ref-R-readr" class="csl-entry">
-Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2023. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
+Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2024. <em>Readr: Read Rectangular Text Data</em>. <a href="https://readr.tidyverse.org">https://readr.tidyverse.org</a>.
 </div>
 <div id="ref-R-tidyr" class="csl-entry">
-Wickham, Hadley, Davis Vaughan, and Maximilian Girlich. 2023. <em>Tidyr: Tidy Messy Data</em>. <a href="https://CRAN.R-project.org/package=tidyr">https://CRAN.R-project.org/package=tidyr</a>.
+Wickham, Hadley, Davis Vaughan, and Maximilian Girlich. 2024. <em>Tidyr: Tidy Messy Data</em>. <a href="https://tidyr.tidyverse.org">https://tidyr.tidyverse.org</a>.
 </div>
 <div id="ref-R-ggridges" class="csl-entry">
-Wilke, Claus O. 2022. <em>Ggridges: Ridgeline Plots in Ggplot2</em>. <a href="https://wilkelab.org/ggridges/">https://wilkelab.org/ggridges/</a>.
+Wilke, Claus O. 2024. <em>Ggridges: Ridgeline Plots in Ggplot2</em>. <a href="https://wilkelab.org/ggridges/">https://wilkelab.org/ggridges/</a>.
 </div>
 <div id="ref-R-envRaster" class="csl-entry">
-Willoughby, Nigel. 2023. <em>envRaster: Mung Environmental Rasters</em>. <a href="https://github.com/Acanthiza/envRaster">https://github.com/Acanthiza/envRaster</a>.
+Willoughby, Nigel. 2024. <em>envRaster: Mung Environmental Rasters</em>. <a href="https://github.com/Acanthiza/envRaster">https://github.com/Acanthiza/envRaster</a>.
 </div>
 <div id="ref-R-bookdown" class="csl-entry">
-Xie, Yihui. 2023a. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.
+Xie, Yihui. 2024a. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>. <a href="https://github.com/rstudio/bookdown">https://github.com/rstudio/bookdown</a>.
 </div>
 <div id="ref-R-knitr" class="csl-entry">
-———. 2023b. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in r</em>. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
+———. 2024b. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in r</em>. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
 </div>
 </div>
 </div>
@@ -889,7 +852,7 @@ Xie, Yihui. 2023a. <em>Bookdown: Authoring Books and Technical Documents with r 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>DEM comparison</strong>" was written by Nigel Willoughby, Department for Environment and Water. It was last built on Thursday, 02 November, 2023. 15:31.</p>
+    <p>"<strong>DEM comparison</strong>" was written by Nigel Willoughby, Department for Environment and Water. It was last built on Friday, 10 January, 2025. 12:22.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

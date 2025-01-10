@@ -57,11 +57,11 @@
   options(scipen = 999)
   
   settings <- list(use_epsg = 7845
-                   , target_res = 10
-                   , sample_n = 9999
+                   , target_res = 30
+                   , sample_n = 5000
                    )
   
-  ras_dir <- fs::path("D:", "env", "data", "raster", "other", "dem")
+  ras_dir <- fs::path("H:", "data", "raster", "dem")
   
   luraster <- tibble::tribble(
     ~area, ~name, ~short, ~year, ~ref_flag, ~smallest, ~source, ~licence, ~paper,
@@ -240,7 +240,7 @@
     dplyr::left_join(naRas) %>%
     dplyr::filter(purrr::map2_lgl(ras2020
                                   , naRas
-                                  , envRaster::test_intersection
+                                  , test_intersection
                                   )
                   ) %>%
     dplyr::mutate(ras2020 = purrr::map2(ras2020
