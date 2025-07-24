@@ -9,12 +9,12 @@ Table \@ref(tab:DEMs) lists the available DEMs.
 ```{r DEMs}
 
 window |>
-  dplyr::select(dem_name
-                , type
-                , file
-                , original_cm
-                , licence
-                ) |>
+  dplyr::distinct(dem_name
+                  , type
+                  #, file
+                  , original_cm
+                  , licence
+                  ) |>
     kableExtra::kable(caption = paste0("Sample DEMs")
                       , format.args = list(digits = 2)
                       , "html", escape = F
