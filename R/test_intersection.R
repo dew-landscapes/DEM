@@ -1,4 +1,6 @@
-test_intersection <- function(a, b){
+test_intersection <- function(a, b, ret = c("ratio", "logical")){
+  
+  ret <- ret[[1]]
 
   ext_a <- terra::ext(a) |>
     terra::as.polygons()
@@ -15,8 +17,17 @@ test_intersection <- function(a, b){
 
   int <- terra::intersect(ext_a, ext_b)
 
-  ratio <- terra::expanse(ext_a) / terra::expanse(int)
-
-  if(isTRUE(ratio > 0)) TRUE else FALSE
-
+  ratio <- terra::expanse(int) / terra::expanse(ext_b)
+  
+  res <- if(ret == "ratio") {
+    
+    ratio
+    
+  } else if(ret == "logical") {
+    
+    if(isTRUE(ratio > 0)) TRUE else FALSE
+    
+  }
+  
+  return(res)
 }

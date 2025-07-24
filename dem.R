@@ -22,7 +22,7 @@ dem_path <- fs::path("V:/Samba_ImageServices_Admin/Digital_Elevation_Models/Stat
 aoi <- yaml::read_yaml("settings/aoi.yaml") |>
   purrr::map(\(x) tibble::as_tibble(x)) |>
   dplyr::bind_rows(.id = "aoi_name") |>
-  dplyr::filter(grepl("Kanku", aoi_name)) |> # TESTING
+  #dplyr::filter(grepl("Kanku", aoi_name)) |> # TESTING
   dplyr::mutate(sf = purrr::map(polygons
                                 , \(x) sfarrow::st_read_parquet(fs::path("..", "..", ".."
                                                                          , "data", "vector"
@@ -55,8 +55,9 @@ dem <- yaml::read_yaml("settings/dem.yaml") |>
 # dem analysis -------
 window <- dem |>
   dplyr::cross_join(aoi) |>
-  dplyr::mutate(overlap = purrr::map2_lgl(r, aoi, test_intersection)) |>
-  dplyr::filter(overlap) |>
+  dplyr::mutate(overlap = purrr::map2(r, aoi, test_intersection)) |>
+  tidyr::unnest(cols = c(overlap)) |>
+  dplyr::filter(overlap > 0.9) |>
   dplyr::mutate(r = purrr::map2(r, aoi, apply_window)
                 , r = purrr::map(r
                                  , terra::project
