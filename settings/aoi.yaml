@@ -20,5 +20,5 @@ Cleland:
 Kanku-Breakaways:
   polygons: "parks"
   filt_col: "RESNAME"
-  filt_level: "Kanku"
+  filt_level: "Kanku-Breakaways"
   buffer: 5000

@@ -11,5 +11,7 @@ purrr::map(fs::dir_ls(regexp = "_book|_main", recurse = 1)
            , \(x) if(file.exists(x)) fs::file_delete(x)
            )
 
-bookdown::render_book(output_dir = "docs")
+xfun::in_dir("report"
+             , bookdown::render_book(output_dir = "../docs")
+             )
 

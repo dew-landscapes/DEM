@@ -50,7 +50,9 @@ dem <- yaml::read_yaml("settings/dem.yaml") |>
                                        )
                 ) |>
   tidyr::unnest(cols = c(full_path)) |>
-  dplyr::mutate(r = purrr::map(full_path, terra::rast))
+  dplyr::mutate(r = purrr::map(full_path, terra::rast)
+                , licence = dplyr::if_else(grepl("DEWOnly", full_path), "DEW only", "public")
+                )
 
 # dem analysis -------
 window <- dem |>

@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6 Cleland | DEM comparison</title>
+  <meta name="description" content="This work aims to compare digital terrain models as potential inputs to ecosystem modelling." />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6 Cleland | DEM comparison" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This work aims to compare digital terrain models as potential inputs to ecosystem modelling." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6 Cleland | DEM comparison" />
+  
+  <meta name="twitter:description" content="This work aims to compare digital terrain models as potential inputs to ecosystem modelling." />
+  
+
+<meta name="author" content="Nigel Willoughby" />
+<meta name="author" content="Department for Environment and Water" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="hambidge.html"/>
+<link rel="next" href="kanku-breakaways.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Aim</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Intro</a></li>
+<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="methods.html"><a href="methods.html#dems"><i class="fa fa-check"></i><b>3.1</b> DEMs</a></li>
+<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#processing"><i class="fa fa-check"></i><b>3.2</b> Processing</a></li>
+<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#workflow"><i class="fa fa-check"></i><b>3.3</b> Workflow</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="bakara.html"><a href="bakara.html"><i class="fa fa-check"></i><b>4</b> Bakara</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="bakara.html"><a href="bakara.html#continuous"><i class="fa fa-check"></i><b>4.1</b> Continuous</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="bakara.html"><a href="bakara.html#elev"><i class="fa fa-check"></i><b>4.1.1</b> elev</a></li>
+<li class="chapter" data-level="4.1.2" data-path="bakara.html"><a href="bakara.html#qslope"><i class="fa fa-check"></i><b>4.1.2</b> qslope</a></li>
+<li class="chapter" data-level="4.1.3" data-path="bakara.html"><a href="bakara.html#qaspect"><i class="fa fa-check"></i><b>4.1.3</b> qaspect</a></li>
+<li class="chapter" data-level="4.1.4" data-path="bakara.html"><a href="bakara.html#qeastness"><i class="fa fa-check"></i><b>4.1.4</b> qeastness</a></li>
+<li class="chapter" data-level="4.1.5" data-path="bakara.html"><a href="bakara.html#qnorthness"><i class="fa fa-check"></i><b>4.1.5</b> qnorthness</a></li>
+<li class="chapter" data-level="4.1.6" data-path="bakara.html"><a href="bakara.html#profc"><i class="fa fa-check"></i><b>4.1.6</b> profc</a></li>
+<li class="chapter" data-level="4.1.7" data-path="bakara.html"><a href="bakara.html#planc"><i class="fa fa-check"></i><b>4.1.7</b> planc</a></li>
+<li class="chapter" data-level="4.1.8" data-path="bakara.html"><a href="bakara.html#twistc"><i class="fa fa-check"></i><b>4.1.8</b> twistc</a></li>
+<li class="chapter" data-level="4.1.9" data-path="bakara.html"><a href="bakara.html#meanc"><i class="fa fa-check"></i><b>4.1.9</b> meanc</a></li>
+<li class="chapter" data-level="4.1.10" data-path="bakara.html"><a href="bakara.html#maxc"><i class="fa fa-check"></i><b>4.1.10</b> maxc</a></li>
+<li class="chapter" data-level="4.1.11" data-path="bakara.html"><a href="bakara.html#minc"><i class="fa fa-check"></i><b>4.1.11</b> minc</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="bakara.html"><a href="bakara.html#categorical"><i class="fa fa-check"></i><b>4.2</b> Categorical</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="hambidge.html"><a href="hambidge.html"><i class="fa fa-check"></i><b>5</b> Hambidge</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="hambidge.html"><a href="hambidge.html#continuous-1"><i class="fa fa-check"></i><b>5.1</b> Continuous</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="hambidge.html"><a href="hambidge.html#elev-1"><i class="fa fa-check"></i><b>5.1.1</b> elev</a></li>
+<li class="chapter" data-level="5.1.2" data-path="hambidge.html"><a href="hambidge.html#qslope-1"><i class="fa fa-check"></i><b>5.1.2</b> qslope</a></li>
+<li class="chapter" data-level="5.1.3" data-path="hambidge.html"><a href="hambidge.html#qaspect-1"><i class="fa fa-check"></i><b>5.1.3</b> qaspect</a></li>
+<li class="chapter" data-level="5.1.4" data-path="hambidge.html"><a href="hambidge.html#qeastness-1"><i class="fa fa-check"></i><b>5.1.4</b> qeastness</a></li>
+<li class="chapter" data-level="5.1.5" data-path="hambidge.html"><a href="hambidge.html#qnorthness-1"><i class="fa fa-check"></i><b>5.1.5</b> qnorthness</a></li>
+<li class="chapter" data-level="5.1.6" data-path="hambidge.html"><a href="hambidge.html#profc-1"><i class="fa fa-check"></i><b>5.1.6</b> profc</a></li>
+<li class="chapter" data-level="5.1.7" data-path="hambidge.html"><a href="hambidge.html#planc-1"><i class="fa fa-check"></i><b>5.1.7</b> planc</a></li>
+<li class="chapter" data-level="5.1.8" data-path="hambidge.html"><a href="hambidge.html#twistc-1"><i class="fa fa-check"></i><b>5.1.8</b> twistc</a></li>
+<li class="chapter" data-level="5.1.9" data-path="hambidge.html"><a href="hambidge.html#meanc-1"><i class="fa fa-check"></i><b>5.1.9</b> meanc</a></li>
+<li class="chapter" data-level="5.1.10" data-path="hambidge.html"><a href="hambidge.html#maxc-1"><i class="fa fa-check"></i><b>5.1.10</b> maxc</a></li>
+<li class="chapter" data-level="5.1.11" data-path="hambidge.html"><a href="hambidge.html#minc-1"><i class="fa fa-check"></i><b>5.1.11</b> minc</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="hambidge.html"><a href="hambidge.html#categorical-1"><i class="fa fa-check"></i><b>5.2</b> Categorical</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="cleland.html"><a href="cleland.html"><i class="fa fa-check"></i><b>6</b> Cleland</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="cleland.html"><a href="cleland.html#continuous-2"><i class="fa fa-check"></i><b>6.1</b> Continuous</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="cleland.html"><a href="cleland.html#elev-2"><i class="fa fa-check"></i><b>6.1.1</b> elev</a></li>
+<li class="chapter" data-level="6.1.2" data-path="cleland.html"><a href="cleland.html#qslope-2"><i class="fa fa-check"></i><b>6.1.2</b> qslope</a></li>
+<li class="chapter" data-level="6.1.3" data-path="cleland.html"><a href="cleland.html#qaspect-2"><i class="fa fa-check"></i><b>6.1.3</b> qaspect</a></li>
+<li class="chapter" data-level="6.1.4" data-path="cleland.html"><a href="cleland.html#qeastness-2"><i class="fa fa-check"></i><b>6.1.4</b> qeastness</a></li>
+<li class="chapter" data-level="6.1.5" data-path="cleland.html"><a href="cleland.html#qnorthness-2"><i class="fa fa-check"></i><b>6.1.5</b> qnorthness</a></li>
+<li class="chapter" data-level="6.1.6" data-path="cleland.html"><a href="cleland.html#profc-2"><i class="fa fa-check"></i><b>6.1.6</b> profc</a></li>
+<li class="chapter" data-level="6.1.7" data-path="cleland.html"><a href="cleland.html#planc-2"><i class="fa fa-check"></i><b>6.1.7</b> planc</a></li>
+<li class="chapter" data-level="6.1.8" data-path="cleland.html"><a href="cleland.html#twistc-2"><i class="fa fa-check"></i><b>6.1.8</b> twistc</a></li>
+<li class="chapter" data-level="6.1.9" data-path="cleland.html"><a href="cleland.html#meanc-2"><i class="fa fa-check"></i><b>6.1.9</b> meanc</a></li>
+<li class="chapter" data-level="6.1.10" data-path="cleland.html"><a href="cleland.html#maxc-2"><i class="fa fa-check"></i><b>6.1.10</b> maxc</a></li>
+<li class="chapter" data-level="6.1.11" data-path="cleland.html"><a href="cleland.html#minc-2"><i class="fa fa-check"></i><b>6.1.11</b> minc</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="cleland.html"><a href="cleland.html#categorical-2"><i class="fa fa-check"></i><b>6.2</b> Categorical</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html"><i class="fa fa-check"></i><b>7</b> Kanku-Breakaways</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#continuous-3"><i class="fa fa-check"></i><b>7.1</b> Continuous</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#elev-3"><i class="fa fa-check"></i><b>7.1.1</b> elev</a></li>
+<li class="chapter" data-level="7.1.2" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#qslope-3"><i class="fa fa-check"></i><b>7.1.2</b> qslope</a></li>
+<li class="chapter" data-level="7.1.3" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#qaspect-3"><i class="fa fa-check"></i><b>7.1.3</b> qaspect</a></li>
+<li class="chapter" data-level="7.1.4" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#qeastness-3"><i class="fa fa-check"></i><b>7.1.4</b> qeastness</a></li>
+<li class="chapter" data-level="7.1.5" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#qnorthness-3"><i class="fa fa-check"></i><b>7.1.5</b> qnorthness</a></li>
+<li class="chapter" data-level="7.1.6" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#profc-3"><i class="fa fa-check"></i><b>7.1.6</b> profc</a></li>
+<li class="chapter" data-level="7.1.7" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#planc-3"><i class="fa fa-check"></i><b>7.1.7</b> planc</a></li>
+<li class="chapter" data-level="7.1.8" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#twistc-3"><i class="fa fa-check"></i><b>7.1.8</b> twistc</a></li>
+<li class="chapter" data-level="7.1.9" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#meanc-3"><i class="fa fa-check"></i><b>7.1.9</b> meanc</a></li>
+<li class="chapter" data-level="7.1.10" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#maxc-3"><i class="fa fa-check"></i><b>7.1.10</b> maxc</a></li>
+<li class="chapter" data-level="7.1.11" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#minc-3"><i class="fa fa-check"></i><b>7.1.11</b> minc</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#categorical-3"><i class="fa fa-check"></i><b>7.2</b> Categorical</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">DEM comparison</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="cleland" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">6</span> Cleland<a href="cleland.html#cleland" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="continuous-2" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Continuous<a href="cleland.html#continuous-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="elev-2" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> elev<a href="cleland.html#elev-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Figure <a href="cleland.html#fig:rawelevCleland">6.1</a> shows rasters for elev and each window size for Cleland.</p>
+<p>Table <a href="cleland.html#fig:contFigelevCleland">6.2</a> shows boxplots for each decile of elev, allowing a comparison of values within each DEM across different ranges of elev. Deciles are based on the values in the reference DEM: Ag.</p>
+<p>Figure <a href="cleland.html#fig:plotelevCleland">6.3</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="cleland.html#fig:diffPlotelevCleland">6.4</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure"><span style="display:block;" id="fig:rawelevCleland"></span>
+<img src="_main_files/figure-html/rawelevCleland-1.png" alt="elev raster for each DEM" width="672" />
+<p class="caption">
+Figure 6.1: elev raster for each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:contFigelevCleland"></span>
+<img src="_main_files/figure-html/contFigelevCleland-1.png" alt="Boxplots within deciles for each DEM" width="672" />
+<p class="caption">
+Figure 6.2: Boxplots within deciles for each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:plotelevCleland"></span>
+<img src="_main_files/figure-html/plotelevCleland-1.png" alt="elev results for the each DEM" width="672" />
+<p class="caption">
+Figure 6.3: elev results for the each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:diffPlotelevCleland"></span>
+<img src="_main_files/figure-html/diffPlotelevCleland-1.png" alt="elev difference between the best available (reference) DEM and each individual DEM for Cleland" width="672" />
+<p class="caption">
+Figure 6.4: elev difference between the best available (reference) DEM and each individual DEM for Cleland
+</p>
+</div>
+</div>
+<div id="qslope-2" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> qslope<a href="cleland.html#qslope-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Figure <a href="cleland.html#fig:rawqslopeCleland">6.5</a> shows rasters for qslope and each window size for Cleland.</p>
+<p>Table <a href="cleland.html#fig:contFigqslopeCleland">6.6</a> shows boxplots for each decile of qslope, allowing a comparison of values within each DEM across different ranges of qslope. Deciles are based on the values in the reference DEM: Ag.</p>
+<p>Figure <a href="cleland.html#fig:plotqslopeCleland">6.7</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="cleland.html#fig:diffPlotqslopeCleland">6.8</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure"><span style="display:block;" id="fig:rawqslopeCleland"></span>
+<img src="_main_files/figure-html/rawqslopeCleland-1.png" alt="qslope raster for each DEM" width="672" />
+<p class="caption">
+Figure 6.5: qslope raster for each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:contFigqslopeCleland"></span>
+<img src="_main_files/figure-html/contFigqslopeCleland-1.png" alt="Boxplots within deciles for each DEM" width="672" />
+<p class="caption">
+Figure 6.6: Boxplots within deciles for each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:plotqslopeCleland"></span>
+<img src="_main_files/figure-html/plotqslopeCleland-1.png" alt="qslope results for the each DEM" width="672" />
+<p class="caption">
+Figure 6.7: qslope results for the each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:diffPlotqslopeCleland"></span>
+<img src="_main_files/figure-html/diffPlotqslopeCleland-1.png" alt="qslope difference between the best available (reference) DEM and each individual DEM for Cleland" width="672" />
+<p class="caption">
+Figure 6.8: qslope difference between the best available (reference) DEM and each individual DEM for Cleland
+</p>
+</div>
+</div>
+<div id="qaspect-2" class="section level3 hasAnchor" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> qaspect<a href="cleland.html#qaspect-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Figure <a href="cleland.html#fig:rawqaspectCleland">6.9</a> shows rasters for qaspect and each window size for Cleland.</p>
+<p>Table <a href="cleland.html#fig:contFigqaspectCleland">6.10</a> shows boxplots for each decile of qaspect, allowing a comparison of values within each DEM across different ranges of qaspect. Deciles are based on the values in the reference DEM: Ag.</p>
+<p>Figure <a href="cleland.html#fig:plotqaspectCleland">6.11</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="cleland.html#fig:diffPlotqaspectCleland">6.12</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure"><span style="display:block;" id="fig:rawqaspectCleland"></span>
+<img src="_main_files/figure-html/rawqaspectCleland-1.png" alt="qaspect raster for each DEM" width="672" />
+<p class="caption">
+Figure 6.9: qaspect raster for each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:contFigqaspectCleland"></span>
+<img src="_main_files/figure-html/contFigqaspectCleland-1.png" alt="Boxplots within deciles for each DEM" width="672" />
+<p class="caption">
+Figure 6.10: Boxplots within deciles for each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:plotqaspectCleland"></span>
+<img src="_main_files/figure-html/plotqaspectCleland-1.png" alt="qaspect results for the each DEM" width="672" />
+<p class="caption">
+Figure 6.11: qaspect results for the each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:diffPlotqaspectCleland"></span>
+<img src="_main_files/figure-html/diffPlotqaspectCleland-1.png" alt="qaspect difference between the best available (reference) DEM and each individual DEM for Cleland" width="672" />
+<p class="caption">
+Figure 6.12: qaspect difference between the best available (reference) DEM and each individual DEM for Cleland
+</p>
+</div>
+</div>
+<div id="qeastness-2" class="section level3 hasAnchor" number="6.1.4">
+<h3><span class="header-section-number">6.1.4</span> qeastness<a href="cleland.html#qeastness-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Figure <a href="cleland.html#fig:rawqeastnessCleland">6.13</a> shows rasters for qeastness and each window size for Cleland.</p>
+<p>Table <a href="cleland.html#fig:contFigqeastnessCleland">6.14</a> shows boxplots for each decile of qeastness, allowing a comparison of values within each DEM across different ranges of qeastness. Deciles are based on the values in the reference DEM: Ag.</p>
+<p>Figure <a href="cleland.html#fig:plotqeastnessCleland">6.15</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="cleland.html#fig:diffPlotqeastnessCleland">6.16</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure"><span style="display:block;" id="fig:rawqeastnessCleland"></span>
+<img src="_main_files/figure-html/rawqeastnessCleland-1.png" alt="qeastness raster for each DEM" width="672" />
+<p class="caption">
+Figure 6.13: qeastness raster for each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:contFigqeastnessCleland"></span>
+<img src="_main_files/figure-html/contFigqeastnessCleland-1.png" alt="Boxplots within deciles for each DEM" width="672" />
+<p class="caption">
+Figure 6.14: Boxplots within deciles for each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:plotqeastnessCleland"></span>
+<img src="_main_files/figure-html/plotqeastnessCleland-1.png" alt="qeastness results for the each DEM" width="672" />
+<p class="caption">
+Figure 6.15: qeastness results for the each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:diffPlotqeastnessCleland"></span>
+<img src="_main_files/figure-html/diffPlotqeastnessCleland-1.png" alt="qeastness difference between the best available (reference) DEM and each individual DEM for Cleland" width="672" />
+<p class="caption">
+Figure 6.16: qeastness difference between the best available (reference) DEM and each individual DEM for Cleland
+</p>
+</div>
+</div>
+<div id="qnorthness-2" class="section level3 hasAnchor" number="6.1.5">
+<h3><span class="header-section-number">6.1.5</span> qnorthness<a href="cleland.html#qnorthness-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Figure <a href="cleland.html#fig:rawqnorthnessCleland">6.17</a> shows rasters for qnorthness and each window size for Cleland.</p>
+<p>Table <a href="cleland.html#fig:contFigqnorthnessCleland">6.18</a> shows boxplots for each decile of qnorthness, allowing a comparison of values within each DEM across different ranges of qnorthness. Deciles are based on the values in the reference DEM: Ag.</p>
+<p>Figure <a href="cleland.html#fig:plotqnorthnessCleland">6.19</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="cleland.html#fig:diffPlotqnorthnessCleland">6.20</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure"><span style="display:block;" id="fig:rawqnorthnessCleland"></span>
+<img src="_main_files/figure-html/rawqnorthnessCleland-1.png" alt="qnorthness raster for each DEM" width="672" />
+<p class="caption">
+Figure 6.17: qnorthness raster for each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:contFigqnorthnessCleland"></span>
+<img src="_main_files/figure-html/contFigqnorthnessCleland-1.png" alt="Boxplots within deciles for each DEM" width="672" />
+<p class="caption">
+Figure 6.18: Boxplots within deciles for each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:plotqnorthnessCleland"></span>
+<img src="_main_files/figure-html/plotqnorthnessCleland-1.png" alt="qnorthness results for the each DEM" width="672" />
+<p class="caption">
+Figure 6.19: qnorthness results for the each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:diffPlotqnorthnessCleland"></span>
+<img src="_main_files/figure-html/diffPlotqnorthnessCleland-1.png" alt="qnorthness difference between the best available (reference) DEM and each individual DEM for Cleland" width="672" />
+<p class="caption">
+Figure 6.20: qnorthness difference between the best available (reference) DEM and each individual DEM for Cleland
+</p>
+</div>
+</div>
+<div id="profc-2" class="section level3 hasAnchor" number="6.1.6">
+<h3><span class="header-section-number">6.1.6</span> profc<a href="cleland.html#profc-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Figure <a href="cleland.html#fig:rawprofcCleland">6.21</a> shows rasters for profc and each window size for Cleland.</p>
+<p>Table <a href="cleland.html#fig:contFigprofcCleland">6.22</a> shows boxplots for each decile of profc, allowing a comparison of values within each DEM across different ranges of profc. Deciles are based on the values in the reference DEM: Ag.</p>
+<p>Figure <a href="cleland.html#fig:plotprofcCleland">6.23</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="cleland.html#fig:diffPlotprofcCleland">6.24</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure"><span style="display:block;" id="fig:rawprofcCleland"></span>
+<img src="_main_files/figure-html/rawprofcCleland-1.png" alt="profc raster for each DEM" width="672" />
+<p class="caption">
+Figure 6.21: profc raster for each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:contFigprofcCleland"></span>
+<img src="_main_files/figure-html/contFigprofcCleland-1.png" alt="Boxplots within deciles for each DEM" width="672" />
+<p class="caption">
+Figure 6.22: Boxplots within deciles for each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:plotprofcCleland"></span>
+<img src="_main_files/figure-html/plotprofcCleland-1.png" alt="profc results for the each DEM" width="672" />
+<p class="caption">
+Figure 6.23: profc results for the each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:diffPlotprofcCleland"></span>
+<img src="_main_files/figure-html/diffPlotprofcCleland-1.png" alt="profc difference between the best available (reference) DEM and each individual DEM for Cleland" width="672" />
+<p class="caption">
+Figure 6.24: profc difference between the best available (reference) DEM and each individual DEM for Cleland
+</p>
+</div>
+</div>
+<div id="planc-2" class="section level3 hasAnchor" number="6.1.7">
+<h3><span class="header-section-number">6.1.7</span> planc<a href="cleland.html#planc-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Figure <a href="cleland.html#fig:rawplancCleland">6.25</a> shows rasters for planc and each window size for Cleland.</p>
+<p>Table <a href="cleland.html#fig:contFigplancCleland">6.26</a> shows boxplots for each decile of planc, allowing a comparison of values within each DEM across different ranges of planc. Deciles are based on the values in the reference DEM: Ag.</p>
+<p>Figure <a href="cleland.html#fig:plotplancCleland">6.27</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="cleland.html#fig:diffPlotplancCleland">6.28</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure"><span style="display:block;" id="fig:rawplancCleland"></span>
+<img src="_main_files/figure-html/rawplancCleland-1.png" alt="planc raster for each DEM" width="672" />
+<p class="caption">
+Figure 6.25: planc raster for each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:contFigplancCleland"></span>
+<img src="_main_files/figure-html/contFigplancCleland-1.png" alt="Boxplots within deciles for each DEM" width="672" />
+<p class="caption">
+Figure 6.26: Boxplots within deciles for each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:plotplancCleland"></span>
+<img src="_main_files/figure-html/plotplancCleland-1.png" alt="planc results for the each DEM" width="672" />
+<p class="caption">
+Figure 6.27: planc results for the each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:diffPlotplancCleland"></span>
+<img src="_main_files/figure-html/diffPlotplancCleland-1.png" alt="planc difference between the best available (reference) DEM and each individual DEM for Cleland" width="672" />
+<p class="caption">
+Figure 6.28: planc difference between the best available (reference) DEM and each individual DEM for Cleland
+</p>
+</div>
+</div>
+<div id="twistc-2" class="section level3 hasAnchor" number="6.1.8">
+<h3><span class="header-section-number">6.1.8</span> twistc<a href="cleland.html#twistc-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Figure <a href="cleland.html#fig:rawtwistcCleland">6.29</a> shows rasters for twistc and each window size for Cleland.</p>
+<p>Table <a href="cleland.html#fig:contFigtwistcCleland">6.30</a> shows boxplots for each decile of twistc, allowing a comparison of values within each DEM across different ranges of twistc. Deciles are based on the values in the reference DEM: Ag.</p>
+<p>Figure <a href="cleland.html#fig:plottwistcCleland">6.31</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="cleland.html#fig:diffPlottwistcCleland">6.32</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure"><span style="display:block;" id="fig:rawtwistcCleland"></span>
+<img src="_main_files/figure-html/rawtwistcCleland-1.png" alt="twistc raster for each DEM" width="672" />
+<p class="caption">
+Figure 6.29: twistc raster for each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:contFigtwistcCleland"></span>
+<img src="_main_files/figure-html/contFigtwistcCleland-1.png" alt="Boxplots within deciles for each DEM" width="672" />
+<p class="caption">
+Figure 6.30: Boxplots within deciles for each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:plottwistcCleland"></span>
+<img src="_main_files/figure-html/plottwistcCleland-1.png" alt="twistc results for the each DEM" width="672" />
+<p class="caption">
+Figure 6.31: twistc results for the each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:diffPlottwistcCleland"></span>
+<img src="_main_files/figure-html/diffPlottwistcCleland-1.png" alt="twistc difference between the best available (reference) DEM and each individual DEM for Cleland" width="672" />
+<p class="caption">
+Figure 6.32: twistc difference between the best available (reference) DEM and each individual DEM for Cleland
+</p>
+</div>
+</div>
+<div id="meanc-2" class="section level3 hasAnchor" number="6.1.9">
+<h3><span class="header-section-number">6.1.9</span> meanc<a href="cleland.html#meanc-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Figure <a href="cleland.html#fig:rawmeancCleland">6.33</a> shows rasters for meanc and each window size for Cleland.</p>
+<p>Table <a href="cleland.html#fig:contFigmeancCleland">6.34</a> shows boxplots for each decile of meanc, allowing a comparison of values within each DEM across different ranges of meanc. Deciles are based on the values in the reference DEM: Ag.</p>
+<p>Figure <a href="cleland.html#fig:plotmeancCleland">6.35</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="cleland.html#fig:diffPlotmeancCleland">6.36</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure"><span style="display:block;" id="fig:rawmeancCleland"></span>
+<img src="_main_files/figure-html/rawmeancCleland-1.png" alt="meanc raster for each DEM" width="672" />
+<p class="caption">
+Figure 6.33: meanc raster for each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:contFigmeancCleland"></span>
+<img src="_main_files/figure-html/contFigmeancCleland-1.png" alt="Boxplots within deciles for each DEM" width="672" />
+<p class="caption">
+Figure 6.34: Boxplots within deciles for each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:plotmeancCleland"></span>
+<img src="_main_files/figure-html/plotmeancCleland-1.png" alt="meanc results for the each DEM" width="672" />
+<p class="caption">
+Figure 6.35: meanc results for the each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:diffPlotmeancCleland"></span>
+<img src="_main_files/figure-html/diffPlotmeancCleland-1.png" alt="meanc difference between the best available (reference) DEM and each individual DEM for Cleland" width="672" />
+<p class="caption">
+Figure 6.36: meanc difference between the best available (reference) DEM and each individual DEM for Cleland
+</p>
+</div>
+</div>
+<div id="maxc-2" class="section level3 hasAnchor" number="6.1.10">
+<h3><span class="header-section-number">6.1.10</span> maxc<a href="cleland.html#maxc-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Figure <a href="cleland.html#fig:rawmaxcCleland">6.37</a> shows rasters for maxc and each window size for Cleland.</p>
+<p>Table <a href="cleland.html#fig:contFigmaxcCleland">6.38</a> shows boxplots for each decile of maxc, allowing a comparison of values within each DEM across different ranges of maxc. Deciles are based on the values in the reference DEM: Ag.</p>
+<p>Figure <a href="cleland.html#fig:plotmaxcCleland">6.39</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="cleland.html#fig:diffPlotmaxcCleland">6.40</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure"><span style="display:block;" id="fig:rawmaxcCleland"></span>
+<img src="_main_files/figure-html/rawmaxcCleland-1.png" alt="maxc raster for each DEM" width="672" />
+<p class="caption">
+Figure 6.37: maxc raster for each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:contFigmaxcCleland"></span>
+<img src="_main_files/figure-html/contFigmaxcCleland-1.png" alt="Boxplots within deciles for each DEM" width="672" />
+<p class="caption">
+Figure 6.38: Boxplots within deciles for each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:plotmaxcCleland"></span>
+<img src="_main_files/figure-html/plotmaxcCleland-1.png" alt="maxc results for the each DEM" width="672" />
+<p class="caption">
+Figure 6.39: maxc results for the each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:diffPlotmaxcCleland"></span>
+<img src="_main_files/figure-html/diffPlotmaxcCleland-1.png" alt="maxc difference between the best available (reference) DEM and each individual DEM for Cleland" width="672" />
+<p class="caption">
+Figure 6.40: maxc difference between the best available (reference) DEM and each individual DEM for Cleland
+</p>
+</div>
+</div>
+<div id="minc-2" class="section level3 hasAnchor" number="6.1.11">
+<h3><span class="header-section-number">6.1.11</span> minc<a href="cleland.html#minc-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Figure <a href="cleland.html#fig:rawmincCleland">6.41</a> shows rasters for minc and each window size for Cleland.</p>
+<p>Table <a href="cleland.html#fig:contFigmincCleland">6.42</a> shows boxplots for each decile of minc, allowing a comparison of values within each DEM across different ranges of minc. Deciles are based on the values in the reference DEM: Ag.</p>
+<p>Figure <a href="cleland.html#fig:plotmincCleland">6.43</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="cleland.html#fig:diffPlotmincCleland">6.44</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure"><span style="display:block;" id="fig:rawmincCleland"></span>
+<img src="_main_files/figure-html/rawmincCleland-1.png" alt="minc raster for each DEM" width="672" />
+<p class="caption">
+Figure 6.41: minc raster for each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:contFigmincCleland"></span>
+<img src="_main_files/figure-html/contFigmincCleland-1.png" alt="Boxplots within deciles for each DEM" width="672" />
+<p class="caption">
+Figure 6.42: Boxplots within deciles for each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:plotmincCleland"></span>
+<img src="_main_files/figure-html/plotmincCleland-1.png" alt="minc results for the each DEM" width="672" />
+<p class="caption">
+Figure 6.43: minc results for the each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:diffPlotmincCleland"></span>
+<img src="_main_files/figure-html/diffPlotmincCleland-1.png" alt="minc difference between the best available (reference) DEM and each individual DEM for Cleland" width="672" />
+<p class="caption">
+Figure 6.44: minc difference between the best available (reference) DEM and each individual DEM for Cleland
+</p>
+</div>
+</div>
+</div>
+<div id="categorical-2" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Categorical<a href="cleland.html#categorical-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Table <a href="cleland.html#tab:categTabCleland">6.1</a> shows the proportion of each DEM classifed to each landform element (also see Figure <a href="cleland.html#fig:categCountCleland">6.46</a>.</p>
+<p>Figure <a href="cleland.html#fig:categCleland">6.45</a> shows a landscape classification for each reprojected area.</p>
+<table class="table table-striped table-hover table-condensed table-responsive" style="color: black; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:categTabCleland">Table 6.1: </span><span id="tab:categTabCleland">Table 6.2: </span>Proportion of Cleland area classified to each landform element
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+category
+</th>
+<th style="text-align:right;">
+Ag
+</th>
+<th style="text-align:right;">
+ALOS
+</th>
+<th style="text-align:right;">
+Copernicus
+</th>
+<th style="text-align:right;">
+SRTM
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+canyon
+</td>
+<td style="text-align:right;">
+0.0054
+</td>
+<td style="text-align:right;">
+0.006632
+</td>
+<td style="text-align:right;">
+0.0058552
+</td>
+<td style="text-align:right;">
+0.00101
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+midslope drainage
+</td>
+<td style="text-align:right;">
+0.0016
+</td>
+<td style="text-align:right;">
+0.005773
+</td>
+<td style="text-align:right;">
+0.0045799
+</td>
+<td style="text-align:right;">
+0.00016
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+upland drainage
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+0.000014
+</td>
+<td style="text-align:right;">
+0.0000046
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+u-shaped valley
+</td>
+<td style="text-align:right;">
+0.0386
+</td>
+<td style="text-align:right;">
+0.046805
+</td>
+<td style="text-align:right;">
+0.0442271
+</td>
+<td style="text-align:right;">
+0.01564
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+plains
+</td>
+<td style="text-align:right;">
+0.2775
+</td>
+<td style="text-align:right;">
+0.223508
+</td>
+<td style="text-align:right;">
+0.2252491
+</td>
+<td style="text-align:right;">
+0.32782
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+open slopes
+</td>
+<td style="text-align:right;">
+0.6456
+</td>
+<td style="text-align:right;">
+0.666441
+</td>
+<td style="text-align:right;">
+0.6703126
+</td>
+<td style="text-align:right;">
+0.63463
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+upper slopes
+</td>
+<td style="text-align:right;">
+0.0270
+</td>
+<td style="text-align:right;">
+0.037119
+</td>
+<td style="text-align:right;">
+0.0383856
+</td>
+<td style="text-align:right;">
+0.01884
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+midslopes ridges
+</td>
+<td style="text-align:right;">
+0.0014
+</td>
+<td style="text-align:right;">
+0.006513
+</td>
+<td style="text-align:right;">
+0.0053158
+</td>
+<td style="text-align:right;">
+0.00021
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mountain tops
+</td>
+<td style="text-align:right;">
+0.0030
+</td>
+<td style="text-align:right;">
+0.007194
+</td>
+<td style="text-align:right;">
+0.0060700
+</td>
+<td style="text-align:right;">
+0.00169
+</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<div class="figure"><span style="display:block;" id="fig:categCleland"></span>
+<img src="_main_files/figure-html/categCleland-1.png" alt="Categorical representation of Cleland" width="672" />
+<p class="caption">
+Figure 6.45: Categorical representation of Cleland
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:categCountCleland"></span>
+<img src="_main_files/figure-html/categCountCleland-1.png" alt="Proportion of categorised Cleland area in each of several classification classes" width="672" />
+<p class="caption">
+Figure 6.46: Proportion of categorised Cleland area in each of several classification classes
+</p>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="hambidge.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="kanku-breakaways.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
