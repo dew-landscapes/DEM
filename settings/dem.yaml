@@ -1,0 +1,24 @@
+
+ALOS:
+  file: "SA_ALOS_AW3D30v4_DSM_30m.tif"
+  type: DSM
+  
+# AW3D30:
+#   file: "ALOS3D_DSM3.2_30m_WGS84.ige"
+#   type: DSM
+  
+Copernicus:
+  file: SA_Copernicus_GLO30v2022_1_DSM_30m.tif
+  type: DSM
+  
+Outback:
+  file: AW3D_Outback_2006_2011_DTM_10m_WGS84.tif
+  type: DTM
+  
+Ag:
+  file: WorldDEMNeo_SAAgriculturalZone_2017_2021_DTM_10m_LCC.tif
+  type: DTM
+
+SRTM:
+  file: Australia_SRTM_Feb2000_DEM-H_30m_WGS84.tif
+  type: DTM

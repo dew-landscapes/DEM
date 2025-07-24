@@ -56,17 +56,10 @@ description: "This work aims to compare digital terrain models as potential inpu
   
   tmap::tmap_mode("plot")
   
-  tmap::tmap_options(basemaps = c("OpenStreetMap.Mapnik"
+  tmap::tmap_options(basemap.server  = c("OpenStreetMap.Mapnik"
                                   , "Esri.WorldImagery"
                                   )
-                     , limits = c(facets.view = 16)
                      )
-
-```
-
-```{r stuff}
-
-  if(!exists("categ")) source("sampleDEM.R")
 
 ```
 

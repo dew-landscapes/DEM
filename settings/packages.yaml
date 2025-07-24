@@ -1,0 +1,28 @@
+packages:
+  - "base"
+# reports
+  - "knitr"
+  - "rmarkdown"
+  - "bookdown"
+  - "kableExtra"
+# tidyverse
+  - "dplyr"
+  - "tidyr"
+  - "purrr"
+  - "ggplot2"
+  - "tibble"
+  - "readr"
+  - "forcats"
+  - "stringr"
+  - "lubridate"
+# misc
+  - "fs"
+  - "ggridges"
+# gis
+  - "terra"
+  - "sf"
+  - "tmap"
+  - "MultiscaleDTM"
+# env
+  - "envRaster"
+  - "envTargets"

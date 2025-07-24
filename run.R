@@ -1,14 +1,15 @@
 
-  if(!exists("categ")) source("sampleDEM.R")
-    
-  # Clean up previous knits
-  
-  fs::file_delete(fs::dir_ls(regexp = "_book|_main"))
-  
-  bookdown::render_book(output_dir = "docs")
-  
-  envFunc::git_commit_env(paste0("Successful render of report: "
-                                 , format(Sys.Date(), "%Y-%m-%d")
-                                 )
-                          )
-  
+options(scipen = 999)
+
+envFunc::check_packages(yaml::read_yaml("settings/packages.yaml")$packages
+                        , lib = TRUE
+                        )
+
+source("dem.R")
+
+purrr::map(fs::dir_ls(regexp = "_book|_main", recurse = 1)
+           , \(x) if(file.exists(x)) fs::file_delete(x)
+           )
+
+bookdown::render_book(output_dir = "docs")
+

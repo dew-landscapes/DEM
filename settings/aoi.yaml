@@ -1,0 +1,24 @@
+
+Bakara:
+  polygons: "parks"
+  filt_col: "RESNAME"
+  filt_level: "Bakara"
+  buffer: 5000
+
+Hambidge:
+  polygons: "parks"
+  filt_col: "RESNAME"
+  filt_level: "Hambidge"
+  buffer: 5000
+  
+Cleland:
+  polygons: "parks"
+  filt_col: "RESNAME"
+  filt_level: "Cleland"
+  buffer: 5000
+
+Kanku-Breakaways:
+  polygons: "parks"
+  filt_col: "RESNAME"
+  filt_level: "Kanku"
+  buffer: 5000

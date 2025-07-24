@@ -1,0 +1,14 @@
+# crs
+crs:
+  proj: 8059 # for projected
+  decdeg: 4326 # for decimal degrees
+
+  
+extent:
+  vector: "sa_br_dissolve"
+  filt_col: NULL
+  level: NULL
+  buffer: 0
+grain:
+  period: "P120M--P3M"
+  res: 30

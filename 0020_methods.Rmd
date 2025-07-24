@@ -9,30 +9,16 @@ DEMs were obtained for two small sample areas in South Australia:
 
 Both area have a mix of native vegetation and agricultural land.
 
-Table \@ref(tab:DEMs) lists the available DEMs, include the 'short' name used throughout the document.
+Table \@ref(tab:DEMs) lists the available DEMs.
 
 ```{r DEMs}
 
-  rasters %>%
-    dplyr::left_join(luraster %>%
-                       dplyr::select(-short)
-                     ) %>%
-    dplyr::arrange(area, short) %>%
-    dplyr::mutate(reference = as.logical(ref_flag)
-                  , short = paste0("["
-                                   , short
-                                   , "]("
-                                   , source
-                                   , ")"
-                                   )
-                  ) %>%
-    dplyr::select(area
-                  #, file = name
-                  , `short name` = short
-                  , reference
-                  , `original resolution (cm)` = original_cm
-                  , licence
-                  ) %>%
+window |>
+  dplyr::select(dem_name
+                , type
+                , file
+                , original_cm
+                ) |>
     kableExtra::kable(caption = paste0("Sample DEMs")
                       , format.args = list(digits = 2)
                       , "html", escape = F
@@ -55,12 +41,12 @@ For each DEM, the following processing was applied:
 
 * reprojected into GDA 2020
 * masked to the minimum available overlap between all DEMs (in each area)
-* aggregated or disaggregated to roughly `r settings$target_res` m from original resolution
-* reprojected into the same `r terra::res(samples$ras2020[[1]])[1]` m raster
+* aggregated or disaggregated to roughly `r settings$grain$res` m from original resolution
+* reprojected into the same `r terra::res(window$base[[1]])[1]` m raster
 * generation of derived rasters via:
-    + `Qfit` function in the `MultiscaleDTM` package `r envReport::cite_package("MultiscaleDTM")` using `v` argument (window size): `r windows$window %>% envFunc::vec_to_sentence()` cells
-    + `land_class` function in the`envRaster` package `r envReport::cite_package("envRaster")` using `r windows$window %>% envFunc::vec_to_sentence()` cells for the small window and `r windows$window * 3` cells for the large window as input to the 10 class landscape classification
-* sample of the derived rasters `r settings$sample_n` times to generate a range of visualisations and summary statistics.
+    + `Qfit` function in the `MultiscaleDTM` package `r envReport::cite_package("MultiscaleDTM")` using `v` argument (window size): `r analysis$window %>% envFunc::vec_to_sentence()` cells
+    + `land_class` function in the`envRaster` package `r envReport::cite_package("envRaster")` using `r analysis$sn %>% envFunc::vec_to_sentence()` cells for the small window and `r analysis$ln` cells for the large window as input to the 10 class landscape classification
+* all values from the derived rasters used to generate a range of visualisations and summary statistics.
     
 The `Qfit` function generates several continuous and one categorical variable for a digital terrain model:
 
@@ -76,7 +62,7 @@ The data import, cleaning, analysis and report writing were done in a scripted w
 
 ```{r packages}
 
-  knitr::kable(tibble::tibble(package = packages) %>%
+  knitr::kable(tibble::tibble(package = yaml::read_yaml("settings/packages.yaml")$packages) %>%
                  dplyr::mutate(citation = paste0("@R-"
                                                  , package
                                                  )

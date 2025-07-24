@@ -5,7 +5,7 @@
 
   # this loops through area_rmd.Rmd, generating the results for each report card
 
-  for (i in unique(luraster$area)) {
+  for (i in unique(window$aoi_name)) {
     
     areaID <- i
     

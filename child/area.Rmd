@@ -12,7 +12,12 @@
 ```{r dataCont{{areaID}}}
 
   cont_area <- cont %>%
-    dplyr::filter(area == areaID)
+    dplyr::filter(aoi_name == areaID)
+
+  terr <- window |>
+    dplyr::filter(aoi_name == areaID) |>
+    dplyr::pull(l) %>%
+    `[[`(1)
 
 ```
 
@@ -49,17 +54,18 @@ Figure \@ref(fig:categ{{areaID}}) shows a landscape classification for each repr
 ```{r categTab{{areaID}}}
 
   categ_area <- categ %>%
-    dplyr::filter(area == areaID)
+    dplyr::filter(aoi_name == areaID)
 
   categ_area %>%
-    dplyr::select(short
-                  , value
+    dplyr::select(dem_name
+                  , category
                   , prop
                   ) %>%
-    tidyr::pivot_wider(names_from = value, values_from = prop) %>%
+    tidyr::pivot_wider(names_from = dem_name, values_from = prop) %>%
+    dplyr::select(category, !!rlang::ensym(reference), everything()) |>
     kableExtra::kable(caption = paste0("Proportion of "
                                        , areaID
-                                       , " sample area (and each window size) classified to each landform element"
+                                       , " area classified to each landform element"
                                        )
                       , format.args = list(digits = 2)
                       ) %>%
@@ -72,33 +78,16 @@ Figure \@ref(fig:categ{{areaID}}) shows a landscape classification for each repr
 
 ```{r categ{{areaID}}, fig.height = 10, fig.cap = paste0("Categorical representation of the ", areaID, " sample")}
 
-  a <- terr %>%
-    dplyr::filter(area == areaID) %>%
-    dplyr::mutate(feat = purrr::map(terr
-                                    , ~terra::subset(., subset = tail(names(.), 1))
-                                    )
-                  , name = paste0(short, "_", window, "x", window)
-                  )
-  
-  feat <- a$classes %>%
-    terra::rast() %>%
-    setNames(a$short)
-  
-  ggplot() +
-    tidyterra::geom_spatraster(data = feat) +
-    facet_wrap(~lyr
-               , ncol = 2
-               ) +
-    tidyterra::scale_fill_hypso_d(palette = "dem_screen") +
-    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  terra::plot(terr)
 
 ```
 
-```{r categCount{{areaID}}, fig.cap = paste0("Proportion of categorised ", areaID, " sample area in each of several classification classes")}
+```{r categCount{{areaID}}, fig.cap = paste0("Proportion of categorised ", areaID, " sample aoi_name in each of several classification classes")}
 
   ggplot(categ_area %>%
-           dplyr::filter(area == areaID)
-         , aes(value, prop, fill = short)
+           dplyr::filter(aoi_name == areaID) |>
+           dplyr::mutate(dem_name = forcats::fct_relevel(dem_name, reference))
+         , aes(category, prop, fill = dem_name)
          ) +
     geom_col(position = "dodge") +
     #facet_grid(~ window) +
