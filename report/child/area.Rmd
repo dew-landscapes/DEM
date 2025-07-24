@@ -17,7 +17,7 @@
   terr <- window |>
     dplyr::filter(aoi_name == areaID) |>
     dplyr::pull(l) %>%
-    `[[`(1)
+    terra::rast()
 
 ```
 
@@ -78,7 +78,7 @@ Figure \@ref(fig:categ{{areaID}}) shows a landscape classification for each repr
 
 ```{r categ{{areaID}}, fig.cap = paste0("Categorical representation of ", areaID)}
 
-  terra::plot(terr)
+  terra::panel(terr)
 
 ```
 
