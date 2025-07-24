@@ -141,9 +141,9 @@ cont <- window |>
                       , names_to = "metric"
                       ) %>%
   dplyr::filter(!is.na(value)) %>%
-  dplyr::add_count(aoi_name, metric, cell, name = "count") %>%
   # ensure only cells that have data from each DEM are included
-  dplyr::group_by(aoi_name, metric, cell) %>%
+  dplyr::add_count(aoi_name, metric, cell, name = "count") %>%
+  dplyr::group_by(aoi_name) %>%
   dplyr::filter(count == max(count)) %>%
   dplyr::ungroup() %>%
   # find reference value
@@ -176,8 +176,9 @@ categ <- window |>
                 ) |>
   tidyr::unnest(cols = c(vals_l))  %>%
   dplyr::filter(!is.na(category)) %>%
+  # ensure only cells that have data from each DEM are included
   dplyr::add_count(aoi_name, cell, name = "count") %>%
-  dplyr::group_by(aoi_name, cell) %>%
+  dplyr::group_by(aoi_name) %>%
   dplyr::filter(count == max(count)) %>%
   dplyr::ungroup() %>%
   dplyr::count(aoi_name, dem_name, original_cm, category) %>%
@@ -189,16 +190,16 @@ categ <- window |>
   dplyr::arrange(aoi_name, dem_name, original_cm)
   
 categ_compare_ref <- window |>
-  dplyr::filter(aoi_name == "Bakara") |> # TESTING
   dplyr::select(aoi_name, dem_name
                 , is_ref
                 , vals_l
                 , original_cm
                 ) |>
-  tidyr::unnest(cols = c(vals_l))  %>%
+  tidyr::unnest(cols = c(vals_l)) %>%
   dplyr::filter(!is.na(category)) %>%
+  # ensure only cells that have data from each DEM are included
   dplyr::add_count(aoi_name, cell, name = "count") %>%
-  dplyr::group_by(aoi_name, cell) %>%
+  dplyr::group_by(aoi_name) %>%
   dplyr::filter(count == max(count)) %>%
   dplyr::ungroup() %>%
   dplyr::group_by(aoi_name, cell) %>%
