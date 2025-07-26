@@ -8,14 +8,14 @@ Table \@ref(tab:DEMs) lists the available DEMs.
 
 ```{r DEMs}
 
-window |>
+dem_df |>
   dplyr::distinct(dem_name
                   , type
-                  #, file
-                  , original_cm
+                  , file
+                  #, original_cm
                   , licence
                   ) |>
-    kableExtra::kable(caption = paste0("Sample DEMs")
+    kableExtra::kable(caption = paste0("Available DEMs")
                       , format.args = list(digits = 2)
                       , "html", escape = F
                       ) %>%
@@ -38,10 +38,10 @@ For each DEM, the following processing was applied:
 * reprojected into GDA 2020
 * masked to the minimum available overlap between all DEMs (in each area)
 * aggregated or disaggregated to roughly `r settings$grain$res` m from original resolution
-* reprojected into the same `r terra::res(window$base[[1]])[1]` m raster
+* reprojected into the same `r settings$grain$res` m raster
 * generation of derived rasters via:
-    + `Qfit` function in the `MultiscaleDTM` package `r envReport::cite_package("MultiscaleDTM")` using `v` argument (window size): `r analysis$window %>% envFunc::vec_to_sentence()` cells
-    + `land_class` function in the`envRaster` package `r envReport::cite_package("envRaster")` using `r analysis$sn %>% envFunc::vec_to_sentence()` cells for the small window and `r analysis$ln` cells for the large window as input to the 10 class landscape classification
+    + `Qfit` function in the `MultiscaleDTM` package `r envReport::cite_package("MultiscaleDTM")` using `v` argument (window size): `r settings_analysis$window %>% envFunc::vec_to_sentence()` cells
+    + `land_class` function in the`envRaster` package `r envReport::cite_package("envRaster")` using `r settings_analysis$sn %>% envFunc::vec_to_sentence()` cells for the small window and `r settings_analysis$ln` cells for the large window as input to the 10 class landscape classification
 * all values from the derived rasters used to generate a range of visualisations and summary statistics.
     
 The `Qfit` function generates several continuous and one categorical variable for a digital terrain model:

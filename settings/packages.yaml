@@ -15,6 +15,10 @@ packages:
   - "forcats"
   - "stringr"
   - "lubridate"
+# targets
+  - "targets"
+  - "tarchetypes"
+  - "geotargets"
 # misc
   - "fs"
   - "ggridges"

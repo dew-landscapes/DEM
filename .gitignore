@@ -7,3 +7,5 @@ data*
 out*
 common*
 shp*
+_targets/
+log/

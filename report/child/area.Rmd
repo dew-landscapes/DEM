@@ -11,13 +11,30 @@
 
 ```{r dataCont{{areaID}}}
 
-  cont_area <- cont %>%
-    dplyr::filter(aoi_name == areaID)
+cont_area <- cont %>%
+  dplyr::filter(aoi_name == areaID)
 
-  terr <- window |>
-    dplyr::filter(aoi_name == areaID) |>
-    dplyr::pull(l) %>%
-    terra::rast()
+reference <- results_df %>%
+  dplyr::filter(aoi_name == areaID
+                , is_ref
+                ) %>%
+  dplyr::pull(dem_name)
+
+terr <- l[results_df$aoi_name == areaID] |>
+  purrr::map(\(x) {
+    
+    levels(x) <- data.frame(ID = terra::values(x) |> as.vector() |> unique() |> sort()) %>%
+      dplyr::mutate(category = c("canyon", 
+                                 "midslope drainage", "upland drainage", "u-shaped valley", 
+                                 "plains", "open slopes", "upper slopes", "local ridges", 
+                                 "midslopes ridges", "mountain tops")[.$ID]
+      )
+    
+    return(x)
+    }
+    ) |>
+  terra::rast() |>
+  setNames(paste0(results_df$dem_name[results_df$aoi_name == areaID]))
 
 ```
 
@@ -53,23 +70,32 @@ Figure \@ref(fig:categ{{areaID}}) shows a landscape classification for each repr
 
 ```{r categTab{{areaID}}}
 
-  categ_area <- categ %>%
-    dplyr::filter(aoi_name == areaID)
+categ_area <- categ %>%
+  dplyr::filter(aoi_name == areaID) |>
+  dplyr::distinct()
 
-  categ_area %>%
-    dplyr::select(dem_name
-                  , category
-                  , prop
-                  ) %>%
-    tidyr::pivot_wider(names_from = dem_name, values_from = prop) %>%
-    dplyr::select(category, !!rlang::ensym(reference), everything()) |>
-    kableExtra::kable(caption = paste0("Proportion of "
-                                       , areaID
-                                       , " area classified to each landform element"
-                                       )
-                      , format.args = list(digits = 2)
-                      ) %>%
-    kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+categ_area %>%
+  dplyr::select(dem_name
+                , category
+                , prop
+                ) %>%
+  dplyr::left_join(tibble::tibble(category = 1:10
+                                  , landform = c("canyon", 
+                                          "midslope drainage", "upland drainage", "u-shaped valley", 
+                                          "plains", "open slopes", "upper slopes", "local ridges", 
+                                          "midslopes ridges", "mountain tops")
+                                  )
+                   ) |>
+  dplyr::select(-category) |>
+  tidyr::pivot_wider(names_from = dem_name, values_from = prop) %>%
+  dplyr::select(landform, !!rlang::ensym(reference), everything()) |>
+  kableExtra::kable(caption = paste0("Proportion of "
+                                     , areaID
+                                     , " area classified to each landform element"
+                                     )
+                    , format.args = list(digits = 2)
+                    ) %>%
+  kableExtra::kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
 
 
 ```

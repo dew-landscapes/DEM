@@ -1,225 +1,114 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Methods | DEM comparison</title>
-  <meta name="description" content="This work aims to compare digital terrain models as potential inputs to ecosystem modelling." />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="3 Methods | DEM comparison" />
-  <meta property="og:type" content="book" />
-  
-  <meta property="og:description" content="This work aims to compare digital terrain models as potential inputs to ecosystem modelling." />
-  
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Methods | DEM comparison" />
-  
-  <meta name="twitter:description" content="This work aims to compare digital terrain models as potential inputs to ecosystem modelling." />
-  
-
-<meta name="author" content="Nigel Willoughby" />
-<meta name="author" content="Department for Environment and Water" />
-
-
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="intro.html"/>
-<link rel="next" href="bakara.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-
-
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>3 Methods | DEM comparison</title>
+<meta name="author" content="Nigel Willoughby">
+<meta name="author" content="Department for Environment and Water">
+<meta name="description" content="3.1 DEMs DEMs have been obtained by DEW (for DEW-use only) for a large part of South Australia with resolution of roughly 10 m. Table 3.1 lists the available DEMs. Table 3.1: Available DEMs ...">
+<meta name="generator" content="bookdown 0.41 with bs4_book()">
+<meta property="og:title" content="3 Methods | DEM comparison">
+<meta property="og:type" content="book">
+<meta property="og:description" content="3.1 DEMs DEMs have been obtained by DEW (for DEW-use only) for a large part of South Australia with resolution of roughly 10 m. Table 3.1 lists the available DEMs. Table 3.1: Available DEMs ...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="3 Methods | DEM comparison">
+<meta name="twitter:description" content="3.1 DEMs DEMs have been obtained by DEW (for DEW-use only) for a large part of South Australia with resolution of roughly 10 m. Table 3.1 lists the available DEMs. Table 3.1: Available DEMs ...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
 <style type="text/css">
-  
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-</style>
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
-
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Aim</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Intro</a></li>
-<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="methods.html"><a href="methods.html#dems"><i class="fa fa-check"></i><b>3.1</b> DEMs</a></li>
-<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#processing"><i class="fa fa-check"></i><b>3.2</b> Processing</a></li>
-<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#workflow"><i class="fa fa-check"></i><b>3.3</b> Workflow</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="bakara.html"><a href="bakara.html"><i class="fa fa-check"></i><b>4</b> Bakara</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="bakara.html"><a href="bakara.html#continuous"><i class="fa fa-check"></i><b>4.1</b> Continuous</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="bakara.html"><a href="bakara.html#elev"><i class="fa fa-check"></i><b>4.1.1</b> elev</a></li>
-<li class="chapter" data-level="4.1.2" data-path="bakara.html"><a href="bakara.html#qslope"><i class="fa fa-check"></i><b>4.1.2</b> qslope</a></li>
-<li class="chapter" data-level="4.1.3" data-path="bakara.html"><a href="bakara.html#qaspect"><i class="fa fa-check"></i><b>4.1.3</b> qaspect</a></li>
-<li class="chapter" data-level="4.1.4" data-path="bakara.html"><a href="bakara.html#qeastness"><i class="fa fa-check"></i><b>4.1.4</b> qeastness</a></li>
-<li class="chapter" data-level="4.1.5" data-path="bakara.html"><a href="bakara.html#qnorthness"><i class="fa fa-check"></i><b>4.1.5</b> qnorthness</a></li>
-<li class="chapter" data-level="4.1.6" data-path="bakara.html"><a href="bakara.html#profc"><i class="fa fa-check"></i><b>4.1.6</b> profc</a></li>
-<li class="chapter" data-level="4.1.7" data-path="bakara.html"><a href="bakara.html#planc"><i class="fa fa-check"></i><b>4.1.7</b> planc</a></li>
-<li class="chapter" data-level="4.1.8" data-path="bakara.html"><a href="bakara.html#twistc"><i class="fa fa-check"></i><b>4.1.8</b> twistc</a></li>
-<li class="chapter" data-level="4.1.9" data-path="bakara.html"><a href="bakara.html#meanc"><i class="fa fa-check"></i><b>4.1.9</b> meanc</a></li>
-<li class="chapter" data-level="4.1.10" data-path="bakara.html"><a href="bakara.html#maxc"><i class="fa fa-check"></i><b>4.1.10</b> maxc</a></li>
-<li class="chapter" data-level="4.1.11" data-path="bakara.html"><a href="bakara.html#minc"><i class="fa fa-check"></i><b>4.1.11</b> minc</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="bakara.html"><a href="bakara.html#categorical"><i class="fa fa-check"></i><b>4.2</b> Categorical</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="hambidge.html"><a href="hambidge.html"><i class="fa fa-check"></i><b>5</b> Hambidge</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="hambidge.html"><a href="hambidge.html#continuous-1"><i class="fa fa-check"></i><b>5.1</b> Continuous</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="hambidge.html"><a href="hambidge.html#elev-1"><i class="fa fa-check"></i><b>5.1.1</b> elev</a></li>
-<li class="chapter" data-level="5.1.2" data-path="hambidge.html"><a href="hambidge.html#qslope-1"><i class="fa fa-check"></i><b>5.1.2</b> qslope</a></li>
-<li class="chapter" data-level="5.1.3" data-path="hambidge.html"><a href="hambidge.html#qaspect-1"><i class="fa fa-check"></i><b>5.1.3</b> qaspect</a></li>
-<li class="chapter" data-level="5.1.4" data-path="hambidge.html"><a href="hambidge.html#qeastness-1"><i class="fa fa-check"></i><b>5.1.4</b> qeastness</a></li>
-<li class="chapter" data-level="5.1.5" data-path="hambidge.html"><a href="hambidge.html#qnorthness-1"><i class="fa fa-check"></i><b>5.1.5</b> qnorthness</a></li>
-<li class="chapter" data-level="5.1.6" data-path="hambidge.html"><a href="hambidge.html#profc-1"><i class="fa fa-check"></i><b>5.1.6</b> profc</a></li>
-<li class="chapter" data-level="5.1.7" data-path="hambidge.html"><a href="hambidge.html#planc-1"><i class="fa fa-check"></i><b>5.1.7</b> planc</a></li>
-<li class="chapter" data-level="5.1.8" data-path="hambidge.html"><a href="hambidge.html#twistc-1"><i class="fa fa-check"></i><b>5.1.8</b> twistc</a></li>
-<li class="chapter" data-level="5.1.9" data-path="hambidge.html"><a href="hambidge.html#meanc-1"><i class="fa fa-check"></i><b>5.1.9</b> meanc</a></li>
-<li class="chapter" data-level="5.1.10" data-path="hambidge.html"><a href="hambidge.html#maxc-1"><i class="fa fa-check"></i><b>5.1.10</b> maxc</a></li>
-<li class="chapter" data-level="5.1.11" data-path="hambidge.html"><a href="hambidge.html#minc-1"><i class="fa fa-check"></i><b>5.1.11</b> minc</a></li>
-</ul></li>
-<li class="chapter" data-level="5.2" data-path="hambidge.html"><a href="hambidge.html#categorical-1"><i class="fa fa-check"></i><b>5.2</b> Categorical</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="cleland.html"><a href="cleland.html"><i class="fa fa-check"></i><b>6</b> Cleland</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="cleland.html"><a href="cleland.html#continuous-2"><i class="fa fa-check"></i><b>6.1</b> Continuous</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="cleland.html"><a href="cleland.html#elev-2"><i class="fa fa-check"></i><b>6.1.1</b> elev</a></li>
-<li class="chapter" data-level="6.1.2" data-path="cleland.html"><a href="cleland.html#qslope-2"><i class="fa fa-check"></i><b>6.1.2</b> qslope</a></li>
-<li class="chapter" data-level="6.1.3" data-path="cleland.html"><a href="cleland.html#qaspect-2"><i class="fa fa-check"></i><b>6.1.3</b> qaspect</a></li>
-<li class="chapter" data-level="6.1.4" data-path="cleland.html"><a href="cleland.html#qeastness-2"><i class="fa fa-check"></i><b>6.1.4</b> qeastness</a></li>
-<li class="chapter" data-level="6.1.5" data-path="cleland.html"><a href="cleland.html#qnorthness-2"><i class="fa fa-check"></i><b>6.1.5</b> qnorthness</a></li>
-<li class="chapter" data-level="6.1.6" data-path="cleland.html"><a href="cleland.html#profc-2"><i class="fa fa-check"></i><b>6.1.6</b> profc</a></li>
-<li class="chapter" data-level="6.1.7" data-path="cleland.html"><a href="cleland.html#planc-2"><i class="fa fa-check"></i><b>6.1.7</b> planc</a></li>
-<li class="chapter" data-level="6.1.8" data-path="cleland.html"><a href="cleland.html#twistc-2"><i class="fa fa-check"></i><b>6.1.8</b> twistc</a></li>
-<li class="chapter" data-level="6.1.9" data-path="cleland.html"><a href="cleland.html#meanc-2"><i class="fa fa-check"></i><b>6.1.9</b> meanc</a></li>
-<li class="chapter" data-level="6.1.10" data-path="cleland.html"><a href="cleland.html#maxc-2"><i class="fa fa-check"></i><b>6.1.10</b> maxc</a></li>
-<li class="chapter" data-level="6.1.11" data-path="cleland.html"><a href="cleland.html#minc-2"><i class="fa fa-check"></i><b>6.1.11</b> minc</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="cleland.html"><a href="cleland.html#categorical-2"><i class="fa fa-check"></i><b>6.2</b> Categorical</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html"><i class="fa fa-check"></i><b>7</b> Kanku-Breakaways</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#continuous-3"><i class="fa fa-check"></i><b>7.1</b> Continuous</a>
-<ul>
-<li class="chapter" data-level="7.1.1" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#elev-3"><i class="fa fa-check"></i><b>7.1.1</b> elev</a></li>
-<li class="chapter" data-level="7.1.2" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#qslope-3"><i class="fa fa-check"></i><b>7.1.2</b> qslope</a></li>
-<li class="chapter" data-level="7.1.3" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#qaspect-3"><i class="fa fa-check"></i><b>7.1.3</b> qaspect</a></li>
-<li class="chapter" data-level="7.1.4" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#qeastness-3"><i class="fa fa-check"></i><b>7.1.4</b> qeastness</a></li>
-<li class="chapter" data-level="7.1.5" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#qnorthness-3"><i class="fa fa-check"></i><b>7.1.5</b> qnorthness</a></li>
-<li class="chapter" data-level="7.1.6" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#profc-3"><i class="fa fa-check"></i><b>7.1.6</b> profc</a></li>
-<li class="chapter" data-level="7.1.7" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#planc-3"><i class="fa fa-check"></i><b>7.1.7</b> planc</a></li>
-<li class="chapter" data-level="7.1.8" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#twistc-3"><i class="fa fa-check"></i><b>7.1.8</b> twistc</a></li>
-<li class="chapter" data-level="7.1.9" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#meanc-3"><i class="fa fa-check"></i><b>7.1.9</b> meanc</a></li>
-<li class="chapter" data-level="7.1.10" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#maxc-3"><i class="fa fa-check"></i><b>7.1.10</b> maxc</a></li>
-<li class="chapter" data-level="7.1.11" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#minc-3"><i class="fa fa-check"></i><b>7.1.11</b> minc</a></li>
-</ul></li>
-<li class="chapter" data-level="7.2" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#categorical-3"><i class="fa fa-check"></i><b>7.2</b> Categorical</a></li>
-</ul></li>
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">DEM comparison</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">DEM comparison</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Aim</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">2</span> Intro</a></li>
+<li><a class="active" href="methods.html"><span class="header-section-number">3</span> Methods</a></li>
+<li><a class="" href="bakara.html"><span class="header-section-number">4</span> Bakara</a></li>
+<li><a class="" href="cleland.html"><span class="header-section-number">5</span> Cleland</a></li>
+<li><a class="" href="hambidge.html"><span class="header-section-number">6</span> Hambidge</a></li>
+<li><a class="" href="kanku-breakaways.html"><span class="header-section-number">7</span> Kanku-Breakaways</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/acanthiza/DEM">View book source <i class="fab fa-github"></i></a></p>
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="methods" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">3</span> Methods<a href="methods.html#methods" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="dems" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> DEMs<a href="methods.html#dems" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="methods" class="section level1" number="3">
+<h1>
+<span class="header-section-number">3</span> Methods<a class="anchor" aria-label="anchor" href="#methods"><i class="fas fa-link"></i></a>
+</h1>
+<div id="dems" class="section level2" number="3.1">
+<h2>
+<span class="header-section-number">3.1</span> DEMs<a class="anchor" aria-label="anchor" href="#dems"><i class="fas fa-link"></i></a>
+</h2>
 <p>DEMs have been obtained by DEW (for DEW-use only) for a large part of South Australia with resolution of roughly 10 m.</p>
 <p>Table <a href="methods.html#tab:DEMs">3.1</a> lists the available DEMs.</p>
-<table class="table table-striped" style="color: black; margin-left: auto; margin-right: auto;">
+<div class="inline-table"><table class="table table-striped" style="color: black; margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:DEMs">Table 3.1: </span>Sample DEMs
+<span id="tab:DEMs">Table 3.1: </span>Available DEMs
 </caption>
-<thead>
-<tr>
+<thead><tr>
 <th style="text-align:left;">
 dem_name
 </th>
 <th style="text-align:left;">
 type
 </th>
-<th style="text-align:right;">
-original_cm
+<th style="text-align:left;">
+file
 </th>
 <th style="text-align:left;">
 licence
 </th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
@@ -228,50 +117,8 @@ ALOS
 <td style="text-align:left;">
 DSM
 </td>
-<td style="text-align:right;">
-2803
-</td>
 <td style="text-align:left;">
-public
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-ALOS
-</td>
-<td style="text-align:left;">
-DSM
-</td>
-<td style="text-align:right;">
-2737
-</td>
-<td style="text-align:left;">
-public
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-ALOS
-</td>
-<td style="text-align:left;">
-DSM
-</td>
-<td style="text-align:right;">
-2781
-</td>
-<td style="text-align:left;">
-public
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-ALOS
-</td>
-<td style="text-align:left;">
-DSM
-</td>
-<td style="text-align:right;">
-2870
+SA_ALOS_AW3D30v4_DSM_30m.tif
 </td>
 <td style="text-align:left;">
 public
@@ -284,50 +131,8 @@ Copernicus
 <td style="text-align:left;">
 DSM
 </td>
-<td style="text-align:right;">
-2803
-</td>
 <td style="text-align:left;">
-public
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Copernicus
-</td>
-<td style="text-align:left;">
-DSM
-</td>
-<td style="text-align:right;">
-2738
-</td>
-<td style="text-align:left;">
-public
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Copernicus
-</td>
-<td style="text-align:left;">
-DSM
-</td>
-<td style="text-align:right;">
-2781
-</td>
-<td style="text-align:left;">
-public
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Copernicus
-</td>
-<td style="text-align:left;">
-DSM
-</td>
-<td style="text-align:right;">
-2870
+SA_Copernicus_GLO30v2022_1_DSM_30m.tif
 </td>
 <td style="text-align:left;">
 public
@@ -340,8 +145,8 @@ Outback
 <td style="text-align:left;">
 DTM
 </td>
-<td style="text-align:right;">
-861
+<td style="text-align:left;">
+AW3D_Outback_2006_2011_DTM_10m_WGS84.tif
 </td>
 <td style="text-align:left;">
 DEW only
@@ -354,8 +159,8 @@ Ag
 <td style="text-align:left;">
 DTM
 </td>
-<td style="text-align:right;">
-1000
+<td style="text-align:left;">
+WorldDEMNeo_SAAgriculturalZone_2017_2021_DTM_10m_LCC.tif
 </td>
 <td style="text-align:left;">
 DEW only
@@ -368,60 +173,20 @@ SRTM
 <td style="text-align:left;">
 DTM
 </td>
-<td style="text-align:right;">
-2803
-</td>
 <td style="text-align:left;">
-public
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-SRTM
-</td>
-<td style="text-align:left;">
-DTM
-</td>
-<td style="text-align:right;">
-2738
-</td>
-<td style="text-align:left;">
-public
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-SRTM
-</td>
-<td style="text-align:left;">
-DTM
-</td>
-<td style="text-align:right;">
-2781
-</td>
-<td style="text-align:left;">
-public
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-SRTM
-</td>
-<td style="text-align:left;">
-DTM
-</td>
-<td style="text-align:right;">
-2870
+Australia_SRTM_Feb2000_DEM-H_30m_WGS84.tif
 </td>
 <td style="text-align:left;">
 public
 </td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </div>
-<div id="processing" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Processing<a href="methods.html#processing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="processing" class="section level2" number="3.2">
+<h2>
+<span class="header-section-number">3.2</span> Processing<a class="anchor" aria-label="anchor" href="#processing"><i class="fas fa-link"></i></a>
+</h2>
 <p>For each DEM, the following processing was applied:</p>
 <ul>
 <li>reprojected into GDA 2020</li>
@@ -430,9 +195,12 @@ public
 <li>reprojected into the same 30 m raster</li>
 <li>generation of derived rasters via:
 <ul>
-<li><code>Qfit</code> function in the <code>MultiscaleDTM</code> package <span class="citation">(<a href="#ref-R-MultiscaleDTM">A. Ilich et al. 2024</a>; <a href="#ref-MultiscaleDTM2023">A. R. Ilich et al. 2023</a>, <a href="#ref-MultiscaleDTM2021">2021</a>)</span> using <code>v</code> argument (window size): 3 cells</li>
-<li><code>land_class</code> function in the<code>envRaster</code> package <span class="citation">(<a href="#ref-R-envRaster">Willoughby 2025</a>)</span> using 3 cells for the small window and 11 cells for the large window as input to the 10 class landscape classification</li>
-</ul></li>
+<li>
+<code>Qfit</code> function in the <code>MultiscaleDTM</code> package <span class="citation">(<a href="kanku-breakaways.html#ref-R-MultiscaleDTM">A. Ilich et al. 2024</a>; <a href="kanku-breakaways.html#ref-MultiscaleDTM2023">A. R. Ilich et al. 2023</a>, <a href="kanku-breakaways.html#ref-MultiscaleDTM2021">2021</a>)</span> using <code>v</code> argument (window size): 3 cells</li>
+<li>
+<code>land_class</code> function in the<code>envRaster</code> package <span class="citation">(<a href="kanku-breakaways.html#ref-R-envRaster">Willoughby 2025</a>)</span> using 3 cells for the small window and 11 cells for the large window as input to the 10 class landscape classification</li>
+</ul>
+</li>
 <li>all values from the derived rasters used to generate a range of visualisations and summary statistics.</li>
 </ul>
 <p>The <code>Qfit</code> function generates several continuous and one categorical variable for a digital terrain model:</p>
@@ -452,323 +220,246 @@ public
 </ul>
 <p>A <a href="https://ailich.shinyapps.io/Terrain_Attributes_Explorer_App/">shiny app</a> is available to investigate the meaning of each of these variables.f</p>
 </div>
-<div id="workflow" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> Workflow<a href="methods.html#workflow" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The data import, cleaning, analysis and report writing were done in a scripted workflow using the programs <code>R</code> and ‘R-studio Desktop’. <a href="https://www.r-project.org/"><code>R</code></a> <span class="citation">(<a href="#ref-R-base">R Core Team 2025</a>)</span> is an open source software environment for statistical computing and graphics. Base R can be extended via a range of open source packages to enable specific tasks or analyses. The packages used to produce this report are listed in Table <a href="methods.html#tab:packages">3.2</a>.</p>
+<div id="workflow" class="section level2" number="3.3">
+<h2>
+<span class="header-section-number">3.3</span> Workflow<a class="anchor" aria-label="anchor" href="#workflow"><i class="fas fa-link"></i></a>
+</h2>
+<p>The data import, cleaning, analysis and report writing were done in a scripted workflow using the programs <code>R</code> and ‘R-studio Desktop’. <a href="https://www.r-project.org/"><code>R</code></a> <span class="citation">(<a href="kanku-breakaways.html#ref-R-base">R Core Team 2025</a>)</span> is an open source software environment for statistical computing and graphics. Base R can be extended via a range of open source packages to enable specific tasks or analyses. The packages used to produce this report are listed in Table <a href="methods.html#tab:packages">3.2</a>.</p>
 <p><a href="https://posit.co/download/rstudio-desktop/">R-studio Desktop</a> is a set of open source tools built to facilitate interaction with <code>R</code>.</p>
-<table>
-<caption><span id="tab:packages">Table 3.2: </span>R <span class="citation">(<a href="#ref-R-base">R Core Team 2025</a>)</span> packages used in the production of this report</caption>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:packages">Table 3.2: </span>R <span class="citation">(<a href="kanku-breakaways.html#ref-R-base">R Core Team 2025</a>)</span> packages used in the production of this report</caption>
 <colgroup>
-<col width="10%" />
-<col width="12%" />
-<col width="10%" />
-<col width="8%" />
-<col width="57%" />
+<col width="10%">
+<col width="12%">
+<col width="10%">
+<col width="8%">
+<col width="57%">
 </colgroup>
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th align="left">package</th>
 <th align="left">citation</th>
 <th align="left">loadedversion</th>
 <th align="left">date</th>
 <th align="left">source</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td align="left">base</td>
-<td align="left"><span class="citation">R Core Team (<a href="#ref-R-base">2025</a>)</span></td>
+<td align="left"><span class="citation">R Core Team (<a href="kanku-breakaways.html#ref-R-base">2025</a>)</span></td>
 <td align="left">4.4.3</td>
 <td align="left">2025-02-28</td>
 <td align="left">local</td>
 </tr>
 <tr class="even">
 <td align="left">knitr</td>
-<td align="left"><span class="citation">Xie (<a href="#ref-R-knitr">2024b</a>)</span></td>
+<td align="left"><span class="citation">Xie (<a href="kanku-breakaways.html#ref-R-knitr">2024b</a>)</span></td>
 <td align="left">1.49</td>
 <td align="left">2024-11-08</td>
 <td align="left">CRAN (R 4.4.2)</td>
 </tr>
 <tr class="odd">
 <td align="left">rmarkdown</td>
-<td align="left"><span class="citation">Allaire et al. (<a href="#ref-R-rmarkdown">2024</a>)</span></td>
+<td align="left"><span class="citation">Allaire et al. (<a href="kanku-breakaways.html#ref-R-rmarkdown">2024</a>)</span></td>
 <td align="left">2.29</td>
 <td align="left">2024-11-04</td>
 <td align="left">CRAN (R 4.4.2)</td>
 </tr>
 <tr class="even">
 <td align="left">bookdown</td>
-<td align="left"><span class="citation">Xie (<a href="#ref-R-bookdown">2024a</a>)</span></td>
+<td align="left"><span class="citation">Xie (<a href="kanku-breakaways.html#ref-R-bookdown">2024a</a>)</span></td>
 <td align="left">0.41</td>
 <td align="left">2024-10-16</td>
 <td align="left">CRAN (R 4.4.2)</td>
 </tr>
 <tr class="odd">
 <td align="left">kableExtra</td>
-<td align="left"><span class="citation">Zhu (<a href="#ref-R-kableExtra">2024</a>)</span></td>
+<td align="left"><span class="citation">Zhu (<a href="kanku-breakaways.html#ref-R-kableExtra">2024</a>)</span></td>
 <td align="left">1.4.0</td>
 <td align="left">2024-01-24</td>
 <td align="left">CRAN (R 4.4.2)</td>
 </tr>
 <tr class="even">
 <td align="left">dplyr</td>
-<td align="left"><span class="citation">Wickham et al. (<a href="#ref-R-dplyr">2023</a>)</span></td>
+<td align="left"><span class="citation">Wickham et al. (<a href="kanku-breakaways.html#ref-R-dplyr">2023</a>)</span></td>
 <td align="left">1.1.4</td>
 <td align="left">2023-11-17</td>
 <td align="left">CRAN (R 4.4.2)</td>
 </tr>
 <tr class="odd">
 <td align="left">tidyr</td>
-<td align="left"><span class="citation">Wickham, Vaughan, and Girlich (<a href="#ref-R-tidyr">2024</a>)</span></td>
+<td align="left"><span class="citation">Wickham, Vaughan, and Girlich (<a href="kanku-breakaways.html#ref-R-tidyr">2024</a>)</span></td>
 <td align="left">1.3.1</td>
 <td align="left">2024-01-24</td>
 <td align="left">CRAN (R 4.4.2)</td>
 </tr>
 <tr class="even">
 <td align="left">purrr</td>
-<td align="left"><span class="citation">Wickham and Henry (<a href="#ref-R-purrr">2023</a>)</span></td>
+<td align="left"><span class="citation">Wickham and Henry (<a href="kanku-breakaways.html#ref-R-purrr">2023</a>)</span></td>
 <td align="left">1.0.2</td>
 <td align="left">2023-08-10</td>
 <td align="left">CRAN (R 4.4.2)</td>
 </tr>
 <tr class="odd">
 <td align="left">ggplot2</td>
-<td align="left"><span class="citation">Wickham et al. (<a href="#ref-R-ggplot2">2024</a>)</span></td>
+<td align="left"><span class="citation">Wickham et al. (<a href="kanku-breakaways.html#ref-R-ggplot2">2024</a>)</span></td>
 <td align="left">3.5.1</td>
 <td align="left">2024-04-23</td>
 <td align="left">CRAN (R 4.4.2)</td>
 </tr>
 <tr class="even">
 <td align="left">tibble</td>
-<td align="left"><span class="citation">Müller and Wickham (<a href="#ref-R-tibble">2025</a>)</span></td>
+<td align="left"><span class="citation">Müller and Wickham (<a href="kanku-breakaways.html#ref-R-tibble">2025</a>)</span></td>
 <td align="left">3.3.0</td>
 <td align="left">2025-06-08</td>
 <td align="left">CRAN (R 4.4.3)</td>
 </tr>
 <tr class="odd">
 <td align="left">readr</td>
-<td align="left"><span class="citation">Wickham, Hester, and Bryan (<a href="#ref-R-readr">2024</a>)</span></td>
+<td align="left"><span class="citation">Wickham, Hester, and Bryan (<a href="kanku-breakaways.html#ref-R-readr">2024</a>)</span></td>
 <td align="left">2.1.5</td>
 <td align="left">2024-01-10</td>
 <td align="left">CRAN (R 4.4.2)</td>
 </tr>
 <tr class="even">
 <td align="left">forcats</td>
-<td align="left"><span class="citation">Wickham (<a href="#ref-R-forcats">2023a</a>)</span></td>
+<td align="left"><span class="citation">Wickham (<a href="kanku-breakaways.html#ref-R-forcats">2023a</a>)</span></td>
 <td align="left">1.0.0</td>
 <td align="left">2023-01-29</td>
 <td align="left">CRAN (R 4.4.2)</td>
 </tr>
 <tr class="odd">
 <td align="left">stringr</td>
-<td align="left"><span class="citation">Wickham (<a href="#ref-R-stringr">2023b</a>)</span></td>
+<td align="left"><span class="citation">Wickham (<a href="kanku-breakaways.html#ref-R-stringr">2023b</a>)</span></td>
 <td align="left">1.5.1</td>
 <td align="left">2023-11-14</td>
 <td align="left">CRAN (R 4.4.2)</td>
 </tr>
 <tr class="even">
 <td align="left">lubridate</td>
-<td align="left"><span class="citation">Spinu, Grolemund, and Wickham (<a href="#ref-R-lubridate">2023</a>)</span></td>
+<td align="left"><span class="citation">Spinu, Grolemund, and Wickham (<a href="kanku-breakaways.html#ref-R-lubridate">2023</a>)</span></td>
 <td align="left">1.9.3</td>
 <td align="left">2023-09-27</td>
 <td align="left">CRAN (R 4.4.2)</td>
 </tr>
 <tr class="odd">
+<td align="left">targets</td>
+<td align="left"><span class="citation">Landau (<a href="kanku-breakaways.html#ref-R-targets">2025b</a>)</span></td>
+<td align="left">1.11.3</td>
+<td align="left">2025-05-08</td>
+<td align="left">CRAN (R 4.4.3)</td>
+</tr>
+<tr class="even">
+<td align="left">tarchetypes</td>
+<td align="left"><span class="citation">Landau (<a href="kanku-breakaways.html#ref-R-tarchetypes">2025a</a>)</span></td>
+<td align="left">0.13.1</td>
+<td align="left">2025-05-08</td>
+<td align="left">CRAN (R 4.4.3)</td>
+</tr>
+<tr class="odd">
+<td align="left">geotargets</td>
+<td align="left"><span class="citation">Tierney, Scott, and Brown (<a href="kanku-breakaways.html#ref-R-geotargets">2025</a>)</span></td>
+<td align="left">0.2.0.9000</td>
+<td align="left">2025-02-21</td>
+<td align="left">
+<a href="https://njtierney.r-universe.dev" class="uri">https://njtierney.r-universe.dev</a> (R 4.4.2)</td>
+</tr>
+<tr class="even">
 <td align="left">fs</td>
-<td align="left"><span class="citation">Hester, Wickham, and Csárdi (<a href="#ref-R-fs">2024</a>)</span></td>
+<td align="left"><span class="citation">Hester, Wickham, and Csárdi (<a href="kanku-breakaways.html#ref-R-fs">2024</a>)</span></td>
 <td align="left">1.6.5</td>
 <td align="left">2024-10-30</td>
 <td align="left">CRAN (R 4.4.2)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">ggridges</td>
-<td align="left"><span class="citation">Wilke (<a href="#ref-R-ggridges">2024</a>)</span></td>
+<td align="left"><span class="citation">Wilke (<a href="kanku-breakaways.html#ref-R-ggridges">2024</a>)</span></td>
 <td align="left">0.5.6</td>
 <td align="left">2024-01-23</td>
 <td align="left">CRAN (R 4.4.2)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">terra</td>
-<td align="left"><span class="citation">Hijmans (<a href="#ref-R-terra">2025</a>)</span></td>
+<td align="left"><span class="citation">Hijmans (<a href="kanku-breakaways.html#ref-R-terra">2025</a>)</span></td>
 <td align="left">1.8-52</td>
 <td align="left">2025-05-26</td>
-<td align="left"><a href="https://rspatial.r-universe.dev" class="uri">https://rspatial.r-universe.dev</a> (R 4.4.3)</td>
+<td align="left">
+<a href="https://rspatial.r-universe.dev" class="uri">https://rspatial.r-universe.dev</a> (R 4.4.3)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">sf</td>
-<td align="left"><span class="citation">Pebesma (<a href="#ref-R-sf">2024</a>)</span></td>
+<td align="left"><span class="citation">Pebesma (<a href="kanku-breakaways.html#ref-R-sf">2024</a>)</span></td>
 <td align="left">1.0-19</td>
 <td align="left">2024-11-05</td>
 <td align="left">CRAN (R 4.4.2)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">tmap</td>
-<td align="left"><span class="citation">Tennekes (<a href="#ref-R-tmap">2025</a>)</span></td>
+<td align="left"><span class="citation">Tennekes (<a href="kanku-breakaways.html#ref-R-tmap">2025</a>)</span></td>
 <td align="left">4.1</td>
 <td align="left">2025-05-12</td>
 <td align="left">CRAN (R 4.4.3)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">MultiscaleDTM</td>
-<td align="left"><span class="citation">A. Ilich et al. (<a href="#ref-R-MultiscaleDTM">2024</a>)</span></td>
+<td align="left"><span class="citation">A. Ilich et al. (<a href="kanku-breakaways.html#ref-R-MultiscaleDTM">2024</a>)</span></td>
 <td align="left">0.8.3</td>
 <td align="left">2024-01-22</td>
 <td align="left">CRAN (R 4.4.2)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">envRaster</td>
-<td align="left"><span class="citation">Willoughby (<a href="#ref-R-envRaster">2025</a>)</span></td>
+<td align="left"><span class="citation">Willoughby (<a href="kanku-breakaways.html#ref-R-envRaster">2025</a>)</span></td>
 <td align="left">0.0.0.9000</td>
 <td align="left">2025-05-05</td>
 <td align="left">Github (<a href="mailto:dew-landscapes/envRaster@e702ac9e9320b3524435bc77e7c06e36256842ad" class="email">dew-landscapes/envRaster@e702ac9e9320b3524435bc77e7c06e36256842ad</a>)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">envTargets</td>
-<td align="left"><span class="citation">Willoughby, Allan, and Zylinski (<a href="#ref-R-envTargets">2025</a>)</span></td>
+<td align="left"><span class="citation">Willoughby, Allan, and Zylinski (<a href="kanku-breakaways.html#ref-R-envTargets">2025</a>)</span></td>
 <td align="left">0.0.0.9000</td>
 <td align="left">2025-06-30</td>
 <td align="left">Github (<a href="mailto:dew-landscapes/envTargets@d07e8da46eec6393fda9e8460cbd3517106afcb0" class="email">dew-landscapes/envTargets@d07e8da46eec6393fda9e8460cbd3517106afcb0</a>)</td>
 </tr>
 </tbody>
-</table>
+</table></div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="intro.html"><span class="header-section-number">2</span> Intro</a></div>
+<div class="next"><a href="bakara.html"><span class="header-section-number">4</span> Bakara</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#methods"><span class="header-section-number">3</span> Methods</a></li>
+<li><a class="nav-link" href="#dems"><span class="header-section-number">3.1</span> DEMs</a></li>
+<li><a class="nav-link" href="#processing"><span class="header-section-number">3.2</span> Processing</a></li>
+<li><a class="nav-link" href="#workflow"><span class="header-section-number">3.3</span> Workflow</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/acanthiza/DEM/blob/master/0020_methods.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/acanthiza/DEM/edit/master/0020_methods.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
 
 </div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-R-rmarkdown" class="csl-entry">
-Allaire, JJ, Yihui Xie, Christophe Dervieux, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, et al. 2024. <em>Rmarkdown: Dynamic Documents for r</em>. <a href="https://github.com/rstudio/rmarkdown">https://github.com/rstudio/rmarkdown</a>.
-</div>
-<div id="ref-R-fs" class="csl-entry">
-Hester, Jim, Hadley Wickham, and Gábor Csárdi. 2024. <em>Fs: Cross-Platform File System Operations Based on Libuv</em>. <a href="https://fs.r-lib.org">https://fs.r-lib.org</a>.
-</div>
-<div id="ref-R-terra" class="csl-entry">
-Hijmans, Robert J. 2025. <em>Terra: Spatial Data Analysis</em>. <a href="https://rspatial.org/">https://rspatial.org/</a>.
-</div>
-<div id="ref-MultiscaleDTM2021" class="csl-entry">
-Ilich, Alexander R., Benjamin Misiuk, Vincent Lecours, and Steven A. Murawski. 2021. <span>“MultiscaleDTM.”</span> <a href="https://doi.org/10.5281/zenodo.5548338">https://doi.org/10.5281/zenodo.5548338</a>.
-</div>
-<div id="ref-MultiscaleDTM2023" class="csl-entry">
-———. 2023. <span>“MultiscaleDTM: An Open-Source r Package for Multiscale Geomorphometric Analysis.”</span> <em>Transactions in GIS</em> 27 (4). <a href="https://doi.org/10.1111/tgis.13067">https://doi.org/10.1111/tgis.13067</a>.
-</div>
-<div id="ref-R-MultiscaleDTM" class="csl-entry">
-Ilich, Alexander, Vincent Lecours, Benjamin Misiuk, and Steven Murawski. 2024. <em>MultiscaleDTM: Multi-Scale Geomorphometric Terrain Attributes</em>. <a href="https://ailich.github.io/MultiscaleDTM/">https://ailich.github.io/MultiscaleDTM/</a>.
-</div>
-<div id="ref-R-tibble" class="csl-entry">
-Müller, Kirill, and Hadley Wickham. 2025. <em>Tibble: Simple Data Frames</em>. <a href="https://tibble.tidyverse.org/">https://tibble.tidyverse.org/</a>.
-</div>
-<div id="ref-R-sf" class="csl-entry">
-Pebesma, Edzer. 2024. <em>Sf: Simple Features for r</em>. <a href="https://r-spatial.github.io/sf/">https://r-spatial.github.io/sf/</a>.
-</div>
-<div id="ref-R-base" class="csl-entry">
-R Core Team. 2025. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
-</div>
-<div id="ref-R-lubridate" class="csl-entry">
-Spinu, Vitalie, Garrett Grolemund, and Hadley Wickham. 2023. <em>Lubridate: Make Dealing with Dates a Little Easier</em>. <a href="https://lubridate.tidyverse.org">https://lubridate.tidyverse.org</a>.
-</div>
-<div id="ref-R-tmap" class="csl-entry">
-Tennekes, Martijn. 2025. <em>Tmap: Thematic Maps</em>. <a href="https://github.com/r-tmap/tmap">https://github.com/r-tmap/tmap</a>.
-</div>
-<div id="ref-R-forcats" class="csl-entry">
-Wickham, Hadley. 2023a. <em>Forcats: Tools for Working with Categorical Variables (Factors)</em>. <a href="https://forcats.tidyverse.org/">https://forcats.tidyverse.org/</a>.
-</div>
-<div id="ref-R-stringr" class="csl-entry">
-———. 2023b. <em>Stringr: Simple, Consistent Wrappers for Common String Operations</em>. <a href="https://stringr.tidyverse.org">https://stringr.tidyverse.org</a>.
-</div>
-<div id="ref-R-ggplot2" class="csl-entry">
-Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, Dewey Dunnington, and Teun van den Brand. 2024. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
-</div>
-<div id="ref-R-dplyr" class="csl-entry">
-Wickham, Hadley, Romain François, Lionel Henry, Kirill Müller, and Davis Vaughan. 2023. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://dplyr.tidyverse.org">https://dplyr.tidyverse.org</a>.
-</div>
-<div id="ref-R-purrr" class="csl-entry">
-Wickham, Hadley, and Lionel Henry. 2023. <em>Purrr: Functional Programming Tools</em>. <a href="https://purrr.tidyverse.org/">https://purrr.tidyverse.org/</a>.
-</div>
-<div id="ref-R-readr" class="csl-entry">
-Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2024. <em>Readr: Read Rectangular Text Data</em>. <a href="https://readr.tidyverse.org">https://readr.tidyverse.org</a>.
-</div>
-<div id="ref-R-tidyr" class="csl-entry">
-Wickham, Hadley, Davis Vaughan, and Maximilian Girlich. 2024. <em>Tidyr: Tidy Messy Data</em>. <a href="https://tidyr.tidyverse.org">https://tidyr.tidyverse.org</a>.
-</div>
-<div id="ref-R-ggridges" class="csl-entry">
-Wilke, Claus O. 2024. <em>Ggridges: Ridgeline Plots in Ggplot2</em>. <a href="https://wilkelab.org/ggridges/">https://wilkelab.org/ggridges/</a>.
-</div>
-<div id="ref-R-envRaster" class="csl-entry">
-Willoughby, Nigel. 2025. <em>envRaster: Mung Environmental Rasters</em>. <a href="https://github.com/Acanthiza/envRaster">https://github.com/Acanthiza/envRaster</a>.
-</div>
-<div id="ref-R-envTargets" class="csl-entry">
-Willoughby, Nigel, Joel Allan, and Simeon Zylinski. 2025. <em>envTargets: Help to Maintain and Run a Targets Workflow</em>. <a href="https://github.com/dew-landscapes/envTargets">https://github.com/dew-landscapes/envTargets</a>.
-</div>
-<div id="ref-R-bookdown" class="csl-entry">
-Xie, Yihui. 2024a. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>. <a href="https://github.com/rstudio/bookdown">https://github.com/rstudio/bookdown</a>.
-</div>
-<div id="ref-R-knitr" class="csl-entry">
-———. 2024b. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in r</em>. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
-</div>
-<div id="ref-R-kableExtra" class="csl-entry">
-Zhu, Hao. 2024. <em>kableExtra: Construct Complex Table with Kable and Pipe Syntax</em>. <a href="http://haozhu233.github.io/kableExtra/">http://haozhu233.github.io/kableExtra/</a>.
-</div>
-</div>
-            </section>
+</div> <!-- .container -->
 
-          </div>
-        </div>
-      </div>
-<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="bakara.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>DEM comparison</strong>" was written by Nigel Willoughby, Department for Environment and Water. It was last built on Saturday, 26 July, 2025. 14:49.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
 </body>
-
 </html>

@@ -1,19 +1,21 @@
-test_intersection <- function(a, b, ret = c("ratio", "logical")){
+test_intersection <- function(ras, sf, ret = c("ratio", "logical")){
   
   ret <- ret[[1]]
-
-  ext_a <- terra::ext(a) |>
+  
+  if(! "spatRaster" %in% class(ras)) ras <- terra::rast(ras)
+  
+  ext_a <- terra::ext(ras) |>
     terra::as.polygons()
 
-  terra::crs(ext_a) <- terra::crs(a)
+  terra::crs(ext_a) <- terra::crs(ras)
 
-  ext_b <- terra::ext(b) |>
+  ext_b <- terra::ext(sf) |>
     terra::as.polygons()
 
-  terra::crs(ext_b) <- terra::crs(b)
+  terra::crs(ext_b) <- terra::crs(sf)
 
   ext_b <- ext_b |>
-    terra::project(y = terra::crs(a))
+    terra::project(y = terra::crs(ras))
 
   int <- terra::intersect(ext_a, ext_b)
 

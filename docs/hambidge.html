@@ -1,590 +1,504 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 Hambidge | DEM comparison</title>
-  <meta name="description" content="This work aims to compare digital terrain models as potential inputs to ecosystem modelling." />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="5 Hambidge | DEM comparison" />
-  <meta property="og:type" content="book" />
-  
-  <meta property="og:description" content="This work aims to compare digital terrain models as potential inputs to ecosystem modelling." />
-  
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Hambidge | DEM comparison" />
-  
-  <meta name="twitter:description" content="This work aims to compare digital terrain models as potential inputs to ecosystem modelling." />
-  
-
-<meta name="author" content="Nigel Willoughby" />
-<meta name="author" content="Department for Environment and Water" />
-
-
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="bakara.html"/>
-<link rel="next" href="cleland.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-
-
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>6 Hambidge | DEM comparison</title>
+<meta name="author" content="Nigel Willoughby">
+<meta name="author" content="Department for Environment and Water">
+<meta name="description" content="6.1 Continuous  6.1.1 elev Figure 6.1 shows rasters for elev and each window size for Hambidge. Table 6.2 shows boxplots for each decile of elev, allowing a comparison of values within each DEM...">
+<meta name="generator" content="bookdown 0.41 with bs4_book()">
+<meta property="og:title" content="6 Hambidge | DEM comparison">
+<meta property="og:type" content="book">
+<meta property="og:description" content="6.1 Continuous  6.1.1 elev Figure 6.1 shows rasters for elev and each window size for Hambidge. Table 6.2 shows boxplots for each decile of elev, allowing a comparison of values within each DEM...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="6 Hambidge | DEM comparison">
+<meta name="twitter:description" content="6.1 Continuous  6.1.1 elev Figure 6.1 shows rasters for elev and each window size for Hambidge. Table 6.2 shows boxplots for each decile of elev, allowing a comparison of values within each DEM...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
 <style type="text/css">
-  
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-</style>
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
-
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Aim</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Intro</a></li>
-<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="methods.html"><a href="methods.html#dems"><i class="fa fa-check"></i><b>3.1</b> DEMs</a></li>
-<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#processing"><i class="fa fa-check"></i><b>3.2</b> Processing</a></li>
-<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#workflow"><i class="fa fa-check"></i><b>3.3</b> Workflow</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="bakara.html"><a href="bakara.html"><i class="fa fa-check"></i><b>4</b> Bakara</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="bakara.html"><a href="bakara.html#continuous"><i class="fa fa-check"></i><b>4.1</b> Continuous</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="bakara.html"><a href="bakara.html#elev"><i class="fa fa-check"></i><b>4.1.1</b> elev</a></li>
-<li class="chapter" data-level="4.1.2" data-path="bakara.html"><a href="bakara.html#qslope"><i class="fa fa-check"></i><b>4.1.2</b> qslope</a></li>
-<li class="chapter" data-level="4.1.3" data-path="bakara.html"><a href="bakara.html#qaspect"><i class="fa fa-check"></i><b>4.1.3</b> qaspect</a></li>
-<li class="chapter" data-level="4.1.4" data-path="bakara.html"><a href="bakara.html#qeastness"><i class="fa fa-check"></i><b>4.1.4</b> qeastness</a></li>
-<li class="chapter" data-level="4.1.5" data-path="bakara.html"><a href="bakara.html#qnorthness"><i class="fa fa-check"></i><b>4.1.5</b> qnorthness</a></li>
-<li class="chapter" data-level="4.1.6" data-path="bakara.html"><a href="bakara.html#profc"><i class="fa fa-check"></i><b>4.1.6</b> profc</a></li>
-<li class="chapter" data-level="4.1.7" data-path="bakara.html"><a href="bakara.html#planc"><i class="fa fa-check"></i><b>4.1.7</b> planc</a></li>
-<li class="chapter" data-level="4.1.8" data-path="bakara.html"><a href="bakara.html#twistc"><i class="fa fa-check"></i><b>4.1.8</b> twistc</a></li>
-<li class="chapter" data-level="4.1.9" data-path="bakara.html"><a href="bakara.html#meanc"><i class="fa fa-check"></i><b>4.1.9</b> meanc</a></li>
-<li class="chapter" data-level="4.1.10" data-path="bakara.html"><a href="bakara.html#maxc"><i class="fa fa-check"></i><b>4.1.10</b> maxc</a></li>
-<li class="chapter" data-level="4.1.11" data-path="bakara.html"><a href="bakara.html#minc"><i class="fa fa-check"></i><b>4.1.11</b> minc</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="bakara.html"><a href="bakara.html#categorical"><i class="fa fa-check"></i><b>4.2</b> Categorical</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="hambidge.html"><a href="hambidge.html"><i class="fa fa-check"></i><b>5</b> Hambidge</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="hambidge.html"><a href="hambidge.html#continuous-1"><i class="fa fa-check"></i><b>5.1</b> Continuous</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="hambidge.html"><a href="hambidge.html#elev-1"><i class="fa fa-check"></i><b>5.1.1</b> elev</a></li>
-<li class="chapter" data-level="5.1.2" data-path="hambidge.html"><a href="hambidge.html#qslope-1"><i class="fa fa-check"></i><b>5.1.2</b> qslope</a></li>
-<li class="chapter" data-level="5.1.3" data-path="hambidge.html"><a href="hambidge.html#qaspect-1"><i class="fa fa-check"></i><b>5.1.3</b> qaspect</a></li>
-<li class="chapter" data-level="5.1.4" data-path="hambidge.html"><a href="hambidge.html#qeastness-1"><i class="fa fa-check"></i><b>5.1.4</b> qeastness</a></li>
-<li class="chapter" data-level="5.1.5" data-path="hambidge.html"><a href="hambidge.html#qnorthness-1"><i class="fa fa-check"></i><b>5.1.5</b> qnorthness</a></li>
-<li class="chapter" data-level="5.1.6" data-path="hambidge.html"><a href="hambidge.html#profc-1"><i class="fa fa-check"></i><b>5.1.6</b> profc</a></li>
-<li class="chapter" data-level="5.1.7" data-path="hambidge.html"><a href="hambidge.html#planc-1"><i class="fa fa-check"></i><b>5.1.7</b> planc</a></li>
-<li class="chapter" data-level="5.1.8" data-path="hambidge.html"><a href="hambidge.html#twistc-1"><i class="fa fa-check"></i><b>5.1.8</b> twistc</a></li>
-<li class="chapter" data-level="5.1.9" data-path="hambidge.html"><a href="hambidge.html#meanc-1"><i class="fa fa-check"></i><b>5.1.9</b> meanc</a></li>
-<li class="chapter" data-level="5.1.10" data-path="hambidge.html"><a href="hambidge.html#maxc-1"><i class="fa fa-check"></i><b>5.1.10</b> maxc</a></li>
-<li class="chapter" data-level="5.1.11" data-path="hambidge.html"><a href="hambidge.html#minc-1"><i class="fa fa-check"></i><b>5.1.11</b> minc</a></li>
-</ul></li>
-<li class="chapter" data-level="5.2" data-path="hambidge.html"><a href="hambidge.html#categorical-1"><i class="fa fa-check"></i><b>5.2</b> Categorical</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="cleland.html"><a href="cleland.html"><i class="fa fa-check"></i><b>6</b> Cleland</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="cleland.html"><a href="cleland.html#continuous-2"><i class="fa fa-check"></i><b>6.1</b> Continuous</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="cleland.html"><a href="cleland.html#elev-2"><i class="fa fa-check"></i><b>6.1.1</b> elev</a></li>
-<li class="chapter" data-level="6.1.2" data-path="cleland.html"><a href="cleland.html#qslope-2"><i class="fa fa-check"></i><b>6.1.2</b> qslope</a></li>
-<li class="chapter" data-level="6.1.3" data-path="cleland.html"><a href="cleland.html#qaspect-2"><i class="fa fa-check"></i><b>6.1.3</b> qaspect</a></li>
-<li class="chapter" data-level="6.1.4" data-path="cleland.html"><a href="cleland.html#qeastness-2"><i class="fa fa-check"></i><b>6.1.4</b> qeastness</a></li>
-<li class="chapter" data-level="6.1.5" data-path="cleland.html"><a href="cleland.html#qnorthness-2"><i class="fa fa-check"></i><b>6.1.5</b> qnorthness</a></li>
-<li class="chapter" data-level="6.1.6" data-path="cleland.html"><a href="cleland.html#profc-2"><i class="fa fa-check"></i><b>6.1.6</b> profc</a></li>
-<li class="chapter" data-level="6.1.7" data-path="cleland.html"><a href="cleland.html#planc-2"><i class="fa fa-check"></i><b>6.1.7</b> planc</a></li>
-<li class="chapter" data-level="6.1.8" data-path="cleland.html"><a href="cleland.html#twistc-2"><i class="fa fa-check"></i><b>6.1.8</b> twistc</a></li>
-<li class="chapter" data-level="6.1.9" data-path="cleland.html"><a href="cleland.html#meanc-2"><i class="fa fa-check"></i><b>6.1.9</b> meanc</a></li>
-<li class="chapter" data-level="6.1.10" data-path="cleland.html"><a href="cleland.html#maxc-2"><i class="fa fa-check"></i><b>6.1.10</b> maxc</a></li>
-<li class="chapter" data-level="6.1.11" data-path="cleland.html"><a href="cleland.html#minc-2"><i class="fa fa-check"></i><b>6.1.11</b> minc</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="cleland.html"><a href="cleland.html#categorical-2"><i class="fa fa-check"></i><b>6.2</b> Categorical</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html"><i class="fa fa-check"></i><b>7</b> Kanku-Breakaways</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#continuous-3"><i class="fa fa-check"></i><b>7.1</b> Continuous</a>
-<ul>
-<li class="chapter" data-level="7.1.1" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#elev-3"><i class="fa fa-check"></i><b>7.1.1</b> elev</a></li>
-<li class="chapter" data-level="7.1.2" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#qslope-3"><i class="fa fa-check"></i><b>7.1.2</b> qslope</a></li>
-<li class="chapter" data-level="7.1.3" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#qaspect-3"><i class="fa fa-check"></i><b>7.1.3</b> qaspect</a></li>
-<li class="chapter" data-level="7.1.4" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#qeastness-3"><i class="fa fa-check"></i><b>7.1.4</b> qeastness</a></li>
-<li class="chapter" data-level="7.1.5" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#qnorthness-3"><i class="fa fa-check"></i><b>7.1.5</b> qnorthness</a></li>
-<li class="chapter" data-level="7.1.6" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#profc-3"><i class="fa fa-check"></i><b>7.1.6</b> profc</a></li>
-<li class="chapter" data-level="7.1.7" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#planc-3"><i class="fa fa-check"></i><b>7.1.7</b> planc</a></li>
-<li class="chapter" data-level="7.1.8" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#twistc-3"><i class="fa fa-check"></i><b>7.1.8</b> twistc</a></li>
-<li class="chapter" data-level="7.1.9" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#meanc-3"><i class="fa fa-check"></i><b>7.1.9</b> meanc</a></li>
-<li class="chapter" data-level="7.1.10" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#maxc-3"><i class="fa fa-check"></i><b>7.1.10</b> maxc</a></li>
-<li class="chapter" data-level="7.1.11" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#minc-3"><i class="fa fa-check"></i><b>7.1.11</b> minc</a></li>
-</ul></li>
-<li class="chapter" data-level="7.2" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#categorical-3"><i class="fa fa-check"></i><b>7.2</b> Categorical</a></li>
-</ul></li>
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">DEM comparison</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">DEM comparison</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Aim</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">2</span> Intro</a></li>
+<li><a class="" href="methods.html"><span class="header-section-number">3</span> Methods</a></li>
+<li><a class="" href="bakara.html"><span class="header-section-number">4</span> Bakara</a></li>
+<li><a class="" href="cleland.html"><span class="header-section-number">5</span> Cleland</a></li>
+<li><a class="active" href="hambidge.html"><span class="header-section-number">6</span> Hambidge</a></li>
+<li><a class="" href="kanku-breakaways.html"><span class="header-section-number">7</span> Kanku-Breakaways</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/acanthiza/DEM">View book source <i class="fab fa-github"></i></a></p>
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="hambidge" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">5</span> Hambidge<a href="hambidge.html#hambidge" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="continuous-1" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> Continuous<a href="hambidge.html#continuous-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="elev-1" class="section level3 hasAnchor" number="5.1.1">
-<h3><span class="header-section-number">5.1.1</span> elev<a href="hambidge.html#elev-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Figure <a href="hambidge.html#fig:rawelevHambidge">5.1</a> shows rasters for elev and each window size for Hambidge.</p>
-<p>Table <a href="hambidge.html#fig:contFigelevHambidge">5.2</a> shows boxplots for each decile of elev, allowing a comparison of values within each DEM across different ranges of elev. Deciles are based on the values in the reference DEM: Ag.</p>
-<p>Figure <a href="hambidge.html#fig:plotelevHambidge">5.3</a> shows the a distribution of values for each sample DEM and window size.</p>
-<p>Figure <a href="hambidge.html#fig:diffPlotelevHambidge">5.4</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
-<div class="figure"><span style="display:block;" id="fig:rawelevHambidge"></span>
-<img src="_main_files/figure-html/rawelevHambidge-1.png" alt="elev raster for each DEM" width="672" />
-<p class="caption">
-Figure 5.1: elev raster for each DEM
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="hambidge" class="section level1" number="6">
+<h1>
+<span class="header-section-number">6</span> Hambidge<a class="anchor" aria-label="anchor" href="#hambidge"><i class="fas fa-link"></i></a>
+</h1>
+<div id="continuous-2" class="section level2" number="6.1">
+<h2>
+<span class="header-section-number">6.1</span> Continuous<a class="anchor" aria-label="anchor" href="#continuous-2"><i class="fas fa-link"></i></a>
+</h2>
+<div id="elev-2" class="section level3" number="6.1.1">
+<h3>
+<span class="header-section-number">6.1.1</span> elev<a class="anchor" aria-label="anchor" href="#elev-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>Figure <a href="hambidge.html#fig:rawelevHambidge">6.1</a> shows rasters for elev and each window size for Hambidge.</p>
+<p>Table <a href="hambidge.html#fig:contFigelevHambidge">6.2</a> shows boxplots for each decile of elev, allowing a comparison of values within each DEM across different ranges of elev. Deciles are based on the values in the reference DEM: Ag.</p>
+<p>Figure <a href="hambidge.html#fig:plotelevHambidge">6.3</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="hambidge.html#fig:diffPlotelevHambidge">6.4</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure">
+<span style="display:block;" id="fig:rawelevHambidge"></span>
+<img src="_main_files/figure-html/rawelevHambidge-1.png" alt="elev raster for each DEM" width="672"><p class="caption">
+Figure 6.1: elev raster for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:contFigelevHambidge"></span>
-<img src="_main_files/figure-html/contFigelevHambidge-1.png" alt="Boxplots within deciles for each DEM" width="672" />
-<p class="caption">
-Figure 5.2: Boxplots within deciles for each DEM
+<div class="figure">
+<span style="display:block;" id="fig:contFigelevHambidge"></span>
+<img src="_main_files/figure-html/contFigelevHambidge-1.png" alt="Boxplots within deciles for each DEM" width="672"><p class="caption">
+Figure 6.2: Boxplots within deciles for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:plotelevHambidge"></span>
-<img src="_main_files/figure-html/plotelevHambidge-1.png" alt="elev results for the each DEM" width="672" />
-<p class="caption">
-Figure 5.3: elev results for the each DEM
+<div class="figure">
+<span style="display:block;" id="fig:plotelevHambidge"></span>
+<img src="_main_files/figure-html/plotelevHambidge-1.png" alt="elev results for the each DEM" width="672"><p class="caption">
+Figure 6.3: elev results for the each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:diffPlotelevHambidge"></span>
-<img src="_main_files/figure-html/diffPlotelevHambidge-1.png" alt="elev difference between the best available (reference) DEM and each individual DEM for Hambidge" width="672" />
-<p class="caption">
-Figure 5.4: elev difference between the best available (reference) DEM and each individual DEM for Hambidge
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotelevHambidge"></span>
+<img src="_main_files/figure-html/diffPlotelevHambidge-1.png" alt="elev difference between the best available (reference) DEM and each individual DEM for Hambidge" width="672"><p class="caption">
+Figure 6.4: elev difference between the best available (reference) DEM and each individual DEM for Hambidge
 </p>
 </div>
 </div>
-<div id="qslope-1" class="section level3 hasAnchor" number="5.1.2">
-<h3><span class="header-section-number">5.1.2</span> qslope<a href="hambidge.html#qslope-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Figure <a href="hambidge.html#fig:rawqslopeHambidge">5.5</a> shows rasters for qslope and each window size for Hambidge.</p>
-<p>Table <a href="hambidge.html#fig:contFigqslopeHambidge">5.6</a> shows boxplots for each decile of qslope, allowing a comparison of values within each DEM across different ranges of qslope. Deciles are based on the values in the reference DEM: Ag.</p>
-<p>Figure <a href="hambidge.html#fig:plotqslopeHambidge">5.7</a> shows the a distribution of values for each sample DEM and window size.</p>
-<p>Figure <a href="hambidge.html#fig:diffPlotqslopeHambidge">5.8</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
-<div class="figure"><span style="display:block;" id="fig:rawqslopeHambidge"></span>
-<img src="_main_files/figure-html/rawqslopeHambidge-1.png" alt="qslope raster for each DEM" width="672" />
-<p class="caption">
-Figure 5.5: qslope raster for each DEM
-</p>
-</div>
-<p><br></p>
-<div class="figure"><span style="display:block;" id="fig:contFigqslopeHambidge"></span>
-<img src="_main_files/figure-html/contFigqslopeHambidge-1.png" alt="Boxplots within deciles for each DEM" width="672" />
-<p class="caption">
-Figure 5.6: Boxplots within deciles for each DEM
+<div id="qslope-2" class="section level3" number="6.1.2">
+<h3>
+<span class="header-section-number">6.1.2</span> qslope<a class="anchor" aria-label="anchor" href="#qslope-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>Figure <a href="hambidge.html#fig:rawqslopeHambidge">6.5</a> shows rasters for qslope and each window size for Hambidge.</p>
+<p>Table <a href="hambidge.html#fig:contFigqslopeHambidge">6.6</a> shows boxplots for each decile of qslope, allowing a comparison of values within each DEM across different ranges of qslope. Deciles are based on the values in the reference DEM: Ag.</p>
+<p>Figure <a href="hambidge.html#fig:plotqslopeHambidge">6.7</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="hambidge.html#fig:diffPlotqslopeHambidge">6.8</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure">
+<span style="display:block;" id="fig:rawqslopeHambidge"></span>
+<img src="_main_files/figure-html/rawqslopeHambidge-1.png" alt="qslope raster for each DEM" width="672"><p class="caption">
+Figure 6.5: qslope raster for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:plotqslopeHambidge"></span>
-<img src="_main_files/figure-html/plotqslopeHambidge-1.png" alt="qslope results for the each DEM" width="672" />
-<p class="caption">
-Figure 5.7: qslope results for the each DEM
+<div class="figure">
+<span style="display:block;" id="fig:contFigqslopeHambidge"></span>
+<img src="_main_files/figure-html/contFigqslopeHambidge-1.png" alt="Boxplots within deciles for each DEM" width="672"><p class="caption">
+Figure 6.6: Boxplots within deciles for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:diffPlotqslopeHambidge"></span>
-<img src="_main_files/figure-html/diffPlotqslopeHambidge-1.png" alt="qslope difference between the best available (reference) DEM and each individual DEM for Hambidge" width="672" />
-<p class="caption">
-Figure 5.8: qslope difference between the best available (reference) DEM and each individual DEM for Hambidge
-</p>
-</div>
-</div>
-<div id="qaspect-1" class="section level3 hasAnchor" number="5.1.3">
-<h3><span class="header-section-number">5.1.3</span> qaspect<a href="hambidge.html#qaspect-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Figure <a href="hambidge.html#fig:rawqaspectHambidge">5.9</a> shows rasters for qaspect and each window size for Hambidge.</p>
-<p>Table <a href="hambidge.html#fig:contFigqaspectHambidge">5.10</a> shows boxplots for each decile of qaspect, allowing a comparison of values within each DEM across different ranges of qaspect. Deciles are based on the values in the reference DEM: Ag.</p>
-<p>Figure <a href="hambidge.html#fig:plotqaspectHambidge">5.11</a> shows the a distribution of values for each sample DEM and window size.</p>
-<p>Figure <a href="hambidge.html#fig:diffPlotqaspectHambidge">5.12</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
-<div class="figure"><span style="display:block;" id="fig:rawqaspectHambidge"></span>
-<img src="_main_files/figure-html/rawqaspectHambidge-1.png" alt="qaspect raster for each DEM" width="672" />
-<p class="caption">
-Figure 5.9: qaspect raster for each DEM
+<div class="figure">
+<span style="display:block;" id="fig:plotqslopeHambidge"></span>
+<img src="_main_files/figure-html/plotqslopeHambidge-1.png" alt="qslope results for the each DEM" width="672"><p class="caption">
+Figure 6.7: qslope results for the each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:contFigqaspectHambidge"></span>
-<img src="_main_files/figure-html/contFigqaspectHambidge-1.png" alt="Boxplots within deciles for each DEM" width="672" />
-<p class="caption">
-Figure 5.10: Boxplots within deciles for each DEM
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotqslopeHambidge"></span>
+<img src="_main_files/figure-html/diffPlotqslopeHambidge-1.png" alt="qslope difference between the best available (reference) DEM and each individual DEM for Hambidge" width="672"><p class="caption">
+Figure 6.8: qslope difference between the best available (reference) DEM and each individual DEM for Hambidge
+</p>
+</div>
+</div>
+<div id="qaspect-2" class="section level3" number="6.1.3">
+<h3>
+<span class="header-section-number">6.1.3</span> qaspect<a class="anchor" aria-label="anchor" href="#qaspect-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>Figure <a href="hambidge.html#fig:rawqaspectHambidge">6.9</a> shows rasters for qaspect and each window size for Hambidge.</p>
+<p>Table <a href="hambidge.html#fig:contFigqaspectHambidge">6.10</a> shows boxplots for each decile of qaspect, allowing a comparison of values within each DEM across different ranges of qaspect. Deciles are based on the values in the reference DEM: Ag.</p>
+<p>Figure <a href="hambidge.html#fig:plotqaspectHambidge">6.11</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="hambidge.html#fig:diffPlotqaspectHambidge">6.12</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure">
+<span style="display:block;" id="fig:rawqaspectHambidge"></span>
+<img src="_main_files/figure-html/rawqaspectHambidge-1.png" alt="qaspect raster for each DEM" width="672"><p class="caption">
+Figure 6.9: qaspect raster for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:plotqaspectHambidge"></span>
-<img src="_main_files/figure-html/plotqaspectHambidge-1.png" alt="qaspect results for the each DEM" width="672" />
-<p class="caption">
-Figure 5.11: qaspect results for the each DEM
+<div class="figure">
+<span style="display:block;" id="fig:contFigqaspectHambidge"></span>
+<img src="_main_files/figure-html/contFigqaspectHambidge-1.png" alt="Boxplots within deciles for each DEM" width="672"><p class="caption">
+Figure 6.10: Boxplots within deciles for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:diffPlotqaspectHambidge"></span>
-<img src="_main_files/figure-html/diffPlotqaspectHambidge-1.png" alt="qaspect difference between the best available (reference) DEM and each individual DEM for Hambidge" width="672" />
-<p class="caption">
-Figure 5.12: qaspect difference between the best available (reference) DEM and each individual DEM for Hambidge
-</p>
-</div>
-</div>
-<div id="qeastness-1" class="section level3 hasAnchor" number="5.1.4">
-<h3><span class="header-section-number">5.1.4</span> qeastness<a href="hambidge.html#qeastness-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Figure <a href="hambidge.html#fig:rawqeastnessHambidge">5.13</a> shows rasters for qeastness and each window size for Hambidge.</p>
-<p>Table <a href="hambidge.html#fig:contFigqeastnessHambidge">5.14</a> shows boxplots for each decile of qeastness, allowing a comparison of values within each DEM across different ranges of qeastness. Deciles are based on the values in the reference DEM: Ag.</p>
-<p>Figure <a href="hambidge.html#fig:plotqeastnessHambidge">5.15</a> shows the a distribution of values for each sample DEM and window size.</p>
-<p>Figure <a href="hambidge.html#fig:diffPlotqeastnessHambidge">5.16</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
-<div class="figure"><span style="display:block;" id="fig:rawqeastnessHambidge"></span>
-<img src="_main_files/figure-html/rawqeastnessHambidge-1.png" alt="qeastness raster for each DEM" width="672" />
-<p class="caption">
-Figure 5.13: qeastness raster for each DEM
+<div class="figure">
+<span style="display:block;" id="fig:plotqaspectHambidge"></span>
+<img src="_main_files/figure-html/plotqaspectHambidge-1.png" alt="qaspect results for the each DEM" width="672"><p class="caption">
+Figure 6.11: qaspect results for the each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:contFigqeastnessHambidge"></span>
-<img src="_main_files/figure-html/contFigqeastnessHambidge-1.png" alt="Boxplots within deciles for each DEM" width="672" />
-<p class="caption">
-Figure 5.14: Boxplots within deciles for each DEM
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotqaspectHambidge"></span>
+<img src="_main_files/figure-html/diffPlotqaspectHambidge-1.png" alt="qaspect difference between the best available (reference) DEM and each individual DEM for Hambidge" width="672"><p class="caption">
+Figure 6.12: qaspect difference between the best available (reference) DEM and each individual DEM for Hambidge
+</p>
+</div>
+</div>
+<div id="qeastness-2" class="section level3" number="6.1.4">
+<h3>
+<span class="header-section-number">6.1.4</span> qeastness<a class="anchor" aria-label="anchor" href="#qeastness-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>Figure <a href="hambidge.html#fig:rawqeastnessHambidge">6.13</a> shows rasters for qeastness and each window size for Hambidge.</p>
+<p>Table <a href="hambidge.html#fig:contFigqeastnessHambidge">6.14</a> shows boxplots for each decile of qeastness, allowing a comparison of values within each DEM across different ranges of qeastness. Deciles are based on the values in the reference DEM: Ag.</p>
+<p>Figure <a href="hambidge.html#fig:plotqeastnessHambidge">6.15</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="hambidge.html#fig:diffPlotqeastnessHambidge">6.16</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure">
+<span style="display:block;" id="fig:rawqeastnessHambidge"></span>
+<img src="_main_files/figure-html/rawqeastnessHambidge-1.png" alt="qeastness raster for each DEM" width="672"><p class="caption">
+Figure 6.13: qeastness raster for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:plotqeastnessHambidge"></span>
-<img src="_main_files/figure-html/plotqeastnessHambidge-1.png" alt="qeastness results for the each DEM" width="672" />
-<p class="caption">
-Figure 5.15: qeastness results for the each DEM
+<div class="figure">
+<span style="display:block;" id="fig:contFigqeastnessHambidge"></span>
+<img src="_main_files/figure-html/contFigqeastnessHambidge-1.png" alt="Boxplots within deciles for each DEM" width="672"><p class="caption">
+Figure 6.14: Boxplots within deciles for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:diffPlotqeastnessHambidge"></span>
-<img src="_main_files/figure-html/diffPlotqeastnessHambidge-1.png" alt="qeastness difference between the best available (reference) DEM and each individual DEM for Hambidge" width="672" />
-<p class="caption">
-Figure 5.16: qeastness difference between the best available (reference) DEM and each individual DEM for Hambidge
-</p>
-</div>
-</div>
-<div id="qnorthness-1" class="section level3 hasAnchor" number="5.1.5">
-<h3><span class="header-section-number">5.1.5</span> qnorthness<a href="hambidge.html#qnorthness-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Figure <a href="hambidge.html#fig:rawqnorthnessHambidge">5.17</a> shows rasters for qnorthness and each window size for Hambidge.</p>
-<p>Table <a href="hambidge.html#fig:contFigqnorthnessHambidge">5.18</a> shows boxplots for each decile of qnorthness, allowing a comparison of values within each DEM across different ranges of qnorthness. Deciles are based on the values in the reference DEM: Ag.</p>
-<p>Figure <a href="hambidge.html#fig:plotqnorthnessHambidge">5.19</a> shows the a distribution of values for each sample DEM and window size.</p>
-<p>Figure <a href="hambidge.html#fig:diffPlotqnorthnessHambidge">5.20</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
-<div class="figure"><span style="display:block;" id="fig:rawqnorthnessHambidge"></span>
-<img src="_main_files/figure-html/rawqnorthnessHambidge-1.png" alt="qnorthness raster for each DEM" width="672" />
-<p class="caption">
-Figure 5.17: qnorthness raster for each DEM
+<div class="figure">
+<span style="display:block;" id="fig:plotqeastnessHambidge"></span>
+<img src="_main_files/figure-html/plotqeastnessHambidge-1.png" alt="qeastness results for the each DEM" width="672"><p class="caption">
+Figure 6.15: qeastness results for the each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:contFigqnorthnessHambidge"></span>
-<img src="_main_files/figure-html/contFigqnorthnessHambidge-1.png" alt="Boxplots within deciles for each DEM" width="672" />
-<p class="caption">
-Figure 5.18: Boxplots within deciles for each DEM
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotqeastnessHambidge"></span>
+<img src="_main_files/figure-html/diffPlotqeastnessHambidge-1.png" alt="qeastness difference between the best available (reference) DEM and each individual DEM for Hambidge" width="672"><p class="caption">
+Figure 6.16: qeastness difference between the best available (reference) DEM and each individual DEM for Hambidge
+</p>
+</div>
+</div>
+<div id="qnorthness-2" class="section level3" number="6.1.5">
+<h3>
+<span class="header-section-number">6.1.5</span> qnorthness<a class="anchor" aria-label="anchor" href="#qnorthness-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>Figure <a href="hambidge.html#fig:rawqnorthnessHambidge">6.17</a> shows rasters for qnorthness and each window size for Hambidge.</p>
+<p>Table <a href="hambidge.html#fig:contFigqnorthnessHambidge">6.18</a> shows boxplots for each decile of qnorthness, allowing a comparison of values within each DEM across different ranges of qnorthness. Deciles are based on the values in the reference DEM: Ag.</p>
+<p>Figure <a href="hambidge.html#fig:plotqnorthnessHambidge">6.19</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="hambidge.html#fig:diffPlotqnorthnessHambidge">6.20</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure">
+<span style="display:block;" id="fig:rawqnorthnessHambidge"></span>
+<img src="_main_files/figure-html/rawqnorthnessHambidge-1.png" alt="qnorthness raster for each DEM" width="672"><p class="caption">
+Figure 6.17: qnorthness raster for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:plotqnorthnessHambidge"></span>
-<img src="_main_files/figure-html/plotqnorthnessHambidge-1.png" alt="qnorthness results for the each DEM" width="672" />
-<p class="caption">
-Figure 5.19: qnorthness results for the each DEM
+<div class="figure">
+<span style="display:block;" id="fig:contFigqnorthnessHambidge"></span>
+<img src="_main_files/figure-html/contFigqnorthnessHambidge-1.png" alt="Boxplots within deciles for each DEM" width="672"><p class="caption">
+Figure 6.18: Boxplots within deciles for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:diffPlotqnorthnessHambidge"></span>
-<img src="_main_files/figure-html/diffPlotqnorthnessHambidge-1.png" alt="qnorthness difference between the best available (reference) DEM and each individual DEM for Hambidge" width="672" />
-<p class="caption">
-Figure 5.20: qnorthness difference between the best available (reference) DEM and each individual DEM for Hambidge
-</p>
-</div>
-</div>
-<div id="profc-1" class="section level3 hasAnchor" number="5.1.6">
-<h3><span class="header-section-number">5.1.6</span> profc<a href="hambidge.html#profc-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Figure <a href="hambidge.html#fig:rawprofcHambidge">5.21</a> shows rasters for profc and each window size for Hambidge.</p>
-<p>Table <a href="hambidge.html#fig:contFigprofcHambidge">5.22</a> shows boxplots for each decile of profc, allowing a comparison of values within each DEM across different ranges of profc. Deciles are based on the values in the reference DEM: Ag.</p>
-<p>Figure <a href="hambidge.html#fig:plotprofcHambidge">5.23</a> shows the a distribution of values for each sample DEM and window size.</p>
-<p>Figure <a href="hambidge.html#fig:diffPlotprofcHambidge">5.24</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
-<div class="figure"><span style="display:block;" id="fig:rawprofcHambidge"></span>
-<img src="_main_files/figure-html/rawprofcHambidge-1.png" alt="profc raster for each DEM" width="672" />
-<p class="caption">
-Figure 5.21: profc raster for each DEM
+<div class="figure">
+<span style="display:block;" id="fig:plotqnorthnessHambidge"></span>
+<img src="_main_files/figure-html/plotqnorthnessHambidge-1.png" alt="qnorthness results for the each DEM" width="672"><p class="caption">
+Figure 6.19: qnorthness results for the each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:contFigprofcHambidge"></span>
-<img src="_main_files/figure-html/contFigprofcHambidge-1.png" alt="Boxplots within deciles for each DEM" width="672" />
-<p class="caption">
-Figure 5.22: Boxplots within deciles for each DEM
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotqnorthnessHambidge"></span>
+<img src="_main_files/figure-html/diffPlotqnorthnessHambidge-1.png" alt="qnorthness difference between the best available (reference) DEM and each individual DEM for Hambidge" width="672"><p class="caption">
+Figure 6.20: qnorthness difference between the best available (reference) DEM and each individual DEM for Hambidge
+</p>
+</div>
+</div>
+<div id="profc-2" class="section level3" number="6.1.6">
+<h3>
+<span class="header-section-number">6.1.6</span> profc<a class="anchor" aria-label="anchor" href="#profc-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>Figure <a href="hambidge.html#fig:rawprofcHambidge">6.21</a> shows rasters for profc and each window size for Hambidge.</p>
+<p>Table <a href="hambidge.html#fig:contFigprofcHambidge">6.22</a> shows boxplots for each decile of profc, allowing a comparison of values within each DEM across different ranges of profc. Deciles are based on the values in the reference DEM: Ag.</p>
+<p>Figure <a href="hambidge.html#fig:plotprofcHambidge">6.23</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="hambidge.html#fig:diffPlotprofcHambidge">6.24</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure">
+<span style="display:block;" id="fig:rawprofcHambidge"></span>
+<img src="_main_files/figure-html/rawprofcHambidge-1.png" alt="profc raster for each DEM" width="672"><p class="caption">
+Figure 6.21: profc raster for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:plotprofcHambidge"></span>
-<img src="_main_files/figure-html/plotprofcHambidge-1.png" alt="profc results for the each DEM" width="672" />
-<p class="caption">
-Figure 5.23: profc results for the each DEM
+<div class="figure">
+<span style="display:block;" id="fig:contFigprofcHambidge"></span>
+<img src="_main_files/figure-html/contFigprofcHambidge-1.png" alt="Boxplots within deciles for each DEM" width="672"><p class="caption">
+Figure 6.22: Boxplots within deciles for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:diffPlotprofcHambidge"></span>
-<img src="_main_files/figure-html/diffPlotprofcHambidge-1.png" alt="profc difference between the best available (reference) DEM and each individual DEM for Hambidge" width="672" />
-<p class="caption">
-Figure 5.24: profc difference between the best available (reference) DEM and each individual DEM for Hambidge
-</p>
-</div>
-</div>
-<div id="planc-1" class="section level3 hasAnchor" number="5.1.7">
-<h3><span class="header-section-number">5.1.7</span> planc<a href="hambidge.html#planc-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Figure <a href="hambidge.html#fig:rawplancHambidge">5.25</a> shows rasters for planc and each window size for Hambidge.</p>
-<p>Table <a href="hambidge.html#fig:contFigplancHambidge">5.26</a> shows boxplots for each decile of planc, allowing a comparison of values within each DEM across different ranges of planc. Deciles are based on the values in the reference DEM: Ag.</p>
-<p>Figure <a href="hambidge.html#fig:plotplancHambidge">5.27</a> shows the a distribution of values for each sample DEM and window size.</p>
-<p>Figure <a href="hambidge.html#fig:diffPlotplancHambidge">5.28</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
-<div class="figure"><span style="display:block;" id="fig:rawplancHambidge"></span>
-<img src="_main_files/figure-html/rawplancHambidge-1.png" alt="planc raster for each DEM" width="672" />
-<p class="caption">
-Figure 5.25: planc raster for each DEM
+<div class="figure">
+<span style="display:block;" id="fig:plotprofcHambidge"></span>
+<img src="_main_files/figure-html/plotprofcHambidge-1.png" alt="profc results for the each DEM" width="672"><p class="caption">
+Figure 6.23: profc results for the each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:contFigplancHambidge"></span>
-<img src="_main_files/figure-html/contFigplancHambidge-1.png" alt="Boxplots within deciles for each DEM" width="672" />
-<p class="caption">
-Figure 5.26: Boxplots within deciles for each DEM
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotprofcHambidge"></span>
+<img src="_main_files/figure-html/diffPlotprofcHambidge-1.png" alt="profc difference between the best available (reference) DEM and each individual DEM for Hambidge" width="672"><p class="caption">
+Figure 6.24: profc difference between the best available (reference) DEM and each individual DEM for Hambidge
+</p>
+</div>
+</div>
+<div id="planc-2" class="section level3" number="6.1.7">
+<h3>
+<span class="header-section-number">6.1.7</span> planc<a class="anchor" aria-label="anchor" href="#planc-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>Figure <a href="hambidge.html#fig:rawplancHambidge">6.25</a> shows rasters for planc and each window size for Hambidge.</p>
+<p>Table <a href="hambidge.html#fig:contFigplancHambidge">6.26</a> shows boxplots for each decile of planc, allowing a comparison of values within each DEM across different ranges of planc. Deciles are based on the values in the reference DEM: Ag.</p>
+<p>Figure <a href="hambidge.html#fig:plotplancHambidge">6.27</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="hambidge.html#fig:diffPlotplancHambidge">6.28</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure">
+<span style="display:block;" id="fig:rawplancHambidge"></span>
+<img src="_main_files/figure-html/rawplancHambidge-1.png" alt="planc raster for each DEM" width="672"><p class="caption">
+Figure 6.25: planc raster for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:plotplancHambidge"></span>
-<img src="_main_files/figure-html/plotplancHambidge-1.png" alt="planc results for the each DEM" width="672" />
-<p class="caption">
-Figure 5.27: planc results for the each DEM
+<div class="figure">
+<span style="display:block;" id="fig:contFigplancHambidge"></span>
+<img src="_main_files/figure-html/contFigplancHambidge-1.png" alt="Boxplots within deciles for each DEM" width="672"><p class="caption">
+Figure 6.26: Boxplots within deciles for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:diffPlotplancHambidge"></span>
-<img src="_main_files/figure-html/diffPlotplancHambidge-1.png" alt="planc difference between the best available (reference) DEM and each individual DEM for Hambidge" width="672" />
-<p class="caption">
-Figure 5.28: planc difference between the best available (reference) DEM and each individual DEM for Hambidge
-</p>
-</div>
-</div>
-<div id="twistc-1" class="section level3 hasAnchor" number="5.1.8">
-<h3><span class="header-section-number">5.1.8</span> twistc<a href="hambidge.html#twistc-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Figure <a href="hambidge.html#fig:rawtwistcHambidge">5.29</a> shows rasters for twistc and each window size for Hambidge.</p>
-<p>Table <a href="hambidge.html#fig:contFigtwistcHambidge">5.30</a> shows boxplots for each decile of twistc, allowing a comparison of values within each DEM across different ranges of twistc. Deciles are based on the values in the reference DEM: Ag.</p>
-<p>Figure <a href="hambidge.html#fig:plottwistcHambidge">5.31</a> shows the a distribution of values for each sample DEM and window size.</p>
-<p>Figure <a href="hambidge.html#fig:diffPlottwistcHambidge">5.32</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
-<div class="figure"><span style="display:block;" id="fig:rawtwistcHambidge"></span>
-<img src="_main_files/figure-html/rawtwistcHambidge-1.png" alt="twistc raster for each DEM" width="672" />
-<p class="caption">
-Figure 5.29: twistc raster for each DEM
+<div class="figure">
+<span style="display:block;" id="fig:plotplancHambidge"></span>
+<img src="_main_files/figure-html/plotplancHambidge-1.png" alt="planc results for the each DEM" width="672"><p class="caption">
+Figure 6.27: planc results for the each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:contFigtwistcHambidge"></span>
-<img src="_main_files/figure-html/contFigtwistcHambidge-1.png" alt="Boxplots within deciles for each DEM" width="672" />
-<p class="caption">
-Figure 5.30: Boxplots within deciles for each DEM
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotplancHambidge"></span>
+<img src="_main_files/figure-html/diffPlotplancHambidge-1.png" alt="planc difference between the best available (reference) DEM and each individual DEM for Hambidge" width="672"><p class="caption">
+Figure 6.28: planc difference between the best available (reference) DEM and each individual DEM for Hambidge
+</p>
+</div>
+</div>
+<div id="twistc-2" class="section level3" number="6.1.8">
+<h3>
+<span class="header-section-number">6.1.8</span> twistc<a class="anchor" aria-label="anchor" href="#twistc-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>Figure <a href="hambidge.html#fig:rawtwistcHambidge">6.29</a> shows rasters for twistc and each window size for Hambidge.</p>
+<p>Table <a href="hambidge.html#fig:contFigtwistcHambidge">6.30</a> shows boxplots for each decile of twistc, allowing a comparison of values within each DEM across different ranges of twistc. Deciles are based on the values in the reference DEM: Ag.</p>
+<p>Figure <a href="hambidge.html#fig:plottwistcHambidge">6.31</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="hambidge.html#fig:diffPlottwistcHambidge">6.32</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure">
+<span style="display:block;" id="fig:rawtwistcHambidge"></span>
+<img src="_main_files/figure-html/rawtwistcHambidge-1.png" alt="twistc raster for each DEM" width="672"><p class="caption">
+Figure 6.29: twistc raster for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:plottwistcHambidge"></span>
-<img src="_main_files/figure-html/plottwistcHambidge-1.png" alt="twistc results for the each DEM" width="672" />
-<p class="caption">
-Figure 5.31: twistc results for the each DEM
+<div class="figure">
+<span style="display:block;" id="fig:contFigtwistcHambidge"></span>
+<img src="_main_files/figure-html/contFigtwistcHambidge-1.png" alt="Boxplots within deciles for each DEM" width="672"><p class="caption">
+Figure 6.30: Boxplots within deciles for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:diffPlottwistcHambidge"></span>
-<img src="_main_files/figure-html/diffPlottwistcHambidge-1.png" alt="twistc difference between the best available (reference) DEM and each individual DEM for Hambidge" width="672" />
-<p class="caption">
-Figure 5.32: twistc difference between the best available (reference) DEM and each individual DEM for Hambidge
-</p>
-</div>
-</div>
-<div id="meanc-1" class="section level3 hasAnchor" number="5.1.9">
-<h3><span class="header-section-number">5.1.9</span> meanc<a href="hambidge.html#meanc-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Figure <a href="hambidge.html#fig:rawmeancHambidge">5.33</a> shows rasters for meanc and each window size for Hambidge.</p>
-<p>Table <a href="hambidge.html#fig:contFigmeancHambidge">5.34</a> shows boxplots for each decile of meanc, allowing a comparison of values within each DEM across different ranges of meanc. Deciles are based on the values in the reference DEM: Ag.</p>
-<p>Figure <a href="hambidge.html#fig:plotmeancHambidge">5.35</a> shows the a distribution of values for each sample DEM and window size.</p>
-<p>Figure <a href="hambidge.html#fig:diffPlotmeancHambidge">5.36</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
-<div class="figure"><span style="display:block;" id="fig:rawmeancHambidge"></span>
-<img src="_main_files/figure-html/rawmeancHambidge-1.png" alt="meanc raster for each DEM" width="672" />
-<p class="caption">
-Figure 5.33: meanc raster for each DEM
+<div class="figure">
+<span style="display:block;" id="fig:plottwistcHambidge"></span>
+<img src="_main_files/figure-html/plottwistcHambidge-1.png" alt="twistc results for the each DEM" width="672"><p class="caption">
+Figure 6.31: twistc results for the each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:contFigmeancHambidge"></span>
-<img src="_main_files/figure-html/contFigmeancHambidge-1.png" alt="Boxplots within deciles for each DEM" width="672" />
-<p class="caption">
-Figure 5.34: Boxplots within deciles for each DEM
+<div class="figure">
+<span style="display:block;" id="fig:diffPlottwistcHambidge"></span>
+<img src="_main_files/figure-html/diffPlottwistcHambidge-1.png" alt="twistc difference between the best available (reference) DEM and each individual DEM for Hambidge" width="672"><p class="caption">
+Figure 6.32: twistc difference between the best available (reference) DEM and each individual DEM for Hambidge
+</p>
+</div>
+</div>
+<div id="meanc-2" class="section level3" number="6.1.9">
+<h3>
+<span class="header-section-number">6.1.9</span> meanc<a class="anchor" aria-label="anchor" href="#meanc-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>Figure <a href="hambidge.html#fig:rawmeancHambidge">6.33</a> shows rasters for meanc and each window size for Hambidge.</p>
+<p>Table <a href="hambidge.html#fig:contFigmeancHambidge">6.34</a> shows boxplots for each decile of meanc, allowing a comparison of values within each DEM across different ranges of meanc. Deciles are based on the values in the reference DEM: Ag.</p>
+<p>Figure <a href="hambidge.html#fig:plotmeancHambidge">6.35</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="hambidge.html#fig:diffPlotmeancHambidge">6.36</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure">
+<span style="display:block;" id="fig:rawmeancHambidge"></span>
+<img src="_main_files/figure-html/rawmeancHambidge-1.png" alt="meanc raster for each DEM" width="672"><p class="caption">
+Figure 6.33: meanc raster for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:plotmeancHambidge"></span>
-<img src="_main_files/figure-html/plotmeancHambidge-1.png" alt="meanc results for the each DEM" width="672" />
-<p class="caption">
-Figure 5.35: meanc results for the each DEM
+<div class="figure">
+<span style="display:block;" id="fig:contFigmeancHambidge"></span>
+<img src="_main_files/figure-html/contFigmeancHambidge-1.png" alt="Boxplots within deciles for each DEM" width="672"><p class="caption">
+Figure 6.34: Boxplots within deciles for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:diffPlotmeancHambidge"></span>
-<img src="_main_files/figure-html/diffPlotmeancHambidge-1.png" alt="meanc difference between the best available (reference) DEM and each individual DEM for Hambidge" width="672" />
-<p class="caption">
-Figure 5.36: meanc difference between the best available (reference) DEM and each individual DEM for Hambidge
-</p>
-</div>
-</div>
-<div id="maxc-1" class="section level3 hasAnchor" number="5.1.10">
-<h3><span class="header-section-number">5.1.10</span> maxc<a href="hambidge.html#maxc-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Figure <a href="hambidge.html#fig:rawmaxcHambidge">5.37</a> shows rasters for maxc and each window size for Hambidge.</p>
-<p>Table <a href="hambidge.html#fig:contFigmaxcHambidge">5.38</a> shows boxplots for each decile of maxc, allowing a comparison of values within each DEM across different ranges of maxc. Deciles are based on the values in the reference DEM: Ag.</p>
-<p>Figure <a href="hambidge.html#fig:plotmaxcHambidge">5.39</a> shows the a distribution of values for each sample DEM and window size.</p>
-<p>Figure <a href="hambidge.html#fig:diffPlotmaxcHambidge">5.40</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
-<div class="figure"><span style="display:block;" id="fig:rawmaxcHambidge"></span>
-<img src="_main_files/figure-html/rawmaxcHambidge-1.png" alt="maxc raster for each DEM" width="672" />
-<p class="caption">
-Figure 5.37: maxc raster for each DEM
+<div class="figure">
+<span style="display:block;" id="fig:plotmeancHambidge"></span>
+<img src="_main_files/figure-html/plotmeancHambidge-1.png" alt="meanc results for the each DEM" width="672"><p class="caption">
+Figure 6.35: meanc results for the each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:contFigmaxcHambidge"></span>
-<img src="_main_files/figure-html/contFigmaxcHambidge-1.png" alt="Boxplots within deciles for each DEM" width="672" />
-<p class="caption">
-Figure 5.38: Boxplots within deciles for each DEM
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotmeancHambidge"></span>
+<img src="_main_files/figure-html/diffPlotmeancHambidge-1.png" alt="meanc difference between the best available (reference) DEM and each individual DEM for Hambidge" width="672"><p class="caption">
+Figure 6.36: meanc difference between the best available (reference) DEM and each individual DEM for Hambidge
+</p>
+</div>
+</div>
+<div id="maxc-2" class="section level3" number="6.1.10">
+<h3>
+<span class="header-section-number">6.1.10</span> maxc<a class="anchor" aria-label="anchor" href="#maxc-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>Figure <a href="hambidge.html#fig:rawmaxcHambidge">6.37</a> shows rasters for maxc and each window size for Hambidge.</p>
+<p>Table <a href="hambidge.html#fig:contFigmaxcHambidge">6.38</a> shows boxplots for each decile of maxc, allowing a comparison of values within each DEM across different ranges of maxc. Deciles are based on the values in the reference DEM: Ag.</p>
+<p>Figure <a href="hambidge.html#fig:plotmaxcHambidge">6.39</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="hambidge.html#fig:diffPlotmaxcHambidge">6.40</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure">
+<span style="display:block;" id="fig:rawmaxcHambidge"></span>
+<img src="_main_files/figure-html/rawmaxcHambidge-1.png" alt="maxc raster for each DEM" width="672"><p class="caption">
+Figure 6.37: maxc raster for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:plotmaxcHambidge"></span>
-<img src="_main_files/figure-html/plotmaxcHambidge-1.png" alt="maxc results for the each DEM" width="672" />
-<p class="caption">
-Figure 5.39: maxc results for the each DEM
+<div class="figure">
+<span style="display:block;" id="fig:contFigmaxcHambidge"></span>
+<img src="_main_files/figure-html/contFigmaxcHambidge-1.png" alt="Boxplots within deciles for each DEM" width="672"><p class="caption">
+Figure 6.38: Boxplots within deciles for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:diffPlotmaxcHambidge"></span>
-<img src="_main_files/figure-html/diffPlotmaxcHambidge-1.png" alt="maxc difference between the best available (reference) DEM and each individual DEM for Hambidge" width="672" />
-<p class="caption">
-Figure 5.40: maxc difference between the best available (reference) DEM and each individual DEM for Hambidge
-</p>
-</div>
-</div>
-<div id="minc-1" class="section level3 hasAnchor" number="5.1.11">
-<h3><span class="header-section-number">5.1.11</span> minc<a href="hambidge.html#minc-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Figure <a href="hambidge.html#fig:rawmincHambidge">5.41</a> shows rasters for minc and each window size for Hambidge.</p>
-<p>Table <a href="hambidge.html#fig:contFigmincHambidge">5.42</a> shows boxplots for each decile of minc, allowing a comparison of values within each DEM across different ranges of minc. Deciles are based on the values in the reference DEM: Ag.</p>
-<p>Figure <a href="hambidge.html#fig:plotmincHambidge">5.43</a> shows the a distribution of values for each sample DEM and window size.</p>
-<p>Figure <a href="hambidge.html#fig:diffPlotmincHambidge">5.44</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
-<div class="figure"><span style="display:block;" id="fig:rawmincHambidge"></span>
-<img src="_main_files/figure-html/rawmincHambidge-1.png" alt="minc raster for each DEM" width="672" />
-<p class="caption">
-Figure 5.41: minc raster for each DEM
+<div class="figure">
+<span style="display:block;" id="fig:plotmaxcHambidge"></span>
+<img src="_main_files/figure-html/plotmaxcHambidge-1.png" alt="maxc results for the each DEM" width="672"><p class="caption">
+Figure 6.39: maxc results for the each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:contFigmincHambidge"></span>
-<img src="_main_files/figure-html/contFigmincHambidge-1.png" alt="Boxplots within deciles for each DEM" width="672" />
-<p class="caption">
-Figure 5.42: Boxplots within deciles for each DEM
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotmaxcHambidge"></span>
+<img src="_main_files/figure-html/diffPlotmaxcHambidge-1.png" alt="maxc difference between the best available (reference) DEM and each individual DEM for Hambidge" width="672"><p class="caption">
+Figure 6.40: maxc difference between the best available (reference) DEM and each individual DEM for Hambidge
+</p>
+</div>
+</div>
+<div id="minc-2" class="section level3" number="6.1.11">
+<h3>
+<span class="header-section-number">6.1.11</span> minc<a class="anchor" aria-label="anchor" href="#minc-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>Figure <a href="hambidge.html#fig:rawmincHambidge">6.41</a> shows rasters for minc and each window size for Hambidge.</p>
+<p>Table <a href="hambidge.html#fig:contFigmincHambidge">6.42</a> shows boxplots for each decile of minc, allowing a comparison of values within each DEM across different ranges of minc. Deciles are based on the values in the reference DEM: Ag.</p>
+<p>Figure <a href="hambidge.html#fig:plotmincHambidge">6.43</a> shows the a distribution of values for each sample DEM and window size.</p>
+<p>Figure <a href="hambidge.html#fig:diffPlotmincHambidge">6.44</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
+<div class="figure">
+<span style="display:block;" id="fig:rawmincHambidge"></span>
+<img src="_main_files/figure-html/rawmincHambidge-1.png" alt="minc raster for each DEM" width="672"><p class="caption">
+Figure 6.41: minc raster for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:plotmincHambidge"></span>
-<img src="_main_files/figure-html/plotmincHambidge-1.png" alt="minc results for the each DEM" width="672" />
-<p class="caption">
-Figure 5.43: minc results for the each DEM
+<div class="figure">
+<span style="display:block;" id="fig:contFigmincHambidge"></span>
+<img src="_main_files/figure-html/contFigmincHambidge-1.png" alt="Boxplots within deciles for each DEM" width="672"><p class="caption">
+Figure 6.42: Boxplots within deciles for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:diffPlotmincHambidge"></span>
-<img src="_main_files/figure-html/diffPlotmincHambidge-1.png" alt="minc difference between the best available (reference) DEM and each individual DEM for Hambidge" width="672" />
-<p class="caption">
-Figure 5.44: minc difference between the best available (reference) DEM and each individual DEM for Hambidge
+<div class="figure">
+<span style="display:block;" id="fig:plotmincHambidge"></span>
+<img src="_main_files/figure-html/plotmincHambidge-1.png" alt="minc results for the each DEM" width="672"><p class="caption">
+Figure 6.43: minc results for the each DEM
+</p>
+</div>
+<p><br></p>
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotmincHambidge"></span>
+<img src="_main_files/figure-html/diffPlotmincHambidge-1.png" alt="minc difference between the best available (reference) DEM and each individual DEM for Hambidge" width="672"><p class="caption">
+Figure 6.44: minc difference between the best available (reference) DEM and each individual DEM for Hambidge
 </p>
 </div>
 </div>
 </div>
-<div id="categorical-1" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> Categorical<a href="hambidge.html#categorical-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Table <a href="hambidge.html#tab:categTabHambidge">5.1</a> shows the proportion of each DEM classifed to each landform element (also see Figure <a href="hambidge.html#fig:categCountHambidge">5.46</a>.</p>
-<p>Figure <a href="hambidge.html#fig:categHambidge">5.45</a> shows a landscape classification for each reprojected area.</p>
-<table class="table table-striped table-hover table-condensed table-responsive" style="color: black; margin-left: auto; margin-right: auto;">
+<div id="categorical-2" class="section level2" number="6.2">
+<h2>
+<span class="header-section-number">6.2</span> Categorical<a class="anchor" aria-label="anchor" href="#categorical-2"><i class="fas fa-link"></i></a>
+</h2>
+<p>Table <a href="hambidge.html#tab:categTabHambidge">6.1</a> shows the proportion of each DEM classifed to each landform element (also see Figure <a href="hambidge.html#fig:categCountHambidge">6.46</a>.</p>
+<p>Figure <a href="hambidge.html#fig:categHambidge">6.45</a> shows a landscape classification for each reprojected area.</p>
+<div class="inline-table"><table class="table table-striped table-hover table-condensed table-responsive" style="color: black; margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:categTabHambidge">Table 5.1: </span><span id="tab:categTabHambidge">Table 5.2: </span>Proportion of Hambidge area classified to each landform element
+<span id="tab:categTabHambidge">Table 6.1: </span><span id="tab:categTabHambidge">Table 6.2: </span>Proportion of Hambidge area classified to each landform element
 </caption>
-<thead>
-<tr>
+<thead><tr>
 <th style="text-align:left;">
-category
+landform
 </th>
 <th style="text-align:right;">
 Ag
@@ -598,24 +512,23 @@ Copernicus
 <th style="text-align:right;">
 SRTM
 </th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
 canyon
 </td>
 <td style="text-align:right;">
-0.0093920
+0.0093786
 </td>
 <td style="text-align:right;">
-0.0128100
+0.0168795
 </td>
 <td style="text-align:right;">
-0.0070550
+0.0085566
 </td>
 <td style="text-align:right;">
-0.00221
+0.00242
 </td>
 </tr>
 <tr>
@@ -623,16 +536,16 @@ canyon
 midslope drainage
 </td>
 <td style="text-align:right;">
-0.0097225
+0.0096920
 </td>
 <td style="text-align:right;">
-0.0091979
+0.0136367
 </td>
 <td style="text-align:right;">
-0.0058904
+0.0084797
 </td>
 <td style="text-align:right;">
-0.00091
+0.00119
 </td>
 </tr>
 <tr>
@@ -643,10 +556,10 @@ upland drainage
 0.0000077
 </td>
 <td style="text-align:right;">
-0.0000019
+0.0000048
 </td>
 <td style="text-align:right;">
-0.0000019
+0.0000038
 </td>
 <td style="text-align:right;">
 </td>
@@ -656,16 +569,16 @@ upland drainage
 u-shaped valley
 </td>
 <td style="text-align:right;">
-0.0539044
+0.0539199
 </td>
 <td style="text-align:right;">
-0.0616244
+0.0611180
 </td>
 <td style="text-align:right;">
-0.0552315
+0.0548226
 </td>
 <td style="text-align:right;">
-0.02375
+0.02408
 </td>
 </tr>
 <tr>
@@ -673,16 +586,16 @@ u-shaped valley
 plains
 </td>
 <td style="text-align:right;">
-0.8187888
+0.8188237
 </td>
 <td style="text-align:right;">
-0.8193038
+0.8018144
 </td>
 <td style="text-align:right;">
-0.8370298
+0.8249066
 </td>
 <td style="text-align:right;">
-0.94348
+0.94202
 </td>
 </tr>
 <tr>
@@ -690,13 +603,13 @@ plains
 open slopes
 </td>
 <td style="text-align:right;">
-0.0081072
+0.0081162
 </td>
 <td style="text-align:right;">
-0.0032171
+0.0046609
 </td>
 <td style="text-align:right;">
-0.0040224
+0.0060934
 </td>
 <td style="text-align:right;">
 </td>
@@ -706,16 +619,16 @@ open slopes
 upper slopes
 </td>
 <td style="text-align:right;">
-0.0766935
+0.0767188
 </td>
 <td style="text-align:right;">
-0.0737281
+0.0733068
 </td>
 <td style="text-align:right;">
-0.0759507
+0.0764688
 </td>
 <td style="text-align:right;">
-0.02674
+0.02725
 </td>
 </tr>
 <tr>
@@ -726,10 +639,10 @@ local ridges
 0.0000115
 </td>
 <td style="text-align:right;">
-0.0000058
+0.0000163
 </td>
 <td style="text-align:right;">
-0.0000019
+0.0000067
 </td>
 <td style="text-align:right;">
 </td>
@@ -739,16 +652,16 @@ local ridges
 midslopes ridges
 </td>
 <td style="text-align:right;">
-0.0095044
+0.0094651
 </td>
 <td style="text-align:right;">
-0.0091835
+0.0137819
 </td>
 <td style="text-align:right;">
-0.0055695
+0.0083181
 </td>
 <td style="text-align:right;">
-0.00057
+0.00061
 </td>
 </tr>
 <tr>
@@ -756,95 +669,83 @@ midslopes ridges
 mountain tops
 </td>
 <td style="text-align:right;">
-0.0138679
+0.0138665
 </td>
 <td style="text-align:right;">
-0.0109275
+0.0147808
 </td>
 <td style="text-align:right;">
-0.0092469
+0.0123436
 </td>
 <td style="text-align:right;">
-0.00234
+0.00243
 </td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:categHambidge"></span>
-<img src="_main_files/figure-html/categHambidge-1.png" alt="Categorical representation of Hambidge" width="672" />
-<p class="caption">
-Figure 5.45: Categorical representation of Hambidge
+<div class="figure">
+<span style="display:block;" id="fig:categHambidge"></span>
+<img src="_main_files/figure-html/categHambidge-1.png" alt="Categorical representation of Hambidge" width="672"><p class="caption">
+Figure 6.45: Categorical representation of Hambidge
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:categCountHambidge"></span>
-<img src="_main_files/figure-html/categCountHambidge-1.png" alt="Proportion of categorised Hambidge area in each of several classification classes" width="672" />
-<p class="caption">
-Figure 5.46: Proportion of categorised Hambidge area in each of several classification classes
+<div class="figure">
+<span style="display:block;" id="fig:categCountHambidge"></span>
+<img src="_main_files/figure-html/categCountHambidge-1.png" alt="Proportion of categorised Hambidge area in each of several classification classes" width="672"><p class="caption">
+Figure 6.46: Proportion of categorised Hambidge area in each of several classification classes
 </p>
 </div>
 </div>
 </div>
-            </section>
+  <div class="chapter-nav">
+<div class="prev"><a href="cleland.html"><span class="header-section-number">5</span> Cleland</a></div>
+<div class="next"><a href="kanku-breakaways.html"><span class="header-section-number">7</span> Kanku-Breakaways</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#hambidge"><span class="header-section-number">6</span> Hambidge</a></li>
+<li>
+<a class="nav-link" href="#continuous-2"><span class="header-section-number">6.1</span> Continuous</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#elev-2"><span class="header-section-number">6.1.1</span> elev</a></li>
+<li><a class="nav-link" href="#qslope-2"><span class="header-section-number">6.1.2</span> qslope</a></li>
+<li><a class="nav-link" href="#qaspect-2"><span class="header-section-number">6.1.3</span> qaspect</a></li>
+<li><a class="nav-link" href="#qeastness-2"><span class="header-section-number">6.1.4</span> qeastness</a></li>
+<li><a class="nav-link" href="#qnorthness-2"><span class="header-section-number">6.1.5</span> qnorthness</a></li>
+<li><a class="nav-link" href="#profc-2"><span class="header-section-number">6.1.6</span> profc</a></li>
+<li><a class="nav-link" href="#planc-2"><span class="header-section-number">6.1.7</span> planc</a></li>
+<li><a class="nav-link" href="#twistc-2"><span class="header-section-number">6.1.8</span> twistc</a></li>
+<li><a class="nav-link" href="#meanc-2"><span class="header-section-number">6.1.9</span> meanc</a></li>
+<li><a class="nav-link" href="#maxc-2"><span class="header-section-number">6.1.10</span> maxc</a></li>
+<li><a class="nav-link" href="#minc-2"><span class="header-section-number">6.1.11</span> minc</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#categorical-2"><span class="header-section-number">6.2</span> Categorical</a></li>
+</ul>
 
-          </div>
-        </div>
-      </div>
-<a href="bakara.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="cleland.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/acanthiza/DEM/blob/master/0030_results.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/acanthiza/DEM/edit/master/0030_results.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>DEM comparison</strong>" was written by Nigel Willoughby, Department for Environment and Water. It was last built on Saturday, 26 July, 2025. 14:49.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
 </body>
-
 </html>

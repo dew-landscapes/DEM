@@ -1,590 +1,504 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7 Kanku-Breakaways | DEM comparison</title>
-  <meta name="description" content="This work aims to compare digital terrain models as potential inputs to ecosystem modelling." />
-  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="7 Kanku-Breakaways | DEM comparison" />
-  <meta property="og:type" content="book" />
-  
-  <meta property="og:description" content="This work aims to compare digital terrain models as potential inputs to ecosystem modelling." />
-  
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7 Kanku-Breakaways | DEM comparison" />
-  
-  <meta name="twitter:description" content="This work aims to compare digital terrain models as potential inputs to ecosystem modelling." />
-  
-
-<meta name="author" content="Nigel Willoughby" />
-<meta name="author" content="Department for Environment and Water" />
-
-
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="cleland.html"/>
-
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-
-
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>7 Kanku-Breakaways | DEM comparison</title>
+<meta name="author" content="Nigel Willoughby">
+<meta name="author" content="Department for Environment and Water">
+<meta name="description" content="7.1 Continuous  7.1.1 elev Figure 7.1 shows rasters for elev and each window size for Kanku-Breakaways. Table 7.2 shows boxplots for each decile of elev, allowing a comparison of values within...">
+<meta name="generator" content="bookdown 0.41 with bs4_book()">
+<meta property="og:title" content="7 Kanku-Breakaways | DEM comparison">
+<meta property="og:type" content="book">
+<meta property="og:description" content="7.1 Continuous  7.1.1 elev Figure 7.1 shows rasters for elev and each window size for Kanku-Breakaways. Table 7.2 shows boxplots for each decile of elev, allowing a comparison of values within...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="7 Kanku-Breakaways | DEM comparison">
+<meta name="twitter:description" content="7.1 Continuous  7.1.1 elev Figure 7.1 shows rasters for elev and each window size for Kanku-Breakaways. Table 7.2 shows boxplots for each decile of elev, allowing a comparison of values within...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
 <style type="text/css">
-  
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-</style>
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
-
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+          margin-bottom: 0em;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Aim</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Intro</a></li>
-<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="methods.html"><a href="methods.html#dems"><i class="fa fa-check"></i><b>3.1</b> DEMs</a></li>
-<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#processing"><i class="fa fa-check"></i><b>3.2</b> Processing</a></li>
-<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#workflow"><i class="fa fa-check"></i><b>3.3</b> Workflow</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="bakara.html"><a href="bakara.html"><i class="fa fa-check"></i><b>4</b> Bakara</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="bakara.html"><a href="bakara.html#continuous"><i class="fa fa-check"></i><b>4.1</b> Continuous</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="bakara.html"><a href="bakara.html#elev"><i class="fa fa-check"></i><b>4.1.1</b> elev</a></li>
-<li class="chapter" data-level="4.1.2" data-path="bakara.html"><a href="bakara.html#qslope"><i class="fa fa-check"></i><b>4.1.2</b> qslope</a></li>
-<li class="chapter" data-level="4.1.3" data-path="bakara.html"><a href="bakara.html#qaspect"><i class="fa fa-check"></i><b>4.1.3</b> qaspect</a></li>
-<li class="chapter" data-level="4.1.4" data-path="bakara.html"><a href="bakara.html#qeastness"><i class="fa fa-check"></i><b>4.1.4</b> qeastness</a></li>
-<li class="chapter" data-level="4.1.5" data-path="bakara.html"><a href="bakara.html#qnorthness"><i class="fa fa-check"></i><b>4.1.5</b> qnorthness</a></li>
-<li class="chapter" data-level="4.1.6" data-path="bakara.html"><a href="bakara.html#profc"><i class="fa fa-check"></i><b>4.1.6</b> profc</a></li>
-<li class="chapter" data-level="4.1.7" data-path="bakara.html"><a href="bakara.html#planc"><i class="fa fa-check"></i><b>4.1.7</b> planc</a></li>
-<li class="chapter" data-level="4.1.8" data-path="bakara.html"><a href="bakara.html#twistc"><i class="fa fa-check"></i><b>4.1.8</b> twistc</a></li>
-<li class="chapter" data-level="4.1.9" data-path="bakara.html"><a href="bakara.html#meanc"><i class="fa fa-check"></i><b>4.1.9</b> meanc</a></li>
-<li class="chapter" data-level="4.1.10" data-path="bakara.html"><a href="bakara.html#maxc"><i class="fa fa-check"></i><b>4.1.10</b> maxc</a></li>
-<li class="chapter" data-level="4.1.11" data-path="bakara.html"><a href="bakara.html#minc"><i class="fa fa-check"></i><b>4.1.11</b> minc</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="bakara.html"><a href="bakara.html#categorical"><i class="fa fa-check"></i><b>4.2</b> Categorical</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="hambidge.html"><a href="hambidge.html"><i class="fa fa-check"></i><b>5</b> Hambidge</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="hambidge.html"><a href="hambidge.html#continuous-1"><i class="fa fa-check"></i><b>5.1</b> Continuous</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="hambidge.html"><a href="hambidge.html#elev-1"><i class="fa fa-check"></i><b>5.1.1</b> elev</a></li>
-<li class="chapter" data-level="5.1.2" data-path="hambidge.html"><a href="hambidge.html#qslope-1"><i class="fa fa-check"></i><b>5.1.2</b> qslope</a></li>
-<li class="chapter" data-level="5.1.3" data-path="hambidge.html"><a href="hambidge.html#qaspect-1"><i class="fa fa-check"></i><b>5.1.3</b> qaspect</a></li>
-<li class="chapter" data-level="5.1.4" data-path="hambidge.html"><a href="hambidge.html#qeastness-1"><i class="fa fa-check"></i><b>5.1.4</b> qeastness</a></li>
-<li class="chapter" data-level="5.1.5" data-path="hambidge.html"><a href="hambidge.html#qnorthness-1"><i class="fa fa-check"></i><b>5.1.5</b> qnorthness</a></li>
-<li class="chapter" data-level="5.1.6" data-path="hambidge.html"><a href="hambidge.html#profc-1"><i class="fa fa-check"></i><b>5.1.6</b> profc</a></li>
-<li class="chapter" data-level="5.1.7" data-path="hambidge.html"><a href="hambidge.html#planc-1"><i class="fa fa-check"></i><b>5.1.7</b> planc</a></li>
-<li class="chapter" data-level="5.1.8" data-path="hambidge.html"><a href="hambidge.html#twistc-1"><i class="fa fa-check"></i><b>5.1.8</b> twistc</a></li>
-<li class="chapter" data-level="5.1.9" data-path="hambidge.html"><a href="hambidge.html#meanc-1"><i class="fa fa-check"></i><b>5.1.9</b> meanc</a></li>
-<li class="chapter" data-level="5.1.10" data-path="hambidge.html"><a href="hambidge.html#maxc-1"><i class="fa fa-check"></i><b>5.1.10</b> maxc</a></li>
-<li class="chapter" data-level="5.1.11" data-path="hambidge.html"><a href="hambidge.html#minc-1"><i class="fa fa-check"></i><b>5.1.11</b> minc</a></li>
-</ul></li>
-<li class="chapter" data-level="5.2" data-path="hambidge.html"><a href="hambidge.html#categorical-1"><i class="fa fa-check"></i><b>5.2</b> Categorical</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="cleland.html"><a href="cleland.html"><i class="fa fa-check"></i><b>6</b> Cleland</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="cleland.html"><a href="cleland.html#continuous-2"><i class="fa fa-check"></i><b>6.1</b> Continuous</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="cleland.html"><a href="cleland.html#elev-2"><i class="fa fa-check"></i><b>6.1.1</b> elev</a></li>
-<li class="chapter" data-level="6.1.2" data-path="cleland.html"><a href="cleland.html#qslope-2"><i class="fa fa-check"></i><b>6.1.2</b> qslope</a></li>
-<li class="chapter" data-level="6.1.3" data-path="cleland.html"><a href="cleland.html#qaspect-2"><i class="fa fa-check"></i><b>6.1.3</b> qaspect</a></li>
-<li class="chapter" data-level="6.1.4" data-path="cleland.html"><a href="cleland.html#qeastness-2"><i class="fa fa-check"></i><b>6.1.4</b> qeastness</a></li>
-<li class="chapter" data-level="6.1.5" data-path="cleland.html"><a href="cleland.html#qnorthness-2"><i class="fa fa-check"></i><b>6.1.5</b> qnorthness</a></li>
-<li class="chapter" data-level="6.1.6" data-path="cleland.html"><a href="cleland.html#profc-2"><i class="fa fa-check"></i><b>6.1.6</b> profc</a></li>
-<li class="chapter" data-level="6.1.7" data-path="cleland.html"><a href="cleland.html#planc-2"><i class="fa fa-check"></i><b>6.1.7</b> planc</a></li>
-<li class="chapter" data-level="6.1.8" data-path="cleland.html"><a href="cleland.html#twistc-2"><i class="fa fa-check"></i><b>6.1.8</b> twistc</a></li>
-<li class="chapter" data-level="6.1.9" data-path="cleland.html"><a href="cleland.html#meanc-2"><i class="fa fa-check"></i><b>6.1.9</b> meanc</a></li>
-<li class="chapter" data-level="6.1.10" data-path="cleland.html"><a href="cleland.html#maxc-2"><i class="fa fa-check"></i><b>6.1.10</b> maxc</a></li>
-<li class="chapter" data-level="6.1.11" data-path="cleland.html"><a href="cleland.html#minc-2"><i class="fa fa-check"></i><b>6.1.11</b> minc</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="cleland.html"><a href="cleland.html#categorical-2"><i class="fa fa-check"></i><b>6.2</b> Categorical</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html"><i class="fa fa-check"></i><b>7</b> Kanku-Breakaways</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#continuous-3"><i class="fa fa-check"></i><b>7.1</b> Continuous</a>
-<ul>
-<li class="chapter" data-level="7.1.1" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#elev-3"><i class="fa fa-check"></i><b>7.1.1</b> elev</a></li>
-<li class="chapter" data-level="7.1.2" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#qslope-3"><i class="fa fa-check"></i><b>7.1.2</b> qslope</a></li>
-<li class="chapter" data-level="7.1.3" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#qaspect-3"><i class="fa fa-check"></i><b>7.1.3</b> qaspect</a></li>
-<li class="chapter" data-level="7.1.4" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#qeastness-3"><i class="fa fa-check"></i><b>7.1.4</b> qeastness</a></li>
-<li class="chapter" data-level="7.1.5" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#qnorthness-3"><i class="fa fa-check"></i><b>7.1.5</b> qnorthness</a></li>
-<li class="chapter" data-level="7.1.6" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#profc-3"><i class="fa fa-check"></i><b>7.1.6</b> profc</a></li>
-<li class="chapter" data-level="7.1.7" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#planc-3"><i class="fa fa-check"></i><b>7.1.7</b> planc</a></li>
-<li class="chapter" data-level="7.1.8" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#twistc-3"><i class="fa fa-check"></i><b>7.1.8</b> twistc</a></li>
-<li class="chapter" data-level="7.1.9" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#meanc-3"><i class="fa fa-check"></i><b>7.1.9</b> meanc</a></li>
-<li class="chapter" data-level="7.1.10" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#maxc-3"><i class="fa fa-check"></i><b>7.1.10</b> maxc</a></li>
-<li class="chapter" data-level="7.1.11" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#minc-3"><i class="fa fa-check"></i><b>7.1.11</b> minc</a></li>
-</ul></li>
-<li class="chapter" data-level="7.2" data-path="kanku-breakaways.html"><a href="kanku-breakaways.html#categorical-3"><i class="fa fa-check"></i><b>7.2</b> Categorical</a></li>
-</ul></li>
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">DEM comparison</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">DEM comparison</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Aim</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">2</span> Intro</a></li>
+<li><a class="" href="methods.html"><span class="header-section-number">3</span> Methods</a></li>
+<li><a class="" href="bakara.html"><span class="header-section-number">4</span> Bakara</a></li>
+<li><a class="" href="cleland.html"><span class="header-section-number">5</span> Cleland</a></li>
+<li><a class="" href="hambidge.html"><span class="header-section-number">6</span> Hambidge</a></li>
+<li><a class="active" href="kanku-breakaways.html"><span class="header-section-number">7</span> Kanku-Breakaways</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/acanthiza/DEM">View book source <i class="fab fa-github"></i></a></p>
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="kanku-breakaways" class="section level1 hasAnchor" number="7">
-<h1><span class="header-section-number">7</span> Kanku-Breakaways<a href="kanku-breakaways.html#kanku-breakaways" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="continuous-3" class="section level2 hasAnchor" number="7.1">
-<h2><span class="header-section-number">7.1</span> Continuous<a href="kanku-breakaways.html#continuous-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="elev-3" class="section level3 hasAnchor" number="7.1.1">
-<h3><span class="header-section-number">7.1.1</span> elev<a href="kanku-breakaways.html#elev-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="kanku-breakaways" class="section level1" number="7">
+<h1>
+<span class="header-section-number">7</span> Kanku-Breakaways<a class="anchor" aria-label="anchor" href="#kanku-breakaways"><i class="fas fa-link"></i></a>
+</h1>
+<div id="continuous-3" class="section level2" number="7.1">
+<h2>
+<span class="header-section-number">7.1</span> Continuous<a class="anchor" aria-label="anchor" href="#continuous-3"><i class="fas fa-link"></i></a>
+</h2>
+<div id="elev-3" class="section level3" number="7.1.1">
+<h3>
+<span class="header-section-number">7.1.1</span> elev<a class="anchor" aria-label="anchor" href="#elev-3"><i class="fas fa-link"></i></a>
+</h3>
 <p>Figure <a href="kanku-breakaways.html#fig:rawelevKanku-Breakaways">7.1</a> shows rasters for elev and each window size for Kanku-Breakaways.</p>
 <p>Table <a href="kanku-breakaways.html#fig:contFigelevKanku-Breakaways">7.2</a> shows boxplots for each decile of elev, allowing a comparison of values within each DEM across different ranges of elev. Deciles are based on the values in the reference DEM: Outback.</p>
 <p>Figure <a href="kanku-breakaways.html#fig:plotelevKanku-Breakaways">7.3</a> shows the a distribution of values for each sample DEM and window size.</p>
 <p>Figure <a href="kanku-breakaways.html#fig:diffPlotelevKanku-Breakaways">7.4</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
-<div class="figure"><span style="display:block;" id="fig:rawelevKanku-Breakaways"></span>
-<img src="_main_files/figure-html/rawelevKanku-Breakaways-1.png" alt="elev raster for each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:rawelevKanku-Breakaways"></span>
+<img src="_main_files/figure-html/rawelevKanku-Breakaways-1.png" alt="elev raster for each DEM" width="672"><p class="caption">
 Figure 7.1: elev raster for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:contFigelevKanku-Breakaways"></span>
-<img src="_main_files/figure-html/contFigelevKanku-Breakaways-1.png" alt="Boxplots within deciles for each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:contFigelevKanku-Breakaways"></span>
+<img src="_main_files/figure-html/contFigelevKanku-Breakaways-1.png" alt="Boxplots within deciles for each DEM" width="672"><p class="caption">
 Figure 7.2: Boxplots within deciles for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:plotelevKanku-Breakaways"></span>
-<img src="_main_files/figure-html/plotelevKanku-Breakaways-1.png" alt="elev results for the each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:plotelevKanku-Breakaways"></span>
+<img src="_main_files/figure-html/plotelevKanku-Breakaways-1.png" alt="elev results for the each DEM" width="672"><p class="caption">
 Figure 7.3: elev results for the each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:diffPlotelevKanku-Breakaways"></span>
-<img src="_main_files/figure-html/diffPlotelevKanku-Breakaways-1.png" alt="elev difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotelevKanku-Breakaways"></span>
+<img src="_main_files/figure-html/diffPlotelevKanku-Breakaways-1.png" alt="elev difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways" width="672"><p class="caption">
 Figure 7.4: elev difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways
 </p>
 </div>
 </div>
-<div id="qslope-3" class="section level3 hasAnchor" number="7.1.2">
-<h3><span class="header-section-number">7.1.2</span> qslope<a href="kanku-breakaways.html#qslope-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="qslope-3" class="section level3" number="7.1.2">
+<h3>
+<span class="header-section-number">7.1.2</span> qslope<a class="anchor" aria-label="anchor" href="#qslope-3"><i class="fas fa-link"></i></a>
+</h3>
 <p>Figure <a href="kanku-breakaways.html#fig:rawqslopeKanku-Breakaways">7.5</a> shows rasters for qslope and each window size for Kanku-Breakaways.</p>
 <p>Table <a href="kanku-breakaways.html#fig:contFigqslopeKanku-Breakaways">7.6</a> shows boxplots for each decile of qslope, allowing a comparison of values within each DEM across different ranges of qslope. Deciles are based on the values in the reference DEM: Outback.</p>
 <p>Figure <a href="kanku-breakaways.html#fig:plotqslopeKanku-Breakaways">7.7</a> shows the a distribution of values for each sample DEM and window size.</p>
 <p>Figure <a href="kanku-breakaways.html#fig:diffPlotqslopeKanku-Breakaways">7.8</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
-<div class="figure"><span style="display:block;" id="fig:rawqslopeKanku-Breakaways"></span>
-<img src="_main_files/figure-html/rawqslopeKanku-Breakaways-1.png" alt="qslope raster for each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:rawqslopeKanku-Breakaways"></span>
+<img src="_main_files/figure-html/rawqslopeKanku-Breakaways-1.png" alt="qslope raster for each DEM" width="672"><p class="caption">
 Figure 7.5: qslope raster for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:contFigqslopeKanku-Breakaways"></span>
-<img src="_main_files/figure-html/contFigqslopeKanku-Breakaways-1.png" alt="Boxplots within deciles for each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:contFigqslopeKanku-Breakaways"></span>
+<img src="_main_files/figure-html/contFigqslopeKanku-Breakaways-1.png" alt="Boxplots within deciles for each DEM" width="672"><p class="caption">
 Figure 7.6: Boxplots within deciles for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:plotqslopeKanku-Breakaways"></span>
-<img src="_main_files/figure-html/plotqslopeKanku-Breakaways-1.png" alt="qslope results for the each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:plotqslopeKanku-Breakaways"></span>
+<img src="_main_files/figure-html/plotqslopeKanku-Breakaways-1.png" alt="qslope results for the each DEM" width="672"><p class="caption">
 Figure 7.7: qslope results for the each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:diffPlotqslopeKanku-Breakaways"></span>
-<img src="_main_files/figure-html/diffPlotqslopeKanku-Breakaways-1.png" alt="qslope difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotqslopeKanku-Breakaways"></span>
+<img src="_main_files/figure-html/diffPlotqslopeKanku-Breakaways-1.png" alt="qslope difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways" width="672"><p class="caption">
 Figure 7.8: qslope difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways
 </p>
 </div>
 </div>
-<div id="qaspect-3" class="section level3 hasAnchor" number="7.1.3">
-<h3><span class="header-section-number">7.1.3</span> qaspect<a href="kanku-breakaways.html#qaspect-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="qaspect-3" class="section level3" number="7.1.3">
+<h3>
+<span class="header-section-number">7.1.3</span> qaspect<a class="anchor" aria-label="anchor" href="#qaspect-3"><i class="fas fa-link"></i></a>
+</h3>
 <p>Figure <a href="kanku-breakaways.html#fig:rawqaspectKanku-Breakaways">7.9</a> shows rasters for qaspect and each window size for Kanku-Breakaways.</p>
 <p>Table <a href="kanku-breakaways.html#fig:contFigqaspectKanku-Breakaways">7.10</a> shows boxplots for each decile of qaspect, allowing a comparison of values within each DEM across different ranges of qaspect. Deciles are based on the values in the reference DEM: Outback.</p>
 <p>Figure <a href="kanku-breakaways.html#fig:plotqaspectKanku-Breakaways">7.11</a> shows the a distribution of values for each sample DEM and window size.</p>
 <p>Figure <a href="kanku-breakaways.html#fig:diffPlotqaspectKanku-Breakaways">7.12</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
-<div class="figure"><span style="display:block;" id="fig:rawqaspectKanku-Breakaways"></span>
-<img src="_main_files/figure-html/rawqaspectKanku-Breakaways-1.png" alt="qaspect raster for each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:rawqaspectKanku-Breakaways"></span>
+<img src="_main_files/figure-html/rawqaspectKanku-Breakaways-1.png" alt="qaspect raster for each DEM" width="672"><p class="caption">
 Figure 7.9: qaspect raster for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:contFigqaspectKanku-Breakaways"></span>
-<img src="_main_files/figure-html/contFigqaspectKanku-Breakaways-1.png" alt="Boxplots within deciles for each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:contFigqaspectKanku-Breakaways"></span>
+<img src="_main_files/figure-html/contFigqaspectKanku-Breakaways-1.png" alt="Boxplots within deciles for each DEM" width="672"><p class="caption">
 Figure 7.10: Boxplots within deciles for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:plotqaspectKanku-Breakaways"></span>
-<img src="_main_files/figure-html/plotqaspectKanku-Breakaways-1.png" alt="qaspect results for the each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:plotqaspectKanku-Breakaways"></span>
+<img src="_main_files/figure-html/plotqaspectKanku-Breakaways-1.png" alt="qaspect results for the each DEM" width="672"><p class="caption">
 Figure 7.11: qaspect results for the each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:diffPlotqaspectKanku-Breakaways"></span>
-<img src="_main_files/figure-html/diffPlotqaspectKanku-Breakaways-1.png" alt="qaspect difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotqaspectKanku-Breakaways"></span>
+<img src="_main_files/figure-html/diffPlotqaspectKanku-Breakaways-1.png" alt="qaspect difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways" width="672"><p class="caption">
 Figure 7.12: qaspect difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways
 </p>
 </div>
 </div>
-<div id="qeastness-3" class="section level3 hasAnchor" number="7.1.4">
-<h3><span class="header-section-number">7.1.4</span> qeastness<a href="kanku-breakaways.html#qeastness-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="qeastness-3" class="section level3" number="7.1.4">
+<h3>
+<span class="header-section-number">7.1.4</span> qeastness<a class="anchor" aria-label="anchor" href="#qeastness-3"><i class="fas fa-link"></i></a>
+</h3>
 <p>Figure <a href="kanku-breakaways.html#fig:rawqeastnessKanku-Breakaways">7.13</a> shows rasters for qeastness and each window size for Kanku-Breakaways.</p>
 <p>Table <a href="kanku-breakaways.html#fig:contFigqeastnessKanku-Breakaways">7.14</a> shows boxplots for each decile of qeastness, allowing a comparison of values within each DEM across different ranges of qeastness. Deciles are based on the values in the reference DEM: Outback.</p>
 <p>Figure <a href="kanku-breakaways.html#fig:plotqeastnessKanku-Breakaways">7.15</a> shows the a distribution of values for each sample DEM and window size.</p>
 <p>Figure <a href="kanku-breakaways.html#fig:diffPlotqeastnessKanku-Breakaways">7.16</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
-<div class="figure"><span style="display:block;" id="fig:rawqeastnessKanku-Breakaways"></span>
-<img src="_main_files/figure-html/rawqeastnessKanku-Breakaways-1.png" alt="qeastness raster for each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:rawqeastnessKanku-Breakaways"></span>
+<img src="_main_files/figure-html/rawqeastnessKanku-Breakaways-1.png" alt="qeastness raster for each DEM" width="672"><p class="caption">
 Figure 7.13: qeastness raster for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:contFigqeastnessKanku-Breakaways"></span>
-<img src="_main_files/figure-html/contFigqeastnessKanku-Breakaways-1.png" alt="Boxplots within deciles for each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:contFigqeastnessKanku-Breakaways"></span>
+<img src="_main_files/figure-html/contFigqeastnessKanku-Breakaways-1.png" alt="Boxplots within deciles for each DEM" width="672"><p class="caption">
 Figure 7.14: Boxplots within deciles for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:plotqeastnessKanku-Breakaways"></span>
-<img src="_main_files/figure-html/plotqeastnessKanku-Breakaways-1.png" alt="qeastness results for the each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:plotqeastnessKanku-Breakaways"></span>
+<img src="_main_files/figure-html/plotqeastnessKanku-Breakaways-1.png" alt="qeastness results for the each DEM" width="672"><p class="caption">
 Figure 7.15: qeastness results for the each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:diffPlotqeastnessKanku-Breakaways"></span>
-<img src="_main_files/figure-html/diffPlotqeastnessKanku-Breakaways-1.png" alt="qeastness difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotqeastnessKanku-Breakaways"></span>
+<img src="_main_files/figure-html/diffPlotqeastnessKanku-Breakaways-1.png" alt="qeastness difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways" width="672"><p class="caption">
 Figure 7.16: qeastness difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways
 </p>
 </div>
 </div>
-<div id="qnorthness-3" class="section level3 hasAnchor" number="7.1.5">
-<h3><span class="header-section-number">7.1.5</span> qnorthness<a href="kanku-breakaways.html#qnorthness-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="qnorthness-3" class="section level3" number="7.1.5">
+<h3>
+<span class="header-section-number">7.1.5</span> qnorthness<a class="anchor" aria-label="anchor" href="#qnorthness-3"><i class="fas fa-link"></i></a>
+</h3>
 <p>Figure <a href="kanku-breakaways.html#fig:rawqnorthnessKanku-Breakaways">7.17</a> shows rasters for qnorthness and each window size for Kanku-Breakaways.</p>
 <p>Table <a href="kanku-breakaways.html#fig:contFigqnorthnessKanku-Breakaways">7.18</a> shows boxplots for each decile of qnorthness, allowing a comparison of values within each DEM across different ranges of qnorthness. Deciles are based on the values in the reference DEM: Outback.</p>
 <p>Figure <a href="kanku-breakaways.html#fig:plotqnorthnessKanku-Breakaways">7.19</a> shows the a distribution of values for each sample DEM and window size.</p>
 <p>Figure <a href="kanku-breakaways.html#fig:diffPlotqnorthnessKanku-Breakaways">7.20</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
-<div class="figure"><span style="display:block;" id="fig:rawqnorthnessKanku-Breakaways"></span>
-<img src="_main_files/figure-html/rawqnorthnessKanku-Breakaways-1.png" alt="qnorthness raster for each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:rawqnorthnessKanku-Breakaways"></span>
+<img src="_main_files/figure-html/rawqnorthnessKanku-Breakaways-1.png" alt="qnorthness raster for each DEM" width="672"><p class="caption">
 Figure 7.17: qnorthness raster for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:contFigqnorthnessKanku-Breakaways"></span>
-<img src="_main_files/figure-html/contFigqnorthnessKanku-Breakaways-1.png" alt="Boxplots within deciles for each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:contFigqnorthnessKanku-Breakaways"></span>
+<img src="_main_files/figure-html/contFigqnorthnessKanku-Breakaways-1.png" alt="Boxplots within deciles for each DEM" width="672"><p class="caption">
 Figure 7.18: Boxplots within deciles for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:plotqnorthnessKanku-Breakaways"></span>
-<img src="_main_files/figure-html/plotqnorthnessKanku-Breakaways-1.png" alt="qnorthness results for the each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:plotqnorthnessKanku-Breakaways"></span>
+<img src="_main_files/figure-html/plotqnorthnessKanku-Breakaways-1.png" alt="qnorthness results for the each DEM" width="672"><p class="caption">
 Figure 7.19: qnorthness results for the each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:diffPlotqnorthnessKanku-Breakaways"></span>
-<img src="_main_files/figure-html/diffPlotqnorthnessKanku-Breakaways-1.png" alt="qnorthness difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotqnorthnessKanku-Breakaways"></span>
+<img src="_main_files/figure-html/diffPlotqnorthnessKanku-Breakaways-1.png" alt="qnorthness difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways" width="672"><p class="caption">
 Figure 7.20: qnorthness difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways
 </p>
 </div>
 </div>
-<div id="profc-3" class="section level3 hasAnchor" number="7.1.6">
-<h3><span class="header-section-number">7.1.6</span> profc<a href="kanku-breakaways.html#profc-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="profc-3" class="section level3" number="7.1.6">
+<h3>
+<span class="header-section-number">7.1.6</span> profc<a class="anchor" aria-label="anchor" href="#profc-3"><i class="fas fa-link"></i></a>
+</h3>
 <p>Figure <a href="kanku-breakaways.html#fig:rawprofcKanku-Breakaways">7.21</a> shows rasters for profc and each window size for Kanku-Breakaways.</p>
 <p>Table <a href="kanku-breakaways.html#fig:contFigprofcKanku-Breakaways">7.22</a> shows boxplots for each decile of profc, allowing a comparison of values within each DEM across different ranges of profc. Deciles are based on the values in the reference DEM: Outback.</p>
 <p>Figure <a href="kanku-breakaways.html#fig:plotprofcKanku-Breakaways">7.23</a> shows the a distribution of values for each sample DEM and window size.</p>
 <p>Figure <a href="kanku-breakaways.html#fig:diffPlotprofcKanku-Breakaways">7.24</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
-<div class="figure"><span style="display:block;" id="fig:rawprofcKanku-Breakaways"></span>
-<img src="_main_files/figure-html/rawprofcKanku-Breakaways-1.png" alt="profc raster for each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:rawprofcKanku-Breakaways"></span>
+<img src="_main_files/figure-html/rawprofcKanku-Breakaways-1.png" alt="profc raster for each DEM" width="672"><p class="caption">
 Figure 7.21: profc raster for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:contFigprofcKanku-Breakaways"></span>
-<img src="_main_files/figure-html/contFigprofcKanku-Breakaways-1.png" alt="Boxplots within deciles for each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:contFigprofcKanku-Breakaways"></span>
+<img src="_main_files/figure-html/contFigprofcKanku-Breakaways-1.png" alt="Boxplots within deciles for each DEM" width="672"><p class="caption">
 Figure 7.22: Boxplots within deciles for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:plotprofcKanku-Breakaways"></span>
-<img src="_main_files/figure-html/plotprofcKanku-Breakaways-1.png" alt="profc results for the each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:plotprofcKanku-Breakaways"></span>
+<img src="_main_files/figure-html/plotprofcKanku-Breakaways-1.png" alt="profc results for the each DEM" width="672"><p class="caption">
 Figure 7.23: profc results for the each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:diffPlotprofcKanku-Breakaways"></span>
-<img src="_main_files/figure-html/diffPlotprofcKanku-Breakaways-1.png" alt="profc difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotprofcKanku-Breakaways"></span>
+<img src="_main_files/figure-html/diffPlotprofcKanku-Breakaways-1.png" alt="profc difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways" width="672"><p class="caption">
 Figure 7.24: profc difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways
 </p>
 </div>
 </div>
-<div id="planc-3" class="section level3 hasAnchor" number="7.1.7">
-<h3><span class="header-section-number">7.1.7</span> planc<a href="kanku-breakaways.html#planc-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="planc-3" class="section level3" number="7.1.7">
+<h3>
+<span class="header-section-number">7.1.7</span> planc<a class="anchor" aria-label="anchor" href="#planc-3"><i class="fas fa-link"></i></a>
+</h3>
 <p>Figure <a href="kanku-breakaways.html#fig:rawplancKanku-Breakaways">7.25</a> shows rasters for planc and each window size for Kanku-Breakaways.</p>
 <p>Table <a href="kanku-breakaways.html#fig:contFigplancKanku-Breakaways">7.26</a> shows boxplots for each decile of planc, allowing a comparison of values within each DEM across different ranges of planc. Deciles are based on the values in the reference DEM: Outback.</p>
 <p>Figure <a href="kanku-breakaways.html#fig:plotplancKanku-Breakaways">7.27</a> shows the a distribution of values for each sample DEM and window size.</p>
 <p>Figure <a href="kanku-breakaways.html#fig:diffPlotplancKanku-Breakaways">7.28</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
-<div class="figure"><span style="display:block;" id="fig:rawplancKanku-Breakaways"></span>
-<img src="_main_files/figure-html/rawplancKanku-Breakaways-1.png" alt="planc raster for each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:rawplancKanku-Breakaways"></span>
+<img src="_main_files/figure-html/rawplancKanku-Breakaways-1.png" alt="planc raster for each DEM" width="672"><p class="caption">
 Figure 7.25: planc raster for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:contFigplancKanku-Breakaways"></span>
-<img src="_main_files/figure-html/contFigplancKanku-Breakaways-1.png" alt="Boxplots within deciles for each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:contFigplancKanku-Breakaways"></span>
+<img src="_main_files/figure-html/contFigplancKanku-Breakaways-1.png" alt="Boxplots within deciles for each DEM" width="672"><p class="caption">
 Figure 7.26: Boxplots within deciles for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:plotplancKanku-Breakaways"></span>
-<img src="_main_files/figure-html/plotplancKanku-Breakaways-1.png" alt="planc results for the each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:plotplancKanku-Breakaways"></span>
+<img src="_main_files/figure-html/plotplancKanku-Breakaways-1.png" alt="planc results for the each DEM" width="672"><p class="caption">
 Figure 7.27: planc results for the each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:diffPlotplancKanku-Breakaways"></span>
-<img src="_main_files/figure-html/diffPlotplancKanku-Breakaways-1.png" alt="planc difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotplancKanku-Breakaways"></span>
+<img src="_main_files/figure-html/diffPlotplancKanku-Breakaways-1.png" alt="planc difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways" width="672"><p class="caption">
 Figure 7.28: planc difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways
 </p>
 </div>
 </div>
-<div id="twistc-3" class="section level3 hasAnchor" number="7.1.8">
-<h3><span class="header-section-number">7.1.8</span> twistc<a href="kanku-breakaways.html#twistc-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="twistc-3" class="section level3" number="7.1.8">
+<h3>
+<span class="header-section-number">7.1.8</span> twistc<a class="anchor" aria-label="anchor" href="#twistc-3"><i class="fas fa-link"></i></a>
+</h3>
 <p>Figure <a href="kanku-breakaways.html#fig:rawtwistcKanku-Breakaways">7.29</a> shows rasters for twistc and each window size for Kanku-Breakaways.</p>
 <p>Table <a href="kanku-breakaways.html#fig:contFigtwistcKanku-Breakaways">7.30</a> shows boxplots for each decile of twistc, allowing a comparison of values within each DEM across different ranges of twistc. Deciles are based on the values in the reference DEM: Outback.</p>
 <p>Figure <a href="kanku-breakaways.html#fig:plottwistcKanku-Breakaways">7.31</a> shows the a distribution of values for each sample DEM and window size.</p>
 <p>Figure <a href="kanku-breakaways.html#fig:diffPlottwistcKanku-Breakaways">7.32</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
-<div class="figure"><span style="display:block;" id="fig:rawtwistcKanku-Breakaways"></span>
-<img src="_main_files/figure-html/rawtwistcKanku-Breakaways-1.png" alt="twistc raster for each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:rawtwistcKanku-Breakaways"></span>
+<img src="_main_files/figure-html/rawtwistcKanku-Breakaways-1.png" alt="twistc raster for each DEM" width="672"><p class="caption">
 Figure 7.29: twistc raster for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:contFigtwistcKanku-Breakaways"></span>
-<img src="_main_files/figure-html/contFigtwistcKanku-Breakaways-1.png" alt="Boxplots within deciles for each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:contFigtwistcKanku-Breakaways"></span>
+<img src="_main_files/figure-html/contFigtwistcKanku-Breakaways-1.png" alt="Boxplots within deciles for each DEM" width="672"><p class="caption">
 Figure 7.30: Boxplots within deciles for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:plottwistcKanku-Breakaways"></span>
-<img src="_main_files/figure-html/plottwistcKanku-Breakaways-1.png" alt="twistc results for the each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:plottwistcKanku-Breakaways"></span>
+<img src="_main_files/figure-html/plottwistcKanku-Breakaways-1.png" alt="twistc results for the each DEM" width="672"><p class="caption">
 Figure 7.31: twistc results for the each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:diffPlottwistcKanku-Breakaways"></span>
-<img src="_main_files/figure-html/diffPlottwistcKanku-Breakaways-1.png" alt="twistc difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:diffPlottwistcKanku-Breakaways"></span>
+<img src="_main_files/figure-html/diffPlottwistcKanku-Breakaways-1.png" alt="twistc difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways" width="672"><p class="caption">
 Figure 7.32: twistc difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways
 </p>
 </div>
 </div>
-<div id="meanc-3" class="section level3 hasAnchor" number="7.1.9">
-<h3><span class="header-section-number">7.1.9</span> meanc<a href="kanku-breakaways.html#meanc-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="meanc-3" class="section level3" number="7.1.9">
+<h3>
+<span class="header-section-number">7.1.9</span> meanc<a class="anchor" aria-label="anchor" href="#meanc-3"><i class="fas fa-link"></i></a>
+</h3>
 <p>Figure <a href="kanku-breakaways.html#fig:rawmeancKanku-Breakaways">7.33</a> shows rasters for meanc and each window size for Kanku-Breakaways.</p>
 <p>Table <a href="kanku-breakaways.html#fig:contFigmeancKanku-Breakaways">7.34</a> shows boxplots for each decile of meanc, allowing a comparison of values within each DEM across different ranges of meanc. Deciles are based on the values in the reference DEM: Outback.</p>
 <p>Figure <a href="kanku-breakaways.html#fig:plotmeancKanku-Breakaways">7.35</a> shows the a distribution of values for each sample DEM and window size.</p>
 <p>Figure <a href="kanku-breakaways.html#fig:diffPlotmeancKanku-Breakaways">7.36</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
-<div class="figure"><span style="display:block;" id="fig:rawmeancKanku-Breakaways"></span>
-<img src="_main_files/figure-html/rawmeancKanku-Breakaways-1.png" alt="meanc raster for each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:rawmeancKanku-Breakaways"></span>
+<img src="_main_files/figure-html/rawmeancKanku-Breakaways-1.png" alt="meanc raster for each DEM" width="672"><p class="caption">
 Figure 7.33: meanc raster for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:contFigmeancKanku-Breakaways"></span>
-<img src="_main_files/figure-html/contFigmeancKanku-Breakaways-1.png" alt="Boxplots within deciles for each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:contFigmeancKanku-Breakaways"></span>
+<img src="_main_files/figure-html/contFigmeancKanku-Breakaways-1.png" alt="Boxplots within deciles for each DEM" width="672"><p class="caption">
 Figure 7.34: Boxplots within deciles for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:plotmeancKanku-Breakaways"></span>
-<img src="_main_files/figure-html/plotmeancKanku-Breakaways-1.png" alt="meanc results for the each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:plotmeancKanku-Breakaways"></span>
+<img src="_main_files/figure-html/plotmeancKanku-Breakaways-1.png" alt="meanc results for the each DEM" width="672"><p class="caption">
 Figure 7.35: meanc results for the each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:diffPlotmeancKanku-Breakaways"></span>
-<img src="_main_files/figure-html/diffPlotmeancKanku-Breakaways-1.png" alt="meanc difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotmeancKanku-Breakaways"></span>
+<img src="_main_files/figure-html/diffPlotmeancKanku-Breakaways-1.png" alt="meanc difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways" width="672"><p class="caption">
 Figure 7.36: meanc difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways
 </p>
 </div>
 </div>
-<div id="maxc-3" class="section level3 hasAnchor" number="7.1.10">
-<h3><span class="header-section-number">7.1.10</span> maxc<a href="kanku-breakaways.html#maxc-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="maxc-3" class="section level3" number="7.1.10">
+<h3>
+<span class="header-section-number">7.1.10</span> maxc<a class="anchor" aria-label="anchor" href="#maxc-3"><i class="fas fa-link"></i></a>
+</h3>
 <p>Figure <a href="kanku-breakaways.html#fig:rawmaxcKanku-Breakaways">7.37</a> shows rasters for maxc and each window size for Kanku-Breakaways.</p>
 <p>Table <a href="kanku-breakaways.html#fig:contFigmaxcKanku-Breakaways">7.38</a> shows boxplots for each decile of maxc, allowing a comparison of values within each DEM across different ranges of maxc. Deciles are based on the values in the reference DEM: Outback.</p>
 <p>Figure <a href="kanku-breakaways.html#fig:plotmaxcKanku-Breakaways">7.39</a> shows the a distribution of values for each sample DEM and window size.</p>
 <p>Figure <a href="kanku-breakaways.html#fig:diffPlotmaxcKanku-Breakaways">7.40</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
-<div class="figure"><span style="display:block;" id="fig:rawmaxcKanku-Breakaways"></span>
-<img src="_main_files/figure-html/rawmaxcKanku-Breakaways-1.png" alt="maxc raster for each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:rawmaxcKanku-Breakaways"></span>
+<img src="_main_files/figure-html/rawmaxcKanku-Breakaways-1.png" alt="maxc raster for each DEM" width="672"><p class="caption">
 Figure 7.37: maxc raster for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:contFigmaxcKanku-Breakaways"></span>
-<img src="_main_files/figure-html/contFigmaxcKanku-Breakaways-1.png" alt="Boxplots within deciles for each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:contFigmaxcKanku-Breakaways"></span>
+<img src="_main_files/figure-html/contFigmaxcKanku-Breakaways-1.png" alt="Boxplots within deciles for each DEM" width="672"><p class="caption">
 Figure 7.38: Boxplots within deciles for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:plotmaxcKanku-Breakaways"></span>
-<img src="_main_files/figure-html/plotmaxcKanku-Breakaways-1.png" alt="maxc results for the each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:plotmaxcKanku-Breakaways"></span>
+<img src="_main_files/figure-html/plotmaxcKanku-Breakaways-1.png" alt="maxc results for the each DEM" width="672"><p class="caption">
 Figure 7.39: maxc results for the each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:diffPlotmaxcKanku-Breakaways"></span>
-<img src="_main_files/figure-html/diffPlotmaxcKanku-Breakaways-1.png" alt="maxc difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotmaxcKanku-Breakaways"></span>
+<img src="_main_files/figure-html/diffPlotmaxcKanku-Breakaways-1.png" alt="maxc difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways" width="672"><p class="caption">
 Figure 7.40: maxc difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways
 </p>
 </div>
 </div>
-<div id="minc-3" class="section level3 hasAnchor" number="7.1.11">
-<h3><span class="header-section-number">7.1.11</span> minc<a href="kanku-breakaways.html#minc-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="minc-3" class="section level3" number="7.1.11">
+<h3>
+<span class="header-section-number">7.1.11</span> minc<a class="anchor" aria-label="anchor" href="#minc-3"><i class="fas fa-link"></i></a>
+</h3>
 <p>Figure <a href="kanku-breakaways.html#fig:rawmincKanku-Breakaways">7.41</a> shows rasters for minc and each window size for Kanku-Breakaways.</p>
 <p>Table <a href="kanku-breakaways.html#fig:contFigmincKanku-Breakaways">7.42</a> shows boxplots for each decile of minc, allowing a comparison of values within each DEM across different ranges of minc. Deciles are based on the values in the reference DEM: Outback.</p>
 <p>Figure <a href="kanku-breakaways.html#fig:plotmincKanku-Breakaways">7.43</a> shows the a distribution of values for each sample DEM and window size.</p>
 <p>Figure <a href="kanku-breakaways.html#fig:diffPlotmincKanku-Breakaways">7.44</a> shows the distribution of differences between the reference DEM and the other DEMs (and window size).</p>
-<div class="figure"><span style="display:block;" id="fig:rawmincKanku-Breakaways"></span>
-<img src="_main_files/figure-html/rawmincKanku-Breakaways-1.png" alt="minc raster for each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:rawmincKanku-Breakaways"></span>
+<img src="_main_files/figure-html/rawmincKanku-Breakaways-1.png" alt="minc raster for each DEM" width="672"><p class="caption">
 Figure 7.41: minc raster for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:contFigmincKanku-Breakaways"></span>
-<img src="_main_files/figure-html/contFigmincKanku-Breakaways-1.png" alt="Boxplots within deciles for each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:contFigmincKanku-Breakaways"></span>
+<img src="_main_files/figure-html/contFigmincKanku-Breakaways-1.png" alt="Boxplots within deciles for each DEM" width="672"><p class="caption">
 Figure 7.42: Boxplots within deciles for each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:plotmincKanku-Breakaways"></span>
-<img src="_main_files/figure-html/plotmincKanku-Breakaways-1.png" alt="minc results for the each DEM" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:plotmincKanku-Breakaways"></span>
+<img src="_main_files/figure-html/plotmincKanku-Breakaways-1.png" alt="minc results for the each DEM" width="672"><p class="caption">
 Figure 7.43: minc results for the each DEM
 </p>
 </div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:diffPlotmincKanku-Breakaways"></span>
-<img src="_main_files/figure-html/diffPlotmincKanku-Breakaways-1.png" alt="minc difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:diffPlotmincKanku-Breakaways"></span>
+<img src="_main_files/figure-html/diffPlotmincKanku-Breakaways-1.png" alt="minc difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways" width="672"><p class="caption">
 Figure 7.44: minc difference between the best available (reference) DEM and each individual DEM for Kanku-Breakaways
 </p>
 </div>
 </div>
 </div>
-<div id="categorical-3" class="section level2 hasAnchor" number="7.2">
-<h2><span class="header-section-number">7.2</span> Categorical<a href="kanku-breakaways.html#categorical-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="categorical-3" class="section level2" number="7.2">
+<h2>
+<span class="header-section-number">7.2</span> Categorical<a class="anchor" aria-label="anchor" href="#categorical-3"><i class="fas fa-link"></i></a>
+</h2>
 <p>Table <a href="kanku-breakaways.html#tab:categTabKanku-Breakaways">7.1</a> shows the proportion of each DEM classifed to each landform element (also see Figure <a href="kanku-breakaways.html#fig:categCountKanku-Breakaways">7.46</a>.</p>
 <p>Figure <a href="kanku-breakaways.html#fig:categKanku-Breakaways">7.45</a> shows a landscape classification for each reprojected area.</p>
-<table class="table table-striped table-hover table-condensed table-responsive" style="color: black; margin-left: auto; margin-right: auto;">
+<div class="inline-table"><table class="table table-striped table-hover table-condensed table-responsive" style="color: black; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:categTabKanku-Breakaways">Table 7.1: </span><span id="tab:categTabKanku-Breakaways">Table 7.2: </span>Proportion of Kanku-Breakaways area classified to each landform element
 </caption>
-<thead>
-<tr>
+<thead><tr>
 <th style="text-align:left;">
-category
+landform
 </th>
 <th style="text-align:right;">
 Outback
@@ -598,24 +512,23 @@ Copernicus
 <th style="text-align:right;">
 SRTM
 </th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
 canyon
 </td>
 <td style="text-align:right;">
-0.005760
+0.0064709
 </td>
 <td style="text-align:right;">
-0.0158809
+0.0218612
 </td>
 <td style="text-align:right;">
-0.006544
+0.009445
 </td>
 <td style="text-align:right;">
-0.00148
+0.00168
 </td>
 </tr>
 <tr>
@@ -623,16 +536,16 @@ canyon
 midslope drainage
 </td>
 <td style="text-align:right;">
-0.006583
+0.0077378
 </td>
 <td style="text-align:right;">
-0.0196768
+0.0269690
 </td>
 <td style="text-align:right;">
-0.010256
+0.017474
 </td>
 <td style="text-align:right;">
-0.00021
+0.00023
 </td>
 </tr>
 <tr>
@@ -640,13 +553,13 @@ midslope drainage
 upland drainage
 </td>
 <td style="text-align:right;">
-0.000001
+0.0000010
 </td>
 <td style="text-align:right;">
-0.0000039
+0.0000020
 </td>
 <td style="text-align:right;">
-0.000002
+0.000011
 </td>
 <td style="text-align:right;">
 </td>
@@ -656,16 +569,16 @@ upland drainage
 u-shaped valley
 </td>
 <td style="text-align:right;">
-0.028377
+0.0287943
 </td>
 <td style="text-align:right;">
-0.0385017
+0.0389482
 </td>
 <td style="text-align:right;">
-0.023654
+0.024370
 </td>
 <td style="text-align:right;">
-0.01881
+0.02007
 </td>
 </tr>
 <tr>
@@ -673,16 +586,16 @@ u-shaped valley
 plains
 </td>
 <td style="text-align:right;">
-0.899427
+0.8945438
 </td>
 <td style="text-align:right;">
-0.8290023
+0.8010432
 </td>
 <td style="text-align:right;">
-0.894574
+0.872433
 </td>
 <td style="text-align:right;">
-0.96809
+0.96642
 </td>
 </tr>
 <tr>
@@ -690,16 +603,16 @@ plains
 open slopes
 </td>
 <td style="text-align:right;">
-0.014734
+0.0151685
 </td>
 <td style="text-align:right;">
-0.0160550
+0.0171155
 </td>
 <td style="text-align:right;">
-0.015644
+0.016585
 </td>
 <td style="text-align:right;">
-0.00025
+0.00026
 </td>
 </tr>
 <tr>
@@ -707,16 +620,16 @@ open slopes
 upper slopes
 </td>
 <td style="text-align:right;">
-0.033029
+0.0335077
 </td>
 <td style="text-align:right;">
-0.0450264
+0.0450237
 </td>
 <td style="text-align:right;">
-0.031805
+0.032529
 </td>
 <td style="text-align:right;">
-0.01012
+0.01025
 </td>
 </tr>
 <tr>
@@ -724,13 +637,13 @@ upper slopes
 local ridges
 </td>
 <td style="text-align:right;">
-0.000002
+0.0000029
 </td>
 <td style="text-align:right;">
 0.0000049
 </td>
 <td style="text-align:right;">
-0.000001
+0.000012
 </td>
 <td style="text-align:right;">
 </td>
@@ -740,16 +653,16 @@ local ridges
 midslopes ridges
 </td>
 <td style="text-align:right;">
-0.006614
+0.0078065
 </td>
 <td style="text-align:right;">
-0.0198871
+0.0273675
 </td>
 <td style="text-align:right;">
-0.010968
+0.018238
 </td>
 <td style="text-align:right;">
-0.00015
+0.00016
 </td>
 </tr>
 <tr>
@@ -757,170 +670,167 @@ midslopes ridges
 mountain tops
 </td>
 <td style="text-align:right;">
-0.005473
+0.0059665
 </td>
 <td style="text-align:right;">
-0.0159611
+0.0216649
 </td>
 <td style="text-align:right;">
-0.006552
+0.008902
 </td>
 <td style="text-align:right;">
-0.00090
+0.00093
 </td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><br></p>
-<div class="figure"><span style="display:block;" id="fig:categKanku-Breakaways"></span>
-<img src="_main_files/figure-html/categKanku-Breakaways-1.png" alt="Categorical representation of Kanku-Breakaways" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:categKanku-Breakaways"></span>
+<img src="_main_files/figure-html/categKanku-Breakaways-1.png" alt="Categorical representation of Kanku-Breakaways" width="672"><p class="caption">
 Figure 7.45: Categorical representation of Kanku-Breakaways
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:categCountKanku-Breakaways"></span>
-<img src="_main_files/figure-html/categCountKanku-Breakaways-1.png" alt="Proportion of categorised Kanku-Breakaways area in each of several classification classes" width="672" />
-<p class="caption">
+<div class="figure">
+<span style="display:block;" id="fig:categCountKanku-Breakaways"></span>
+<img src="_main_files/figure-html/categCountKanku-Breakaways-1.png" alt="Proportion of categorised Kanku-Breakaways area in each of several classification classes" width="672"><p class="caption">
 Figure 7.46: Proportion of categorised Kanku-Breakaways area in each of several classification classes
 </p>
 </div>
 
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div class="csl-entry">
+<div id="ref-R-rmarkdown" class="csl-entry">
 Allaire, JJ, Yihui Xie, Christophe Dervieux, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, et al. 2024. <em>Rmarkdown: Dynamic Documents for r</em>. <a href="https://github.com/rstudio/rmarkdown">https://github.com/rstudio/rmarkdown</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-R-fs" class="csl-entry">
 Hester, Jim, Hadley Wickham, and Gábor Csárdi. 2024. <em>Fs: Cross-Platform File System Operations Based on Libuv</em>. <a href="https://fs.r-lib.org">https://fs.r-lib.org</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-R-terra" class="csl-entry">
 Hijmans, Robert J. 2025. <em>Terra: Spatial Data Analysis</em>. <a href="https://rspatial.org/">https://rspatial.org/</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-MultiscaleDTM2021" class="csl-entry">
 Ilich, Alexander R., Benjamin Misiuk, Vincent Lecours, and Steven A. Murawski. 2021. <span>“MultiscaleDTM.”</span> <a href="https://doi.org/10.5281/zenodo.5548338">https://doi.org/10.5281/zenodo.5548338</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-MultiscaleDTM2023" class="csl-entry">
 ———. 2023. <span>“MultiscaleDTM: An Open-Source r Package for Multiscale Geomorphometric Analysis.”</span> <em>Transactions in GIS</em> 27 (4). <a href="https://doi.org/10.1111/tgis.13067">https://doi.org/10.1111/tgis.13067</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-R-MultiscaleDTM" class="csl-entry">
 Ilich, Alexander, Vincent Lecours, Benjamin Misiuk, and Steven Murawski. 2024. <em>MultiscaleDTM: Multi-Scale Geomorphometric Terrain Attributes</em>. <a href="https://ailich.github.io/MultiscaleDTM/">https://ailich.github.io/MultiscaleDTM/</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-R-tarchetypes" class="csl-entry">
+Landau, William Michael. 2025a. <em>Tarchetypes: Archetypes for Targets</em>. <a href="https://docs.ropensci.org/tarchetypes/">https://docs.ropensci.org/tarchetypes/</a>.
+</div>
+<div id="ref-R-targets" class="csl-entry">
+———. 2025b. <em>Targets: Dynamic Function-Oriented Make-Like Declarative Pipelines</em>. <a href="https://docs.ropensci.org/targets/">https://docs.ropensci.org/targets/</a>.
+</div>
+<div id="ref-R-tibble" class="csl-entry">
 Müller, Kirill, and Hadley Wickham. 2025. <em>Tibble: Simple Data Frames</em>. <a href="https://tibble.tidyverse.org/">https://tibble.tidyverse.org/</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-R-sf" class="csl-entry">
 Pebesma, Edzer. 2024. <em>Sf: Simple Features for r</em>. <a href="https://r-spatial.github.io/sf/">https://r-spatial.github.io/sf/</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-R-base" class="csl-entry">
 R Core Team. 2025. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-R-lubridate" class="csl-entry">
 Spinu, Vitalie, Garrett Grolemund, and Hadley Wickham. 2023. <em>Lubridate: Make Dealing with Dates a Little Easier</em>. <a href="https://lubridate.tidyverse.org">https://lubridate.tidyverse.org</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-R-tmap" class="csl-entry">
 Tennekes, Martijn. 2025. <em>Tmap: Thematic Maps</em>. <a href="https://github.com/r-tmap/tmap">https://github.com/r-tmap/tmap</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-R-geotargets" class="csl-entry">
+Tierney, Nicholas, Eric Scott, and Andrew Brown. 2025. <em>Geotargets: Targets Extensions for Geospatial Formats</em>. <a href="https://github.com/njtierney/geotargets">https://github.com/njtierney/geotargets</a>.
+</div>
+<div id="ref-R-forcats" class="csl-entry">
 Wickham, Hadley. 2023a. <em>Forcats: Tools for Working with Categorical Variables (Factors)</em>. <a href="https://forcats.tidyverse.org/">https://forcats.tidyverse.org/</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-R-stringr" class="csl-entry">
 ———. 2023b. <em>Stringr: Simple, Consistent Wrappers for Common String Operations</em>. <a href="https://stringr.tidyverse.org">https://stringr.tidyverse.org</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-R-ggplot2" class="csl-entry">
 Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, Dewey Dunnington, and Teun van den Brand. 2024. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-R-dplyr" class="csl-entry">
 Wickham, Hadley, Romain François, Lionel Henry, Kirill Müller, and Davis Vaughan. 2023. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://dplyr.tidyverse.org">https://dplyr.tidyverse.org</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-R-purrr" class="csl-entry">
 Wickham, Hadley, and Lionel Henry. 2023. <em>Purrr: Functional Programming Tools</em>. <a href="https://purrr.tidyverse.org/">https://purrr.tidyverse.org/</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-R-readr" class="csl-entry">
 Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2024. <em>Readr: Read Rectangular Text Data</em>. <a href="https://readr.tidyverse.org">https://readr.tidyverse.org</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-R-tidyr" class="csl-entry">
 Wickham, Hadley, Davis Vaughan, and Maximilian Girlich. 2024. <em>Tidyr: Tidy Messy Data</em>. <a href="https://tidyr.tidyverse.org">https://tidyr.tidyverse.org</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-R-ggridges" class="csl-entry">
 Wilke, Claus O. 2024. <em>Ggridges: Ridgeline Plots in Ggplot2</em>. <a href="https://wilkelab.org/ggridges/">https://wilkelab.org/ggridges/</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-R-envRaster" class="csl-entry">
 Willoughby, Nigel. 2025. <em>envRaster: Mung Environmental Rasters</em>. <a href="https://github.com/Acanthiza/envRaster">https://github.com/Acanthiza/envRaster</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-R-envTargets" class="csl-entry">
 Willoughby, Nigel, Joel Allan, and Simeon Zylinski. 2025. <em>envTargets: Help to Maintain and Run a Targets Workflow</em>. <a href="https://github.com/dew-landscapes/envTargets">https://github.com/dew-landscapes/envTargets</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-R-bookdown" class="csl-entry">
 Xie, Yihui. 2024a. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>. <a href="https://github.com/rstudio/bookdown">https://github.com/rstudio/bookdown</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-R-knitr" class="csl-entry">
 ———. 2024b. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in r</em>. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
 </div>
-<div class="csl-entry">
+<div id="ref-R-kableExtra" class="csl-entry">
 Zhu, Hao. 2024. <em>kableExtra: Construct Complex Table with Kable and Pipe Syntax</em>. <a href="http://haozhu233.github.io/kableExtra/">http://haozhu233.github.io/kableExtra/</a>.
 </div>
 </div>
 </div>
 </div>
-            </section>
+  <div class="chapter-nav">
+<div class="prev"><a href="hambidge.html"><span class="header-section-number">6</span> Hambidge</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#kanku-breakaways"><span class="header-section-number">7</span> Kanku-Breakaways</a></li>
+<li>
+<a class="nav-link" href="#continuous-3"><span class="header-section-number">7.1</span> Continuous</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#elev-3"><span class="header-section-number">7.1.1</span> elev</a></li>
+<li><a class="nav-link" href="#qslope-3"><span class="header-section-number">7.1.2</span> qslope</a></li>
+<li><a class="nav-link" href="#qaspect-3"><span class="header-section-number">7.1.3</span> qaspect</a></li>
+<li><a class="nav-link" href="#qeastness-3"><span class="header-section-number">7.1.4</span> qeastness</a></li>
+<li><a class="nav-link" href="#qnorthness-3"><span class="header-section-number">7.1.5</span> qnorthness</a></li>
+<li><a class="nav-link" href="#profc-3"><span class="header-section-number">7.1.6</span> profc</a></li>
+<li><a class="nav-link" href="#planc-3"><span class="header-section-number">7.1.7</span> planc</a></li>
+<li><a class="nav-link" href="#twistc-3"><span class="header-section-number">7.1.8</span> twistc</a></li>
+<li><a class="nav-link" href="#meanc-3"><span class="header-section-number">7.1.9</span> meanc</a></li>
+<li><a class="nav-link" href="#maxc-3"><span class="header-section-number">7.1.10</span> maxc</a></li>
+<li><a class="nav-link" href="#minc-3"><span class="header-section-number">7.1.11</span> minc</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#categorical-3"><span class="header-section-number">7.2</span> Categorical</a></li>
+</ul>
 
-          </div>
-        </div>
-      </div>
-<a href="cleland.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/acanthiza/DEM/blob/master/0030_results.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/acanthiza/DEM/edit/master/0030_results.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
 
-    </div>
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>DEM comparison</strong>" was written by Nigel Willoughby, Department for Environment and Water. It was last built on Saturday, 26 July, 2025. 14:49.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
 </body>
-
 </html>

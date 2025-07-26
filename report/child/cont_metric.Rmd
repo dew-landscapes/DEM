@@ -9,7 +9,7 @@
 
 Figure \@ref(fig:raw{{cont_metricID}}{{areaID}}) shows rasters for `r cont_metricID` and each window size for `r areaID`.
 
-Table \@ref(fig:contFig{{cont_metricID}}{{areaID}}) shows boxplots for each decile of `r cont_metricID`, allowing a comparison of values within each DEM across different ranges of `r cont_metricID`. Deciles are based on the values in the reference DEM: `r window$dem_name[window$aoi_name == areaID & window$is_ref]`.
+Table \@ref(fig:contFig{{cont_metricID}}{{areaID}}) shows boxplots for each decile of `r cont_metricID`, allowing a comparison of values within each DEM across different ranges of `r cont_metricID`. Deciles are based on the values in the reference DEM: `r results_df$dem_name[results_df$aoi_name == areaID & results_df$is_ref]`.
 
 Figure \@ref(fig:plot{{cont_metricID}}{{areaID}}) shows the a distribution of values for each sample DEM and window size.
 
@@ -17,17 +17,17 @@ Figure \@ref(fig:diffPlot{{cont_metricID}}{{areaID}}) shows the distribution of 
 
 ```{r raw{{cont_metricID}}{{areaID}}, fig.cap = paste0(cont_metricID, " raster for each DEM")}
 
-  dems <- window %>%
-    dplyr::filter(aoi_name == areaID) %>%
-    dplyr::mutate("{cont_metricID}" := purrr::map(t
-                                                  , tidyterra::select
-                                                  , matches(cont_metricID)
-                                                  )
-                  )
-  
-  terra::panel(terra::rast(dems[cont_metricID][[1]]) |>
-                 setNames(paste0(dems$dem_name))
-               )
+dems <- results_df %>%
+  dplyr::filter(aoi_name == areaID) %>%
+  dplyr::mutate("{cont_metricID}" := purrr::map(t[results_df$aoi_name == areaID]
+                                                , tidyterra::select
+                                                , matches(cont_metricID)
+                                                )
+                )
+
+terra::panel(terra::rast(dems[cont_metricID][[1]]) |>
+               setNames(paste0(dems$dem_name))
+             )
   
 ```
 
@@ -35,47 +35,38 @@ Figure \@ref(fig:diffPlot{{cont_metricID}}{{areaID}}) shows the distribution of 
 
 ```{r contFig{{cont_metricID}}{{areaID}}, fig.cap = "Boxplots within deciles for each DEM"}
 
-  reference <- window %>%
-    dplyr::filter(aoi_name == areaID
-                  , is_ref
-                  ) %>%
-    dplyr::pull(dem_name)
-
-  cont_area %>%
-    dplyr::filter(metric == cont_metricID) %>%
-    dplyr::select(!contains("plot")) %>%
-    tidyr::unnest(cols = c(data)) %>%
-    dplyr::group_by(cell) %>%
-    dplyr::filter(!is.na(value)) %>%
-    dplyr::ungroup() %>%
-    dplyr::select(aoi_name, dem_name, cell, metric, value) %>%
-    tidyr::pivot_wider(names_from = dem_name
-                       , values_from = value
-                       ) %>%
-    dplyr::mutate(cut_class = cut(!!rlang::ensym(reference)
-                                  , breaks = quantile(!!rlang::ensym(reference)
-                                                      , probs = seq(0, 1, 0.1)
-                                                      , na.rm = TRUE
-                                                      )
-                                  , include.lowest = TRUE
-                                  )
-                  ) %>%
-    tidyr::pivot_longer(tidyselect::any_of(as.character(window$dem_name))
-                        , names_to = "dem_name"
-                        ) %>%
-    dplyr::mutate(dem_name = forcats::fct_relevel(dem_name, unique(window$dem_name[window$is_ref]))) %>%
-    ggplot(aes(value, cut_class, fill = cut_class)) +
-      geom_boxplot() +
-      facet_grid(~ dem_name
-                 , scales = "free_y"
-                 ) +
-      scale_fill_viridis_d() +
-      labs(title = cont_metricID
-           , y = paste0(reference, " deciles")
-           , fill = "deciles"
-           ) +
-      guides(fill = guide_legend(reverse = TRUE)) +
-      theme(axis.text.y = element_blank())
+cont_area %>%
+  dplyr::filter(metric == cont_metricID) %>%
+  dplyr::select(!contains("plot")) %>%
+  tidyr::unnest(cols = c(data)) %>%
+  dplyr::select(aoi_name, dem_name, cell, metric, value) %>%
+  tidyr::pivot_wider(names_from = dem_name
+                     , values_from = value
+                     ) %>%
+  dplyr::mutate(cut_class = cut(!!rlang::ensym(reference)
+                                , breaks = quantile(!!rlang::ensym(reference)
+                                                    , probs = seq(0, 1, 0.1)
+                                                    , na.rm = TRUE
+                                                    )
+                                , include.lowest = TRUE
+                                )
+                ) %>%
+  tidyr::pivot_longer(tidyselect::any_of(as.character(unique(results_df$dem_name)))
+                      , names_to = "dem_name"
+                      ) %>%
+  dplyr::mutate(dem_name = forcats::fct_relevel(dem_name, unique(results_df$dem_name[results_df$is_ref]))) %>%
+  ggplot(aes(value, cut_class, fill = cut_class)) +
+    geom_boxplot() +
+    facet_grid(~ dem_name
+               , scales = "free_y"
+               ) +
+    scale_fill_viridis_d() +
+    labs(title = cont_metricID
+         , y = paste0(reference, " deciles")
+         , fill = "deciles"
+         ) +
+    guides(fill = guide_legend(reverse = TRUE)) +
+    theme(axis.text.y = element_blank())
 
   # ggplot(temp, aes(x = short
   #                  , xend = short
@@ -102,7 +93,7 @@ Figure \@ref(fig:diffPlot{{cont_metricID}}{{areaID}}) shows the distribution of 
   #                ) +
   #   geom_point(colour = "blue") +
   #   coord_flip() +
-  #   facet_grid(window ~ .) +
+  #   facet_grid(results_df ~ .) +
   #   labs(title = cont_metricID
   #        , x = "value"
   #        , y = "Sample DEM"
@@ -114,10 +105,12 @@ Figure \@ref(fig:diffPlot{{cont_metricID}}{{areaID}}) shows the distribution of 
 
 ```{r plot{{cont_metricID}}{{areaID}}, fig.cap = paste0(cont_metricID, " results for the each DEM")}
 
-  cont_area %>%
-    dplyr::filter(metric == cont_metricID) %>%
-    dplyr::pull(plot) %>%
-    `[[`(1)
+cont_area |>
+  dplyr::filter(metric == cont_metricID) |>
+  tidyr::unnest(cols = c(data)) |>
+  cont_plot(title = cont_metricID
+            , prob = 0.00
+            )
 
 ```
 
@@ -125,9 +118,12 @@ Figure \@ref(fig:diffPlot{{cont_metricID}}{{areaID}}) shows the distribution of 
 
 ```{r diffPlot{{cont_metricID}}{{areaID}}, fig.cap = paste0(cont_metricID, " difference between the best available (reference) DEM and each individual DEM for ", areaID)}
 
-  cont_area %>%
-    dplyr::filter(metric == cont_metricID) %>%
-    dplyr::pull(diff_plot) %>%
-    `[[`(1)
+cont_area |>
+dplyr::filter(metric == cont_metricID) |>
+tidyr::unnest(cols = c(data)) |>
+cont_plot(title = cont_metricID
+          , prob = 0.00
+          , diff = TRUE
+          )
 
 ```

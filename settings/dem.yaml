@@ -1,6 +1,6 @@
 
 ALOS:
-  file: "SA_ALOS_AW3D30v4_DSM_30m.tif"
+  file: SA_ALOS_AW3D30v4_DSM_30m.tif
   type: DSM
   
 # AW3D30:

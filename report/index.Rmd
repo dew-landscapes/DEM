@@ -11,51 +11,53 @@ description: "This work aims to compare digital terrain models as potential inpu
 
 ```{r setup, echo = FALSE, warning = FALSE, error = FALSE, message = FALSE}
 
-  repo_link <- gsub("\\.git$", "", usethis::git_remotes()$origin)
+# packages--------
+packages <- envFunc::check_packages(yaml::read_yaml(here::here("settings", "packages.yaml"))$packages
+                                    , bib = TRUE
+                                    , lib = TRUE
+                                    , update_env = TRUE
+                                    , file = here::here("report", "packages.bib")
+                                    )
 
-  #------Bibliography-------
-  
-  unlink("packages.bib")
-  
-  
-  #--------knitr options--------
-  
-  knitr::opts_knit$set(eval.after = "fig.cap")
+# tar source ------
+tar_source(here::here("R"))
   
   
-  #-------chunk options-------
+# objects ------
+tar_load(c(l, results_df, dem_df, t, settings, settings_analysis, cont, categ, categ_compare_ref)
+         , store = here::here("_targets")
+         )
 
-  knitr::opts_chunk$set(echo = FALSE
-                        , warning = FALSE
-                        , error = FALSE
-                        , message = FALSE
-                        , tidy = TRUE
-                        , tidy.opts = list(comment = FALSE)
-                        #, dpi = 300
-                        #, fig.width = 7
-                        )
+# options -------
+## knitr--------
 
-  
-  #--------options-------
+knitr::opts_knit$set(eval.after = "fig.cap")
 
-  options(knitr.kable.NA = ""
-          , knitr.duplicate.label = "allow"
-          )
+options(knitr.kable.NA = ""
+        , knitr.duplicate.label = "allow"
+        )
 
+## chunk -------
 
-  #------citations--------
+knitr::opts_chunk$set(echo = FALSE
+                      , warning = FALSE
+                      , error = FALSE
+                      , message = FALSE
+                      , tidy = TRUE
+                      , tidy.opts = list(comment = FALSE)
+                      #, dpi = 300
+                      #, fig.width = 7
+                      )
 
-  # knitcitations::cleanbib()
-  # options("citation_format" = "pandoc")
-  
-  
-  #-------Rmd--------
-  
-  tmap::tmap_mode("plot")
-  
-  tmap::tmap_options(basemap.server  = c("OpenStreetMap.Mapnik"
-                                  , "Esri.WorldImagery"
-                                  )
+# maps--------
+
+## tmap ------
+tmap::tmap_mode("view")
+
+tmap::tmap_options(basemap.server = c("OpenStreetMap.Mapnik"
+                                      , "Esri.WorldImagery"
+                                      )
+                     , raster.max_cells = c(plot = 1e7, view = 1e6)
                      )
 
 ```
