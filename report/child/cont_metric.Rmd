@@ -7,9 +7,9 @@
 
 ### `r cont_metricID`
 
-Figure \@ref(fig:raw{{cont_metricID}}{{areaID}}) shows rasters for `r cont_metricID` and each window size for `r areaID`.
+Figure \@ref(fig:raw{{cont_metricID}}{{areaID}}) shows rasters for `r cont_metricID` and each window size for `r use_name`.
 
-Table \@ref(fig:contFig{{cont_metricID}}{{areaID}}) shows boxplots for each decile of `r cont_metricID`, allowing a comparison of values within each DEM across different ranges of `r cont_metricID`. Deciles are based on the values in the reference DEM: `r results_df$dem_name[results_df$aoi_name == areaID & results_df$is_ref]`.
+Table \@ref(fig:contFig{{cont_metricID}}{{areaID}}) shows boxplots for each decile of `r cont_metricID`, allowing a comparison of values within each DEM across different ranges of `r cont_metricID`. Deciles are based on the values in the reference DEM: `r results_df$dem_name[results_df$aoi_id == areaID & results_df$is_ref]`.
 
 Figure \@ref(fig:plot{{cont_metricID}}{{areaID}}) shows the a distribution of values for each sample DEM and window size.
 
@@ -17,29 +17,37 @@ Figure \@ref(fig:diffPlot{{cont_metricID}}{{areaID}}) shows the distribution of 
 
 ```{r raw{{cont_metricID}}{{areaID}}, fig.cap = paste0(cont_metricID, " raster for each DEM")}
 
-dems <- results_df %>%
-  dplyr::filter(aoi_name == areaID) %>%
-  dplyr::mutate("{cont_metricID}" := purrr::map(t[results_df$aoi_name == areaID]
-                                                , tidyterra::select
-                                                , matches(cont_metricID)
-                                                )
-                )
+z <- if(cont_metricID %in% terrain_metrics) t else q
 
-terra::panel(terra::rast(dems[cont_metricID][[1]]) |>
-               setNames(paste0(dems$dem_name))
-             )
+z <- z[results_df$aoi_id == areaID]
+
+dems <- terra::rast(purrr::map(z
+                              , \(x) x[[cont_metricID]]
+                              )
+                   ) |>
+  setNames(results_df$dem_name[results_df$aoi_id == areaID])
+
+m <- tm_shape(dems) +
+  tm_raster(col.scale = tm_scale_continuous()) +
+  tm_facets(nrow = 2)
+
+m <- tmap::tmap_leaflet(m)
+
+class(m) <- c(class(m), "htmlwidget")
+
+m
   
 ```
 
 <br>
 
-```{r contFig{{cont_metricID}}{{areaID}}, fig.cap = "Boxplots within deciles for each DEM"}
+```{r contFig{{cont_metricID}}{{areaID}}, fig.cap = "Range of values within deciles for each DEM. Deciles are taken from the reference DEM"}
 
 cont_area %>%
   dplyr::filter(metric == cont_metricID) %>%
   dplyr::select(!contains("plot")) %>%
   tidyr::unnest(cols = c(data)) %>%
-  dplyr::select(aoi_name, dem_name, cell, metric, value) %>%
+  dplyr::select(aoi_name, dem_name, x, y, metric, value) %>%
   tidyr::pivot_wider(names_from = dem_name
                      , values_from = value
                      ) %>%
@@ -103,7 +111,7 @@ cont_area %>%
 
 <br>
 
-```{r plot{{cont_metricID}}{{areaID}}, fig.cap = paste0(cont_metricID, " results for the each DEM")}
+```{r plot{{cont_metricID}}{{areaID}}, fig.cap = paste0("Distribution of ", cont_metricID, " values in each DEM: ", use_name)}
 
 cont_area |>
   dplyr::filter(metric == cont_metricID) |>
@@ -116,14 +124,14 @@ cont_area |>
 
 <br>
 
-```{r diffPlot{{cont_metricID}}{{areaID}}, fig.cap = paste0(cont_metricID, " difference between the best available (reference) DEM and each individual DEM for ", areaID)}
+```{r diffPlot{{cont_metricID}}{{areaID}}, fig.cap = paste0("Distribution of difference between each DEM and reference for ", cont_metricID, " values: ", use_name)}
 
 cont_area |>
-dplyr::filter(metric == cont_metricID) |>
-tidyr::unnest(cols = c(data)) |>
-cont_plot(title = cont_metricID
-          , prob = 0.00
-          , diff = TRUE
-          )
+  dplyr::filter(metric == cont_metricID) |>
+  tidyr::unnest(cols = c(data)) |>
+  cont_plot(title = cont_metricID
+            , prob = 0.00
+            , diff = TRUE
+            )
 
 ```

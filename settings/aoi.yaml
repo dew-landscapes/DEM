@@ -10,7 +10,7 @@ Cleland:
   filt_col: "RESNAME"
   filt_level: "Cleland"
   buffer: 5000
-  
+
 Hambidge:
   polygons: "parks"
   filt_col: "RESNAME"
@@ -23,5 +23,12 @@ Kanku-Breakaways:
   filt_col: "RESNAME"
   filt_level: "Kanku-Breakaways"
   buffer: 5000
+
+"Deep Creek":
+  polygons: "parks"
+  filt_col: "RESNAME"
+  filt_level: "Kanku-Breakaways"
+  buffer: 5000
+
   
 

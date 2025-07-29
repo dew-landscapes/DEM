@@ -8,12 +8,14 @@ Table \@ref(tab:DEMs) lists the available DEMs.
 
 ```{r DEMs}
 
-dem_df |>
-  dplyr::distinct(dem_name
+results_df |>
+  dplyr::rename(DEM = dem_name, reference = is_ref) |>
+  dplyr::distinct(DEM
                   , type
-                  , file
-                  #, original_cm
+                  , reference
                   , licence
+                  #, original_cm # causes duplication as this differs across the areas
+                  , file
                   ) |>
     kableExtra::kable(caption = paste0("Available DEMs")
                       , format.args = list(digits = 2)
@@ -33,7 +35,7 @@ dem_df |>
 
 ## Processing
 
-For each DEM, the following processing was applied:
+For each DEM, the following processing was applied (where applicabe):
 
 * reprojected into GDA 2020
 * masked to the minimum available overlap between all DEMs (in each area)
@@ -41,36 +43,45 @@ For each DEM, the following processing was applied:
 * reprojected into the same `r settings$grain$res` m raster
 * generation of derived rasters via:
     + `Qfit` function in the `MultiscaleDTM` package `r envReport::cite_package("MultiscaleDTM")` using `v` argument (window size): `r settings_analysis$window %>% envFunc::vec_to_sentence()` cells
+    + `terrain` function in the `terra` package `r envReport::cite_package("terra")`
     + `land_class` function in the`envRaster` package `r envReport::cite_package("envRaster")` using `r settings_analysis$sn %>% envFunc::vec_to_sentence()` cells for the small window and `r settings_analysis$ln` cells for the large window as input to the 10 class landscape classification
 * all values from the derived rasters used to generate a range of visualisations and summary statistics.
     
 The `Qfit` function generates several continuous and one categorical variable for a digital terrain model:
 
-* `r paste0(as.character(formals(MultiscaleDTM::Qfit)$metrics)[-1], collapse = "\n* ")``
+* `r paste0(as.character(formals(MultiscaleDTM::Qfit)$metrics)[-1], collapse = "\n* ")`
 
-A [shiny app](https://ailich.shinyapps.io/Terrain_Attributes_Explorer_App/) is available to investigate the meaning of each of these variables.f
+A [shiny app](https://ailich.shinyapps.io/Terrain_Attributes_Explorer_App/) is available to investigate the meaning of each of these variables.
 
-## Workflow
+The `terrain` function was used to generate the following metrics:
 
-The data import, cleaning, analysis and report writing were done in a scripted workflow using the programs `R` and 'R-studio Desktop'. [`R`](https://www.r-project.org/) [@R-base] is an open source software environment for statistical computing and graphics. Base R can be extended via a range of open source packages to enable specific tasks or analyses. The packages used to produce this report are listed in Table \@ref(tab:packages).
+* `r paste0(terrain_metrics, collapse = "\n* ")`
 
-[R-studio Desktop](https://posit.co/download/rstudio-desktop/) is a set of open source tools built to facilitate interaction with `R`.
+
+### Scripting
+
+The data analysis and report writing were done via a scripted workflow using the programs 'R' and 'R-studio'. [R](https://www.r-project.org/) `r cite_package("base")` is a free software environment for statistical computing and graphics. R can be extended via a range of packages that enable specific tasks or analyses. The packages used to produce this report are listed in Table \@ref(tab:packages). [R-studio](https://www.rstudio.com/) provides a range of user-friendly features to facilitate interaction with R.
+
+All code is stored in a version control system at [`r basename(here::here())`](`r repo_link`).
+
+<br>
 
 ```{r packages}
 
-  knitr::kable(tibble::tibble(package = yaml::read_yaml("../settings/packages.yaml")$packages) %>%
-                 dplyr::mutate(citation = paste0("@R-"
-                                                 , package
-                                                 )
-                               ) %>%
-                 dplyr::left_join(tibble::as_tibble(devtools::session_info(include_base = TRUE)$packages)) %>%
-                 dplyr::select(package
-                               , citation
-                               , loadedversion
-                               , date
-                               , source
-                               )
-               , caption = "R [@R-base] packages used in the production of this report"
-               )
+knitr::kable(tibble(package = packages) |>
+               dplyr::mutate(citation = purrr::map_chr(package
+                                                       , envReport::cite_package
+                                                       , brack = FALSE
+                                                       )
+                             ) |>
+               dplyr::left_join(as_tibble(sessioninfo::session_info(include_base = TRUE)$packages)) |>
+               dplyr::select(package, citation, loadedversion, date, source)
+             , caption = paste0("R "
+                                , envReport::cite_package("base")
+                                , " packages used in the production of this report"
+                                )
+             ) |>
+  kableExtra::kable_styling("striped")
 
 ```
+

@@ -12,7 +12,7 @@ Copernicus:
   type: DSM
   
 Outback:
-  file: AW3D_Outback_2006_2011_DTM_10m_WGS84.tif
+  file: AW3D_Outback_2006_2011_DSM_10m_LCC.tif
   type: DTM
   
 Ag:

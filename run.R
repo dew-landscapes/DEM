@@ -18,3 +18,17 @@ purrr::map(fs::dir_ls(regexp = "_book|_main", recurse = 1)
 xfun::in_dir("report"
              , bookdown::render_book(output_dir = "../docs")
              )
+
+
+if(FALSE) {
+  
+  # clean up -------
+  
+  ## logs -------
+  fs::dir_delete("log")
+  
+  ## docs --------
+  # delete for clean start on report
+  if(FALSE) fs::dir_delete("docs")
+  
+}

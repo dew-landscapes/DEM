@@ -5,7 +5,7 @@ vals_to_tibble <- function(r) {
                  , xy = TRUE
                  ) |>
     tibble::as_tibble() |>
-    dplyr::mutate(cell = 1:terra::ncell(r)) |>
-    dplyr::select(cell, x, y, everything())
+    dplyr::bind_rows() |>
+    dplyr::select(x, y, everything())
   
 }

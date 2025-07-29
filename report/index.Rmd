@@ -24,9 +24,16 @@ tar_source(here::here("R"))
   
   
 # objects ------
-tar_load(c(l, results_df, dem_df, t, settings, settings_analysis, cont, categ, categ_compare_ref)
+tar_load(c(results_df, dem_df
+           , t, q, l
+           , settings, settings_analysis, cont, categ, categ_compare_ref
+           , terrain_metrics
+           )
          , store = here::here("_targets")
          )
+
+## repo ------
+repo_link <- gsub("\\.git$", "", usethis::git_remotes()$origin)
 
 # options -------
 ## knitr--------
