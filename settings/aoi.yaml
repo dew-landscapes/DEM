@@ -29,6 +29,11 @@ Kanku-Breakaways:
   filt_col: "RESNAME"
   filt_level: "Deep Creek"
   buffer: 5000
-
+  
+"Algebuckina":
+  polygons: "places"
+  filt_col: "NAME"
+  filt_level: "ALGEBUCKINA"
+  buffer: 5000
   
 
