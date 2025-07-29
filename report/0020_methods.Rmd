@@ -42,16 +42,14 @@ For each DEM, the following processing was applied (where applicabe):
 * aggregated or disaggregated to roughly `r settings$grain$res` m from original resolution
 * reprojected into the same `r settings$grain$res` m raster
 * generation of derived rasters via:
-    + `Qfit` function in the `MultiscaleDTM` package `r envReport::cite_package("MultiscaleDTM")` using `v` argument (window size): `r settings_analysis$window %>% envFunc::vec_to_sentence()` cells
-    + `terrain` function in the `terra` package `r envReport::cite_package("terra")`
+    + `Qfit` function in the `MultiscaleDTM` package `r envReport::cite_package("MultiscaleDTM")` using `v` argument (window size): `r settings_analysis$window %>% envFunc::vec_to_sentence()` cells.
+    + `terrain` function in the `terra` package `r envReport::cite_package("terra")` using default arguments (effectively using a window size of 3)
     + `land_class` function in the`envRaster` package `r envReport::cite_package("envRaster")` using `r settings_analysis$sn %>% envFunc::vec_to_sentence()` cells for the small window and `r settings_analysis$ln` cells for the large window as input to the 10 class landscape classification
 * all values from the derived rasters used to generate a range of visualisations and summary statistics.
     
-The `Qfit` function generates several continuous and one categorical variable for a digital terrain model:
+The `Qfit` function was used to generate the following metrics:
 
-* `r paste0(as.character(formals(MultiscaleDTM::Qfit)$metrics)[-1], collapse = "\n* ")`
-
-A [shiny app](https://ailich.shinyapps.io/Terrain_Attributes_Explorer_App/) is available to investigate the meaning of each of these variables.
+* `r paste0(terr_cont[! terr_cont %in% terrain_metrics], collapse = "\n* ")`
 
 The `terrain` function was used to generate the following metrics:
 
