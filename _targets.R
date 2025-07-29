@@ -118,11 +118,23 @@ list(
                               )
                    , pattern = map(workflow_df)
                    )
-  ## terrain rasters --------
-  , tar_terra_rast(t
+  ## qfit rasters --------
+  , tar_terra_rast(q
                    , MultiscaleDTM::Qfit(m
                                          , na.rm = TRUE
                                          )
+                   , pattern = map(m)
+                   )
+  ## terrain rasters ----------
+  , tar_target(terrain_metrics
+               , c("TPI", "TRI", "TRIriley", "TRIrmsd", "roughness"
+                   #, "flowdir"
+                   )
+               )
+  , tar_terra_rast(t
+                   , terra::terrain(m
+                                    , v = terrain_metrics
+                                    )
                    , pattern = map(m)
                    )
   ## landform rasters -------
@@ -137,32 +149,43 @@ list(
   ## results df -------
   , tar_target(results_df
                , workflow_df |>
-                 dplyr::mutate(vals_t = purrr::map(t
-                                                   , \(x) vals_to_tibble(x)
-                                                   )
+                 dplyr::mutate(vals_qfit = purrr::map(q
+                                                      , \(x) vals_to_tibble(x)
+                                                      )
+                               , vals_terr = purrr::map(t
+                                                        , \(x) vals_to_tibble(x)
+                                                        )
+                               , vals_t = purrr::map2(vals_qfit, vals_terr
+                                                      , \(x, y) dplyr::left_join(x, y)
+                                                      )
                                , vals_l = purrr::map(l
                                                      , \(x) vals_to_tibble(x)
                                                      )
+                               , aoi_id = gsub("\\s", "", aoi_name)
                                )
                )
   ## continuous terrain features -------
   , tar_target(terr_cont
-               , grep("feature"
-                      , as.character(formals(MultiscaleDTM::Qfit)$metrics)[-1]
-                      , value = TRUE
-                      , invert = TRUE
-                      )
+               , c(grep("feature"
+                        , formals(MultiscaleDTM::Qfit)$metrics |> as.character() |> head(-1) |> grep("c$", x = _, value = TRUE, invert = TRUE)
+                        , value = TRUE
+                        , invert = TRUE
+                        )
+                   , terrain_metrics
+                   )
                )
   ## continuous df--------
   , tar_target(cont
                , results_df |>
-                 dplyr::select(aoi_name, dem_name
+                 dplyr::select(aoi_name
+                               , aoi_id
+                               , dem_name
                                , is_ref
                                , vals_t
                                , original_cm
                                ) |>
                  tidyr::unnest(cols = c(vals_t)) |>
-                 dplyr::select(aoi_name, dem_name, cell
+                 dplyr::select(aoi_name, aoi_id, dem_name, x , y
                                , is_ref, original_cm, tidyselect::matches(terr_cont)
                                ) |>
                  tidyr::pivot_longer(matches(terr_cont)
@@ -170,21 +193,21 @@ list(
                                      ) %>%
                  dplyr::filter(!is.na(value)) %>%
                  # ensure only cells that have data from each DEM are included
-                 dplyr::add_count(aoi_name, metric, cell, name = "count") %>%
+                 dplyr::add_count(aoi_name, metric, x , y, name = "count") %>%
                  dplyr::group_by(aoi_name) %>%
                  dplyr::filter(count == max(count)) %>%
                  dplyr::ungroup() %>%
                  # find reference value
-                 dplyr::group_by(aoi_name, metric, cell) |>
+                 dplyr::group_by(aoi_name, metric, x , y) |>
                  dplyr::mutate(ref = value[is_ref]) |>
                  dplyr::ungroup() %>%
                  dplyr::mutate(diff = ref - value) %>%
-                 tidyr::nest(data = -c(aoi_name, metric))
+                 tidyr::nest(data = -c(aoi_name, aoi_id, metric))
                )
   ## categorical df --------
   , tar_target(categ
                , results_df |>
-                 dplyr::select(aoi_name, dem_name
+                 dplyr::select(aoi_name, aoi_id, dem_name
                                , is_ref
                                , vals_l
                                , original_cm
@@ -192,11 +215,11 @@ list(
                  tidyr::unnest(cols = c(vals_l))  |>
                  dplyr::filter(!is.na(category)) |>
                  # ensure only cells that have data from each DEM are included
-                 dplyr::add_count(aoi_name, cell, name = "count") |>
+                 dplyr::add_count(aoi_name, x , y, name = "count") |>
                  dplyr::group_by(aoi_name) |>
                  dplyr::filter(count == max(count)) |>
                  dplyr::ungroup() |>
-                 dplyr::group_by(aoi_name, dem_name, original_cm, category) |>
+                 dplyr::group_by(aoi_name, aoi_id, dem_name, original_cm, category) |>
                  dplyr::summarise(category_cells = dplyr::n()) |>
                  dplyr::ungroup() |>
                  dplyr::group_by(aoi_name, dem_name, original_cm) |>
@@ -208,7 +231,7 @@ list(
   ## categorical compare ref -------
   , tar_target(categ_compare_ref
                , results_df |>
-                 dplyr::select(aoi_name, dem_name
+                 dplyr::select(aoi_name, aoi_id, dem_name
                                , is_ref
                                , vals_l
                                , original_cm
@@ -216,16 +239,16 @@ list(
                  tidyr::unnest(cols = c(vals_l)) %>%
                  dplyr::filter(!is.na(category)) %>%
                  # ensure only cells that have data from each DEM are included
-                 dplyr::add_count(aoi_name, cell, name = "count") %>%
+                 dplyr::add_count(aoi_name, x , y, name = "count") %>%
                  dplyr::group_by(aoi_name) %>%
                  dplyr::filter(count == max(count)) %>%
                  dplyr::ungroup() %>%
-                 dplyr::group_by(aoi_name, cell) %>%
+                 dplyr::group_by(aoi_name, x , y) %>%
                  dplyr::mutate(has_ref = sum(is_ref) > 0) %>%
                  dplyr::filter(has_ref) %>%
                  dplyr::mutate(reference = category[is_ref]) %>%
                  dplyr::ungroup() %>%
-                 dplyr::count(aoi_name, dem_name, original_cm, reference, category) %>%
+                 dplyr::count(aoi_name, aoi_id, dem_name, original_cm, reference, category) %>%
                  dplyr::group_by(aoi_name, dem_name, original_cm, reference) %>%
                  dplyr::mutate(references = sum(n)
                                , prop = n / references
