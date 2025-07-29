@@ -27,7 +27,7 @@ Kanku-Breakaways:
 "Deep Creek":
   polygons: "parks"
   filt_col: "RESNAME"
-  filt_level: "Kanku-Breakaways"
+  filt_level: "Deep Creek"
   buffer: 5000
 
   
