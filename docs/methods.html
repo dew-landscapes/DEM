@@ -79,6 +79,7 @@
 <li><a class="" href="hambidge.html"><span class="header-section-number">6</span> Hambidge</a></li>
 <li><a class="" href="kanku-breakaways.html"><span class="header-section-number">7</span> Kanku-Breakaways</a></li>
 <li><a class="" href="deep-creek.html"><span class="header-section-number">8</span> Deep Creek</a></li>
+<li><a class="" href="algebuckina.html"><span class="header-section-number">9</span> Algebuckina</a></li>
 </ul>
 
         <div class="book-extra">
@@ -219,32 +220,23 @@ Australia_SRTM_Feb2000_DEM-H_30m_WGS84.tif
 <li>generation of derived rasters via:
 <ul>
 <li>
-<code>Qfit</code> function in the <code>MultiscaleDTM</code> package <span class="citation">(<a href="deep-creek.html#ref-R-MultiscaleDTM">A. Ilich et al. 2024</a>; <a href="deep-creek.html#ref-MultiscaleDTM2023">A. R. Ilich et al. 2023</a>, <a href="deep-creek.html#ref-MultiscaleDTM2021">2021</a>)</span> using <code>v</code> argument (window size): 3 cells</li>
+<code>Qfit</code> function in the <code>MultiscaleDTM</code> package <span class="citation">(<a href="algebuckina.html#ref-R-MultiscaleDTM">A. Ilich et al. 2024</a>; <a href="algebuckina.html#ref-MultiscaleDTM2023">A. R. Ilich et al. 2023</a>, <a href="algebuckina.html#ref-MultiscaleDTM2021">2021</a>)</span> using <code>v</code> argument (window size): 3 cells.</li>
 <li>
-<code>terrain</code> function in the <code>terra</code> package <span class="citation">(<a href="deep-creek.html#ref-R-terra">Hijmans 2025</a>)</span>
-</li>
+<code>terrain</code> function in the <code>terra</code> package <span class="citation">(<a href="algebuckina.html#ref-R-terra">Hijmans 2025</a>)</span> using default arguments (effectively using a window size of 3)</li>
 <li>
-<code>land_class</code> function in the<code>envRaster</code> package <span class="citation">(<a href="deep-creek.html#ref-R-envRaster">Willoughby 2025</a>)</span> using 3 cells for the small window and 11 cells for the large window as input to the 10 class landscape classification</li>
+<code>land_class</code> function in the<code>envRaster</code> package <span class="citation">(<a href="algebuckina.html#ref-R-envRaster">Willoughby 2025</a>)</span> using 3 cells for the small window and 11 cells for the large window as input to the 10 class landscape classification</li>
 </ul>
 </li>
 <li>all values from the derived rasters used to generate a range of visualisations and summary statistics.</li>
 </ul>
-<p>The <code>Qfit</code> function generates several continuous and one categorical variable for a digital terrain model:</p>
+<p>The <code>Qfit</code> function was used to generate the following metrics:</p>
 <ul>
 <li>elev</li>
 <li>qslope</li>
 <li>qaspect</li>
 <li>qeastness</li>
 <li>qnorthness</li>
-<li>profc</li>
-<li>planc</li>
-<li>twistc</li>
-<li>meanc</li>
-<li>maxc</li>
-<li>minc</li>
-<li>features</li>
 </ul>
-<p>A <a href="https://ailich.shinyapps.io/Terrain_Attributes_Explorer_App/">shiny app</a> is available to investigate the meaning of each of these variables.</p>
 <p>The <code>terrain</code> function was used to generate the following metrics:</p>
 <ul>
 <li>TPI</li>
@@ -257,12 +249,12 @@ Australia_SRTM_Feb2000_DEM-H_30m_WGS84.tif
 <h3>
 <span class="header-section-number">3.2.1</span> Scripting<a class="anchor" aria-label="anchor" href="#scripting"><i class="fas fa-link"></i></a>
 </h3>
-<p>The data analysis and report writing were done via a scripted workflow using the programs ‘R’ and ‘R-studio’. <a href="https://www.r-project.org/">R</a> <span class="citation">(<a href="deep-creek.html#ref-R-base">R Core Team 2025</a>)</span> is a free software environment for statistical computing and graphics. R can be extended via a range of packages that enable specific tasks or analyses. The packages used to produce this report are listed in Table <a href="methods.html#tab:packages">3.2</a>. <a href="https://www.rstudio.com/">R-studio</a> provides a range of user-friendly features to facilitate interaction with R.</p>
+<p>The data analysis and report writing were done via a scripted workflow using the programs ‘R’ and ‘R-studio’. <a href="https://www.r-project.org/">R</a> <span class="citation">(<a href="algebuckina.html#ref-R-base">R Core Team 2025</a>)</span> is a free software environment for statistical computing and graphics. R can be extended via a range of packages that enable specific tasks or analyses. The packages used to produce this report are listed in Table <a href="methods.html#tab:packages">3.2</a>. <a href="https://www.rstudio.com/">R-studio</a> provides a range of user-friendly features to facilitate interaction with R.</p>
 <p>All code is stored in a version control system at <a href="https://github.com/dew-landscapes/DEM">DEM</a>.</p>
 <p><br></p>
 <div class="inline-table"><table class="table table-striped" style="color: black; margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:packages">Table 3.2: </span><span id="tab:packages">Table 3.3: </span>R <span class="citation">(<a href="deep-creek.html#ref-R-base">R Core Team 2025</a>)</span> packages used in the production of this report
+<span id="tab:packages">Table 3.2: </span><span id="tab:packages">Table 3.3: </span>R <span class="citation">(<a href="algebuckina.html#ref-R-base">R Core Team 2025</a>)</span> packages used in the production of this report
 </caption>
 <thead><tr>
 <th style="text-align:left;">
@@ -287,7 +279,7 @@ source
 base
 </td>
 <td style="text-align:left;">
-<span class="citation">R Core Team (<a href="deep-creek.html#ref-R-base">2025</a>)</span>
+<span class="citation">R Core Team (<a href="algebuckina.html#ref-R-base">2025</a>)</span>
 </td>
 <td style="text-align:left;">
 4.4.3
@@ -304,7 +296,7 @@ local
 bookdown
 </td>
 <td style="text-align:left;">
-<span class="citation">Xie (<a href="deep-creek.html#ref-R-bookdown">2024a</a>)</span>;<span class="citation">Xie (<a href="deep-creek.html#ref-bookdown2016">2016</a>)</span>
+<span class="citation">Xie (<a href="algebuckina.html#ref-R-bookdown">2024a</a>)</span>;<span class="citation">Xie (<a href="algebuckina.html#ref-bookdown2016">2016</a>)</span>
 </td>
 <td style="text-align:left;">
 0.41
@@ -321,7 +313,7 @@ CRAN (R 4.4.2)
 dplyr
 </td>
 <td style="text-align:left;">
-<span class="citation">Wickham et al. (<a href="deep-creek.html#ref-R-dplyr">2023</a>)</span>
+<span class="citation">Wickham et al. (<a href="algebuckina.html#ref-R-dplyr">2023</a>)</span>
 </td>
 <td style="text-align:left;">
 1.1.4
@@ -338,7 +330,7 @@ CRAN (R 4.4.2)
 envRaster
 </td>
 <td style="text-align:left;">
-<span class="citation">Willoughby (<a href="deep-creek.html#ref-R-envRaster">2025</a>)</span>
+<span class="citation">Willoughby (<a href="algebuckina.html#ref-R-envRaster">2025</a>)</span>
 </td>
 <td style="text-align:left;">
 0.0.0.9000
@@ -355,7 +347,7 @@ Github (<a href="mailto:dew-landscapes/envRaster@e702ac9e9320b3524435bc77e7c06e3
 envReport
 </td>
 <td style="text-align:left;">
-<span class="citation">Willoughby and Zylinski (<a href="deep-creek.html#ref-R-envReport">2025</a>)</span>
+<span class="citation">Willoughby and Zylinski (<a href="algebuckina.html#ref-R-envReport">2025</a>)</span>
 </td>
 <td style="text-align:left;">
 0.0.0.9000
@@ -372,7 +364,7 @@ Github (<a href="mailto:dew-landscapes/envReport@de810a27f30a24e42b7e1a1f72157ff
 envTargets
 </td>
 <td style="text-align:left;">
-<span class="citation">Willoughby, Allan, and Zylinski (<a href="deep-creek.html#ref-R-envTargets">2025</a>)</span>
+<span class="citation">Willoughby, Allan, and Zylinski (<a href="algebuckina.html#ref-R-envTargets">2025</a>)</span>
 </td>
 <td style="text-align:left;">
 0.0.0.9000
@@ -389,7 +381,7 @@ Github (<a href="mailto:dew-landscapes/envTargets@d07e8da46eec6393fda9e8460cbd35
 forcats
 </td>
 <td style="text-align:left;">
-<span class="citation">Wickham (<a href="deep-creek.html#ref-R-forcats">2023a</a>)</span>
+<span class="citation">Wickham (<a href="algebuckina.html#ref-R-forcats">2023a</a>)</span>
 </td>
 <td style="text-align:left;">
 1.0.0
@@ -406,7 +398,7 @@ CRAN (R 4.4.2)
 fs
 </td>
 <td style="text-align:left;">
-<span class="citation">Hester, Wickham, and Csárdi (<a href="deep-creek.html#ref-R-fs">2024</a>)</span>
+<span class="citation">Hester, Wickham, and Csárdi (<a href="algebuckina.html#ref-R-fs">2024</a>)</span>
 </td>
 <td style="text-align:left;">
 1.6.5
@@ -423,7 +415,7 @@ CRAN (R 4.4.2)
 geotargets
 </td>
 <td style="text-align:left;">
-<span class="citation">Tierney, Scott, and Brown (<a href="deep-creek.html#ref-R-geotargets">2025</a>)</span>
+<span class="citation">Tierney, Scott, and Brown (<a href="algebuckina.html#ref-R-geotargets">2025</a>)</span>
 </td>
 <td style="text-align:left;">
 0.2.0.9000
@@ -440,7 +432,7 @@ geotargets
 ggplot2
 </td>
 <td style="text-align:left;">
-<span class="citation">Wickham et al. (<a href="deep-creek.html#ref-R-ggplot2">2024</a>)</span>;<span class="citation">Wickham (<a href="deep-creek.html#ref-ggplot22016">2016</a>)</span>
+<span class="citation">Wickham et al. (<a href="algebuckina.html#ref-R-ggplot2">2024</a>)</span>;<span class="citation">Wickham (<a href="algebuckina.html#ref-ggplot22016">2016</a>)</span>
 </td>
 <td style="text-align:left;">
 3.5.1
@@ -457,7 +449,7 @@ CRAN (R 4.4.2)
 ggridges
 </td>
 <td style="text-align:left;">
-<span class="citation">Wilke (<a href="deep-creek.html#ref-R-ggridges">2024</a>)</span>
+<span class="citation">Wilke (<a href="algebuckina.html#ref-R-ggridges">2024</a>)</span>
 </td>
 <td style="text-align:left;">
 0.5.6
@@ -474,7 +466,7 @@ CRAN (R 4.4.2)
 kableExtra
 </td>
 <td style="text-align:left;">
-<span class="citation">Zhu (<a href="deep-creek.html#ref-R-kableExtra">2024</a>)</span>
+<span class="citation">Zhu (<a href="algebuckina.html#ref-R-kableExtra">2024</a>)</span>
 </td>
 <td style="text-align:left;">
 1.4.0
@@ -491,7 +483,7 @@ CRAN (R 4.4.2)
 knitr
 </td>
 <td style="text-align:left;">
-<span class="citation">Xie (<a href="deep-creek.html#ref-R-knitr">2024b</a>)</span>;<span class="citation">Xie (<a href="deep-creek.html#ref-knitr2015">2015</a>)</span>;<span class="citation">Xie (<a href="deep-creek.html#ref-knitr2014">2014</a>)</span>
+<span class="citation">Xie (<a href="algebuckina.html#ref-R-knitr">2024b</a>)</span>;<span class="citation">Xie (<a href="algebuckina.html#ref-knitr2015">2015</a>)</span>;<span class="citation">Xie (<a href="algebuckina.html#ref-knitr2014">2014</a>)</span>
 </td>
 <td style="text-align:left;">
 1.49
@@ -508,7 +500,7 @@ CRAN (R 4.4.2)
 lubridate
 </td>
 <td style="text-align:left;">
-<span class="citation">Spinu, Grolemund, and Wickham (<a href="deep-creek.html#ref-R-lubridate">2023</a>)</span>;<span class="citation">Grolemund and Wickham (<a href="deep-creek.html#ref-lubridate2011">2011</a>)</span>
+<span class="citation">Spinu, Grolemund, and Wickham (<a href="algebuckina.html#ref-R-lubridate">2023</a>)</span>;<span class="citation">Grolemund and Wickham (<a href="algebuckina.html#ref-lubridate2011">2011</a>)</span>
 </td>
 <td style="text-align:left;">
 1.9.3
@@ -525,7 +517,7 @@ CRAN (R 4.4.2)
 MultiscaleDTM
 </td>
 <td style="text-align:left;">
-<span class="citation">A. Ilich et al. (<a href="deep-creek.html#ref-R-MultiscaleDTM">2024</a>)</span>;<span class="citation">A. R. Ilich et al. (<a href="deep-creek.html#ref-MultiscaleDTM2023">2023</a>)</span>;<span class="citation">A. R. Ilich et al. (<a href="deep-creek.html#ref-MultiscaleDTM2021">2021</a>)</span>
+<span class="citation">A. Ilich et al. (<a href="algebuckina.html#ref-R-MultiscaleDTM">2024</a>)</span>;<span class="citation">A. R. Ilich et al. (<a href="algebuckina.html#ref-MultiscaleDTM2023">2023</a>)</span>;<span class="citation">A. R. Ilich et al. (<a href="algebuckina.html#ref-MultiscaleDTM2021">2021</a>)</span>
 </td>
 <td style="text-align:left;">
 0.8.3
@@ -542,7 +534,7 @@ CRAN (R 4.4.2)
 purrr
 </td>
 <td style="text-align:left;">
-<span class="citation">Wickham and Henry (<a href="deep-creek.html#ref-R-purrr">2023</a>)</span>
+<span class="citation">Wickham and Henry (<a href="algebuckina.html#ref-R-purrr">2023</a>)</span>
 </td>
 <td style="text-align:left;">
 1.0.2
@@ -559,7 +551,7 @@ CRAN (R 4.4.2)
 readr
 </td>
 <td style="text-align:left;">
-<span class="citation">Wickham, Hester, and Bryan (<a href="deep-creek.html#ref-R-readr">2024</a>)</span>
+<span class="citation">Wickham, Hester, and Bryan (<a href="algebuckina.html#ref-R-readr">2024</a>)</span>
 </td>
 <td style="text-align:left;">
 2.1.5
@@ -576,7 +568,7 @@ CRAN (R 4.4.2)
 rmarkdown
 </td>
 <td style="text-align:left;">
-<span class="citation">Allaire et al. (<a href="deep-creek.html#ref-R-rmarkdown">2024</a>)</span>;<span class="citation">Xie, Allaire, and Grolemund (<a href="deep-creek.html#ref-rmarkdown2018">2018</a>)</span>;<span class="citation">Xie, Dervieux, and Riederer (<a href="deep-creek.html#ref-rmarkdown2020">2020</a>)</span>
+<span class="citation">Allaire et al. (<a href="algebuckina.html#ref-R-rmarkdown">2024</a>)</span>;<span class="citation">Xie, Allaire, and Grolemund (<a href="algebuckina.html#ref-rmarkdown2018">2018</a>)</span>;<span class="citation">Xie, Dervieux, and Riederer (<a href="algebuckina.html#ref-rmarkdown2020">2020</a>)</span>
 </td>
 <td style="text-align:left;">
 2.29
@@ -593,7 +585,7 @@ CRAN (R 4.4.2)
 sf
 </td>
 <td style="text-align:left;">
-<span class="citation">Pebesma (<a href="deep-creek.html#ref-R-sf">2024</a>)</span>;<span class="citation">Pebesma and Bivand (<a href="deep-creek.html#ref-sf2023">2023</a>)</span>;<span class="citation">Pebesma (<a href="deep-creek.html#ref-sf2018">2018</a>)</span>
+<span class="citation">Pebesma (<a href="algebuckina.html#ref-R-sf">2024</a>)</span>;<span class="citation">Pebesma and Bivand (<a href="algebuckina.html#ref-sf2023">2023</a>)</span>;<span class="citation">Pebesma (<a href="algebuckina.html#ref-sf2018">2018</a>)</span>
 </td>
 <td style="text-align:left;">
 1.0-19
@@ -610,7 +602,7 @@ CRAN (R 4.4.2)
 stringr
 </td>
 <td style="text-align:left;">
-<span class="citation">Wickham (<a href="deep-creek.html#ref-R-stringr">2023b</a>)</span>
+<span class="citation">Wickham (<a href="algebuckina.html#ref-R-stringr">2023b</a>)</span>
 </td>
 <td style="text-align:left;">
 1.5.1
@@ -627,7 +619,7 @@ CRAN (R 4.4.2)
 tarchetypes
 </td>
 <td style="text-align:left;">
-<span class="citation">Landau (<a href="deep-creek.html#ref-R-tarchetypes">2025a</a>)</span>;<span class="citation">Landau (<a href="deep-creek.html#ref-tarchetypes2021">2021a</a>)</span>
+<span class="citation">Landau (<a href="algebuckina.html#ref-R-tarchetypes">2025a</a>)</span>;<span class="citation">Landau (<a href="algebuckina.html#ref-tarchetypes2021">2021a</a>)</span>
 </td>
 <td style="text-align:left;">
 0.13.1
@@ -644,7 +636,7 @@ CRAN (R 4.4.3)
 targets
 </td>
 <td style="text-align:left;">
-<span class="citation">Landau (<a href="deep-creek.html#ref-R-targets">2025b</a>)</span>;<span class="citation">Landau (<a href="deep-creek.html#ref-targets2021">2021b</a>)</span>
+<span class="citation">Landau (<a href="algebuckina.html#ref-R-targets">2025b</a>)</span>;<span class="citation">Landau (<a href="algebuckina.html#ref-targets2021">2021b</a>)</span>
 </td>
 <td style="text-align:left;">
 1.11.3
@@ -661,7 +653,7 @@ CRAN (R 4.4.3)
 terra
 </td>
 <td style="text-align:left;">
-<span class="citation">Hijmans (<a href="deep-creek.html#ref-R-terra">2025</a>)</span>
+<span class="citation">Hijmans (<a href="algebuckina.html#ref-R-terra">2025</a>)</span>
 </td>
 <td style="text-align:left;">
 1.8-52
@@ -678,7 +670,7 @@ terra
 tibble
 </td>
 <td style="text-align:left;">
-<span class="citation">Müller and Wickham (<a href="deep-creek.html#ref-R-tibble">2025</a>)</span>
+<span class="citation">Müller and Wickham (<a href="algebuckina.html#ref-R-tibble">2025</a>)</span>
 </td>
 <td style="text-align:left;">
 3.3.0
@@ -695,7 +687,7 @@ CRAN (R 4.4.3)
 tidyr
 </td>
 <td style="text-align:left;">
-<span class="citation">Wickham, Vaughan, and Girlich (<a href="deep-creek.html#ref-R-tidyr">2024</a>)</span>
+<span class="citation">Wickham, Vaughan, and Girlich (<a href="algebuckina.html#ref-R-tidyr">2024</a>)</span>
 </td>
 <td style="text-align:left;">
 1.3.1
@@ -712,7 +704,7 @@ CRAN (R 4.4.2)
 tmap
 </td>
 <td style="text-align:left;">
-<span class="citation">Tennekes (<a href="deep-creek.html#ref-R-tmap">2025</a>)</span>;<span class="citation">Tennekes (<a href="deep-creek.html#ref-tmap2018">2018</a>)</span>
+<span class="citation">Tennekes (<a href="algebuckina.html#ref-R-tmap">2025</a>)</span>;<span class="citation">Tennekes (<a href="algebuckina.html#ref-tmap2018">2018</a>)</span>
 </td>
 <td style="text-align:left;">
 4.1
@@ -757,7 +749,7 @@ CRAN (R 4.4.3)
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>DEM comparison</strong>" was written by Nigel Willoughby, Department for Environment and Water. It was last built on Tuesday, 29 July, 2025. 21:25.</p>
+    <p>"<strong>DEM comparison</strong>" was written by Nigel Willoughby, Department for Environment and Water. It was last built on Wednesday, 30 July, 2025. 09:21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
