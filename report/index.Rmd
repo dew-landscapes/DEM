@@ -27,7 +27,7 @@ tar_source(here::here("R"))
 tar_load(c(results_df, dem_df
            , t, q, l
            , settings, settings_analysis, cont, categ, categ_compare_ref
-           , terrain_metrics
+           , terr_cont, terrain_metrics
            )
          , store = here::here("_targets")
          )
